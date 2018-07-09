@@ -42,14 +42,6 @@ registerBlockType( 'sgb/alert', {
 			type: 'string',
 			default: '#ffffff',
 		},
-		align: {
-			type: 'string',
-			default: 'left',
-		},
-		textAlign: {
-			type: 'string',
-			default: 'left',
-		},
 		fontSize: {
 			type: 'number',
 		},
@@ -67,10 +59,8 @@ registerBlockType( 'sgb/alert', {
 		},
 	},
 
-	getEditWrapperProps( attributes ) {
-		const { align } = attributes;
-
-		return { 'data-align': align };
+	supports: {
+		align: true,
 	},
 
 	edit: function( props ) {
@@ -81,7 +71,7 @@ registerBlockType( 'sgb/alert', {
 				<Controls { ...props } />
 
 				<div
-					className={ classnames( 'sgb-alert', className, `align${ attributes.align }` ) }
+					className={ classnames( 'sgb-alert', className ) }
 					role="alert"
 					style={ {
 						backgroundColor: attributes.backgroundColor,
@@ -133,7 +123,7 @@ registerBlockType( 'sgb/alert', {
 
 		return (
 			<div
-				className={ classnames( 'sgb-alert', `align${ attributes.align }` ) }
+				className={ classnames( 'sgb-alert' ) }
 				style={ {
 					backgroundColor: attributes.backgroundColor,
 					color: attributes.textColor,

@@ -10,7 +10,6 @@ const {
 } = wp.components;
 
 const {
-	BlockAlignmentToolbar,
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
@@ -86,10 +85,6 @@ const Controls = ( props ) => {
 						] }
 					/>
 				</Toolbar>
-				<BlockAlignmentToolbar
-					value={ attributes.align }
-					onChange={ ( value ) => setAttributes( { align: value } ) }
-				/>
 				<AlignmentToolbar
 					value={ attributes.textAlign }
 					onChange={ ( nextAlign ) => {
