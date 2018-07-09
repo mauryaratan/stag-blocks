@@ -8,6 +8,7 @@ const {
 } = wp.components;
 
 const {
+	BlockAlignmentToolbar,
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
@@ -39,7 +40,7 @@ const FONT_SIZES = [
 
 const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
-	// console.log( attributes ); // eslint-disable-line
+	console.log( attributes.align ); // eslint-disable-line
 
 	return (
 		<Fragment>
@@ -75,6 +76,10 @@ const Controls = ( props ) => {
 			</InspectorControls>
 
 			<BlockControls>
+				<BlockAlignmentToolbar
+					value={ attributes.align }
+					onChange={ ( value ) => setAttributes( { align: value } ) }
+				/>
 				<AlignmentToolbar
 					value={ attributes.textAlign }
 					onChange={ ( nextAlign ) => {

@@ -1,7 +1,7 @@
 /**
  * Internal dependencies.
  */
-import classNames from 'classnames';
+import classnames from 'classnames';
 import FontAwesome from './../../components/font-awesome/font-awesome';
 import Controls from './controls';
 import './editor.scss';
@@ -42,6 +42,10 @@ registerBlockType( 'sgb/alert', {
 			type: 'string',
 			default: '#ffffff',
 		},
+		align: {
+			type: 'string',
+			default: 'left',
+		},
 		textAlign: {
 			type: 'string',
 			default: 'left',
@@ -71,7 +75,7 @@ registerBlockType( 'sgb/alert', {
 				<Controls { ...props } />
 
 				<div
-					className={ classNames( 'sgb-alert', className ) }
+					className={ classnames( 'sgb-alert', className, `align${ attributes.align }` ) }
 					role="alert"
 					style={ {
 						backgroundColor: attributes.backgroundColor,
@@ -123,7 +127,7 @@ registerBlockType( 'sgb/alert', {
 
 		return (
 			<div
-				className={ classNames( 'sgb-alert' ) }
+				className={ classnames( 'sgb-alert', `align${ attributes.align }` ) }
 				style={ {
 					backgroundColor: attributes.backgroundColor,
 					color: attributes.textColor,
