@@ -67,6 +67,12 @@ registerBlockType( 'sgb/alert', {
 		},
 	},
 
+	getEditWrapperProps( attributes ) {
+		const { align } = attributes;
+
+		return { 'data-align': align };
+	},
+
 	edit: function( props ) {
 		const { attributes, setAttributes, className } = props;
 
