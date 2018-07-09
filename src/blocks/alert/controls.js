@@ -5,6 +5,8 @@ const {
 	FontSizePicker,
 	PanelBody,
 	ToggleControl,
+	Toolbar,
+	DropdownMenu,
 } = wp.components;
 
 const {
@@ -76,6 +78,34 @@ const Controls = ( props ) => {
 			</InspectorControls>
 
 			<BlockControls>
+				<Toolbar>
+					<DropdownMenu
+						label={ __( 'Alert Style' ) }
+						icon="art"
+						controls={ [
+							{
+								title: __( 'Warning' ),
+								icon: <i className="fas fa-exclamation dashicon"></i>,
+								onClick: () => setAttributes( { backgroundColor: '#EC6565' } ),
+							},
+							{
+								title: __( 'Success' ),
+								icon: <i className="fas fa-check dashicon"></i>,
+								onClick: () => setAttributes( { backgroundColor: '#44D867' } ),
+							},
+							{
+								title: __( 'Note' ),
+								icon: <i className="fas fa-question dashicon"></i>,
+								onClick: () => setAttributes( { backgroundColor: '#F6D73D' } ),
+							},
+							{
+								title: __( 'Information' ),
+								icon: <i className="fas fa-info dashicon"></i>,
+								onClick: () => setAttributes( { backgroundColor: '#6876F3' } ),
+							},
+						] }
+					/>
+				</Toolbar>
 				<BlockAlignmentToolbar
 					value={ attributes.align }
 					onChange={ ( value ) => setAttributes( { align: value } ) }

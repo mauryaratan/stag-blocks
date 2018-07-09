@@ -5,10 +5,10 @@
  * that are used across the project.
 */
 :root {
-  --sgb-alert-blue: #646fdf;
-  --sgb-alert-yellow: #ecd251;
-  --sgb-alert-green: #20d173;
-  --sgb-alert-red: #fd565d; }
+  --sgb-alert-blue: #6876F3;
+  --sgb-alert-yellow: #F6D73D;
+  --sgb-alert-green: #44D867;
+  --sgb-alert-red: #EC6565; }
 
 .gutentools-component-fontawesome--icons {
   height: 200px;
@@ -72,11 +72,14 @@
  * that are used across the project.
 */
 :root {
-  --sgb-alert-blue: #646fdf;
-  --sgb-alert-yellow: #ecd251;
-  --sgb-alert-green: #20d173;
-  --sgb-alert-red: #fd565d; }
+  --sgb-alert-blue: #6876F3;
+  --sgb-alert-yellow: #F6D73D;
+  --sgb-alert-green: #44D867;
+  --sgb-alert-red: #EC6565; }
 
 .edit-post-visual-editor .sgb-alert p {
   color: inherit;
   font-size: inherit; }
+
+.components-popover i.dashicon {
+  width: 25px; }
