@@ -4,15 +4,15 @@
  * Can include things like variables and mixins
  * that are used across the project.
 */
-/**
- * #.# Styles
- *
- * CSS for both Frontend+Backend.
- */
-.wp-block-cgb-block-stag-blockss {
-  background: orangered;
-  border: 0.2rem solid #292929;
-  color: #292929;
-  margin: 0 auto;
-  max-width: 740px;
-  padding: 2rem; }
+:root {
+  --sgb-alert-blue: #646fdf;
+  --sgb-alert-yellow: #ecd251;
+  --sgb-alert-green: #20d173;
+  --sgb-alert-red: #fd565d; }
+
+.sgb-alert {
+  padding: 20px;
+  background: whitesmoke; }
+  .sgb-alert p {
+    color: inherit;
+    font-size: inherit; }
