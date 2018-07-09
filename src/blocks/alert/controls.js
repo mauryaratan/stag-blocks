@@ -2,11 +2,11 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
 const {
-	FontSizePicker,
 	PanelBody,
 	ToggleControl,
 	Toolbar,
 	DropdownMenu,
+	RangeControl,
 } = wp.components;
 
 const {
@@ -17,49 +17,29 @@ const {
 	PanelColor,
 } = wp.editor;
 
-const FONT_SIZES = [
-	{
-		name: 'small',
-		shortName: 'S',
-		size: 14,
-	},
-	{
-		name: 'regular',
-		shortName: 'M',
-		size: 16,
-	},
-	{
-		name: 'large',
-		shortName: 'L',
-		size: 36,
-	},
-	{
-		name: 'larger',
-		shortName: 'XL',
-		size: 48,
-	},
-];
-
 const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
-	console.log( attributes.align ); // eslint-disable-line
 
 	return (
 		<Fragment>
 			<InspectorControls>
 				<PanelBody title={ __( 'Alert Settings' ) }>
+					<RangeControl
+						label={ __( 'Font size' ) }
+						beforeIcon="editor-textcolor"
+						afterIcon="editor-textcolor"
+						min={ 12 }
+						max={ 100 }
+						allowReset
+						initialPosition={ attributes.fontSize }
+						value={ attributes.fontSize }
+						onChange={ ( size ) => setAttributes( { fontSize: size } ) }
+					/>
+
 					<ToggleControl
 						label={ __( 'Show Icon' ) }
 						checked={ !! attributes.showIcon }
 						onChange={ ( value ) => setAttributes( { showIcon: value } ) }
-					/>
-				</PanelBody>
-				<PanelBody title={ __( 'Text Settings' ) } initialOpen={ false }>
-					<FontSizePicker
-						fontSizes={ FONT_SIZES }
-						fallbackFontSize={ 16 }
-						value={ attributes.fontSize }
-						onChange={ ( size ) => setAttributes( { fontSize: size } ) }
 					/>
 				</PanelBody>
 
