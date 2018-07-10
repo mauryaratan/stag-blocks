@@ -1,5 +1,7 @@
 import classnames from 'classnames';
 import Controls from './controls';
+import './editor.scss';
+import icon from './icon';
 import './style.scss';
 
 /**
@@ -14,7 +16,7 @@ registerBlockType( 'sgb/accordion', {
 	title: __( 'Accordion' ),
 	category: 'common',
 	description: __( 'A nice description for accordion block.' ),
-	icon: <i className="fas fa-plus dashicon" />,
+	icon,
 	keywords: [
 		__( 'accordion' ),
 		__( 'stag' ),
@@ -66,12 +68,18 @@ registerBlockType( 'sgb/accordion', {
 			<Fragment>
 				<Controls { ...props } />
 
-				<div className={ classnames( props.className ) }>
+				<div
+					className={ classnames( props.className, {
+						'has-shadow': attributes.boxShadow,
+					} ) }
+					style={ {
+						backgroundColor: attributes.backgroundColor,
+						color: attributes.textColor,
+					} }
+				>
 					<RichText
 						tagName="h3"
-						className={ classnames( `${ props.className }__title`, {
-							'has-shadow': attributes.boxShadow,
-						} ) }
+						className={ classnames( 'wp-block-sgb-accordion__title' ) }
 						value={ attributes.title }
 						onChange={ ( content ) => setAttributes( { title: content } ) }
 						placeholder={ __( 'Accordion Title' ) }
@@ -84,14 +92,10 @@ registerBlockType( 'sgb/accordion', {
 					<RichText
 						tagName="div"
 						multiline="p"
-						className="`${props.className}__content`"
+						className={ classnames( 'wp-block-sgb-accordion__content' ) }
 						value={ attributes.content }
 						onChange={ ( content ) => setAttributes( { content } ) }
 						placeholder={ __( 'Accordion content...' ) }
-						style={ {
-							backgroundColor: attributes.backgroundColor,
-							color: attributes.textColor,
-						} }
 						keepPlaceholderOnFocus
 					/>
 				</div>
@@ -111,7 +115,9 @@ registerBlockType( 'sgb/accordion', {
 					color: attributes.textColor,
 				} }
 			>
-				<summary style={ { backgroundColor: attributes.titleBackgroundColor, color: attributes.titleColor } }>{ attributes.title }</summary>
+				<summary style={ { backgroundColor: attributes.titleBackgroundColor, color: attributes.titleColor } }>
+					{ attributes.title }
+				</summary>
 				<div className="wp-block-sgb-accordion__content">
 					{ attributes.content }
 				</div>

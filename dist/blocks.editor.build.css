@@ -10,6 +10,47 @@
   --sgb-alert-green: #44D867;
   --sgb-alert-red: #EC6565; }
 
+.wp-block-sgb-accordion__title {
+  padding: 20px;
+  font-size: 18px;
+  font-weight: normal;
+  line-height: 1 !important;
+  position: relative;
+  margin: -20px -20px 0px -20px; }
+  .wp-block-sgb-accordion__title:after {
+    content: '\f068';
+    font-family: 'Font Awesome 5 Free';
+    -webkit-font-smoothing: antialiased;
+    display: inline-block;
+    font-style: normal;
+    font-variant: normal;
+    text-rendering: auto;
+    font-weight: 900;
+    line-height: 1;
+    position: absolute;
+    right: 20px;
+    -webkit-transform: translateY(-100%);
+        -ms-transform: translateY(-100%);
+            transform: translateY(-100%);
+    color: currentColor;
+    bottom: 0; }
+
+.wp-block-sgb-accordion__content {
+  padding: 20px 0; }
+  .wp-block-sgb-accordion__content p {
+    color: inherit; }
+/**
+ * #.# Common SCSS
+ *
+ * Can include things like variables and mixins
+ * that are used across the project.
+*/
+:root {
+  --sgb-alert-blue: #6876F3;
+  --sgb-alert-yellow: #F6D73D;
+  --sgb-alert-green: #44D867;
+  --sgb-alert-red: #EC6565; }
+
 .gutentools-component-fontawesome--icons {
   height: 200px;
   overflow: scroll;
