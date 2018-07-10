@@ -9,4 +9,5 @@
  * Webpack is compiling as the input file.
  */
 
+import './blocks/accordion/index.js';
 import './blocks/alert/index.js';
