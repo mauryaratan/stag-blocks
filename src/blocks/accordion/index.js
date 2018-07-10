@@ -78,7 +78,7 @@ registerBlockType( 'sgb/accordion', {
 					} }
 				>
 					<RichText
-						tagName="h3"
+						tagName="p"
 						className={ classnames( 'wp-block-sgb-accordion__title' ) }
 						value={ attributes.title }
 						onChange={ ( content ) => setAttributes( { title: content } ) }
