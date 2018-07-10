@@ -5,6 +5,7 @@ import classnames from 'classnames';
 import FontAwesome from './../../components/font-awesome/font-awesome';
 import Controls from './controls';
 import './editor.scss';
+import icon from './icon';
 import './style.scss';
 
 /**
@@ -19,7 +20,7 @@ registerBlockType( 'sgb/alert', {
 	title: __( 'Alert' ),
 	category: 'common',
 	description: __( 'A nice description for alert block.' ),
-	icon: <i className="dashicon fas fa-bell"></i>,
+	icon,
 	keywords: [
 		__( 'alert' ),
 		__( 'notice' ),
