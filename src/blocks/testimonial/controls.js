@@ -11,7 +11,7 @@ const {
 	PanelColor,
 } = wp.editor;
 
-const Control = ( props ) => {
+const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
 
 	return (

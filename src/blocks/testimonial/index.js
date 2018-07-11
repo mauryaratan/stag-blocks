@@ -1,5 +1,5 @@
 import classnames from 'classnames';
-import Control from './controls';
+import Controls from './controls';
 import './editor.scss';
 import icon from './icon';
 import './style.scss';
@@ -88,7 +88,7 @@ registerBlockType( 'sgb/testimonial', {
 
 		return (
 			<Fragment>
-				<Control { ...props } />
+				<Controls { ...props } />
 
 				<div
 					style={ {
