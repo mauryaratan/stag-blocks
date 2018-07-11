@@ -1,14 +1,16 @@
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
 :root {
   --sgb-alert-blue: #6876F3;
   --sgb-alert-yellow: #F6D73D;
   --sgb-alert-green: #44D867;
   --sgb-alert-red: #EC6565; }
+
+.sgb-p-20 {
+  padding: 20px; }
+  .sgb-p-20 p:last-of-type {
+    margin-bottom: 0; }
+
+[class*="wp-block-sgb-"] p {
+  color: inherit; }
 
 .wp-block-sgb-accordion__title {
   padding: 20px;
@@ -39,18 +41,6 @@
   padding: 20px 0; }
   .wp-block-sgb-accordion__content p {
     color: inherit; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-:root {
-  --sgb-alert-blue: #6876F3;
-  --sgb-alert-yellow: #F6D73D;
-  --sgb-alert-green: #44D867;
-  --sgb-alert-red: #EC6565; }
-
 .gutentools-component-fontawesome--icons {
   height: 200px;
   overflow: scroll;
@@ -106,21 +96,29 @@
 
 .components-button i.dashicon {
   font-size: 20px; }
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
-:root {
-  --sgb-alert-blue: #6876F3;
-  --sgb-alert-yellow: #F6D73D;
-  --sgb-alert-green: #44D867;
-  --sgb-alert-red: #EC6565; }
-
 .edit-post-visual-editor .sgb-alert p {
   color: inherit;
   font-size: inherit; }
 
 .components-popover i.dashicon {
   width: 25px; }
+.wp-block-sgb-testimonial__content p {
+  font-size: inherit;
+  line-height: 1.4; }
+
+.wp-block-sgb-testimonial__image .components-button {
+  margin: 0;
+  padding: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  background: transparent !important; }
+  .wp-block-sgb-testimonial__image .components-button .dashicons-edit {
+    position: absolute;
+    right: 0;
+    top: 0;
+    fill: #fff;
+    padding: 5px;
+    -webkit-box-sizing: content-box;
+            box-sizing: content-box; }

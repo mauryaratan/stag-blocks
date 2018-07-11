@@ -1,20 +1,42 @@
-/**
- * #.# Common SCSS
- *
- * Can include things like variables and mixins
- * that are used across the project.
-*/
+$breakpoint__sm: 576px;
+$breakpoint__md: 768px;
+$breakpoint__lg: 992px;
+$breakpoint__xl: 1200px;
 
-// Colors.
-$black: rgb(41, 41, 41);
-$white: #f4f4f4;
-$gray: #dedede;
-$green: #bada55;
-$red: orangered;
+$default-feature: min-width; // Default @media feature for the breakpoint() mixin
 
-:root {
-	--sgb-alert-blue: #6876F3;
-	--sgb-alert-yellow: #F6D73D;
-	--sgb-alert-green: #44D867;
-	--sgb-alert-red: #EC6565;
+@mixin media( $query: $feature $value ) {
+	@if length($query) == 1 {
+		@media screen and ($default-feature: nth($query, 1)) {
+			@content;
+		}
+	}
+
+	@else if length($query) == 2 {
+		@media screen and (nth($query, 1): nth($query, 2)) {
+			@content;
+		}
+	}
+
+	@else if length($query) == 4 {
+		@media screen and (nth($query, 1): nth($query, 2)) and (nth($query, 3): nth($query, 4)) {
+			@content;
+		}
+	}
+
+	@else {
+		@warn "Wrong number of arguments for breakpoint(). Read the documentation for more details.";
+	}
+}
+
+@mixin far() {
+	@content;
+	font-family: 'Font Awesome 5 Free';
+	-webkit-font-smoothing: antialiased;
+	display: inline-block;
+	font-style: normal;
+	font-variant: normal;
+	text-rendering: auto;
+	font-weight: 900;
+	line-height: 1;
 }

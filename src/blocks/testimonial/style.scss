@@ -1,0 +1,65 @@
+.wp-block-sgb-testimonial {
+	margin: 2em 0;
+	@include media($breakpoint__md) {
+		display: flex;
+
+		> div {
+			order: 1;
+		}
+		> div:nth-child(1) {
+			width: 60%;
+		}
+		> div:nth-child(2) {
+			width: 40%;
+		}
+	}
+
+	&.is-style-flip .wp-block-sgb-testimonial__details {
+		order: 2;
+	}
+
+	&__details {
+		padding: 50px;
+	}
+	&__author {
+		p {
+			margin: 0;
+		}
+	}
+
+	&__content {
+		font-size: 30px;
+		font-weight: bold;
+		position: relative;
+		padding-top: 80px;
+		line-height: 1.4;
+
+		&:before {
+			@include far{
+				content: '\f10d';
+			};
+			position: absolute;
+			top: 0px;
+			left: 0;
+			font-size: 50px;
+		}
+	}
+
+	&__name {
+		font-weight: bold;
+	}
+}
+
+.wp-block-sgb-testimonial__image {
+	position: relative;
+	background-size: cover;
+	background-position: center;
+	min-height: 150px;
+
+	> img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		vertical-align: bottom;
+	}
+}
