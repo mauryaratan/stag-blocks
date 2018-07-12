@@ -9,7 +9,6 @@ const { Fragment } = wp.element;
 const { RichText } = wp.editor;
 const {
 	Button,
-	IconButton,
 	TextControl,
 	Dashicon,
 } = wp.components;
@@ -33,17 +32,15 @@ registerBlockType( 'sgb/stats', {
 		content: {
 			type: 'array',
 			default: [],
-			selector: '.wp-block-sgb-counter-box .counter',
-			query: {
-				count: {
-					type: 'number',
-					selector: '.counter-number',
-				},
-				text: {
-					type: 'string',
-					selector: '.counter-text',
-				},
-			},
+		},
+		backgroundColor: {
+			type: 'string',
+		},
+		color: {
+			type: 'string',
+		},
+		counterColor: {
+			type: 'string',
 		},
 	},
 

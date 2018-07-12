@@ -114,7 +114,7 @@
        -moz-appearance: textfield;
             appearance: textfield;
     font-size: inherit;
-    padding: 40px 0px; }
+    padding: 40px 0px 10px; }
     .wp-block-sgb-stats__count input[type="text"]::-webkit-inner-spin-button, .wp-block-sgb-stats__count input[type="text"]::-webkit-outer-spin-button {
       -webkit-appearance: none;
               appearance: none;

@@ -57,7 +57,9 @@
   text-align: center;
   padding: 20px;
   margin-top: 1em;
-  margin-bottom: 1em; }
+  margin-bottom: 1em;
+  background: #f5f5f5;
+  background: #F7F9FA; }
   @media screen and (min-width: 768px) {
     .wp-block-sgb-stats {
       grid-template-columns: 1fr 1fr; }
@@ -69,7 +71,8 @@
         grid-template-columns: 1fr 1fr 1fr 1fr; } }
   .wp-block-sgb-stats__count {
     font-size: 40px;
-    font-weight: bold; }
+    font-weight: bold;
+    color: var(--sgb-accent, #F1413D); }
 .wp-block-sgb-testimonial {
   margin: 2em 0; }
   @media screen and (min-width: 768px) {

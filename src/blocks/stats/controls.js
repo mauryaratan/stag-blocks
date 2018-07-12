@@ -19,13 +19,34 @@ const Controls = ( props ) => {
 	return (
 		<Fragment>
 			<InspectorControls>
-				<RangeControl
-					label={ __( 'Columns' ) }
-					min={ 1 }
-					initialPosition={ attributes.columns }
-					max={ 4 }
-					value={ attributes.columns }
-					onChange={ ( columns ) => setAttributes( { columns } ) }
+				<PanelBody>
+					<RangeControl
+						label={ __( 'Columns' ) }
+						min={ 1 }
+						initialPosition={ attributes.columns }
+						max={ 4 }
+						value={ attributes.columns }
+						onChange={ ( columns ) => setAttributes( { columns } ) }
+					/>
+				</PanelBody>
+
+				<PanelColor
+					title={ __( 'Text Color' ) }
+					initialOpen={ false }
+					colorValue={ attributes.color }
+					onChange={ ( color ) => setAttributes( { color } ) }
+				/>
+				<PanelColor
+					title={ __( 'Counter Color' ) }
+					initialOpen={ false }
+					colorValue={ attributes.counterColor }
+					onChange={ ( counterColor ) => setAttributes( { counterColor } ) }
+				/>
+				<PanelColor
+					title={ __( 'Background Color' ) }
+					initialOpen={ false }
+					colorValue={ attributes.backgroundColor }
+					onChange={ ( backgroundColor ) => setAttributes( { backgroundColor } ) }
 				/>
 			</InspectorControls>
 		</Fragment>
