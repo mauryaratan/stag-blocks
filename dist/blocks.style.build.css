@@ -55,6 +55,8 @@
   display: grid;
   grid-gap: 20px;
   text-align: center;
+  -ms-flex-align: center;
+      align-items: center;
   padding: 20px;
   margin-top: 1em;
   margin-bottom: 1em;
