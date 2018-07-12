@@ -100,7 +100,7 @@ registerBlockType( 'sgb/stats', {
 									value={ attributes.content[ i ].text }
 									onChange={ ( value ) => {
 										const content = [ ...attributes.content ];
-										content[ i ].text = value[ 0 ];
+										content[ i ].text = value;
 										setAttributes( { content } );
 									} }
 								/>
