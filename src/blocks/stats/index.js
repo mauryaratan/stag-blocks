@@ -51,10 +51,19 @@ registerBlockType( 'sgb/stats', {
 			<Fragment>
 				<Controls { ...props } />
 
-				<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
+				<div
+					className={ classnames( className, `columns-${ attributes.columns }` ) }
+					style={ {
+						backgroundColor: attributes.backgroundColor,
+						color: attributes.color,
+					} }
+				>
 					{
 						( attributes.content.length ) ? ( attributes.content.map( ( v, i ) => (
-							<div className={ `${ className }__counter` } key={ i }>
+							<div
+								key={ i }
+								className={ `${ className }__counter` }
+							>
 								<Button
 									isLarge
 									label={ __( 'Remove counter' ) }
@@ -78,6 +87,9 @@ registerBlockType( 'sgb/stats', {
 										const content = [ ...attributes.content ];
 										content[ i ].count = value;
 										setAttributes( { content } );
+									} }
+									style={ {
+										color: attributes.counterColor,
 									} }
 								/>
 
@@ -128,11 +140,19 @@ registerBlockType( 'sgb/stats', {
 		const className = 'wp-block-sgb-stats';
 
 		return (
-			<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
+			<div
+				className={ classnames( className, `columns-${ attributes.columns }` ) }
+				style={ {
+					backgroundColor: attributes.backgroundColor,
+					color: attributes.color,
+				} }
+			>
 				{
 					( attributes.content.length ) ? ( attributes.content.map( ( v, i ) => (
 						<div className={ `${ className }__counter` } key={ i }>
-							<div className={ `${ className }__count` }>{ attributes.content[ i ].count }</div>
+							<div className={ `${ className }__count` } style={ { color: attributes.counterColor } }>
+								{ attributes.content[ i ].count }
+							</div>
 							<div className={ `${ className }__text` }>{ attributes.content[ i ].text }</div>
 						</div>
 					) ) ) : null
