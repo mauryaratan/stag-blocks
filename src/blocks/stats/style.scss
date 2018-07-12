@@ -1,0 +1,27 @@
+.wp-block-sgb-stats {
+	display: grid;
+	grid-gap: 20px;
+	text-align: center;
+	padding: 20px;
+	margin-top: 1em;
+	margin-bottom: 1em;
+
+	@include media($breakpoint__md) {
+		grid-template-columns: 1fr 1fr;
+
+		&.columns-1 {
+			grid-template-columns: 1fr;
+		}
+		&.columns-3 {
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+		&.columns-4 {
+			grid-template-columns: 1fr 1fr 1fr 1fr;
+		}
+	}
+
+	&__count {
+		font-size: 40px;
+		font-weight: bold;
+	}
+}

@@ -1,0 +1,36 @@
+.wp-block-sgb-stats {
+	&__count {
+		margin: 0;
+		input[type="text"] {
+			border: 0 !important;
+			box-shadow: none !important;
+			outline: 0 !important;
+			text-align: center;
+			appearance: textfield;
+			font-size: inherit;
+			padding: 40px 0px;
+
+			&::-webkit-inner-spin-button,
+			&::-webkit-outer-spin-button {
+				appearance: none;
+				margin: 0;
+			}
+		}
+	}
+
+	&__counter {
+		position: relative;
+	}
+
+	&__add {
+		.dashicon {
+			transform: translateY(5px);
+		}
+	}
+
+	&__remove {
+		position: absolute;
+		right: 0;
+		top: 0;
+	}
+}

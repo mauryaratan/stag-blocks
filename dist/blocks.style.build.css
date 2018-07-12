@@ -51,6 +51,25 @@
   .sgb-alert p {
     color: inherit;
     font-size: inherit; }
+.wp-block-sgb-stats {
+  display: grid;
+  grid-gap: 20px;
+  text-align: center;
+  padding: 20px;
+  margin-top: 1em;
+  margin-bottom: 1em; }
+  @media screen and (min-width: 768px) {
+    .wp-block-sgb-stats {
+      grid-template-columns: 1fr 1fr; }
+      .wp-block-sgb-stats.columns-1 {
+        grid-template-columns: 1fr; }
+      .wp-block-sgb-stats.columns-3 {
+        grid-template-columns: 1fr 1fr 1fr; }
+      .wp-block-sgb-stats.columns-4 {
+        grid-template-columns: 1fr 1fr 1fr 1fr; } }
+  .wp-block-sgb-stats__count {
+    font-size: 40px;
+    font-weight: bold; }
 .wp-block-sgb-testimonial {
   margin: 2em 0; }
   @media screen and (min-width: 768px) {

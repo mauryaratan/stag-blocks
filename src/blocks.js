@@ -11,4 +11,5 @@
 
 import './blocks/accordion';
 import './blocks/alert';
+import './blocks/stats';
 import './blocks/testimonial';
