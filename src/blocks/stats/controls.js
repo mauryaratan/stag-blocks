@@ -3,8 +3,6 @@ const { Fragment } = wp.element;
 
 const {
 	PanelBody,
-	ToggleControl,
-	TextControl,
 	RangeControl,
 } = wp.components;
 
