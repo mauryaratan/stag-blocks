@@ -50,4 +50,4 @@ const Controls = ( props ) => {
 	);
 };
 
-export default Control;
+export default Controls;

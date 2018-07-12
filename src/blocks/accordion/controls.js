@@ -11,7 +11,7 @@ const {
 	PanelColor,
 } = wp.editor;
 
-const Control = ( props ) => {
+const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
 
 	return (
@@ -64,4 +64,4 @@ const Control = ( props ) => {
 	);
 };
 
-export default Control;
+export default Controls;
