@@ -11,8 +11,8 @@ const {
 
 const alignmentOptions = [
 	{ label: __( 'Top Left' ), value: 'left top', icon: 'arrow-left-alt' },
-	{ label: __( 'Top' ), value: 'right top', icon: 'arrow-up-alt' },
-	{ label: __( 'Top Right' ), value: 'center top', icon: 'arrow-right-alt' },
+	{ label: __( 'Top' ), value: 'center top', icon: 'arrow-up-alt' },
+	{ label: __( 'Top Right' ), value: 'right top', icon: 'arrow-right-alt' },
 	{ label: __( 'Left' ), value: 'left center', icon: 'arrow-left-alt' },
 	{ label: __( 'Center' ), value: 'center center', icon: 'align-center' },
 	{ label: __( 'Right' ), value: 'right center', icon: 'arrow-right-alt' },
