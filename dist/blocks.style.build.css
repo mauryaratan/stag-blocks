@@ -51,6 +51,59 @@
   .sgb-alert p {
     color: inherit;
     font-size: inherit; }
+.wp-block-sgb-hero {
+  background: #F7F9FA;
+  min-height: 450px;
+  padding: 20px;
+  display: grid; }
+  .wp-block-sgb-hero__container {
+    position: relative; }
+  .wp-block-sgb-hero__content {
+    position: absolute;
+    width: 100%;
+    max-width: 50%; }
+  .wp-block-sgb-hero__content {
+    background: wheat; }
+    .wp-block-sgb-hero__content.left {
+      left: 0; }
+    .wp-block-sgb-hero__content.top {
+      top: 0; }
+    .wp-block-sgb-hero__content.bottom {
+      bottom: 0; }
+    .wp-block-sgb-hero__content.right {
+      right: 0; }
+    .wp-block-sgb-hero__content.center.center {
+      -webkit-transform: translateX(-50%) translateY(-50%);
+          -ms-transform: translateX(-50%) translateY(-50%);
+              transform: translateX(-50%) translateY(-50%);
+      top: 50%;
+      left: 50%; }
+    .wp-block-sgb-hero__content.center.bottom {
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      bottom: 0;
+      top: initial;
+      left: 50%; }
+    .wp-block-sgb-hero__content.center.top {
+      -webkit-transform: translateX(-50%);
+          -ms-transform: translateX(-50%);
+              transform: translateX(-50%);
+      top: 0;
+      left: 50%; }
+    .wp-block-sgb-hero__content.center.right {
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      top: 50%;
+      right: 0;
+      left: initial; }
+    .wp-block-sgb-hero__content.center.left {
+      -webkit-transform: translateY(-50%);
+          -ms-transform: translateY(-50%);
+              transform: translateY(-50%);
+      top: 50%;
+      left: 0; }
 .wp-block-sgb-stats {
   display: grid;
   grid-gap: 20px;
@@ -60,7 +113,6 @@
   padding: 20px;
   margin-top: 1em;
   margin-bottom: 1em;
-  background: #f5f5f5;
   background: #F7F9FA; }
   @media screen and (min-width: 768px) {
     .wp-block-sgb-stats {

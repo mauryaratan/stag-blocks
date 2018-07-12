@@ -102,6 +102,28 @@
 
 .components-popover i.dashicon {
   width: 25px; }
+.sgb-background-position-buttongroup .components-button.is-button {
+  border-bottom: 0;
+  margin-top: -1px;
+  height: 40px; }
+  .sgb-background-position-buttongroup .components-button.is-button:first-child {
+    border-radius: 0; }
+  .sgb-background-position-buttongroup .components-button.is-button:nth-of-type(1) .dashicon {
+    -webkit-transform: rotate(45deg);
+        -ms-transform: rotate(45deg);
+            transform: rotate(45deg); }
+  .sgb-background-position-buttongroup .components-button.is-button:nth-of-type(3) .dashicon {
+    -webkit-transform: rotate(-35deg);
+        -ms-transform: rotate(-35deg);
+            transform: rotate(-35deg); }
+  .sgb-background-position-buttongroup .components-button.is-button:nth-of-type(7) .dashicon {
+    -webkit-transform: rotate(-45deg);
+        -ms-transform: rotate(-45deg);
+            transform: rotate(-45deg); }
+  .sgb-background-position-buttongroup .components-button.is-button:nth-of-type(9) .dashicon {
+    -webkit-transform: rotate(35deg);
+        -ms-transform: rotate(35deg);
+            transform: rotate(35deg); }
 .wp-block-sgb-stats__count {
   margin: 0; }
   .wp-block-sgb-stats__count input[type="text"] {
