@@ -25,9 +25,17 @@ class Stag_Blocks_Settings {
 			return;
 		}
 
+		// Styles.
+		wp_enqueue_style(
+			'stag-blocks-settings',
+			plugins_url( 'dist/settings/settings.style.css', dirname( __FILE__ ) ),
+			array(),
+			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings/settings.style.css' )
+		);
+
 		wp_enqueue_script(
 			'stag-blocks-settings',
-			plugins_url( 'dist/settings.build.js', dirname( __FILE__ ) ),
+			plugins_url( 'dist/settings/settings.build.js', dirname( __FILE__ ) ),
 			array(
 				'wp-blocks',
 				'wp-components',
@@ -36,7 +44,7 @@ class Stag_Blocks_Settings {
 				'wp-utils',
 				'lodash',
 			),
-			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings.build.js' ),
+			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings/settings.build.js' ),
 			true
 		);
 

@@ -11,7 +11,7 @@ const inProduction = 'production' === process.env.NODE_ENV;
 
 // Block CSS loader
 const cssExtractTextPlugin = new ExtractTextPlugin( {
-	filename: './build/settings.style.css',
+	filename: 'dist/settings/settings.style.css',
 } );
 
 // Configuration for the ExtractTextPlugin.
@@ -56,11 +56,13 @@ wpDependencies.forEach( wpDependency => {
 
 // Webpack config.
 const config = {
-	entry: './settings/js/index.js',
+	entry: [
+		'./settings/js/index.js',
+		'./settings/css/style.scss',
+	],
 	externals,
 	output: {
-		// TODO: check this settings block
-		filename: 'dist/settings.build.js',
+		filename: 'dist/settings/settings.build.js',
 		path: __dirname,
 		library: [ 'stag-blocks', '[name]' ],
 		libraryTarget: 'this',
@@ -82,7 +84,7 @@ const config = {
 		],
 	},
 	plugins: [
-		new CleanWebpackPlugin( [ 'build' ] ),
+		new CleanWebpackPlugin( [ 'build/settings' ] ),
 		cssExtractTextPlugin,
 		new WebpackRTLPlugin(),
 	],

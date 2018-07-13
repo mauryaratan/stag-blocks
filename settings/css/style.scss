@@ -1,3 +1,31 @@
 body.settings_page_stag-blocks {
-	background: wheat !important;
+	background: #F3F6F8;
+	color:#000000;
+
+	#wpcontent {
+		margin-left: 140px;
+	}
+}
+
+.stag-blocks {
+	&__header {
+		background: #fff;
+		padding: 15px 45px;
+		border-bottom: 1px solid #fff;
+
+		display: flex;
+		justify-content: space-between;
+
+		h2, p, svg {
+			display: inline-block;
+			vertical-align: middle;
+		}
+
+		.stag-blocks-logo svg {
+			margin-right: 10px;
+		}
+		.codestag-logo svg {
+			margin-left: 10px;
+		}
+	}
 }
