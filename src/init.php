@@ -54,6 +54,13 @@ function stag_blocks_editor_assets() {
 		true // Enqueue the script in the footer.
 	);
 
+	wp_localize_script(
+		'sgb-js', '_stagBlocks', array(
+			'root'  => esc_url_raw( rest_url() ),
+			'nonce' => wp_create_nonce( 'stag_blocks' ),
+		)
+	);
+
 	// Styles.
 	wp_enqueue_style(
 		'sgb-editor-css', // Handle.
