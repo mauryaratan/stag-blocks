@@ -14,3 +14,5 @@ import './blocks/alert';
 import './blocks/hero';
 import './blocks/stats';
 import './blocks/testimonial';
+import './blocksList';
+
