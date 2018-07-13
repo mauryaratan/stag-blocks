@@ -186,14 +186,18 @@ var _BlockList = __webpack_require__(4);
 
 var _BlockList2 = _interopRequireDefault(_BlockList);
 
+var _Categories = __webpack_require__(11);
+
+var _Categories2 = _interopRequireDefault(_Categories);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 var Content = function Content() {
 	return React.createElement(
-		"section",
-		{ className: "stag-blocks__content" },
-		React.createElement(_BlockList2.default, null),
-		"Content area goes here."
+		'section',
+		{ className: 'stag-blocks__content' },
+		React.createElement(_Categories2.default, null),
+		React.createElement(_BlockList2.default, null)
 	);
 };
 
@@ -209,63 +213,17 @@ exports.default = Content;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-
-var _classnames = __webpack_require__(5);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _BlocksContext = __webpack_require__(10);
-
-var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var categories = wp.blocks.getCategories();
 var Fragment = wp.element.Fragment;
 
 
 var BlockList = function BlockList() {
-	var isActive = 'common';
-
 	return React.createElement(
 		Fragment,
 		null,
 		React.createElement(
-			_BlocksContext2.default.Consumer,
+			"p",
 			null,
-			function (context) {
-				return React.createElement(
-					'ul',
-					{ className: 'block-categories' },
-					!!categories && categories.map(function (category) {
-						return React.createElement(
-							'li',
-							{ key: category.slug },
-							React.createElement(
-								'a',
-								{
-									href: '#' + category.slug,
-									onClick: function onClick(e) {
-										e.preventDefault();
-										var link = new URL(e.target.href);
-										link = link.hash.slice(1);
-										context.setCategory(link);
-									},
-									className: (0, _classnames2.default)(context.state.category, {
-										'is-active': context.state.category === category.slug
-									})
-								},
-								category.title
-							)
-						);
-					})
-				);
-			}
-		),
-		React.createElement(
-			'p',
-			null,
-			'BlockList component'
+			"BlockList component"
 		)
 	);
 };
@@ -475,6 +433,66 @@ Object.defineProperty(exports, "__esModule", {
 var BlocksContext = React.createContext();
 
 exports.default = BlocksContext;
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _classnames = __webpack_require__(5);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _BlocksContext = __webpack_require__(10);
+
+var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Categories = function Categories() {
+	var categories = wp.blocks.getCategories();
+
+	return React.createElement(
+		_BlocksContext2.default.Consumer,
+		null,
+		function (context) {
+			return React.createElement(
+				'ul',
+				{ className: 'block-categories' },
+				!!categories && categories.map(function (category) {
+					return React.createElement(
+						'li',
+						{ key: category.slug },
+						React.createElement(
+							'a',
+							{
+								href: '#' + category.slug,
+								onClick: function onClick(e) {
+									e.preventDefault();
+									var link = new URL(e.target.href);
+									link = link.hash.slice(1);
+									context.setCategory(link);
+								},
+								className: (0, _classnames2.default)({
+									'is-active': context.state.category === category.slug
+								})
+							},
+							category.title
+						)
+					);
+				})
+			);
+		}
+	);
+};
+
+exports.default = Categories;
 
 /***/ })
 /******/ ]);
