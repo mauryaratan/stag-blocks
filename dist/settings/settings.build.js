@@ -69,7 +69,7 @@ this["stag-blocks"] = this["stag-blocks"] || {}; this["stag-blocks"]["main"] =
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(4);
+module.exports = __webpack_require__(9);
 
 
 /***/ }),
@@ -100,6 +100,14 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
+var _BlocksContext = __webpack_require__(10);
+
+var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
+
+var _Content = __webpack_require__(3);
+
+var _Content2 = _interopRequireDefault(_Content);
+
 var _Header = __webpack_require__(6);
 
 var _Header2 = _interopRequireDefault(_Header);
@@ -116,18 +124,44 @@ var App = function (_React$Component) {
 	_inherits(App, _React$Component);
 
 	function App() {
+		var _ref;
+
+		var _temp, _this, _ret;
+
 		_classCallCheck(this, App);
 
-		return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+		for (var _len = arguments.length, args = Array(_len), _key = 0; _key < _len; _key++) {
+			args[_key] = arguments[_key];
+		}
+
+		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
+			category: 'common'
+		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
 	_createClass(App, [{
-		key: "render",
+		key: 'render',
 		value: function render() {
+			var _this2 = this;
+
 			return React.createElement(
-				"div",
-				{ className: "stag-blocks" },
-				React.createElement(_Header2.default, null)
+				'div',
+				{ className: 'stag-blocks' },
+				React.createElement(
+					_BlocksContext2.default.Provider,
+					{
+						value: {
+							state: this.state,
+							setCategory: function setCategory(category) {
+								_this2.setState({
+									category: category
+								});
+							}
+						}
+					},
+					React.createElement(_Header2.default, null),
+					React.createElement(_Content2.default, null)
+				)
 			);
 		}
 	}]);
@@ -139,6 +173,223 @@ exports.default = App;
 
 /***/ }),
 /* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _BlockList = __webpack_require__(4);
+
+var _BlockList2 = _interopRequireDefault(_BlockList);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Content = function Content() {
+	return React.createElement(
+		"section",
+		{ className: "stag-blocks__content" },
+		React.createElement(_BlockList2.default, null),
+		"Content area goes here."
+	);
+};
+
+exports.default = Content;
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _classnames = __webpack_require__(5);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _BlocksContext = __webpack_require__(10);
+
+var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var categories = wp.blocks.getCategories();
+var Fragment = wp.element.Fragment;
+
+
+var BlockList = function BlockList() {
+	var isActive = 'common';
+
+	return React.createElement(
+		Fragment,
+		null,
+		React.createElement(
+			_BlocksContext2.default.Consumer,
+			null,
+			function (context) {
+				return React.createElement(
+					'ul',
+					{ className: 'block-categories' },
+					!!categories && categories.map(function (category) {
+						return React.createElement(
+							'li',
+							{ key: category.slug },
+							React.createElement(
+								'a',
+								{
+									href: '#' + category.slug,
+									onClick: function onClick(e) {
+										e.preventDefault();
+										var link = new URL(e.target.href);
+										link = link.hash.slice(1);
+										context.setCategory(link);
+									},
+									className: (0, _classnames2.default)(context.state.category, {
+										'is-active': context.state.category === category.slug
+									})
+								},
+								category.title
+							)
+						);
+					})
+				);
+			}
+		),
+		React.createElement(
+			'p',
+			null,
+			'BlockList component'
+		)
+	);
+};
+
+exports.default = BlockList;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+		window.classNames = classNames;
+	}
+}());
+
+
+/***/ }),
+/* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _logoCodestag = __webpack_require__(7);
+
+var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
+
+var _logoStagBlocks = __webpack_require__(8);
+
+var _logoStagBlocks2 = _interopRequireDefault(_logoStagBlocks);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+
+
+var Header = function Header() {
+	return React.createElement(
+		'header',
+		{ className: 'stag-blocks__header' },
+		React.createElement(
+			'div',
+			{ className: 'stag-blocks-logo' },
+			React.createElement(_logoStagBlocks2.default, null),
+			React.createElement(
+				'h2',
+				null,
+				'Stag Blocks'
+			)
+		),
+		React.createElement(
+			'div',
+			{ className: 'codestag-logo' },
+			React.createElement(
+				'p',
+				null,
+				__('A plugin by')
+			),
+			React.createElement(
+				'a',
+				{ href: 'https://codestag.com', title: 'Codestag' },
+				React.createElement(_logoCodestag2.default, null)
+			)
+		)
+	);
+};
+
+exports.default = Header;
+
+/***/ }),
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -163,13 +414,7 @@ var Logo = function Logo() {
 exports.default = Logo;
 
 /***/ }),
-/* 4 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 5 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -212,61 +457,24 @@ var BlocksLogo = function BlocksLogo() {
 exports.default = BlocksLogo;
 
 /***/ }),
-/* 6 */
+/* 9 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
+var BlocksContext = React.createContext();
 
-var _logoCodestag = __webpack_require__(3);
-
-var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
-
-var _logoStagBlocks = __webpack_require__(5);
-
-var _logoStagBlocks2 = _interopRequireDefault(_logoStagBlocks);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-
-
-var Header = function Header() {
-	return React.createElement(
-		'header',
-		{ className: 'stag-blocks__header' },
-		React.createElement(
-			'div',
-			{ className: 'stag-blocks-logo' },
-			React.createElement(_logoStagBlocks2.default, null),
-			React.createElement(
-				'h2',
-				null,
-				'Stag Blocks'
-			)
-		),
-		React.createElement(
-			'div',
-			{ className: 'codestag-logo' },
-			React.createElement(
-				'p',
-				null,
-				__('A plugin by')
-			),
-			React.createElement(
-				'a',
-				{ href: 'https://codestag.com', title: 'Codestag' },
-				React.createElement(_logoCodestag2.default, null)
-			)
-		)
-	);
-};
-
-exports.default = Header;
+exports.default = BlocksContext;
 
 /***/ })
 /******/ ]);

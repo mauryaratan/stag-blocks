@@ -7,11 +7,20 @@ body.settings_page_stag-blocks {
 	}
 }
 
+@media only screen and (max-width: 782px) {
+	body.settings_page_stag-blocks {
+		#wpcontent {
+			margin-left: 0;
+			padding: 0;
+		}
+	}
+}
+
 .stag-blocks {
 	&__header {
 		background: #fff;
 		padding: 15px 45px;
-		border-bottom: 1px solid #fff;
+		border-bottom: 1px solid rgba(#000, .1);
 
 		display: flex;
 		justify-content: space-between;
@@ -28,4 +37,42 @@ body.settings_page_stag-blocks {
 			margin-left: 10px;
 		}
 	}
+
+	&__content {
+		margin: auto;
+		margin-top: 50px;
+		max-width: 950px;
+		padding: 0 20px;
+	}
 }
+
+.block-categories {
+	display: flex;
+	background: #fff;
+	border: 1px solid rgba(#000, .1);
+	font-size: 14px;
+	font-weight: 500;
+
+	li {
+		margin: 0;
+	}
+
+	a {
+		color: #000;
+		text-decoration: none;
+		display: block;
+		padding: 20px 20px;
+		border-bottom: 2px solid transparent;
+
+		&.is-active {
+			border-color: #000;
+		}
+
+		&:focus {
+			outline: 0;
+			box-shadow: none;
+			color: rgba(#000, .5);
+		}
+	}
+}
+
