@@ -118,7 +118,7 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; } /* global fetch */
 
 var App = function (_React$Component) {
 	_inherits(App, _React$Component);
@@ -135,14 +135,30 @@ var App = function (_React$Component) {
 		}
 
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
-			category: 'common'
+			category: 'common',
+			isLoading: true,
+			blocks: []
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
 	_createClass(App, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			var _this2 = this;
+
+			fetch(_stagBlocks.root + 'stag_blocks/v1/blocks').then(function (response) {
+				return response.json();
+			}).then(function (responseJSON) {
+				_this2.setState({
+					blocks: responseJSON.blocks,
+					isLoading: false
+				});
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			return React.createElement(
 				'div',
@@ -153,7 +169,7 @@ var App = function (_React$Component) {
 						value: {
 							state: this.state,
 							setCategory: function setCategory(category) {
-								_this2.setState({
+								_this3.setState({
 									category: category
 								});
 							}
@@ -213,17 +229,46 @@ exports.default = Content;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+
+var _BlocksContext = __webpack_require__(10);
+
+var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 var Fragment = wp.element.Fragment;
+var Dashicon = wp.components.Dashicon;
 
 
 var BlockList = function BlockList() {
 	return React.createElement(
-		Fragment,
-		null,
+		"div",
+		{ className: "stag-blocks__list" },
 		React.createElement(
-			"p",
+			_BlocksContext2.default.Consumer,
 			null,
-			"BlockList component"
+			function (context) {
+				return context.state.isLoading ? React.createElement("div", { className: "spinner is-active" }) : React.createElement(
+					Fragment,
+					null,
+					context.state.blocks.map(function (block) {
+						return React.createElement(
+							"div",
+							{
+								key: block.name,
+								"data-category": block.category,
+								className: "stag-blocks__block"
+							},
+							typeof block.icon.src === 'string' ? React.createElement(Dashicon, { className: "stag-blocks__block__icon", icon: block.icon.src }) : console.log(block.icon, wp.svgPainter(block.icon)),
+							React.createElement(
+								"p",
+								null,
+								block.title
+							)
+						);
+					})
+				);
+			}
 		)
 	);
 };
