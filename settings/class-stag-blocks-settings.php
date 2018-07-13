@@ -27,7 +27,7 @@ class Stag_Blocks_Settings {
 
 		wp_enqueue_script(
 			'stag-blocks-settings',
-			plugins_url( 'settings/js/settings.js', dirname( __FILE__ ) ),
+			plugins_url( 'dist/settings.build.js', dirname( __FILE__ ) ),
 			array(
 				'wp-blocks',
 				'wp-components',
@@ -36,7 +36,7 @@ class Stag_Blocks_Settings {
 				'wp-utils',
 				'lodash',
 			),
-			filemtime( plugin_dir_path( __DIR__ ) . 'settings/js/settings.js' ),
+			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings.build.js' ),
 			true
 		);
 

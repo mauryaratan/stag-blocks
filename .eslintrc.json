@@ -24,6 +24,9 @@
 		"wp": true,
 		"wpApiSettings": true,
 		"window": true,
+		"React": true,
+		"ReactDOM": true,
+		"_stagBlocks": true,
 		"document": true
 	},
 	"plugins": ["react", "jsx-a11y", "jest"],
