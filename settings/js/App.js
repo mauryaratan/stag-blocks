@@ -6,7 +6,7 @@ import Header from './Header';
 
 class App extends React.Component {
 	state = {
-		category: 'common',
+		category: 'stag-blocks',
 		isLoading: true,
 		blocks: [],
 	}
@@ -24,7 +24,7 @@ class App extends React.Component {
 
 	getFilteredBlocks() {
 		return this.state.blocks.filter( block => {
-			return ( block.category === this.state.category );
+			return ( block.customCategory ? block.customCategory === this.state.category : block.category === this.state.category );
 		} );
 	}
 

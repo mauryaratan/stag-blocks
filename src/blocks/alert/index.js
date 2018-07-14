@@ -27,6 +27,8 @@ registerBlockType( 'sgb/alert', {
 		__( 'stag' ),
 	],
 
+	customCategory: 'stag-blocks',
+
 	// TODO: Supply default values for colors.
 	attributes: {
 		title: {

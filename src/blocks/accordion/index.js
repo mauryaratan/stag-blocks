@@ -22,6 +22,8 @@ registerBlockType( 'sgb/accordion', {
 		__( 'stag' ),
 	],
 
+	customCategory: 'stag-blocks',
+
 	attributes: {
 		title: {
 			type: 'string',

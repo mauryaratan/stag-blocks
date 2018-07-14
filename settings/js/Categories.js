@@ -1,9 +1,17 @@
 import classnames from 'classnames';
 import BlocksContext from './BlocksContext';
 
-const Categories = () => {
-	const categories = wp.blocks.getCategories();
+const { __ } = wp.i18n;
+let categories = wp.blocks.getCategories();
+categories = [
+	{
+		slug: 'stag-blocks',
+		title: __( 'Stag Blocks' ),
+	},
+	...categories,
+];
 
+const Categories = () => {
 	return (
 		<BlocksContext.Consumer>
 			{ context => (

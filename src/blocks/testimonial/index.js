@@ -33,6 +33,8 @@ registerBlockType( 'sgb/testimonial', {
 		__( 'stag' ),
 	],
 
+	customCategory: 'stag-blocks',
+
 	attributes: {
 		imageURL: {
 			type: 'string',

@@ -17,6 +17,8 @@ registerBlockType( 'sgb/hero', {
 		__( 'stag' ),
 	],
 
+	customCategory: 'stag-blocks',
+
 	attributes: {
 		alignment: {
 			type: 'string',

@@ -24,6 +24,8 @@ registerBlockType( 'sgb/stats', {
 		__( 'stag' ),
 	],
 
+	customCategory: 'stag-blocks',
+
 	attributes: {
 		columns: {
 			type: 'number',
