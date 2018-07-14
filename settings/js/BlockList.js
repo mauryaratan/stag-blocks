@@ -1,4 +1,5 @@
 import BlocksContext from './BlocksContext';
+import RenderIcon from './RenderIcon';
 
 const { Fragment } = wp.element;
 const { Dashicon } = wp.components;
@@ -18,11 +19,7 @@ const BlockList = () => {
 									data-category={ block.category }
 									className="stag-blocks__block"
 								>
-									{ ( typeof block.icon.src === 'string' ) ? (
-										<Dashicon className="stag-blocks__block__icon" icon={ block.icon.src } />
-									) : (
-										console.log( block.icon, wp.svgPainter( block.icon ) )
-									) }
+									<RenderIcon icon={ block.icon.src } />
 									<p>{ block.title }</p>
 								</div>
 							) ) }
