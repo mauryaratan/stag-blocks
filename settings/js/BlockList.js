@@ -2,7 +2,6 @@ import BlocksContext from './BlocksContext';
 import RenderIcon from './RenderIcon';
 
 const { Fragment } = wp.element;
-const { Dashicon } = wp.components;
 
 const BlockList = () => {
 	return (

@@ -56,12 +56,7 @@ class Stag_Blocks_Settings {
 	}
 
 	public function settings() {
-		echo '<div id="stag-blocks-settings" class="stag-blocks-settings">
-			<div class="stag-blocks-settings__header">
-
-			</div>
-			<div class="stag-blocks-settings__content"></div>
-		</div>';
+		echo '<div id="stag-blocks-settings" class="stag-blocks-settings"></div>';
 	}
 }
 

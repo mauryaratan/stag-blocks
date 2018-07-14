@@ -87,13 +87,20 @@ body.settings_page_stag-blocks {
 		border: 1px solid rgba(#000, .1);
 		margin-bottom: 20px;
 		display: flex;
+		align-items: center;
 
 		p {
 			margin: 0;
+			font-size: 16px;
 		}
 
 		&__icon {
 			margin-right: 10px;
+			fill: #555d66;
+
+			svg {
+				fill: inherit;
+			}
 		}
 	}
 }
