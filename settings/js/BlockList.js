@@ -6,7 +6,6 @@ const { Fragment } = wp.element;
 const { ToggleControl } = wp.components;
 
 const BlockList = () => {
-	let status = false;
 	return (
 		<div className="stag-blocks__list">
 			<BlocksContext.Consumer>
@@ -26,9 +25,9 @@ const BlockList = () => {
 
 									<ToggleControl
 										label={ __( 'Toggle block' ) }
-										checked={ status }
-										onChange={ () => {
-											status = ! status;
+										checked={ ( block.name in context.state.activeBlocks ) ? context.state.activeBlocks[ block.name ] : true }
+										onChange={ ( status ) => {
+											context.toggleBlock( block.name, status );
 										} }
 									/>
 								</div>

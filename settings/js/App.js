@@ -9,6 +9,23 @@ class App extends React.Component {
 		category: 'stag-blocks',
 		isLoading: true,
 		blocks: [],
+		activeBlocks: {},
+	}
+
+	syncSettings() {
+		// Sync user settings.
+		fetch( `${ _stagBlocks.root }stag_blocks/v1/settings`, {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				'X-WP-Nonce': _stagBlocks.nonce,
+			},
+			body: JSON.stringify( this.state.activeBlocks ),
+		} )
+			.then( ( response ) => response.json() )
+			.then( ( json ) => {
+				console.log( json );
+			} );
 	}
 
 	componentDidMount() {
@@ -18,6 +35,15 @@ class App extends React.Component {
 				this.setState( {
 					blocks: responseJSON.blocks,
 					isLoading: false,
+				} );
+			} );
+
+		// Fetch user settings.
+		fetch( `${ _stagBlocks.root }stag_blocks/v1/settings` )
+			.then( ( response ) => response.json() )
+			.then( ( json ) => {
+				this.setState( {
+					activeBlocks: json,
 				} );
 			} );
 	}
@@ -40,6 +66,16 @@ class App extends React.Component {
 							} );
 						},
 						filteredBlocks: this.getFilteredBlocks(),
+						toggleBlock: ( block, status ) => {
+							const newBlocks = this.state.activeBlocks;
+							newBlocks[ block ] = status;
+
+							this.setState( {
+								activeBlocks: newBlocks,
+							} );
+
+							this.syncSettings();
+						},
 					} }
 				>
 					<Header />

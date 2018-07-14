@@ -151,11 +151,29 @@ var App = function (_React$Component) {
 		return _ret = (_temp = (_this = _possibleConstructorReturn(this, (_ref = App.__proto__ || Object.getPrototypeOf(App)).call.apply(_ref, [this].concat(args))), _this), _this.state = {
 			category: 'stag-blocks',
 			isLoading: true,
-			blocks: []
+			blocks: [],
+			activeBlocks: {}
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
 	_createClass(App, [{
+		key: 'syncSettings',
+		value: function syncSettings() {
+			// Sync user settings.
+			fetch(_stagBlocks.root + 'stag_blocks/v1/settings', {
+				method: 'POST',
+				headers: {
+					'Content-Type': 'application/json',
+					'X-WP-Nonce': _stagBlocks.nonce
+				},
+				body: JSON.stringify(this.state.activeBlocks)
+			}).then(function (response) {
+				return response.json();
+			}).then(function (json) {
+				console.log(json);
+			});
+		}
+	}, {
 		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this2 = this;
@@ -166,6 +184,15 @@ var App = function (_React$Component) {
 				_this2.setState({
 					blocks: responseJSON.blocks,
 					isLoading: false
+				});
+			});
+
+			// Fetch user settings.
+			fetch(_stagBlocks.root + 'stag_blocks/v1/settings').then(function (response) {
+				return response.json();
+			}).then(function (json) {
+				_this2.setState({
+					activeBlocks: json
 				});
 			});
 		}
@@ -196,7 +223,17 @@ var App = function (_React$Component) {
 									category: category
 								});
 							},
-							filteredBlocks: this.getFilteredBlocks()
+							filteredBlocks: this.getFilteredBlocks(),
+							toggleBlock: function toggleBlock(block, status) {
+								var newBlocks = _this4.state.activeBlocks;
+								newBlocks[block] = status;
+
+								_this4.setState({
+									activeBlocks: newBlocks
+								});
+
+								_this4.syncSettings();
+							}
 						}
 					},
 					React.createElement(_Header2.default, null),
@@ -270,7 +307,6 @@ var ToggleControl = wp.components.ToggleControl;
 
 
 var BlockList = function BlockList() {
-	var status = false;
 	return React.createElement(
 		'div',
 		{ className: 'stag-blocks__list' },
@@ -301,9 +337,9 @@ var BlockList = function BlockList() {
 							),
 							React.createElement(ToggleControl, {
 								label: __('Toggle block'),
-								checked: status,
-								onChange: function onChange() {
-									status = !status;
+								checked: block.name in context.state.activeBlocks ? context.state.activeBlocks[block.name] : true,
+								onChange: function onChange(status) {
+									context.toggleBlock(block.name, status);
 								}
 							})
 						);
