@@ -15,10 +15,9 @@ const BlockList = () => {
 						<div className="spinner is-active" />
 					) : (
 						<Fragment>
-							{ context.state.blocks.map( ( block ) => (
+							{ context.filteredBlocks.map( ( block ) => (
 								<div
 									key={ block.name }
-									data-category={ block.category }
 									className="stag-blocks__block"
 								>
 									<RenderIcon icon={ block.icon.src } />

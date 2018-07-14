@@ -22,6 +22,12 @@ class App extends React.Component {
 			} );
 	}
 
+	getFilteredBlocks() {
+		return this.state.blocks.filter( block => {
+			return ( block.category === this.state.category );
+		} );
+	}
+
 	render() {
 		return (
 			<div className="stag-blocks">
@@ -33,6 +39,7 @@ class App extends React.Component {
 								category,
 							} );
 						},
+						filteredBlocks: this.getFilteredBlocks(),
 					} }
 				>
 					<Header />

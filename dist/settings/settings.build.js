@@ -170,9 +170,18 @@ var App = function (_React$Component) {
 			});
 		}
 	}, {
+		key: 'getFilteredBlocks',
+		value: function getFilteredBlocks() {
+			var _this3 = this;
+
+			return this.state.blocks.filter(function (block) {
+				return block.category === _this3.state.category;
+			});
+		}
+	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this4 = this;
 
 			return React.createElement(
 				'div',
@@ -183,10 +192,11 @@ var App = function (_React$Component) {
 						value: {
 							state: this.state,
 							setCategory: function setCategory(category) {
-								_this3.setState({
+								_this4.setState({
 									category: category
 								});
-							}
+							},
+							filteredBlocks: this.getFilteredBlocks()
 						}
 					},
 					React.createElement(_Header2.default, null),
@@ -271,12 +281,11 @@ var BlockList = function BlockList() {
 				return context.state.isLoading ? React.createElement('div', { className: 'spinner is-active' }) : React.createElement(
 					Fragment,
 					null,
-					context.state.blocks.map(function (block) {
+					context.filteredBlocks.map(function (block) {
 						return React.createElement(
 							'div',
 							{
 								key: block.name,
-								'data-category': block.category,
 								className: 'stag-blocks__block'
 							},
 							React.createElement(_RenderIcon2.default, { icon: block.icon.src }),
