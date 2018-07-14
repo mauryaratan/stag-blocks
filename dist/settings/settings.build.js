@@ -161,16 +161,13 @@ var App = function (_React$Component) {
 		value: function syncSettings() {
 			// Sync user settings.
 			fetch(_stagBlocks.root + 'stag_blocks/v1/settings', {
+				credentials: 'same-origin',
 				method: 'POST',
 				headers: {
 					'Content-Type': 'application/json',
 					'X-WP-Nonce': _stagBlocks.nonce
 				},
 				body: JSON.stringify(this.state.activeBlocks)
-			}).then(function (response) {
-				return response.json();
-			}).then(function (json) {
-				console.log(json);
 			});
 		}
 	}, {

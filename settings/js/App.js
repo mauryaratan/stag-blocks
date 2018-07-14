@@ -15,17 +15,14 @@ class App extends React.Component {
 	syncSettings() {
 		// Sync user settings.
 		fetch( `${ _stagBlocks.root }stag_blocks/v1/settings`, {
+			credentials: 'same-origin',
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 				'X-WP-Nonce': _stagBlocks.nonce,
 			},
 			body: JSON.stringify( this.state.activeBlocks ),
-		} )
-			.then( ( response ) => response.json() )
-			.then( ( json ) => {
-				console.log( json );
-			} );
+		} );
 	}
 
 	componentDidMount() {
