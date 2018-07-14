@@ -46,3 +46,20 @@ window.onload = () => {
 		console.log( 'Block data up to date with Stag Blocks' ); // eslint-disable-line
 	}
 };
+
+fetch( `${ _stagBlocks.root }stag_blocks/v1/settings`, {
+	credentials: 'same-origin',
+	headers: {
+		'X-WP-Nonce': _stagBlocks.nonce,
+	},
+} )
+	.then( ( response ) => response.json() )
+	.then( ( blocks ) => {
+		const inactiveBlocks = Object.keys( blocks ).filter( ( block ) => {
+			return ! blocks[ block ];
+		} );
+
+		inactiveBlocks.map( ( block ) => {
+			wp.blocks.unregisterBlockType( block );
+		} );
+	} );
