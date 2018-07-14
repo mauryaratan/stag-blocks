@@ -33,8 +33,11 @@ class Stag_Blocks_API {
 					'callback'            => array( $this, 'process_settings' ),
 				),
 				array(
-					'methods'  => WP_REST_Server::READABLE,
-					'callback' => array( $this, 'get_settings' ),
+					'methods'             => WP_REST_Server::READABLE,
+					'permission_callback' => function() {
+						return current_user_can( 'manage_options' );
+					},
+					'callback'            => array( $this, 'get_settings' ),
 				),
 			)
 		);

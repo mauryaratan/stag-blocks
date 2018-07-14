@@ -185,7 +185,12 @@ var App = function (_React$Component) {
 			});
 
 			// Fetch user settings.
-			fetch(_stagBlocks.root + 'stag_blocks/v1/settings').then(function (response) {
+			fetch(_stagBlocks.root + 'stag_blocks/v1/settings', {
+				credentials: 'same-origin',
+				headers: {
+					'X-WP-Nonce': _stagBlocks.nonce
+				}
+			}).then(function (response) {
 				return response.json();
 			}).then(function (json) {
 				_this2.setState({

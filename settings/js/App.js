@@ -36,7 +36,12 @@ class App extends React.Component {
 			} );
 
 		// Fetch user settings.
-		fetch( `${ _stagBlocks.root }stag_blocks/v1/settings` )
+		fetch( `${ _stagBlocks.root }stag_blocks/v1/settings`, {
+			credentials: 'same-origin',
+			headers: {
+				'X-WP-Nonce': _stagBlocks.nonce,
+			},
+		} )
 			.then( ( response ) => response.json() )
 			.then( ( json ) => {
 				this.setState( {
