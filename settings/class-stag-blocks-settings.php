@@ -29,7 +29,7 @@ class Stag_Blocks_Settings {
 		wp_enqueue_style(
 			'stag-blocks-settings',
 			plugins_url( 'dist/settings/settings.style.css', dirname( __FILE__ ) ),
-			array(),
+			array( 'wp-components' ),
 			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings/settings.style.css' )
 		);
 

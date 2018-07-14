@@ -17,6 +17,10 @@ body.settings_page_stag-blocks {
 }
 
 .stag-blocks {
+	* {
+		box-sizing: border-box;
+	}
+
 	&__header {
 		background: #fff;
 		padding: 15px 45px;
@@ -85,6 +89,7 @@ body.settings_page_stag-blocks {
 		background: #fff;
 		padding: 20px;
 		border: 1px solid rgba(#000, .1);
+		border-radius: 3px;
 		margin-bottom: 20px;
 		display: flex;
 		align-items: center;
@@ -96,11 +101,26 @@ body.settings_page_stag-blocks {
 
 		&__icon {
 			margin-right: 10px;
-			fill: #555d66;
+			fill: #555d66 !important;
 
 			svg {
 				fill: inherit;
 			}
+		}
+
+		.stag-blocks__block__description {
+			font-size: 0.9em;
+			opacity: .4;
+			margin-left: 10px;
+		}
+
+		.components-toggle-control {
+			margin: 0;
+			align-self: right;
+			margin-left: auto;
+		}
+		.components-base-control__label {
+			display: none;
 		}
 	}
 }

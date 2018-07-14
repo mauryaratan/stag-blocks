@@ -1,9 +1,12 @@
 import BlocksContext from './BlocksContext';
 import RenderIcon from './RenderIcon';
 
+const { __ } = wp.i18n;
 const { Fragment } = wp.element;
+const { ToggleControl } = wp.components;
 
 const BlockList = () => {
+	let status = false;
 	return (
 		<div className="stag-blocks__list">
 			<BlocksContext.Consumer>
@@ -20,6 +23,15 @@ const BlockList = () => {
 								>
 									<RenderIcon icon={ block.icon.src } />
 									<p>{ block.title }</p>
+									<p className="stag-blocks__block__description">{ block.description }</p>
+
+									<ToggleControl
+										label={ __( 'Toggle block' ) }
+										checked={ status }
+										onChange={ () => {
+											status = ! status;
+										} }
+									/>
 								</div>
 							) ) }
 						</Fragment>

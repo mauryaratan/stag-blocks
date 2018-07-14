@@ -254,10 +254,13 @@ var _RenderIcon2 = _interopRequireDefault(_RenderIcon);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+var __ = wp.i18n.__;
 var Fragment = wp.element.Fragment;
+var ToggleControl = wp.components.ToggleControl;
 
 
 var BlockList = function BlockList() {
+	var status = false;
 	return React.createElement(
 		'div',
 		{ className: 'stag-blocks__list' },
@@ -281,7 +284,19 @@ var BlockList = function BlockList() {
 								'p',
 								null,
 								block.title
-							)
+							),
+							React.createElement(
+								'p',
+								{ className: 'stag-blocks__block__description' },
+								block.description
+							),
+							React.createElement(ToggleControl, {
+								label: __('Toggle block'),
+								checked: status,
+								onChange: function onChange() {
+									status = !status;
+								}
+							})
 						);
 					})
 				);
