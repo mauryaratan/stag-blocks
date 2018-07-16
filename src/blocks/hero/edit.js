@@ -8,16 +8,17 @@ const {
 	BlockControls,
 	RichText,
 	MediaUpload,
-	PanelColor,
+	UrlInput,
 } = wp.editor;
 
 const {
 	Toolbar,
 	IconButton,
+	Dashicon,
 } = wp.components;
 
 const edit = ( props ) => {
-	const { attributes, setAttributes, className } = props;
+	const { attributes, setAttributes, className, isSelected } = props;
 
 	const onSelectImage = ( media ) => {
 		if ( ! media || ! media.url ) {
@@ -30,6 +31,7 @@ const edit = ( props ) => {
 	return (
 		<Fragment>
 			<Controls { ...props } />
+
 			<BlockControls>
 				<Toolbar>
 					<MediaUpload
@@ -51,14 +53,61 @@ const edit = ( props ) => {
 			<div
 				className={ className }
 				style={ {
-					backgroundColor: attributes.backgroundColor,
+					backgroundImage: attributes.imgURL ? `url(${ attributes.imgURL })` : 'none',
 					color: attributes.color,
 				} }
 			>
+				<div
+					className={ `${ className }__background` }
+					style={ {
+						backgroundColor: attributes.backgroundColor,
+						opacity: attributes.backgroundOpacity / 100,
+					} }
+				></div>
 				<div className={ `${ className }__container` }>
 					<div className={ classnames( `${ className }__content`, attributes.alignment ) }>
-						<p>This is some dummy copy. You’re not really supposed to read this dummy copy, it is just a place holder for people who need some type to visualize what the actual copy might look like if it were real content.
-						In today’s competitive market environment, the body copy of your entry must lead the reader through a series of disarmingly simple thoughts.</p>
+						<RichText
+							tagName="h3"
+							className={ `${ className }__title` }
+							placeholder={ __( 'Write title' ) }
+							value={ attributes.title }
+							onChange={ ( value ) => setAttributes( { title: value } ) }
+						/>
+						<RichText
+							tagName="p"
+							className={ `${ className }__text` }
+							placeholder={ __( 'Write content...' ) }
+							value={ attributes.content }
+							onChange={ ( value ) => setAttributes( { content: value } ) }
+						/>
+
+						<RichText
+							tagName="span"
+							placeholder={ __( 'Add text…' ) }
+							value={ attributes.buttonText }
+							onChange={ ( value ) => setAttributes( { buttonText: value } ) }
+							style={ {
+								backgroundColor: attributes.buttonBackground,
+								color: attributes.buttonColor,
+							} }
+							keepPlaceholderOnFocus
+							className={ classnames( 'wp-block-button__link', 'sgb-button', {
+								'has-background': attributes.buttonBackground,
+								'has-text-color': attributes.buttonColor,
+							} ) }
+						/>
+						{ isSelected && (
+							<form
+								className="core-blocks-button__inline-link"
+								onSubmit={ ( event ) => event.preventDefault() }>
+								<Dashicon icon="admin-links" />
+								<UrlInput
+									value={ attributes.buttonLink }
+									onChange={ ( value ) => setAttributes( { buttonLink: value } ) }
+								/>
+								<IconButton icon="editor-break" label={ __( 'Apply' ) } type="submit" />
+							</form>
+						) }
 					</div>
 				</div>
 			</div>

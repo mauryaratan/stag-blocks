@@ -35,7 +35,7 @@ registerBlockType( 'sgb/alert', {
 			type: 'string',
 		},
 		content: {
-			type: 'string',
+			type: 'array',
 		},
 		backgroundColor: {
 			type: 'string',

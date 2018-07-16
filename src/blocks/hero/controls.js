@@ -49,6 +49,18 @@ const Controls = ( props ) => {
 					colorValue={ attributes.backgroundColor }
 					onChange={ ( backgroundColor ) => setAttributes( { backgroundColor } ) }
 				/>
+				<PanelColor
+					title={ __( 'Button Color' ) }
+					initialOpen={ false }
+					colorValue={ attributes.buttonColor }
+					onChange={ ( buttonColor ) => setAttributes( { buttonColor } ) }
+				/>
+				<PanelColor
+					title={ __( 'Button Background Color' ) }
+					initialOpen={ false }
+					colorValue={ attributes.buttonBackground }
+					onChange={ ( buttonBackground ) => setAttributes( { buttonBackground } ) }
+				/>
 			</InspectorControls>
 		</Fragment>
 	);

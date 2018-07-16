@@ -9,8 +9,8 @@
   .sgb-p-20 p:last-of-type {
     margin-bottom: 0; }
 
-[class*="wp-block-sgb-"] p {
-  color: inherit; }
+[class*="wp-block-sgb-"] h1, [class*="wp-block-sgb-"] h2, [class*="wp-block-sgb-"] h3, [class*="wp-block-sgb-"] h4, [class*="wp-block-sgb-"] h5, [class*="wp-block-sgb-"] h6, [class*="wp-block-sgb-"] p {
+  color: inherit !important; }
 
 .wp-block-sgb-accordion__title {
   padding: 20px;
