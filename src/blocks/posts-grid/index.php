@@ -72,3 +72,40 @@ function render_block_sgb_posts_grid( $attributes ) {
 
 	return $block_content;
 }
+
+/**
+ * Register REST fields related to 'sgb/posts-grid' block.
+ *
+ * @return void
+ */
+function block_sgb_posts_grid_rest_fields() {
+	register_rest_field(
+		'post',
+		'sgb/featured_image_src',
+		array(
+			'get_callback' => function( $object ) {
+				$image_array = wp_get_attachment_image_src(
+					$object['featured_media'],
+					'large',
+					false
+				);
+				return $image_array[0];
+			},
+		)
+	);
+
+	register_rest_field(
+		'post',
+		'sgb/author_data',
+		array(
+			'get_callback' => function( $object ) {
+				$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
+				$author_data['avatar']       = get_avatar_url( $object['author'] );
+
+				return $author_data;
+			},
+		)
+	);
+}
+
+add_action( 'rest_api_init', 'block_sgb_posts_grid_rest_fields' );

@@ -2,7 +2,6 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import find from 'lodash/find';
 import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
@@ -51,7 +50,7 @@ class PostsGridEdit extends Component {
 	}
 
 	render() {
-		const { attributes, categoriesList, setAttributes, authorsList } = this.props;
+		const { attributes, categoriesList, setAttributes } = this.props;
 		const { displayPostDate, align, postLayout, columns, order, orderBy, categories, postsToShow } = attributes;
 
 		const latestPosts = this.props.latestPosts.data;
@@ -146,24 +145,22 @@ class PostsGridEdit extends Component {
 						[ `columns-${ columns }` ]: postLayout === 'grid',
 					} ) }
 				>
-					{ displayPosts.map( ( post, i ) => {
-						const currentAuthor = find( authorsList.data, [ 'id', post.author ] );
+					{ displayPosts.map( ( post, i ) => (
+						<li key={ i }>
+							<p>{ __( 'By' ) } { post[ 'sgb/author_data' ].display_name }</p>
 
-						return (
-							<li key={ i }>
-								<p>
-									<img src={ currentAuthor.avatar_urls[ 96 ] } alt={ currentAuthor.name } />
-									{ __( 'By' ) } { currentAuthor.name }
-								</p>
-								<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
-								{ displayPostDate && post.date_gmt &&
-									<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
-										{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-									</time>
-								}
-							</li>
-						);
-					}
+							{ ( post[ 'sgb/featured_image_src' ] ) && (
+								<img src={ post[ 'sgb/featured_image_src' ] } alt={ decodeEntities( post.title.rendered.trim() ) } />
+							) }
+
+							<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
+							{ displayPostDate && post.date_gmt &&
+							<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
+								{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+							</time>
+							}
+						</li>
+					)
 					) }
 				</ul>
 
@@ -180,7 +177,7 @@ export default withAPIData( ( props ) => {
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'author' ],
+		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'author', 'sgb/featured_image_src', 'sgb/author_data' ],
 	}, ( value ) => ! isUndefined( value ) ) );
 
 	const categoriesListQuery = stringify( {
@@ -188,13 +185,8 @@ export default withAPIData( ( props ) => {
 		_fields: [ 'id', 'name', 'parent' ],
 	} );
 
-	const authorListQuery = stringify( {
-		_fields: [ 'id', 'name', 'avatar_urls' ],
-	} );
-
 	return {
 		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
 		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
-		authorsList: `/wp/v2/users?${ authorListQuery }`,
 	};
 } )( PostsGridEdit );
