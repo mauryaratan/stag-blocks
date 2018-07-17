@@ -32,8 +32,12 @@ window.onload = () => {
 			console.info( 'Syncing blocks data.' ); // eslint-disable-line
 
 			await fetch( `${ _stagBlocks.root }stag_blocks/v1/blocks`, {
+				credentials: 'same-origin',
 				method: 'POST',
-				headers: { 'Content-Type': 'application/json' },
+				headers: {
+					'Content-Type': 'application/json',
+					'X-WP-Nonce': _stagBlocks.nonce,
+			 	},
 				body: formattedBlocks,
 			} );
 
