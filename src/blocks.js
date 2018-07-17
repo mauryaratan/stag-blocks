@@ -12,6 +12,7 @@
 import './blocks/accordion';
 import './blocks/alert';
 import './blocks/hero';
+import './blocks/posts-grid';
 import './blocks/stats';
 import './blocks/testimonial';
 import './blocksList';

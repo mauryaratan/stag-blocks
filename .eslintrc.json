@@ -26,6 +26,7 @@
 		"window": true,
 		"React": true,
 		"ReactDOM": true,
+		"moment": true,
 		"_stagBlocks": true,
 		"document": true
 	},

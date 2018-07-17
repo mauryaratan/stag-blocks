@@ -79,3 +79,8 @@ function stag_blocks_editor_assets() {
 
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'stag_blocks_editor_assets' );
+
+// Register server-side code for individual blocks.
+foreach ( glob( dirname( dirname( __FILE__ ) ) . '/src/blocks/*/index.php' ) as $block_logic ) {
+	require_once $block_logic;
+}
