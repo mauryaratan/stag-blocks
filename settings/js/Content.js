@@ -6,6 +6,8 @@ const Content = () => {
 		<section className="stag-blocks__content">
 			<Categories />
 
+			{ /* <Themes /> */ }
+
 			<BlockList />
 		</section>
 	);

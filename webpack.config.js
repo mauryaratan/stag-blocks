@@ -42,10 +42,7 @@ const wpDependencies = [
 	'element',
 	'blocks',,
 	'utils',
-	'date',
-	'data',
 	'i18n',
-	'apiRequest',
 ];
 
 wpDependencies.forEach( wpDependency => {
