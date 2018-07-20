@@ -6,6 +6,7 @@ import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
 import { stringify } from 'querystringify';
+import side from './icons';
 
 /**
  * WordPress dependencies
@@ -175,6 +176,12 @@ class PostsGridEdit extends Component {
 				onClick: () => setAttributes( { postLayout: 'grid' } ),
 				isActive: postLayout === 'grid',
 			},
+			{
+				icon: side,
+				title: __( 'Side View' ),
+				onClick: () => setAttributes( { postLayout: 'side' } ),
+				isActive: postLayout === 'side',
+			},
 		];
 
 		return (
@@ -195,6 +202,7 @@ class PostsGridEdit extends Component {
 				<ul
 					className={ classnames( this.props.className, {
 						'is-grid': postLayout === 'grid',
+						'is-side': postLayout === 'side',
 						[ `columns-${ columns }` ]: postLayout === 'grid',
 					} ) }
 				>
@@ -206,35 +214,37 @@ class PostsGridEdit extends Component {
 								</figure>
 							) }
 
-							<h3 className={ `${ this.props.className }__title` }>
-								<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
-							</h3>
+							<div className={ `${ this.props.className }__content` }>
+								<h3 className={ `${ this.props.className }__title` }>
+									<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
+								</h3>
 
-							<div className={ `${ this.props.className }__meta` }>
-								{ displayPostDate && post.date_gmt &&
-								<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
-									{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-								</time>
+								<div className={ `${ this.props.className }__meta` }>
+									{ displayPostDate && post.date_gmt &&
+									<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
+										{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+									</time>
+									}
+									<a
+										href={ post[ 'sgb/author_data' ].author_link }
+										className={ `${ this.props.className }__author` }
+										target="_blank" rel="noopener noreferrer"
+									>
+										<img src={ post[ 'sgb/author_data' ].avatar } alt={ post[ 'sgb/author_data' ].display_name } />
+										<span>{ post[ 'sgb/author_data' ].display_name }</span>
+									</a>
+								</div>
+
+								{ displayPostExcerpt && post.excerpt.rendered &&
+								<div className={ `${ this.props.className }__excerpt` } dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
 								}
-								<a
-									href={ post[ 'sgb/author_data' ].author_link }
-									className={ `${ this.props.className }__author` }
-									target="_blank" rel="noopener noreferrer"
-								>
-									<img src={ post[ 'sgb/author_data' ].avatar } alt={ post[ 'sgb/author_data' ].display_name } />
-									<span>{ post[ 'sgb/author_data' ].display_name }</span>
-								</a>
+
+								{ displayReadMore &&
+									<p className={ `${ this.props.className }__read-more` }>
+										<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( readMoreText ) || __( 'Continue Reading →' ) }</a>
+									</p>
+								}
 							</div>
-
-							{ displayPostExcerpt && post.excerpt.rendered &&
-							<div className={ `${ this.props.className }__excerpt` } dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
-							}
-
-							{ displayReadMore &&
-								<p className={ `${ this.props.className }__read-more` }>
-									<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( readMoreText ) || __( 'Continue Reading →' ) }</a>
-								</p>
-							}
 						</li>
 					)
 					) }

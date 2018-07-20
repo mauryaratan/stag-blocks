@@ -105,6 +105,8 @@ function render_block_sgb_posts_grid( $attributes ) {
 			);
 		}
 
+		$list_items_markup .= '<div class="wp-block-sgb-posts-grid__content">';
+
 		// Display post title.
 		$list_items_markup .= sprintf(
 			'<h3 class="wp-block-sgb-posts-grid__title"><a href="%1$s">%2$s</a></h3>',
@@ -136,7 +138,7 @@ function render_block_sgb_posts_grid( $attributes ) {
 		);
 
 		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-			$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+			$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id ) );
 
 			if ( empty( $excerpt ) ) {
 				$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
@@ -161,6 +163,9 @@ function render_block_sgb_posts_grid( $attributes ) {
 				$attributes['readMoreText']
 			);
 		}
+
+		// Close .wp-block-sgb-posts-grid__content container.
+		$list_items_markup .= '</div>';
 	}
 
 	$class = "wp-block-sgb-posts-grid align{$attributes['align']} is-{$attributes['postLayout']} columns-{$attributes['columns']}";
