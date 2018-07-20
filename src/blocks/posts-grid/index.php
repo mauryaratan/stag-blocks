@@ -78,9 +78,98 @@ function render_block_sgb_posts_grid( $attributes ) {
 		'order'       => $attributes['order'],
 		'orderby'     => $attributes['orderBy'],
 		'category'    => $attributes['categories'],
-	) );
+	), 'OBJECT' );
 
-	$block_content = 'block content goes here…';
+	$list_items_markup = '';
+
+	foreach ( $recent_posts as $post ) {
+		$post_id   = $post->ID;
+		$title     = get_the_title( $post_id );
+		$author_id = $post->post_author;
+
+		$list_items_markup .= '<li>';
+
+		// Get the post thumbnail .
+		$post_thumb_id = get_post_thumbnail_id( $post_id );
+
+		if ( ! $title ) {
+			$title = __( '(Untitled)', 'sgb' );
+		}
+
+		// Display the post thumbnail.
+		if ( $post_thumb_id ) {
+			$list_items_markup .= sprintf(
+				'<figure class="wp-block-sgb-posts-grid__thumbnail"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
+				esc_url( get_permalink( $post_id ) ),
+				wp_get_attachment_image( $post_thumb_id, 'large' )
+			);
+		}
+
+		// Display post title.
+		$list_items_markup .= sprintf(
+			'<h3 class="wp-block-sgb-posts-grid__title"><a href="%1$s">%2$s</a></h3>',
+			esc_url( get_permalink( $post_id ) ),
+			esc_html( $title )
+		);
+
+		$date_markup = '';
+
+		if ( isset( $attributes['displayPostDate'] ) && $attributes['displayPostDate'] ) {
+			$date_markup = sprintf(
+				'<time datetime="%1$s">%2$s</time>',
+				esc_attr( get_the_date( 'c', $post_id ) ),
+				esc_html( get_the_date( '', $post_id ) )
+			);
+		}
+
+		$list_items_markup .= sprintf(
+			'<div class="wp-block-sgb-posts-grid__meta">
+			' . $date_markup . '
+			<a href="%1$s" class="wp-block-sgb-posts-grid__author">
+			%2$s
+			<span>%3$s</span>
+			</a>
+			</div>',
+			get_author_posts_url( $author_id ),
+			get_avatar( $author_id, '96' ),
+			get_the_author_meta( 'display_name', $author_id )
+		);
+
+		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
+			$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id, 'display' ) );
+
+			if ( empty( $excerpt ) ) {
+				$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+			}
+
+			if ( ! $excerpt ) {
+				$excerpt = null;
+			}
+
+			if ( ! empty( $excerpt ) ) {
+				$list_items_markup .= sprintf(
+					'<div class="wp-block-sgb-posts-grid__excerpt">%1$s</div>',
+					$excerpt
+				);
+			}
+		}
+
+		if ( isset( $attributes['displayReadMore'] ) && $attributes['displayReadMore'] ) {
+			$list_items_markup .= sprintf(
+				'<p class="wp-block-sgb-posts-grid__read-more"><a href="%1$s" rel="bookmark">%2$s</a></p>',
+				get_permalink( $post_id ),
+				$attributes['readMoreText']
+			);
+		}
+	}
+
+	$class = "wp-block-sgb-posts-grid align{$attributes['align']} is-{$attributes['postLayout']} columns-{$attributes['columns']}";
+
+	$block_content = sprintf(
+		'<ul class="%1$s">%2$s</ul>',
+		esc_attr( $class ),
+		$list_items_markup
+	);
 
 	return $block_content;
 }

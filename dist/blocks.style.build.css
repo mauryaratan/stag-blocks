@@ -135,6 +135,39 @@
     text-decoration: none;
     white-space: normal;
     word-break: break-all; }
+.wp-block-sgb-posts-grid {
+  list-style: none;
+  padding: 0 !important; }
+  .wp-block-sgb-posts-grid__meta {
+    font-size: 0.8em; }
+    @media screen and (min-width: 768px) {
+      .wp-block-sgb-posts-grid__meta {
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-pack: justify;
+            justify-content: space-between; } }
+    .wp-block-sgb-posts-grid__meta p {
+      font-size: inherit !important; }
+    .wp-block-sgb-posts-grid__meta img {
+      width: 30px;
+      border-radius: 50%;
+      margin-right: 10px; }
+    .wp-block-sgb-posts-grid__meta span {
+      display: inline-block; }
+    .wp-block-sgb-posts-grid__meta span,
+    .wp-block-sgb-posts-grid__meta img {
+      vertical-align: middle; }
+  @media screen and (min-width: 768px) {
+    .wp-block-sgb-posts-grid.is-grid {
+      display: grid !important;
+      grid-gap: 80px;
+      grid-template-columns: repeat(2, 1fr); }
+      .wp-block-sgb-posts-grid.is-grid.columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 50px; }
+      .wp-block-sgb-posts-grid.is-grid.columns-4 {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px; } }
 .wp-block-sgb-stats {
   display: grid;
   grid-gap: 20px;

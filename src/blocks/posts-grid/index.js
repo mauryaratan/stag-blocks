@@ -15,6 +15,13 @@ registerBlockType( 'sgb/posts-grid', {
 		__( 'stag' ),
 	],
 
+	getEditWrapperProps( attributes ) {
+		const { align } = attributes;
+		if ( 'left' === align || 'right' === align || 'wide' === align || 'full' === align ) {
+			return { 'data-align': align };
+		}
+	},
+
 	edit,
 
 	save() {

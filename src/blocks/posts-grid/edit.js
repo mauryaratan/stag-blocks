@@ -34,7 +34,7 @@ const {
 	BlockControls,
 } = wp.editor;
 
-const MAX_POSTS_COLUMNS = 6;
+const MAX_POSTS_COLUMNS = 4;
 
 class PostsGridEdit extends Component {
 	constructor() {

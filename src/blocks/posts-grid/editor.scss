@@ -1,5 +1,10 @@
 .wp-block-sgb-posts-grid {
 	list-style: none !important;
+
+	li {
+		margin: 0;
+	}
+
 	figure {
 		margin: 0;
 		padding: 0;
@@ -42,6 +47,7 @@
 
 	&__read-more {
 		font-size: 0.8em !important;
+		margin: 0;
 		a {
 			color: currentColor;
 			text-decoration: none;
@@ -51,7 +57,7 @@
 	&.is-grid {
 		@include media($breakpoint__md) {
 			display: grid;
-			grid-gap: 100px;
+			grid-gap: 80px;
 			grid-template-columns: repeat(2, 1fr);
 
 			&.columns-3 {

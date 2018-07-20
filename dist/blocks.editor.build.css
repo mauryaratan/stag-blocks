@@ -126,6 +126,8 @@
             transform: rotate(35deg); }
 .wp-block-sgb-posts-grid {
   list-style: none !important; }
+  .wp-block-sgb-posts-grid li {
+    margin: 0; }
   .wp-block-sgb-posts-grid figure {
     margin: 0;
     padding: 0; }
@@ -158,14 +160,15 @@
       text-decoration: none;
       color: currentColor; }
   .wp-block-sgb-posts-grid__read-more {
-    font-size: 0.8em !important; }
+    font-size: 0.8em !important;
+    margin: 0; }
     .wp-block-sgb-posts-grid__read-more a {
       color: currentColor;
       text-decoration: none; }
   @media screen and (min-width: 768px) {
     .wp-block-sgb-posts-grid.is-grid {
       display: grid;
-      grid-gap: 100px;
+      grid-gap: 80px;
       grid-template-columns: repeat(2, 1fr); }
       .wp-block-sgb-posts-grid.is-grid.columns-3 {
         grid-template-columns: repeat(3, 1fr);
