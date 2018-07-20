@@ -17,6 +17,7 @@ const {
 	Placeholder,
 	QueryControls,
 	RangeControl,
+	TextControl,
 	Spinner,
 	ToggleControl,
 	Toolbar,
@@ -40,6 +41,9 @@ class PostsGridEdit extends Component {
 		super( ...arguments );
 
 		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
+		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
+		this.toggleDisplayReadMore = this.toggleDisplayReadMore.bind( this );
+		this.handleReadMoreText = this.handleReadMoreText.bind( this );
 	}
 
 	toggleDisplayPostDate() {
@@ -49,9 +53,41 @@ class PostsGridEdit extends Component {
 		setAttributes( { displayPostDate: ! displayPostDate } );
 	}
 
+	toggleDisplayPostExcerpt() {
+		const { displayPostExcerpt } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
+	}
+
+	toggleDisplayReadMore() {
+		const { displayReadMore } = this.props.attributes;
+		const { setAttributes } = this.props;
+
+		setAttributes( { displayReadMore: ! displayReadMore } );
+	}
+
+	handleReadMoreText( value ) {
+		const { setAttributes } = this.props;
+
+		setAttributes( { readMoreText: value } );
+	}
+
 	render() {
 		const { attributes, categoriesList, setAttributes } = this.props;
-		const { displayPostDate, align, postLayout, columns, order, orderBy, categories, postsToShow } = attributes;
+		const {
+			displayPostDate,
+			displayPostExcerpt,
+			displayReadMore,
+			readMoreText,
+			align,
+			postLayout,
+			columns,
+			order,
+			orderBy,
+			categories,
+			postsToShow,
+		} = attributes;
 
 		const latestPosts = this.props.latestPosts.data;
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
@@ -74,6 +110,23 @@ class PostsGridEdit extends Component {
 						checked={ displayPostDate }
 						onChange={ this.toggleDisplayPostDate }
 					/>
+					<ToggleControl
+						label={ __( 'Display post excerpt' ) }
+						checked={ displayPostExcerpt }
+						onChange={ this.toggleDisplayPostExcerpt }
+					/>
+					<ToggleControl
+						label={ __( 'Display Read More Link' ) }
+						checked={ displayReadMore }
+						onChange={ this.toggleDisplayReadMore }
+					/>
+					{ displayReadMore &&
+						<TextControl
+							label={ __( 'Read More text' ) }
+							value={ readMoreText || '' }
+							onChange={ ( nextValue ) => this.handleReadMoreText( nextValue ) }
+						/>
+					}
 					{ postLayout === 'grid' &&
 						<RangeControl
 							label={ __( 'Columns' ) }
@@ -147,17 +200,40 @@ class PostsGridEdit extends Component {
 				>
 					{ displayPosts.map( ( post, i ) => (
 						<li key={ i }>
-							<p>{ __( 'By' ) } { post[ 'sgb/author_data' ].display_name }</p>
-
 							{ ( post[ 'sgb/featured_image_src' ] ) && (
-								<img src={ post[ 'sgb/featured_image_src' ] } alt={ decodeEntities( post.title.rendered.trim() ) } />
+								<figure className={ `${ this.props.className }__thumbnail` }>
+									<img src={ post[ 'sgb/featured_image_src' ] } alt={ decodeEntities( post.title.rendered.trim() ) } />
+								</figure>
 							) }
 
-							<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
-							{ displayPostDate && post.date_gmt &&
-							<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
-								{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
-							</time>
+							<h3 className={ `${ this.props.className }__title` }>
+								<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( post.title.rendered.trim() ) || __( '(Untitled)' ) }</a>
+							</h3>
+
+							<div className={ `${ this.props.className }__meta` }>
+								{ displayPostDate && post.date_gmt &&
+								<time dateTime={ moment( post.date_gmt ).utc().format() } className={ `${ this.props.className }__post-date` }>
+									{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
+								</time>
+								}
+								<a
+									href={ post[ 'sgb/author_data' ].author_link }
+									className={ `${ this.props.className }__author` }
+									target="_blank" rel="noopener noreferrer"
+								>
+									<img src={ post[ 'sgb/author_data' ].avatar } alt={ post[ 'sgb/author_data' ].display_name } />
+									<span>{ post[ 'sgb/author_data' ].display_name }</span>
+								</a>
+							</div>
+
+							{ displayPostExcerpt && post.excerpt.rendered &&
+							<div className={ `${ this.props.className }__excerpt` } dangerouslySetInnerHTML={ { __html: post.excerpt.rendered } } />
+							}
+
+							{ displayReadMore &&
+								<p className={ `${ this.props.className }__read-more` }>
+									<a href={ post.link } target="_blank" rel="noopener noreferrer">{ decodeEntities( readMoreText ) || __( 'Continue Reading →' ) }</a>
+								</p>
 							}
 						</li>
 					)
@@ -177,7 +253,16 @@ export default withAPIData( ( props ) => {
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
-		_fields: [ 'date_gmt', 'link', 'title', 'featured_media', 'author', 'sgb/featured_image_src', 'sgb/author_data' ],
+		_fields: [
+			'date_gmt',
+			'link',
+			'title',
+			'excerpt',
+			'featured_media',
+			'author',
+			'sgb/featured_image_src',
+			'sgb/author_data',
+		],
 	}, ( value ) => ! isUndefined( value ) ) );
 
 	const categoriesListQuery = stringify( {

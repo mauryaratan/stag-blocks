@@ -23,6 +23,18 @@ function register_block_sgb_posts_grid() {
 			),
 			'displayPostDate' => array(
 				'type'    => 'boolean',
+				'default' => true,
+			),
+			'displayPostExcerpt' => array(
+				'type'    => 'boolean',
+				'default' => true,
+			),
+			'displayReadMore' => array(
+				'type'    => 'boolean',
+				'default' => false,
+			),
+			'readMoreText' => array(
+				'type'    => 'string',
 				'default' => false,
 			),
 			'postLayout'      => array(
@@ -101,6 +113,7 @@ function block_sgb_posts_grid_rest_fields() {
 			'get_callback' => function( $object ) {
 				$author_data['display_name'] = get_the_author_meta( 'display_name', $object['author'] );
 				$author_data['avatar']       = get_avatar_url( $object['author'] );
+				$author_data['author_link']  = get_author_posts_url( $object['author'] );
 
 				return $author_data;
 			},

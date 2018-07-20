@@ -1,0 +1,50 @@
+.wp-block-sgb-posts-grid {
+	list-style: none !important;
+	figure {
+		margin: 0;
+		padding: 0;
+		img {
+			width: 100%;
+		}
+	}
+	&__meta {
+		display: flex;
+		justify-content: space-between;
+		font-size: 0.8em;
+		p {
+			font-size: inherit !important;
+		}
+		img {
+			width: 30px;
+			border-radius: 50%;
+			margin-right: 10px;
+		}
+		span {
+			display: inline-block;
+		}
+		span,
+		img {
+			vertical-align: middle;
+		}
+	}
+	&__author {
+		margin: 0;
+		color: currentColor;
+	}
+	&__title {
+		font-size: 30px;
+		font-weight: bold;
+		a {
+			text-decoration: none;
+			color: currentColor;
+		}
+	}
+
+	&__read-more {
+		font-size: 0.8em !important;
+		a {
+			color: currentColor;
+			text-decoration: none;
+		}
+	}
+}
