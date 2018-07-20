@@ -43,7 +43,7 @@ function register_block_sgb_posts_grid() {
 			),
 			'columns'         => array(
 				'type'    => 'number',
-				'default' => 3,
+				'default' => 2,
 			),
 			'align'           => array(
 				'type'    => 'string',

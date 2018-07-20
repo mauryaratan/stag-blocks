@@ -162,6 +162,17 @@
     .wp-block-sgb-posts-grid__read-more a {
       color: currentColor;
       text-decoration: none; }
+  @media screen and (min-width: 768px) {
+    .wp-block-sgb-posts-grid.is-grid {
+      display: grid;
+      grid-gap: 100px;
+      grid-template-columns: repeat(2, 1fr); }
+      .wp-block-sgb-posts-grid.is-grid.columns-3 {
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 50px; }
+      .wp-block-sgb-posts-grid.is-grid.columns-4 {
+        grid-template-columns: repeat(4, 1fr);
+        grid-gap: 20px; } }
 .wp-block-sgb-stats__count {
   margin: 0; }
   .wp-block-sgb-stats__count input[type="text"] {
