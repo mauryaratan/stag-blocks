@@ -40,6 +40,16 @@ window.onload = () => {
 				headers: {
 					'Content-Type': 'application/json',
 				},
+			} ).then( () => {
+				apiFetch( { path: 'stag_blocks/v1/settings' } ).then( ( prevBlocks ) => {
+					const inactiveBlocks = Object.keys( prevBlocks ).filter( ( block ) => {
+						return ! prevBlocks[ block ];
+					} );
+
+					inactiveBlocks.map( ( block ) => {
+						wp.blocks.unregisterBlockType( block );
+					} );
+				} );
 			} );
 
 			localStorage.setItem( 'stagBlocksSyncTime', now );
@@ -51,13 +61,3 @@ window.onload = () => {
 		console.log( 'Block data up to date with Stag Blocks' ); // eslint-disable-line
 	}
 };
-
-apiFetch( { path: 'stag_blocks/v1/settings' } ).then( ( blocks ) => {
-	const inactiveBlocks = Object.keys( blocks ).filter( ( block ) => {
-		return ! blocks[ block ];
-	} );
-
-	inactiveBlocks.map( ( block ) => {
-		wp.blocks.unregisterBlockType( block );
-	} );
-} );
