@@ -17,7 +17,9 @@ class Stag_Blocks_API {
 				),
 				array(
 					'methods'             => WP_REST_SERVER::CREATABLE,
-					'permission_callback' => current_user_can( 'edit_posts' ),
+					'permission_callback' => function() {
+						return current_user_can( 'edit_posts' );
+					},
 					'callback'            => array( $this, 'set_blocks' ),
 				),
 			)
