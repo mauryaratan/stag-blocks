@@ -1,4 +1,5 @@
 import BlocksLogo from './logo-stag-blocks';
+import Switcher from './Switcher';
 
 const Header = () => (
 	<header className="stag-blocks__header">
@@ -6,6 +7,7 @@ const Header = () => (
 			<BlocksLogo />
 			<code>v{ _stagBlocks.version }</code>
 		</div>
+		<Switcher />
 	</header>
 );
 

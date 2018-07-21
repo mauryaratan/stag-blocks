@@ -11,6 +11,7 @@ class App extends React.Component {
 		isLoading: true,
 		blocks: [],
 		activeBlocks: {},
+		view: 'dashboard',
 	}
 
 	syncSettings() {
@@ -66,6 +67,11 @@ class App extends React.Component {
 						setCategory: ( category ) => {
 							this.setState( {
 								category,
+							} );
+						},
+						setView: ( view ) => {
+							this.setState( {
+								view,
 							} );
 						},
 						filteredBlocks: this.getFilteredBlocks(),
