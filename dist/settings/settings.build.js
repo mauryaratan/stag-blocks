@@ -180,6 +180,17 @@ var App = function (_React$Component) {
 		value: function componentDidMount() {
 			var _this2 = this;
 
+			// Set active tab based on URL hash
+			// e.g.: /options-general.php?page=stag-blocks#settings
+			var currentURL = new URL(window.location.href);
+			var hash = currentURL.hash.slice(1);
+
+			if (hash) {
+				this.setState({
+					view: hash
+				});
+			}
+
 			fetch(_stagBlocks.root + 'stag_blocks/v1/blocks').then(function (response) {
 				return response.json();
 			}).then(function (responseJSON) {

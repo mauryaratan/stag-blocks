@@ -28,6 +28,17 @@ class App extends React.Component {
 	}
 
 	componentDidMount() {
+		// Set active tab based on URL hash
+		// e.g.: /options-general.php?page=stag-blocks#settings
+		const currentURL = new URL( window.location.href );
+		const hash = currentURL.hash.slice( 1 );
+
+		if ( hash ) {
+			this.setState( {
+				view: hash,
+			} );
+		}
+
 		fetch( `${ _stagBlocks.root }stag_blocks/v1/blocks` )
 			.then( ( response ) => response.json() )
 			.then( ( responseJSON ) => {
