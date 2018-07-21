@@ -122,6 +122,10 @@ var _Content = __webpack_require__(4);
 
 var _Content2 = _interopRequireDefault(_Content);
 
+var _Footer = __webpack_require__(16);
+
+var _Footer2 = _interopRequireDefault(_Footer);
+
 var _Header = __webpack_require__(12);
 
 var _Header2 = _interopRequireDefault(_Header);
@@ -239,7 +243,8 @@ var App = function (_React$Component) {
 						}
 					},
 					React.createElement(_Header2.default, null),
-					React.createElement(_Content2.default, null)
+					React.createElement(_Content2.default, null),
+					React.createElement(_Footer2.default, null)
 				)
 			);
 		}
@@ -17705,10 +17710,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _logoCodestag = __webpack_require__(13);
-
-var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
-
 var _logoStagBlocks = __webpack_require__(14);
 
 var _logoStagBlocks2 = _interopRequireDefault(_logoStagBlocks);
@@ -17720,30 +17721,16 @@ var __ = wp.i18n.__;
 
 var Header = function Header() {
 	return React.createElement(
-		'header',
-		{ className: 'stag-blocks__header' },
+		"header",
+		{ className: "stag-blocks__header" },
 		React.createElement(
-			'div',
-			{ className: 'stag-blocks-logo' },
+			"div",
+			{ className: "stag-blocks-logo" },
 			React.createElement(_logoStagBlocks2.default, null),
 			React.createElement(
-				'h2',
+				"h2",
 				null,
-				'Stag Blocks'
-			)
-		),
-		React.createElement(
-			'div',
-			{ className: 'codestag-logo' },
-			React.createElement(
-				'p',
-				null,
-				__('A plugin by')
-			),
-			React.createElement(
-				'a',
-				{ href: 'https://codestag.com', title: 'Codestag' },
-				React.createElement(_logoCodestag2.default, null)
+				"Stag Blocks"
 			)
 		)
 	);
@@ -17824,6 +17811,112 @@ exports.default = BlocksLogo;
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _logoCodestag = __webpack_require__(13);
+
+var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+
+
+var Footer = function Footer() {
+	return React.createElement(
+		"footer",
+		{ className: "stag-blocks__footer" },
+		React.createElement(
+			"div",
+			{ className: "codestag-logo" },
+			React.createElement(
+				"p",
+				null,
+				__('Made with ❤️ by')
+			),
+			React.createElement(
+				"a",
+				{ href: "https://codestag.com", title: "Codestag" },
+				React.createElement(_logoCodestag2.default, null)
+			)
+		),
+		React.createElement(
+			"ul",
+			null,
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://codestag.com/" },
+					"Visit Codestag.com"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://codestag.com/themes/" },
+					"Themes"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://docs.codestag.com/" },
+					"Documentation"
+				)
+			),
+			" "
+		),
+		React.createElement(
+			"ul",
+			null,
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://facebook.com/" },
+					"Facebook"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://twitter.com/" },
+					"Twitter"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://instagram.com/" },
+					"Instagram"
+				)
+			)
+		)
+	);
+};
+
+exports.default = Footer;
 
 /***/ })
 /******/ ]);

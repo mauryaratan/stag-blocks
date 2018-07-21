@@ -2,6 +2,7 @@
 
 import BlocksContext from './BlocksContext';
 import Content from './Content';
+import Footer from './Footer';
 import Header from './Header';
 
 class App extends React.Component {
@@ -82,6 +83,7 @@ class App extends React.Component {
 				>
 					<Header />
 					<Content />
+					<Footer />
 				</BlocksContext.Provider>
 			</div>
 		);
