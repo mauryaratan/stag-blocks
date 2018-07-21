@@ -1,4 +1,6 @@
-/* global fetch, _stagBlocks, localStorage */
+/* global localStorage */
+
+const { apiFetch } = wp;
 
 const getCircularReplacer = () => {
 	const seen = new WeakSet;
@@ -31,14 +33,13 @@ window.onload = () => {
 			console.group( 'Stag Blocks' ); // eslint-disable-line
 			console.info( 'Syncing blocks data.' ); // eslint-disable-line
 
-			await fetch( `${ _stagBlocks.root }stag_blocks/v1/blocks`, {
-				credentials: 'same-origin',
+			apiFetch( {
+				path: 'stag_blocks/v1/blocks',
 				method: 'POST',
+				body: formattedBlocks,
 				headers: {
 					'Content-Type': 'application/json',
-					'X-WP-Nonce': _stagBlocks.nonce,
-			 	},
-				body: formattedBlocks,
+				},
 			} );
 
 			localStorage.setItem( 'stagBlocksSyncTime', now );
@@ -51,19 +52,12 @@ window.onload = () => {
 	}
 };
 
-fetch( `${ _stagBlocks.root }stag_blocks/v1/settings`, {
-	credentials: 'same-origin',
-	headers: {
-		'X-WP-Nonce': _stagBlocks.nonce,
-	},
-} )
-	.then( ( response ) => response.json() )
-	.then( ( blocks ) => {
-		const inactiveBlocks = Object.keys( blocks ).filter( ( block ) => {
-			return ! blocks[ block ];
-		} );
-
-		inactiveBlocks.map( ( block ) => {
-			wp.blocks.unregisterBlockType( block );
-		} );
+apiFetch( { path: 'stag_blocks/v1/settings' } ).then( ( blocks ) => {
+	const inactiveBlocks = Object.keys( blocks ).filter( ( block ) => {
+		return ! blocks[ block ];
 	} );
+
+	inactiveBlocks.map( ( block ) => {
+		wp.blocks.unregisterBlockType( block );
+	} );
+} );
