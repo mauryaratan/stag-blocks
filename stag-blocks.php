@@ -18,6 +18,17 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Get plugin version info.
+ *
+ * @return String Returns current plugin version.
+ */
+function sgb_plugin_version() {
+	$plugin_data = get_plugin_data( __FILE__ );
+
+	return $plugin_data['Version'];
+}
+
+/**
  * Block Initializer.
  */
 require_once plugin_dir_path( __FILE__ ) . 'src/init.php';

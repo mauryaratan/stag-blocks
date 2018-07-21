@@ -29,9 +29,14 @@ body.settings_page_stag-blocks {
 		display: flex;
 		justify-content: space-between;
 
-		h2, p, svg {
+		p, svg, code {
 			display: inline-block;
 			vertical-align: middle;
+		}
+
+		code {
+			color: #4F4F4F;
+			padding: 5px 7px;
 		}
 
 		.stag-blocks-logo svg {
