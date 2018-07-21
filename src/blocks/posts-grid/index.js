@@ -14,6 +14,7 @@ registerBlockType( 'sgb/posts-grid', {
 		__( 'posts-grid' ),
 		__( 'stag' ),
 	],
+	customCategory: 'stag-blocks',
 
 	getEditWrapperProps( attributes ) {
 		const { align } = attributes;
