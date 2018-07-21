@@ -17957,7 +17957,7 @@ var Footer = function Footer() {
 				null,
 				React.createElement(
 					"a",
-					{ href: "https://facebook.com/" },
+					{ href: "https://facebook.com/Codestag/" },
 					"Facebook"
 				)
 			),
@@ -17966,7 +17966,7 @@ var Footer = function Footer() {
 				null,
 				React.createElement(
 					"a",
-					{ href: "https://twitter.com/" },
+					{ href: "https://twitter.com/Codestag/" },
 					"Twitter"
 				)
 			),
@@ -17975,7 +17975,7 @@ var Footer = function Footer() {
 				null,
 				React.createElement(
 					"a",
-					{ href: "https://instagram.com/" },
+					{ href: "https://instagram.com/Codestag/" },
 					"Instagram"
 				)
 			)

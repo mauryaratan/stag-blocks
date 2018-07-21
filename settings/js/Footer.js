@@ -16,9 +16,9 @@ const Footer = () => {
 				<li><a href="https://docs.codestag.com/">Documentation</a></li> { /* TODO: Update documentation link. */ }
 			</ul>
 			<ul>
-				<li><a href="https://facebook.com/">Facebook</a></li>
-				<li><a href="https://twitter.com/">Twitter</a></li>
-				<li><a href="https://instagram.com/">Instagram</a></li>
+				<li><a href="https://facebook.com/Codestag/">Facebook</a></li>
+				<li><a href="https://twitter.com/Codestag/">Twitter</a></li>
+				<li><a href="https://instagram.com/Codestag/">Instagram</a></li>
 			</ul>
 		</footer>
 	);
