@@ -80,6 +80,27 @@ function stag_blocks_editor_assets() {
 // Hook: Editor assets.
 add_action( 'enqueue_block_editor_assets', 'stag_blocks_editor_assets' );
 
+/**
+ * Add front-end assets for Stag Blocks.
+ *
+ * @return void
+ */
+function sgb_frontend_assets() {
+	if ( is_singular() ) {
+		wp_enqueue_style( 'prism', plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism-ghcolors.css', array(), '20180724' );
+
+		wp_enqueue_script(
+			'prism',
+			plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism.js',
+			array(),
+			'1.15.0',
+			true
+		);
+	}
+}
+
+add_action( 'wp_enqueue_scripts', 'sgb_frontend_assets' );
+
 // Register server-side code for individual blocks.
 foreach ( glob( dirname( dirname( __FILE__ ) ) . '/src/blocks/*/index.php' ) as $block_logic ) {
 	require_once $block_logic;
