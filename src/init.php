@@ -87,15 +87,22 @@ add_action( 'enqueue_block_editor_assets', 'stag_blocks_editor_assets' );
  */
 function sgb_frontend_assets() {
 	if ( is_singular() ) {
-		wp_enqueue_style( 'prism', plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism-ghcolors.css', array(), '20180724' );
+		$post_id = get_the_ID();
+		$content = get_post_field( 'post_content', $post_id, 'display' );
 
-		wp_enqueue_script(
-			'prism',
-			plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism.js',
-			array(),
-			'1.15.0',
-			true
-		);
+		preg_match( '~<code.*?lang=["\']+(.*?)["\']+~', $content, $match );
+
+		if ( ! empty( $match ) ) {
+			wp_enqueue_style( 'prism', plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism-ghcolors.css', array(), '20180724' );
+
+			wp_enqueue_script(
+				'prism',
+				plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism.js',
+				array(),
+				'1.15.0',
+				true
+			);
+		}
 	}
 }
 
