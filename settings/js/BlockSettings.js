@@ -1,3 +1,4 @@
+import { parse, stringify } from 'querystring';
 import Settings from './settings';
 
 const {
@@ -7,18 +8,29 @@ const {
 
 const { __ } = wp.i18n;
 
+const { Button } = wp.components;
+
 export default class RenderBlockSettings extends Component {
 	constructor() {
 		super( ...arguments );
 
 		this.state = {
 			values: [],
+			saving: false,
 		};
 
 		this.settings = Settings[ this.props.name ];
 
+		this.defaults = parse( _stagBlocks.blockSettings );
+
 		this.handleChange = this.handleChange.bind( this );
 		this.handleSubmit = this.handleSubmit.bind( this );
+	}
+
+	componentDidMount() {
+		this.setState( {
+			values: this.defaults,
+		} );
 	}
 
 	handleChange( event ) {
@@ -33,8 +45,17 @@ export default class RenderBlockSettings extends Component {
 	handleSubmit( event ) {
 		event.preventDefault();
 
-		// TODO: Do something with the values here.
+		this.setState( { saving: true } );
+
 		const values = this.state.values;
+
+		wp.apiFetch( {
+			path: '/stag_blocks/v1/block_settings',
+			method: 'POST',
+			body: stringify( values ),
+		} ).then( () =>{
+			this.setState( { saving: false } );
+		} );
 	}
 
 	render() {
@@ -64,6 +85,7 @@ export default class RenderBlockSettings extends Component {
 												type: setting.type,
 												className: 'regular-text',
 												id: section,
+												value: this.state.values[ section ] || this.defaults[ section ],
 												onChange: this.handleChange,
 											} ) }
 
@@ -76,7 +98,17 @@ export default class RenderBlockSettings extends Component {
 							} ) }
 						</tbody>
 					</table>
-					<button className="button button-primary" type="submit">{ __( 'Save settings' ) }</button>
+
+					<Button
+						type="submit"
+						isPrimary
+						isLarge
+						isBusy={ this.state.saving }
+						disabled={ this.state.saving }
+						className="shared-block-edit-panel__button"
+					>
+						{ this.state.saving ? __( 'Saving...' ) : __( 'Save' ) }
+					</Button>
 				</form>
 			</div>
 		);

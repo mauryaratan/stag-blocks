@@ -1,8 +1,9 @@
 <?php
 
 class Stag_Blocks_API {
-	const OPTION   = 'stag-blocks-list';
-	const SETTINGS = 'stag-blocks-settings';
+	const OPTION         = 'stag-blocks-list';
+	const SETTINGS       = 'stag-blocks-settings';
+	const BLOCK_SETTINGS = 'sgb-block-settings';
 
 	public function __construct() {
 		add_action( 'rest_api_init', array( $this, 'register_endpoint' ) );
@@ -40,6 +41,18 @@ class Stag_Blocks_API {
 						return current_user_can( 'manage_options' );
 					},
 					'callback'            => array( $this, 'get_settings' ),
+				),
+			)
+		);
+
+		register_rest_route(
+			'stag_blocks/v1', '/block_settings', array(
+				array(
+					'methods'             => WP_REST_Server::CREATABLE,
+					'permission_callback' => function() {
+						return current_user_can( 'manage_options' );
+					},
+					'callback'            => array( $this, 'get_block_settings' ),
 				),
 			)
 		);
@@ -96,6 +109,16 @@ class Stag_Blocks_API {
 		}
 
 		return rest_ensure_response( $settings );
+	}
+
+	public function get_block_settings( $request ) {
+		$settings = $request->get_body();
+
+		update_option( self::BLOCK_SETTINGS, $settings );
+
+		wp_send_json_success([
+			'sample' => $settings,
+		]);
 	}
 }
 

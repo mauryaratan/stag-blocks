@@ -49,9 +49,10 @@ class Stag_Blocks_Settings {
 
 		wp_localize_script(
 			'stag-blocks-settings', '_stagBlocks', array(
-				'root'    => esc_url_raw( rest_url() ),
-				'nonce'   => wp_create_nonce( 'wp_rest' ),
-				'version' => sgb_plugin_version(),
+				'root'          => esc_url_raw( rest_url() ),
+				'nonce'         => wp_create_nonce( 'wp_rest' ),
+				'version'       => sgb_plugin_version(),
+				'blockSettings' => get_option( 'sgb-block-settings' ),
 			)
 		);
 	}
