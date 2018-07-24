@@ -61,7 +61,7 @@ this["stag-blocks"] = this["stag-blocks"] || {}; this["stag-blocks"]["main"] =
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 2);
 /******/ })
 /************************************************************************/
 /******/ ([
@@ -82,18 +82,77 @@ exports.default = BlocksContext;
 /* 1 */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(2);
-module.exports = __webpack_require__(15);
+var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
+  Copyright (c) 2017 Jed Watson.
+  Licensed under the MIT License (MIT), see
+  http://jedwatson.github.io/classnames
+*/
+/* global define */
+
+(function () {
+	'use strict';
+
+	var hasOwn = {}.hasOwnProperty;
+
+	function classNames () {
+		var classes = [];
+
+		for (var i = 0; i < arguments.length; i++) {
+			var arg = arguments[i];
+			if (!arg) continue;
+
+			var argType = typeof arg;
+
+			if (argType === 'string' || argType === 'number') {
+				classes.push(arg);
+			} else if (Array.isArray(arg) && arg.length) {
+				var inner = classNames.apply(null, arg);
+				if (inner) {
+					classes.push(inner);
+				}
+			} else if (argType === 'object') {
+				for (var key in arg) {
+					if (hasOwn.call(arg, key) && arg[key]) {
+						classes.push(key);
+					}
+				}
+			}
+		}
+
+		return classes.join(' ');
+	}
+
+	if (typeof module !== 'undefined' && module.exports) {
+		classNames.default = classNames;
+		module.exports = classNames;
+	} else if (true) {
+		// register as 'classnames', consistent with npm package name
+		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
+			return classNames;
+		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
+				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
+	} else {
+		window.classNames = classNames;
+	}
+}());
 
 
 /***/ }),
 /* 2 */
 /***/ (function(module, exports, __webpack_require__) {
 
+__webpack_require__(3);
+module.exports = __webpack_require__(18);
+
+
+/***/ }),
+/* 3 */
+/***/ (function(module, exports, __webpack_require__) {
+
 "use strict";
 
 
-var _App = __webpack_require__(3);
+var _App = __webpack_require__(4);
 
 var _App2 = _interopRequireDefault(_App);
 
@@ -102,7 +161,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 ReactDOM.render(React.createElement(_App2.default, null), document.getElementById('stag-blocks-settings'));
 
 /***/ }),
-/* 3 */
+/* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -118,15 +177,15 @@ var _BlocksContext = __webpack_require__(0);
 
 var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
 
-var _Content = __webpack_require__(4);
+var _Content = __webpack_require__(5);
 
 var _Content2 = _interopRequireDefault(_Content);
 
-var _Footer = __webpack_require__(16);
+var _Footer = __webpack_require__(13);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
-var _Header = __webpack_require__(12);
+var _Header = __webpack_require__(15);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -273,7 +332,7 @@ var App = function (_React$Component) {
 exports.default = App;
 
 /***/ }),
-/* 4 */
+/* 5 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -283,7 +342,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _BlockList = __webpack_require__(5);
+var _BlockList = __webpack_require__(6);
 
 var _BlockList2 = _interopRequireDefault(_BlockList);
 
@@ -291,11 +350,11 @@ var _BlocksContext = __webpack_require__(0);
 
 var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
 
-var _Categories = __webpack_require__(10);
+var _Categories = __webpack_require__(11);
 
 var _Categories2 = _interopRequireDefault(_Categories);
 
-var _Themes = __webpack_require__(18);
+var _Themes = __webpack_require__(12);
 
 var _Themes2 = _interopRequireDefault(_Themes);
 
@@ -350,7 +409,7 @@ var Content = function Content() {
 exports.default = Content;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -360,11 +419,17 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 var _BlocksContext = __webpack_require__(0);
 
 var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
 
-var _RenderIcon = __webpack_require__(6);
+var _BlockSettings = __webpack_require__(19);
+
+var _BlockSettings2 = _interopRequireDefault(_BlockSettings);
+
+var _RenderIcon = __webpack_require__(7);
 
 var _RenderIcon2 = _interopRequireDefault(_RenderIcon);
 
@@ -410,7 +475,10 @@ var BlockList = function BlockList() {
 								onChange: function onChange(status) {
 									context.toggleBlock(block.name, status);
 								}
-							})
+							}),
+							block.hasSettings && React.createElement(_BlockSettings2.default, _extends({
+								initialOpen: block.name in context.state.activeBlocks ? context.state.activeBlocks[block.name] : true
+							}, block))
 						);
 					})
 				);
@@ -422,7 +490,7 @@ var BlockList = function BlockList() {
 exports.default = BlockList;
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -432,7 +500,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _lodash = __webpack_require__(7);
+var _lodash = __webpack_require__(8);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -467,7 +535,7 @@ var RenderIcon = function RenderIcon(props) {
 exports.default = RenderIcon;
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17577,10 +17645,10 @@ exports.default = RenderIcon;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(8), __webpack_require__(9)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(10)(module)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 var g;
@@ -17607,7 +17675,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17635,7 +17703,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 10 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17645,7 +17713,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _classnames = __webpack_require__(11);
+var _classnames = __webpack_require__(1);
 
 var _classnames2 = _interopRequireDefault(_classnames);
 
@@ -17703,353 +17771,7 @@ var Categories = function Categories() {
 exports.default = Categories;
 
 /***/ }),
-/* 11 */
-/***/ (function(module, exports, __webpack_require__) {
-
-var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
-  Copyright (c) 2017 Jed Watson.
-  Licensed under the MIT License (MIT), see
-  http://jedwatson.github.io/classnames
-*/
-/* global define */
-
-(function () {
-	'use strict';
-
-	var hasOwn = {}.hasOwnProperty;
-
-	function classNames () {
-		var classes = [];
-
-		for (var i = 0; i < arguments.length; i++) {
-			var arg = arguments[i];
-			if (!arg) continue;
-
-			var argType = typeof arg;
-
-			if (argType === 'string' || argType === 'number') {
-				classes.push(arg);
-			} else if (Array.isArray(arg) && arg.length) {
-				var inner = classNames.apply(null, arg);
-				if (inner) {
-					classes.push(inner);
-				}
-			} else if (argType === 'object') {
-				for (var key in arg) {
-					if (hasOwn.call(arg, key) && arg[key]) {
-						classes.push(key);
-					}
-				}
-			}
-		}
-
-		return classes.join(' ');
-	}
-
-	if (typeof module !== 'undefined' && module.exports) {
-		classNames.default = classNames;
-		module.exports = classNames;
-	} else if (true) {
-		// register as 'classnames', consistent with npm package name
-		!(__WEBPACK_AMD_DEFINE_ARRAY__ = [], __WEBPACK_AMD_DEFINE_RESULT__ = (function () {
-			return classNames;
-		}).apply(exports, __WEBPACK_AMD_DEFINE_ARRAY__),
-				__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
-	} else {
-		window.classNames = classNames;
-	}
-}());
-
-
-/***/ }),
 /* 12 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _logoStagBlocks = __webpack_require__(14);
-
-var _logoStagBlocks2 = _interopRequireDefault(_logoStagBlocks);
-
-var _Switcher = __webpack_require__(17);
-
-var _Switcher2 = _interopRequireDefault(_Switcher);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var Header = function Header() {
-	return React.createElement(
-		'header',
-		{ className: 'stag-blocks__header' },
-		React.createElement(
-			'div',
-			{ className: 'stag-blocks-logo' },
-			React.createElement(_logoStagBlocks2.default, null),
-			React.createElement(
-				'code',
-				null,
-				'v',
-				_stagBlocks.version
-			)
-		),
-		React.createElement(_Switcher2.default, null)
-	);
-};
-
-exports.default = Header;
-
-/***/ }),
-/* 13 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var Logo = function Logo() {
-	return React.createElement(
-		"svg",
-		{ width: "132", height: "32", viewBox: "0 0 132 32", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-		React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22.6503 7.50148C17.6063 7.50148 13.6092 11.5846 13.6092 16.7122C13.6092 19.181 11.5155 21.1751 9.13627 21.1751C6.66186 21.1751 4.56813 19.181 4.56813 16.7122C4.56813 14.1484 6.66186 12.1543 9.13627 12.1543C9.99279 12.1543 10.8493 12.4392 11.6107 12.9139L11.801 13.1039L11.8962 12.819C12.2769 10.8249 13.3237 9.49555 13.7044 9.02077L13.8947 8.83086L13.6092 8.7359C12.2769 7.88131 10.659 7.50148 9.13627 7.50148C4.09229 7.50148 0 11.5846 0 16.7122C0 21.7448 4.09229 25.8279 9.13627 25.8279C14.0851 25.8279 18.1774 21.7448 18.1774 16.7122C18.1774 14.1484 20.1759 12.1543 22.6503 12.1543C25.1247 12.1543 27.1233 14.1484 27.1233 16.7122C27.1233 19.181 25.1247 21.1751 22.6503 21.1751C20.8421 21.1751 20.1759 20.7953 19.6049 20.0356L19.3194 19.7507L19.2242 20.2255C19.1291 20.6053 18.558 22.5044 17.3208 23.549L17.1305 23.7389L17.3208 23.8338C18.8435 25.3531 20.1759 25.8279 22.6503 25.8279C27.6943 25.8279 31.7866 21.7448 31.7866 16.7122C31.7866 11.5846 27.6943 7.50148 22.6503 7.50148ZM45.491 20.0356C44.6345 20.9852 43.5876 21.365 42.2552 21.365C40.9229 21.365 39.876 20.9852 39.0195 20.0356C38.0678 19.181 37.6871 18.0415 37.6871 16.6172C37.6871 15.1929 38.0678 14.0534 39.0195 13.1988C39.876 12.3442 40.9229 11.8694 42.2552 11.8694C43.5876 11.8694 44.6345 12.3442 45.491 13.1988C46.4427 14.0534 46.8234 15.1929 46.8234 16.6172C46.8234 18.0415 46.4427 19.181 45.491 20.0356ZM51.4867 25.2582V0L46.633 1.42433V9.5905L46.3475 9.30564C45.6813 8.83086 45.0151 8.45104 44.349 8.16617C43.3973 7.78635 42.4456 7.59644 41.3035 7.59644C39.0195 7.59644 37.0209 8.45104 35.403 10.1602C33.69 11.7745 32.9286 14.0534 32.9286 16.6172C32.9286 19.181 33.7851 21.365 35.403 23.0742C37.1161 24.7834 39.1146 25.638 41.4939 25.638C42.4456 25.638 43.4924 25.4481 44.349 25.1632C45.0151 24.8783 45.6813 24.4985 46.3475 23.9288L46.633 23.7389V25.2582H51.4867ZM58.1485 14.2433C58.5292 13.5786 59.005 13.0089 59.3857 12.724C61.0988 11.5846 63.7635 11.4896 65.3814 12.6291C66.0476 13.1039 66.5234 13.5786 66.8089 14.2433L66.9993 14.5282H58.0534L58.1485 14.2433ZM70.6157 22.1246L70.8061 21.9347L66.7138 20.1306L66.6186 20.2255C65.4766 21.27 64.1442 21.7448 62.5263 21.7448C61.1939 21.7448 60.1471 21.4599 59.2906 20.7953C58.5292 20.2255 58.0534 19.4659 57.7678 18.5163V18.2315H71.8529V17.2819C71.8529 14.4332 70.9964 12.1543 69.1882 10.4451C67.4751 8.7359 65.0959 7.78635 62.336 7.78635C59.6712 7.78635 57.4823 8.7359 55.6741 10.4451C53.9611 12.1543 53.0094 14.3383 53.0094 16.9021C53.0094 19.4659 53.9611 21.6499 55.6741 23.3591C57.4823 25.0682 59.7664 25.9228 62.5263 25.9228C64.3345 25.9228 65.9524 25.543 67.2848 24.9733C68.522 24.3086 69.664 23.359 70.6157 22.1246ZM84.1298 17.3769C83.4636 16.5223 82.2264 15.6677 80.5133 14.908L78.8955 14.1484C78.0389 13.6736 77.7534 13.4837 77.6583 13.3887C77.5631 13.1988 77.4679 13.1039 77.4679 12.9139C77.4679 12.6291 77.5631 12.4392 77.7534 12.2493C78.0389 12.1543 78.4196 12.0593 78.8003 12.0593C79.6568 12.0593 80.6085 12.5341 81.7505 13.5786L81.8457 13.6736L84.796 10.8249L84.7008 10.635C84.0346 9.78041 83.0829 9.02077 82.1312 8.54599C81.0844 8.07122 79.9423 7.78635 78.8003 7.78635C77.0872 7.78635 75.6597 8.26113 74.6128 9.30564C73.4708 10.2552 72.8998 11.4896 72.8998 12.819C72.8998 15.003 74.3273 16.8071 77.2776 18.1365L78.7051 18.8961C79.5616 19.276 80.5133 19.8457 80.5133 20.6053C80.5133 20.8902 80.4182 21.1751 80.1327 21.365C79.3713 21.8398 78.3244 21.8398 77.0872 21.1751C76.4211 20.8902 75.7549 20.4154 75.279 19.8457L75.1839 19.6558L72.2336 22.7893L72.3288 22.9792C73.8515 24.8783 75.9452 25.9228 78.6099 25.9228C80.5133 25.9228 82.1312 25.3531 83.2733 24.3086C84.5105 23.2641 85.0815 22.0297 85.0815 20.4154C85.0815 19.276 84.796 18.2315 84.1298 17.3769Z",
-			fill: "#333" }),
-		React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M7.42322 7.69139H4.75847V0L0 1.42433V24.8783H4.75847V11.6795H7.42322V7.69139Z",
-			transform: "translate(86.319 .38)", fill: "#333" }),
-		React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M12.6575 12.5341C11.801 13.3887 10.7541 13.8635 9.3266 13.8635C8.0894 13.8635 7.04254 13.3887 6.09085 12.5341C5.23432 11.5846 4.85364 10.4451 4.85364 9.02077C4.85364 7.6914 5.23432 6.55193 6.09085 5.60237C6.94737 4.74778 7.99423 4.273 9.3266 4.273C10.659 4.273 11.801 4.74778 12.6575 5.60237C13.5141 6.45697 13.9899 7.59644 13.9899 9.02077C13.9899 10.4451 13.5141 11.5846 12.6575 12.5341ZM18.558 17.6617V0.474777H13.7996V2.08902L13.4189 1.80415C12.8479 1.32938 12.1817 0.8546 11.5155 0.569733C10.5638 0.189911 9.51694 0 8.47008 0C6.09085 0 4.09228 0.854599 2.4744 2.5638C0.856523 4.273 0 6.45697 0 9.11573C0 11.6795 0.856522 13.7685 2.56957 15.4777C4.28262 17.2819 6.28118 18.1365 8.56525 18.1365C9.61211 18.1365 10.5638 17.9466 11.4203 17.5668C12.0865 17.2819 12.7527 16.9021 13.4189 16.4273L13.7996 16.1424V17.6617H18.558ZM32.548 12.2493C31.6914 13.0089 30.6446 13.4837 29.3122 13.4837C27.8846 13.4837 26.8378 13.0089 25.8861 12.1543C25.0296 11.2997 24.6489 10.2552 24.6489 8.83086C24.6489 7.59644 25.0296 6.45697 25.8861 5.60237C26.7426 4.74778 27.8846 4.36795 29.217 4.36795C30.5494 4.36795 31.6914 4.74778 32.548 5.60237C33.4045 6.45697 33.7851 7.50148 33.7851 8.92582C33.7851 10.2552 33.4045 11.3947 32.548 12.2493ZM38.3533 0.474777H33.5948V2.08902L33.2141 1.80415C32.5479 1.23442 31.7866 0.8546 31.1204 0.569733C30.1687 0.189911 29.217 0 28.1702 0C25.9813 0 24.0779 0.759644 22.46 2.27893C20.7469 3.89318 19.8904 6.17211 19.8904 8.83086C19.8904 11.3947 20.6518 13.4837 22.3648 15.1929C23.9827 16.8071 26.0764 17.6617 28.4557 17.6617C29.5025 17.6617 30.5494 17.4718 31.4059 17.1869C31.9769 16.9021 32.6431 16.6172 33.2141 16.1424L33.5948 15.8576L33.4996 16.3323C33.4996 17.092 33.3093 17.7567 33.119 18.1365C32.8335 18.7062 32.3576 19.0861 31.6914 19.4659C31.0252 19.7507 30.0735 19.9407 28.9315 19.9407C28.075 19.9407 27.2185 19.8457 26.6474 19.5608L26.4571 19.4659H20.1759C20.5566 20.4154 21.0324 21.1751 21.6986 21.7448C22.46 22.5994 23.5068 23.1691 24.7441 23.6439C25.8861 24.0237 27.4088 24.2136 29.1218 24.2136C32.3576 24.2136 34.832 23.359 36.4499 21.4599C37.6871 20.1306 38.3533 17.9466 38.3533 15.0979V0.474777Z",
-			transform: "translate(93.647 7.786)", fill: "#333" })
-	);
-};
-
-exports.default = Logo;
-
-/***/ }),
-/* 14 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var BlocksLogo = function BlocksLogo() {
-	return React.createElement(
-		"svg",
-		{ width: "165", height: "53", viewBox: "0 0 165 53", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
-		React.createElement("path", { d: "M0.875069 2.07601C0.643023 2.07612 0.420412 1.98305 0.256246 1.81732C0.0921836 1.6517 0 1.42697 0 1.19261V0.8833C0 0.39543 0.391803 0 0.874968 0C1.35813 0 1.74994 0.395533 1.74994 0.8833V1.19261C1.75004 1.42686 1.65786 1.65159 1.49369 1.81732C1.32973 1.98295 1.10712 2.07601 0.875069 2.07601Z",
-			transform: "translate(23.625 25.616)", fill: "#000" }),
-		React.createElement("path", { d: "M39.3751 10.7502V31.6499L36.8069 33.0544L19.8074 42.3294L19.6875 42.4001L0 31.6499V10.7502L19.6875 0L39.3751 10.7502Z",
-			transform: "translate(5.25 5.3)", fill: "#6D98F7" }),
-		React.createElement("path", { d: "M36.75 10.7501V31.2877L22.4175 39.1229L19.9937 40.4479L19.775 40.5627L19.6613 40.6334L19.495 40.5362L0 29.8832V9.34562L1.74993 8.39162L17.0888 0L36.75 10.7501Z",
-			transform: "translate(5.25 7.067)", fill: "#93B2F4" }),
-		React.createElement("path", { d: "M17.5001 9.35452V27.0742L0 17.7285V0L17.5001 9.35452Z", transform: "translate(7 17.455)",
-			fill: "#DBE0EE" }),
-		React.createElement("path", { d: "M40.2501 10.7502L37.5726 12.1812L20.1251 21.5093L0.0525002 10.7767L0 10.7502L20.1251 0L40.2501 10.7502Z",
-			transform: "translate(4.375 5.3)", fill: "#93B2F4" }),
-		React.createElement("path", { d: "M37.5726 10.7237L20.1006 20.0518L0 9.31923L17.4721 0L37.5726 10.7237Z",
-			transform: "translate(4.375 6.757)", fill: "#DBE0EE" }),
-		React.createElement("path", { d: "M23.2926 32.0563L20.8688 33.3813L20.37 33.4696L20.2476 33.4961L20.1251 33.5668L0 22.8166V1.91691L2.625 0V21.05L20.1251 30.3956L23.2926 32.0563Z",
-			transform: "translate(4.375 14.133)", fill: "#fff" }),
-		React.createElement("path", { d: "M0.875069 22.6614C0.643023 22.6615 0.420412 22.5684 0.256246 22.4027C0.0921836 22.2371 0 22.0123 0 21.778V0.8833C0 0.39543 0.391803 0 0.874968 0C1.35813 0 1.74994 0.395533 1.74994 0.8833V21.778C1.75004 22.0122 1.65786 22.237 1.49369 22.4027C1.32973 22.5684 1.10712 22.6615 0.875069 22.6614Z",
-			transform: "translate(23.625 25.616)", fill: "#3575FF" }),
-		React.createElement("path", { d: "M24.5 53C24.357 53 24.2162 52.9646 24.0898 52.8969L0.464811 40.2507C0.178726 40.0976 -0.000204902 39.7974 1.76097e-07 39.4704V13.5293C-0.000102363 13.2024 0.178726 12.9022 0.464811 12.7491L24.0898 0.102869C24.3464 -0.0342896 24.6536 -0.0342896 24.9102 0.102869L48.5352 12.7491C48.8213 12.9022 49.0002 13.2024 49 13.5293V39.4704C49.0001 39.7973 48.8213 40.0975 48.5352 40.2507L24.9102 52.8969C24.7838 52.9646 24.643 53 24.5 53ZM1.74993 38.939L24.5 51.1168L47.2501 38.939V14.0607L24.5 1.88303L1.74993 14.0607V38.939Z",
-			fill: "#3575FF" }),
-		React.createElement("path", { d: "M21 44.167C20.8573 44.1671 20.7168 44.1319 20.5907 44.0643L0.465733 33.3143C0.179341 33.1612 0.000102539 32.8608 0 32.5336V23.8503C0 23.3625 0.391802 22.967 0.874967 22.967C1.35813 22.967 1.74993 23.3625 1.74993 23.8503V32.0018L20.9999 42.2844L40.2499 32.0018V12.1656L21 1.88293L1.75004 12.1656V16.7836C1.75004 17.2715 1.35823 17.6669 0.87507 17.6669C0.391905 17.6669 0.000102483 17.2714 0.000102483 16.7836V11.6337C0.000205022 11.3065 0.179341 11.0061 0.465836 10.853L20.5909 0.102869C20.8468 -0.0342896 21.1535 -0.0342896 21.4095 0.102869L41.5345 10.853C41.8209 11.0061 42.0002 11.3065 42.0003 11.6337V32.5336C42.0002 32.8608 41.821 33.1612 41.5345 33.3143L21.4094 44.0644C21.2832 44.1319 21.1428 44.1671 21 44.167Z",
-			transform: "translate(3.5 4.416)", fill: "#3575FF" }),
-		React.createElement("path", { d: "M20.9981 12.5184C20.8554 12.5185 20.7149 12.4833 20.5888 12.4157L0.463847 1.66308C0.0381041 1.4342 -0.123806 0.90068 0.101781 0.470261C0.32747 0.0398423 0.855546 -0.124955 1.28242 0.101745L20.9981 10.6358L40.7139 0.101745C41.1407 -0.124955 41.6689 0.0398423 41.8945 0.470261C42.1202 0.90068 41.9582 1.4342 41.5324 1.66308L21.4075 12.4158C21.2814 12.4833 21.1409 12.5185 20.9981 12.5184Z",
-			transform: "translate(3.502 15.17)", fill: "#3575FF" }),
-		React.createElement("path", { d: "M0.874967 1.7666C1.3582 1.7666 1.74993 1.37114 1.74993 0.883302C1.74993 0.395468 1.3582 0 0.874967 0C0.391736 0 0 0.395468 0 0.883302C0 1.37114 0.391736 1.7666 0.874967 1.7666Z",
-			transform: "translate(3.5 23.85)", fill: "#428DFF" }),
-		React.createElement("path", { d: "M0.556641 16.1152L1.85547 14.3184C2.36328 14.8587 2.97852 15.3014 3.70117 15.6465C4.42383 15.9915 5.2181 16.1641 6.08398 16.1641C6.97591 16.1641 7.64323 15.985 8.08594 15.627C8.53516 15.2624 8.75977 14.8327 8.75977 14.3379C8.75977 14.0384 8.66862 13.778 8.48633 13.5566C8.31055 13.3353 8.07292 13.1562 7.77344 13.0195C7.47396 12.8763 7.12891 12.7493 6.73828 12.6387C6.35417 12.528 5.94727 12.4206 5.51758 12.3164C5.08789 12.2057 4.65495 12.0885 4.21875 11.9648C3.78906 11.8346 3.37891 11.6719 2.98828 11.4766C2.60417 11.2747 2.26237 11.0436 1.96289 10.7832C1.66341 10.5163 1.42253 10.1777 1.24023 9.76758C1.06445 9.35742 0.976562 8.88867 0.976562 8.36133C0.976562 7.24805 1.42578 6.32031 2.32422 5.57812C3.22917 4.83594 4.40104 4.46484 5.83984 4.46484C7.89714 4.46484 9.5638 5.08333 10.8398 6.32031L9.50195 8.05859C9.00065 7.55729 8.41146 7.17969 7.73438 6.92578C7.0638 6.66536 6.36719 6.53516 5.64453 6.53516C4.96094 6.53516 4.41081 6.68815 3.99414 6.99414C3.58398 7.29362 3.37891 7.69401 3.37891 8.19531C3.37891 8.45573 3.4668 8.68685 3.64258 8.88867C3.81836 9.08398 4.05599 9.24674 4.35547 9.37695C4.65495 9.50065 5 9.61784 5.39062 9.72852C5.78125 9.83268 6.19141 9.9401 6.62109 10.0508C7.05078 10.1615 7.47721 10.2852 7.90039 10.4219C8.33008 10.5521 8.74023 10.7214 9.13086 10.9297C9.52148 11.138 9.86654 11.3789 10.166 11.6523C10.4655 11.9258 10.7031 12.2741 10.8789 12.6973C11.0547 13.1139 11.1426 13.5892 11.1426 14.123C11.1426 14.6895 11.0384 15.2168 10.8301 15.7051C10.6283 16.1934 10.3223 16.6296 9.91211 17.0137C9.50846 17.3978 8.9681 17.7005 8.29102 17.9219C7.62044 18.1367 6.84896 18.2441 5.97656 18.2441C3.69141 18.2441 1.88477 17.5345 0.556641 16.1152ZM11.7383 10.1777V8.3418H13.3398V5.69531H15.4395V8.3418H17.4023V10.1777H15.4395V15.2363C15.4395 15.5749 15.5208 15.8516 15.6836 16.0664C15.8464 16.2747 16.0742 16.3789 16.3672 16.3789C16.556 16.3789 16.7383 16.3464 16.9141 16.2812C17.0898 16.2096 17.2201 16.1283 17.3047 16.0371L17.8027 17.6191C17.3665 18.0358 16.7057 18.2441 15.8203 18.2441C15.013 18.2441 14.3978 18.0326 13.9746 17.6094C13.5514 17.1797 13.3398 16.5645 13.3398 15.7637V10.1777H11.7383ZM18.7305 15.041C18.7305 14.5072 18.8281 14.0352 19.0234 13.625C19.2253 13.2083 19.4889 12.8796 19.8145 12.6387C20.1465 12.3913 20.5046 12.2057 20.8887 12.082C21.2793 11.9583 21.6797 11.8965 22.0898 11.8965C23.457 11.8965 24.4954 12.3099 25.2051 13.1367V11.7012C25.2051 11.1478 24.9967 10.7116 24.5801 10.3926C24.1699 10.0671 23.6263 9.9043 22.9492 9.9043C21.8685 9.9043 20.9147 10.3079 20.0879 11.1152L19.2285 9.66016C20.3288 8.61849 21.6829 8.09766 23.291 8.09766C23.8509 8.09766 24.362 8.16276 24.8242 8.29297C25.293 8.41667 25.7161 8.61198 26.0938 8.87891C26.4714 9.13932 26.7676 9.50391 26.9824 9.97266C27.1973 10.4349 27.3047 10.9785 27.3047 11.6035V18H25.2051V16.9648C24.8405 17.375 24.388 17.6908 23.8477 17.9121C23.3138 18.1335 22.7279 18.2441 22.0898 18.2441C21.6862 18.2441 21.2891 18.1758 20.8984 18.0391C20.5078 17.9023 20.1465 17.707 19.8145 17.4531C19.4889 17.1927 19.2253 16.8542 19.0234 16.4375C18.8281 16.0208 18.7305 15.5553 18.7305 15.041ZM20.8496 15.0801C20.8496 15.5944 21.0417 16.0111 21.4258 16.3301C21.8164 16.6426 22.3112 16.7988 22.9102 16.7988C23.3854 16.7988 23.8281 16.7142 24.2383 16.5449C24.6484 16.3691 24.9707 16.1217 25.2051 15.8027V14.3379C24.9707 14.0189 24.6484 13.7747 24.2383 13.6055C23.8281 13.4297 23.3854 13.3418 22.9102 13.3418C22.3112 13.3418 21.8164 13.5013 21.4258 13.8203C21.0417 14.1328 20.8496 14.5527 20.8496 15.0801ZM29.4336 13.0586C29.4336 11.5286 29.8307 10.321 30.625 9.43555C31.4193 8.54362 32.4479 8.09766 33.7109 8.09766C34.3229 8.09766 34.8958 8.23438 35.4297 8.50781C35.9635 8.78125 36.4258 9.17188 36.8164 9.67969V8.3418H38.916V17.502C38.916 18.1725 38.8184 18.7682 38.623 19.2891C38.4277 19.8164 38.1706 20.2396 37.8516 20.5586C37.5391 20.8841 37.1615 21.151 36.7188 21.3594C36.2826 21.5677 35.8398 21.7109 35.3906 21.7891C34.9414 21.8737 34.4629 21.916 33.9551 21.916C33.1022 21.916 32.3568 21.8086 31.7188 21.5938C31.0872 21.3789 30.485 21.0078 29.9121 20.4805L30.8887 18.957C31.6048 19.7839 32.627 20.1973 33.9551 20.1973C34.3197 20.1973 34.6615 20.1517 34.9805 20.0605C35.306 19.9694 35.6087 19.8262 35.8887 19.6309C36.1751 19.4421 36.3997 19.1719 36.5625 18.8203C36.7318 18.4688 36.8164 18.0553 36.8164 17.5801V16.418C36.4323 16.9128 35.9701 17.3034 35.4297 17.5898C34.8958 17.8763 34.3229 18.0195 33.7109 18.0195C32.4479 18.0195 31.4193 17.5833 30.625 16.7109C29.8307 15.832 29.4336 14.6146 29.4336 13.0586ZM32.3535 10.8125C31.8587 11.3789 31.6113 12.1276 31.6113 13.0586C31.6113 13.9896 31.8587 14.7415 32.3535 15.3145C32.8483 15.8809 33.5091 16.1641 34.3359 16.1641C34.8177 16.1641 35.293 16.0371 35.7617 15.7832C36.2305 15.5293 36.582 15.2201 36.8164 14.8555V11.2617C36.582 10.8971 36.2305 10.5911 35.7617 10.3438C35.293 10.0898 34.8177 9.96289 34.3359 9.96289C33.5091 9.96289 32.8483 10.2461 32.3535 10.8125ZM46.8262 18V4.66016H53.3887C54.5736 4.66016 55.5013 4.98242 56.1719 5.62695C56.849 6.27148 57.1875 7.08203 57.1875 8.05859C57.1875 8.86589 56.9629 9.54297 56.5137 10.0898C56.071 10.6367 55.5241 10.9785 54.873 11.1152C55.5892 11.2259 56.1979 11.597 56.6992 12.2285C57.2005 12.86 57.4512 13.5827 57.4512 14.3965C57.4512 15.4577 57.1094 16.3236 56.4258 16.9941C55.7422 17.6647 54.7917 18 53.5742 18H46.8262ZM49.1699 15.9395H53.0078C53.6458 15.9395 54.1439 15.7767 54.502 15.4512C54.8665 15.1191 55.0488 14.6634 55.0488 14.084C55.0488 13.5566 54.8698 13.1172 54.5117 12.7656C54.1536 12.4141 53.6523 12.2383 53.0078 12.2383H49.1699V15.9395ZM49.1699 10.1777H52.9102C53.4961 10.1777 53.9551 10.0182 54.2871 9.69922C54.6257 9.38021 54.7949 8.9668 54.7949 8.45898C54.7949 7.94466 54.6257 7.52799 54.2871 7.20898C53.9551 6.88346 53.4961 6.7207 52.9102 6.7207H49.1699V10.1777ZM59.7363 18V4.66016H61.8359V18H59.7363ZM63.9648 13.1562C63.9648 12.4661 64.082 11.8151 64.3164 11.2031C64.5508 10.5846 64.8763 10.0475 65.293 9.5918C65.7161 9.12956 66.2402 8.76497 66.8652 8.49805C67.4902 8.23112 68.1771 8.09766 68.9258 8.09766C69.9284 8.09766 70.8105 8.32878 71.5723 8.79102C72.3405 9.25326 72.9199 9.86523 73.3105 10.627C73.7077 11.3822 73.9062 12.2253 73.9062 13.1562C73.9062 14.0938 73.7077 14.9466 73.3105 15.7148C72.9199 16.4766 72.3405 17.0885 71.5723 17.5508C70.8105 18.013 69.9284 18.2441 68.9258 18.2441C68.1771 18.2441 67.4902 18.1107 66.8652 17.8438C66.2402 17.5703 65.7161 17.2057 65.293 16.75C64.8763 16.2878 64.5508 15.7474 64.3164 15.1289C64.082 14.5104 63.9648 13.8529 63.9648 13.1562ZM66.1426 13.1562C66.1426 14.0547 66.3932 14.8164 66.8945 15.4414C67.3958 16.0664 68.0729 16.3789 68.9258 16.3789C69.7917 16.3789 70.472 16.0697 70.9668 15.4512C71.4681 14.8262 71.7188 14.0612 71.7188 13.1562C71.7188 12.2643 71.4681 11.5091 70.9668 10.8906C70.472 10.2721 69.7917 9.96289 68.9258 9.96289C68.0729 9.96289 67.3958 10.2721 66.8945 10.8906C66.3932 11.5091 66.1426 12.2643 66.1426 13.1562ZM75.4297 13.1562C75.4297 11.6914 75.8952 10.4837 76.8262 9.5332C77.7637 8.57617 78.9648 8.09766 80.4297 8.09766C82.0443 8.09766 83.278 8.67057 84.1309 9.81641L82.7441 11.0957C82.2103 10.3405 81.4714 9.96289 80.5273 9.96289C79.6549 9.96289 78.9486 10.2591 78.4082 10.8516C77.8743 11.444 77.6074 12.2122 77.6074 13.1562C77.6074 14.1068 77.8743 14.8815 78.4082 15.4805C78.9486 16.0794 79.6549 16.3789 80.5273 16.3789C81.4518 16.3789 82.1908 15.998 82.7441 15.2363L84.1309 16.5156C83.2715 17.668 82.0378 18.2441 80.4297 18.2441C78.9648 18.2441 77.7637 17.7656 76.8262 16.8086C75.8952 15.8516 75.4297 14.6341 75.4297 13.1562ZM85.9668 18V4.66016H88.0664V13L92.334 8.3418H94.9316L90.9082 12.7168L95.0098 18H92.373L89.4141 14.0156L88.0664 15.4023V18H85.9668ZM95.6543 16.7402L96.6211 15.2168C96.9857 15.5879 97.4707 15.9102 98.0762 16.1836C98.6882 16.4505 99.2936 16.584 99.8926 16.584C100.505 16.584 100.973 16.4635 101.299 16.2227C101.631 15.9818 101.797 15.666 101.797 15.2754C101.797 15.0215 101.689 14.8099 101.475 14.6406C101.26 14.4714 100.98 14.3411 100.635 14.25C100.296 14.1523 99.9186 14.0612 99.502 13.9766C99.0853 13.8919 98.6686 13.7845 98.252 13.6543C97.8353 13.5241 97.4544 13.3613 97.1094 13.166C96.7708 12.9707 96.4941 12.694 96.2793 12.3359C96.0645 11.9714 95.957 11.5384 95.957 11.0371C95.957 10.2103 96.2956 9.51367 96.9727 8.94727C97.6497 8.38086 98.5775 8.09766 99.7559 8.09766C101.234 8.09766 102.487 8.55339 103.516 9.46484L102.637 10.9395C102.337 10.5944 101.93 10.3145 101.416 10.0996C100.908 9.88477 100.361 9.77734 99.7754 9.77734C99.2285 9.77734 98.7923 9.88802 98.4668 10.1094C98.1413 10.3307 97.9785 10.6139 97.9785 10.959C97.9785 11.1608 98.0599 11.3333 98.2227 11.4766C98.3919 11.6198 98.6133 11.7305 98.8867 11.8086C99.1602 11.8867 99.4727 11.9714 99.8242 12.0625C100.176 12.1471 100.534 12.2285 100.898 12.3066C101.263 12.3783 101.621 12.4922 101.973 12.6484C102.324 12.8047 102.637 12.987 102.91 13.1953C103.184 13.3971 103.402 13.6738 103.564 14.0254C103.734 14.377 103.818 14.7806 103.818 15.2363C103.818 16.1152 103.464 16.8379 102.754 17.4043C102.044 17.9642 101.058 18.2441 99.7949 18.2441C98.9681 18.2441 98.1934 18.1139 97.4707 17.8535C96.7546 17.5931 96.1491 17.222 95.6543 16.7402Z",
-			transform: "translate(60 15)", fill: "#000" })
-	);
-};
-
-exports.default = BlocksLogo;
-
-/***/ }),
-/* 15 */
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 16 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _logoCodestag = __webpack_require__(13);
-
-var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-
-
-var Footer = function Footer() {
-	return React.createElement(
-		"footer",
-		{ className: "stag-blocks__footer" },
-		React.createElement(
-			"div",
-			{ className: "codestag-logo" },
-			React.createElement(
-				"p",
-				null,
-				__('Made with ❤️ by')
-			),
-			React.createElement(
-				"a",
-				{ href: "https://codestag.com", title: "Codestag" },
-				React.createElement(_logoCodestag2.default, null)
-			)
-		),
-		React.createElement(
-			"ul",
-			null,
-			React.createElement(
-				"li",
-				null,
-				React.createElement(
-					"a",
-					{ href: "https://codestag.com/" },
-					"Visit Codestag.com"
-				)
-			),
-			React.createElement(
-				"li",
-				null,
-				React.createElement(
-					"a",
-					{ href: "https://codestag.com/themes/" },
-					"Themes"
-				)
-			),
-			React.createElement(
-				"li",
-				null,
-				React.createElement(
-					"a",
-					{ href: "https://docs.codestag.com/" },
-					"Documentation"
-				)
-			),
-			" "
-		),
-		React.createElement(
-			"ul",
-			null,
-			React.createElement(
-				"li",
-				null,
-				React.createElement(
-					"a",
-					{ href: "https://facebook.com/Codestag/" },
-					"Facebook"
-				)
-			),
-			React.createElement(
-				"li",
-				null,
-				React.createElement(
-					"a",
-					{ href: "https://twitter.com/Codestag/" },
-					"Twitter"
-				)
-			),
-			React.createElement(
-				"li",
-				null,
-				React.createElement(
-					"a",
-					{ href: "https://instagram.com/Codestag/" },
-					"Instagram"
-				)
-			)
-		)
-	);
-};
-
-exports.default = Footer;
-
-/***/ }),
-/* 17 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _classnames = __webpack_require__(11);
-
-var _classnames2 = _interopRequireDefault(_classnames);
-
-var _BlocksContext = __webpack_require__(0);
-
-var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var __ = wp.i18n.__;
-
-
-var VIEWS = [{ slug: 'dashboard', label: __('Dashboard') }, { slug: 'settings', label: __('Settings') }, { slug: 'themes', label: __('Our themes') }];
-
-var Switcher = function Switcher() {
-	return React.createElement(
-		'ul',
-		null,
-		React.createElement(
-			_BlocksContext2.default.Consumer,
-			null,
-			function (context) {
-				return VIEWS.map(function (view, index) {
-					return React.createElement(
-						'li',
-						{ key: index },
-						React.createElement(
-							'a',
-							{
-								href: '#' + view.slug,
-								className: (0, _classnames2.default)({
-									'is-active': context.state.view === view.slug
-								}),
-								onClick: function onClick(e) {
-									e.preventDefault();
-									var link = new URL(e.target.href);
-									link = link.hash.slice(1);
-									context.setView(link);
-								}
-							},
-							view.label
-						)
-					);
-				});
-			}
-		)
-	);
-};
-
-exports.default = Switcher;
-
-/***/ }),
-/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18149,6 +17871,464 @@ var Themes = function (_Component) {
 }(Component);
 
 exports.default = Themes;
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _logoCodestag = __webpack_require__(14);
+
+var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+
+
+var Footer = function Footer() {
+	return React.createElement(
+		"footer",
+		{ className: "stag-blocks__footer" },
+		React.createElement(
+			"div",
+			{ className: "codestag-logo" },
+			React.createElement(
+				"p",
+				null,
+				__('Made with ❤️ by')
+			),
+			React.createElement(
+				"a",
+				{ href: "https://codestag.com", title: "Codestag" },
+				React.createElement(_logoCodestag2.default, null)
+			)
+		),
+		React.createElement(
+			"ul",
+			null,
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://codestag.com/" },
+					"Visit Codestag.com"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://codestag.com/themes/" },
+					"Themes"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://docs.codestag.com/" },
+					"Documentation"
+				)
+			),
+			" "
+		),
+		React.createElement(
+			"ul",
+			null,
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://facebook.com/Codestag/" },
+					"Facebook"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://twitter.com/Codestag/" },
+					"Twitter"
+				)
+			),
+			React.createElement(
+				"li",
+				null,
+				React.createElement(
+					"a",
+					{ href: "https://instagram.com/Codestag/" },
+					"Instagram"
+				)
+			)
+		)
+	);
+};
+
+exports.default = Footer;
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Logo = function Logo() {
+	return React.createElement(
+		"svg",
+		{ width: "132", height: "32", viewBox: "0 0 132 32", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+		React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M22.6503 7.50148C17.6063 7.50148 13.6092 11.5846 13.6092 16.7122C13.6092 19.181 11.5155 21.1751 9.13627 21.1751C6.66186 21.1751 4.56813 19.181 4.56813 16.7122C4.56813 14.1484 6.66186 12.1543 9.13627 12.1543C9.99279 12.1543 10.8493 12.4392 11.6107 12.9139L11.801 13.1039L11.8962 12.819C12.2769 10.8249 13.3237 9.49555 13.7044 9.02077L13.8947 8.83086L13.6092 8.7359C12.2769 7.88131 10.659 7.50148 9.13627 7.50148C4.09229 7.50148 0 11.5846 0 16.7122C0 21.7448 4.09229 25.8279 9.13627 25.8279C14.0851 25.8279 18.1774 21.7448 18.1774 16.7122C18.1774 14.1484 20.1759 12.1543 22.6503 12.1543C25.1247 12.1543 27.1233 14.1484 27.1233 16.7122C27.1233 19.181 25.1247 21.1751 22.6503 21.1751C20.8421 21.1751 20.1759 20.7953 19.6049 20.0356L19.3194 19.7507L19.2242 20.2255C19.1291 20.6053 18.558 22.5044 17.3208 23.549L17.1305 23.7389L17.3208 23.8338C18.8435 25.3531 20.1759 25.8279 22.6503 25.8279C27.6943 25.8279 31.7866 21.7448 31.7866 16.7122C31.7866 11.5846 27.6943 7.50148 22.6503 7.50148ZM45.491 20.0356C44.6345 20.9852 43.5876 21.365 42.2552 21.365C40.9229 21.365 39.876 20.9852 39.0195 20.0356C38.0678 19.181 37.6871 18.0415 37.6871 16.6172C37.6871 15.1929 38.0678 14.0534 39.0195 13.1988C39.876 12.3442 40.9229 11.8694 42.2552 11.8694C43.5876 11.8694 44.6345 12.3442 45.491 13.1988C46.4427 14.0534 46.8234 15.1929 46.8234 16.6172C46.8234 18.0415 46.4427 19.181 45.491 20.0356ZM51.4867 25.2582V0L46.633 1.42433V9.5905L46.3475 9.30564C45.6813 8.83086 45.0151 8.45104 44.349 8.16617C43.3973 7.78635 42.4456 7.59644 41.3035 7.59644C39.0195 7.59644 37.0209 8.45104 35.403 10.1602C33.69 11.7745 32.9286 14.0534 32.9286 16.6172C32.9286 19.181 33.7851 21.365 35.403 23.0742C37.1161 24.7834 39.1146 25.638 41.4939 25.638C42.4456 25.638 43.4924 25.4481 44.349 25.1632C45.0151 24.8783 45.6813 24.4985 46.3475 23.9288L46.633 23.7389V25.2582H51.4867ZM58.1485 14.2433C58.5292 13.5786 59.005 13.0089 59.3857 12.724C61.0988 11.5846 63.7635 11.4896 65.3814 12.6291C66.0476 13.1039 66.5234 13.5786 66.8089 14.2433L66.9993 14.5282H58.0534L58.1485 14.2433ZM70.6157 22.1246L70.8061 21.9347L66.7138 20.1306L66.6186 20.2255C65.4766 21.27 64.1442 21.7448 62.5263 21.7448C61.1939 21.7448 60.1471 21.4599 59.2906 20.7953C58.5292 20.2255 58.0534 19.4659 57.7678 18.5163V18.2315H71.8529V17.2819C71.8529 14.4332 70.9964 12.1543 69.1882 10.4451C67.4751 8.7359 65.0959 7.78635 62.336 7.78635C59.6712 7.78635 57.4823 8.7359 55.6741 10.4451C53.9611 12.1543 53.0094 14.3383 53.0094 16.9021C53.0094 19.4659 53.9611 21.6499 55.6741 23.3591C57.4823 25.0682 59.7664 25.9228 62.5263 25.9228C64.3345 25.9228 65.9524 25.543 67.2848 24.9733C68.522 24.3086 69.664 23.359 70.6157 22.1246ZM84.1298 17.3769C83.4636 16.5223 82.2264 15.6677 80.5133 14.908L78.8955 14.1484C78.0389 13.6736 77.7534 13.4837 77.6583 13.3887C77.5631 13.1988 77.4679 13.1039 77.4679 12.9139C77.4679 12.6291 77.5631 12.4392 77.7534 12.2493C78.0389 12.1543 78.4196 12.0593 78.8003 12.0593C79.6568 12.0593 80.6085 12.5341 81.7505 13.5786L81.8457 13.6736L84.796 10.8249L84.7008 10.635C84.0346 9.78041 83.0829 9.02077 82.1312 8.54599C81.0844 8.07122 79.9423 7.78635 78.8003 7.78635C77.0872 7.78635 75.6597 8.26113 74.6128 9.30564C73.4708 10.2552 72.8998 11.4896 72.8998 12.819C72.8998 15.003 74.3273 16.8071 77.2776 18.1365L78.7051 18.8961C79.5616 19.276 80.5133 19.8457 80.5133 20.6053C80.5133 20.8902 80.4182 21.1751 80.1327 21.365C79.3713 21.8398 78.3244 21.8398 77.0872 21.1751C76.4211 20.8902 75.7549 20.4154 75.279 19.8457L75.1839 19.6558L72.2336 22.7893L72.3288 22.9792C73.8515 24.8783 75.9452 25.9228 78.6099 25.9228C80.5133 25.9228 82.1312 25.3531 83.2733 24.3086C84.5105 23.2641 85.0815 22.0297 85.0815 20.4154C85.0815 19.276 84.796 18.2315 84.1298 17.3769Z",
+			fill: "#333" }),
+		React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M7.42322 7.69139H4.75847V0L0 1.42433V24.8783H4.75847V11.6795H7.42322V7.69139Z",
+			transform: "translate(86.319 .38)", fill: "#333" }),
+		React.createElement("path", { fillRule: "evenodd", clipRule: "evenodd", d: "M12.6575 12.5341C11.801 13.3887 10.7541 13.8635 9.3266 13.8635C8.0894 13.8635 7.04254 13.3887 6.09085 12.5341C5.23432 11.5846 4.85364 10.4451 4.85364 9.02077C4.85364 7.6914 5.23432 6.55193 6.09085 5.60237C6.94737 4.74778 7.99423 4.273 9.3266 4.273C10.659 4.273 11.801 4.74778 12.6575 5.60237C13.5141 6.45697 13.9899 7.59644 13.9899 9.02077C13.9899 10.4451 13.5141 11.5846 12.6575 12.5341ZM18.558 17.6617V0.474777H13.7996V2.08902L13.4189 1.80415C12.8479 1.32938 12.1817 0.8546 11.5155 0.569733C10.5638 0.189911 9.51694 0 8.47008 0C6.09085 0 4.09228 0.854599 2.4744 2.5638C0.856523 4.273 0 6.45697 0 9.11573C0 11.6795 0.856522 13.7685 2.56957 15.4777C4.28262 17.2819 6.28118 18.1365 8.56525 18.1365C9.61211 18.1365 10.5638 17.9466 11.4203 17.5668C12.0865 17.2819 12.7527 16.9021 13.4189 16.4273L13.7996 16.1424V17.6617H18.558ZM32.548 12.2493C31.6914 13.0089 30.6446 13.4837 29.3122 13.4837C27.8846 13.4837 26.8378 13.0089 25.8861 12.1543C25.0296 11.2997 24.6489 10.2552 24.6489 8.83086C24.6489 7.59644 25.0296 6.45697 25.8861 5.60237C26.7426 4.74778 27.8846 4.36795 29.217 4.36795C30.5494 4.36795 31.6914 4.74778 32.548 5.60237C33.4045 6.45697 33.7851 7.50148 33.7851 8.92582C33.7851 10.2552 33.4045 11.3947 32.548 12.2493ZM38.3533 0.474777H33.5948V2.08902L33.2141 1.80415C32.5479 1.23442 31.7866 0.8546 31.1204 0.569733C30.1687 0.189911 29.217 0 28.1702 0C25.9813 0 24.0779 0.759644 22.46 2.27893C20.7469 3.89318 19.8904 6.17211 19.8904 8.83086C19.8904 11.3947 20.6518 13.4837 22.3648 15.1929C23.9827 16.8071 26.0764 17.6617 28.4557 17.6617C29.5025 17.6617 30.5494 17.4718 31.4059 17.1869C31.9769 16.9021 32.6431 16.6172 33.2141 16.1424L33.5948 15.8576L33.4996 16.3323C33.4996 17.092 33.3093 17.7567 33.119 18.1365C32.8335 18.7062 32.3576 19.0861 31.6914 19.4659C31.0252 19.7507 30.0735 19.9407 28.9315 19.9407C28.075 19.9407 27.2185 19.8457 26.6474 19.5608L26.4571 19.4659H20.1759C20.5566 20.4154 21.0324 21.1751 21.6986 21.7448C22.46 22.5994 23.5068 23.1691 24.7441 23.6439C25.8861 24.0237 27.4088 24.2136 29.1218 24.2136C32.3576 24.2136 34.832 23.359 36.4499 21.4599C37.6871 20.1306 38.3533 17.9466 38.3533 15.0979V0.474777Z",
+			transform: "translate(93.647 7.786)", fill: "#333" })
+	);
+};
+
+exports.default = Logo;
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _logoStagBlocks = __webpack_require__(16);
+
+var _logoStagBlocks2 = _interopRequireDefault(_logoStagBlocks);
+
+var _Switcher = __webpack_require__(17);
+
+var _Switcher2 = _interopRequireDefault(_Switcher);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var Header = function Header() {
+	return React.createElement(
+		'header',
+		{ className: 'stag-blocks__header' },
+		React.createElement(
+			'div',
+			{ className: 'stag-blocks-logo' },
+			React.createElement(_logoStagBlocks2.default, null),
+			React.createElement(
+				'code',
+				null,
+				'v',
+				_stagBlocks.version
+			)
+		),
+		React.createElement(_Switcher2.default, null)
+	);
+};
+
+exports.default = Header;
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var BlocksLogo = function BlocksLogo() {
+	return React.createElement(
+		"svg",
+		{ width: "165", height: "53", viewBox: "0 0 165 53", fill: "none", xmlns: "http://www.w3.org/2000/svg" },
+		React.createElement("path", { d: "M0.875069 2.07601C0.643023 2.07612 0.420412 1.98305 0.256246 1.81732C0.0921836 1.6517 0 1.42697 0 1.19261V0.8833C0 0.39543 0.391803 0 0.874968 0C1.35813 0 1.74994 0.395533 1.74994 0.8833V1.19261C1.75004 1.42686 1.65786 1.65159 1.49369 1.81732C1.32973 1.98295 1.10712 2.07601 0.875069 2.07601Z",
+			transform: "translate(23.625 25.616)", fill: "#000" }),
+		React.createElement("path", { d: "M39.3751 10.7502V31.6499L36.8069 33.0544L19.8074 42.3294L19.6875 42.4001L0 31.6499V10.7502L19.6875 0L39.3751 10.7502Z",
+			transform: "translate(5.25 5.3)", fill: "#6D98F7" }),
+		React.createElement("path", { d: "M36.75 10.7501V31.2877L22.4175 39.1229L19.9937 40.4479L19.775 40.5627L19.6613 40.6334L19.495 40.5362L0 29.8832V9.34562L1.74993 8.39162L17.0888 0L36.75 10.7501Z",
+			transform: "translate(5.25 7.067)", fill: "#93B2F4" }),
+		React.createElement("path", { d: "M17.5001 9.35452V27.0742L0 17.7285V0L17.5001 9.35452Z", transform: "translate(7 17.455)",
+			fill: "#DBE0EE" }),
+		React.createElement("path", { d: "M40.2501 10.7502L37.5726 12.1812L20.1251 21.5093L0.0525002 10.7767L0 10.7502L20.1251 0L40.2501 10.7502Z",
+			transform: "translate(4.375 5.3)", fill: "#93B2F4" }),
+		React.createElement("path", { d: "M37.5726 10.7237L20.1006 20.0518L0 9.31923L17.4721 0L37.5726 10.7237Z",
+			transform: "translate(4.375 6.757)", fill: "#DBE0EE" }),
+		React.createElement("path", { d: "M23.2926 32.0563L20.8688 33.3813L20.37 33.4696L20.2476 33.4961L20.1251 33.5668L0 22.8166V1.91691L2.625 0V21.05L20.1251 30.3956L23.2926 32.0563Z",
+			transform: "translate(4.375 14.133)", fill: "#fff" }),
+		React.createElement("path", { d: "M0.875069 22.6614C0.643023 22.6615 0.420412 22.5684 0.256246 22.4027C0.0921836 22.2371 0 22.0123 0 21.778V0.8833C0 0.39543 0.391803 0 0.874968 0C1.35813 0 1.74994 0.395533 1.74994 0.8833V21.778C1.75004 22.0122 1.65786 22.237 1.49369 22.4027C1.32973 22.5684 1.10712 22.6615 0.875069 22.6614Z",
+			transform: "translate(23.625 25.616)", fill: "#3575FF" }),
+		React.createElement("path", { d: "M24.5 53C24.357 53 24.2162 52.9646 24.0898 52.8969L0.464811 40.2507C0.178726 40.0976 -0.000204902 39.7974 1.76097e-07 39.4704V13.5293C-0.000102363 13.2024 0.178726 12.9022 0.464811 12.7491L24.0898 0.102869C24.3464 -0.0342896 24.6536 -0.0342896 24.9102 0.102869L48.5352 12.7491C48.8213 12.9022 49.0002 13.2024 49 13.5293V39.4704C49.0001 39.7973 48.8213 40.0975 48.5352 40.2507L24.9102 52.8969C24.7838 52.9646 24.643 53 24.5 53ZM1.74993 38.939L24.5 51.1168L47.2501 38.939V14.0607L24.5 1.88303L1.74993 14.0607V38.939Z",
+			fill: "#3575FF" }),
+		React.createElement("path", { d: "M21 44.167C20.8573 44.1671 20.7168 44.1319 20.5907 44.0643L0.465733 33.3143C0.179341 33.1612 0.000102539 32.8608 0 32.5336V23.8503C0 23.3625 0.391802 22.967 0.874967 22.967C1.35813 22.967 1.74993 23.3625 1.74993 23.8503V32.0018L20.9999 42.2844L40.2499 32.0018V12.1656L21 1.88293L1.75004 12.1656V16.7836C1.75004 17.2715 1.35823 17.6669 0.87507 17.6669C0.391905 17.6669 0.000102483 17.2714 0.000102483 16.7836V11.6337C0.000205022 11.3065 0.179341 11.0061 0.465836 10.853L20.5909 0.102869C20.8468 -0.0342896 21.1535 -0.0342896 21.4095 0.102869L41.5345 10.853C41.8209 11.0061 42.0002 11.3065 42.0003 11.6337V32.5336C42.0002 32.8608 41.821 33.1612 41.5345 33.3143L21.4094 44.0644C21.2832 44.1319 21.1428 44.1671 21 44.167Z",
+			transform: "translate(3.5 4.416)", fill: "#3575FF" }),
+		React.createElement("path", { d: "M20.9981 12.5184C20.8554 12.5185 20.7149 12.4833 20.5888 12.4157L0.463847 1.66308C0.0381041 1.4342 -0.123806 0.90068 0.101781 0.470261C0.32747 0.0398423 0.855546 -0.124955 1.28242 0.101745L20.9981 10.6358L40.7139 0.101745C41.1407 -0.124955 41.6689 0.0398423 41.8945 0.470261C42.1202 0.90068 41.9582 1.4342 41.5324 1.66308L21.4075 12.4158C21.2814 12.4833 21.1409 12.5185 20.9981 12.5184Z",
+			transform: "translate(3.502 15.17)", fill: "#3575FF" }),
+		React.createElement("path", { d: "M0.874967 1.7666C1.3582 1.7666 1.74993 1.37114 1.74993 0.883302C1.74993 0.395468 1.3582 0 0.874967 0C0.391736 0 0 0.395468 0 0.883302C0 1.37114 0.391736 1.7666 0.874967 1.7666Z",
+			transform: "translate(3.5 23.85)", fill: "#428DFF" }),
+		React.createElement("path", { d: "M0.556641 16.1152L1.85547 14.3184C2.36328 14.8587 2.97852 15.3014 3.70117 15.6465C4.42383 15.9915 5.2181 16.1641 6.08398 16.1641C6.97591 16.1641 7.64323 15.985 8.08594 15.627C8.53516 15.2624 8.75977 14.8327 8.75977 14.3379C8.75977 14.0384 8.66862 13.778 8.48633 13.5566C8.31055 13.3353 8.07292 13.1562 7.77344 13.0195C7.47396 12.8763 7.12891 12.7493 6.73828 12.6387C6.35417 12.528 5.94727 12.4206 5.51758 12.3164C5.08789 12.2057 4.65495 12.0885 4.21875 11.9648C3.78906 11.8346 3.37891 11.6719 2.98828 11.4766C2.60417 11.2747 2.26237 11.0436 1.96289 10.7832C1.66341 10.5163 1.42253 10.1777 1.24023 9.76758C1.06445 9.35742 0.976562 8.88867 0.976562 8.36133C0.976562 7.24805 1.42578 6.32031 2.32422 5.57812C3.22917 4.83594 4.40104 4.46484 5.83984 4.46484C7.89714 4.46484 9.5638 5.08333 10.8398 6.32031L9.50195 8.05859C9.00065 7.55729 8.41146 7.17969 7.73438 6.92578C7.0638 6.66536 6.36719 6.53516 5.64453 6.53516C4.96094 6.53516 4.41081 6.68815 3.99414 6.99414C3.58398 7.29362 3.37891 7.69401 3.37891 8.19531C3.37891 8.45573 3.4668 8.68685 3.64258 8.88867C3.81836 9.08398 4.05599 9.24674 4.35547 9.37695C4.65495 9.50065 5 9.61784 5.39062 9.72852C5.78125 9.83268 6.19141 9.9401 6.62109 10.0508C7.05078 10.1615 7.47721 10.2852 7.90039 10.4219C8.33008 10.5521 8.74023 10.7214 9.13086 10.9297C9.52148 11.138 9.86654 11.3789 10.166 11.6523C10.4655 11.9258 10.7031 12.2741 10.8789 12.6973C11.0547 13.1139 11.1426 13.5892 11.1426 14.123C11.1426 14.6895 11.0384 15.2168 10.8301 15.7051C10.6283 16.1934 10.3223 16.6296 9.91211 17.0137C9.50846 17.3978 8.9681 17.7005 8.29102 17.9219C7.62044 18.1367 6.84896 18.2441 5.97656 18.2441C3.69141 18.2441 1.88477 17.5345 0.556641 16.1152ZM11.7383 10.1777V8.3418H13.3398V5.69531H15.4395V8.3418H17.4023V10.1777H15.4395V15.2363C15.4395 15.5749 15.5208 15.8516 15.6836 16.0664C15.8464 16.2747 16.0742 16.3789 16.3672 16.3789C16.556 16.3789 16.7383 16.3464 16.9141 16.2812C17.0898 16.2096 17.2201 16.1283 17.3047 16.0371L17.8027 17.6191C17.3665 18.0358 16.7057 18.2441 15.8203 18.2441C15.013 18.2441 14.3978 18.0326 13.9746 17.6094C13.5514 17.1797 13.3398 16.5645 13.3398 15.7637V10.1777H11.7383ZM18.7305 15.041C18.7305 14.5072 18.8281 14.0352 19.0234 13.625C19.2253 13.2083 19.4889 12.8796 19.8145 12.6387C20.1465 12.3913 20.5046 12.2057 20.8887 12.082C21.2793 11.9583 21.6797 11.8965 22.0898 11.8965C23.457 11.8965 24.4954 12.3099 25.2051 13.1367V11.7012C25.2051 11.1478 24.9967 10.7116 24.5801 10.3926C24.1699 10.0671 23.6263 9.9043 22.9492 9.9043C21.8685 9.9043 20.9147 10.3079 20.0879 11.1152L19.2285 9.66016C20.3288 8.61849 21.6829 8.09766 23.291 8.09766C23.8509 8.09766 24.362 8.16276 24.8242 8.29297C25.293 8.41667 25.7161 8.61198 26.0938 8.87891C26.4714 9.13932 26.7676 9.50391 26.9824 9.97266C27.1973 10.4349 27.3047 10.9785 27.3047 11.6035V18H25.2051V16.9648C24.8405 17.375 24.388 17.6908 23.8477 17.9121C23.3138 18.1335 22.7279 18.2441 22.0898 18.2441C21.6862 18.2441 21.2891 18.1758 20.8984 18.0391C20.5078 17.9023 20.1465 17.707 19.8145 17.4531C19.4889 17.1927 19.2253 16.8542 19.0234 16.4375C18.8281 16.0208 18.7305 15.5553 18.7305 15.041ZM20.8496 15.0801C20.8496 15.5944 21.0417 16.0111 21.4258 16.3301C21.8164 16.6426 22.3112 16.7988 22.9102 16.7988C23.3854 16.7988 23.8281 16.7142 24.2383 16.5449C24.6484 16.3691 24.9707 16.1217 25.2051 15.8027V14.3379C24.9707 14.0189 24.6484 13.7747 24.2383 13.6055C23.8281 13.4297 23.3854 13.3418 22.9102 13.3418C22.3112 13.3418 21.8164 13.5013 21.4258 13.8203C21.0417 14.1328 20.8496 14.5527 20.8496 15.0801ZM29.4336 13.0586C29.4336 11.5286 29.8307 10.321 30.625 9.43555C31.4193 8.54362 32.4479 8.09766 33.7109 8.09766C34.3229 8.09766 34.8958 8.23438 35.4297 8.50781C35.9635 8.78125 36.4258 9.17188 36.8164 9.67969V8.3418H38.916V17.502C38.916 18.1725 38.8184 18.7682 38.623 19.2891C38.4277 19.8164 38.1706 20.2396 37.8516 20.5586C37.5391 20.8841 37.1615 21.151 36.7188 21.3594C36.2826 21.5677 35.8398 21.7109 35.3906 21.7891C34.9414 21.8737 34.4629 21.916 33.9551 21.916C33.1022 21.916 32.3568 21.8086 31.7188 21.5938C31.0872 21.3789 30.485 21.0078 29.9121 20.4805L30.8887 18.957C31.6048 19.7839 32.627 20.1973 33.9551 20.1973C34.3197 20.1973 34.6615 20.1517 34.9805 20.0605C35.306 19.9694 35.6087 19.8262 35.8887 19.6309C36.1751 19.4421 36.3997 19.1719 36.5625 18.8203C36.7318 18.4688 36.8164 18.0553 36.8164 17.5801V16.418C36.4323 16.9128 35.9701 17.3034 35.4297 17.5898C34.8958 17.8763 34.3229 18.0195 33.7109 18.0195C32.4479 18.0195 31.4193 17.5833 30.625 16.7109C29.8307 15.832 29.4336 14.6146 29.4336 13.0586ZM32.3535 10.8125C31.8587 11.3789 31.6113 12.1276 31.6113 13.0586C31.6113 13.9896 31.8587 14.7415 32.3535 15.3145C32.8483 15.8809 33.5091 16.1641 34.3359 16.1641C34.8177 16.1641 35.293 16.0371 35.7617 15.7832C36.2305 15.5293 36.582 15.2201 36.8164 14.8555V11.2617C36.582 10.8971 36.2305 10.5911 35.7617 10.3438C35.293 10.0898 34.8177 9.96289 34.3359 9.96289C33.5091 9.96289 32.8483 10.2461 32.3535 10.8125ZM46.8262 18V4.66016H53.3887C54.5736 4.66016 55.5013 4.98242 56.1719 5.62695C56.849 6.27148 57.1875 7.08203 57.1875 8.05859C57.1875 8.86589 56.9629 9.54297 56.5137 10.0898C56.071 10.6367 55.5241 10.9785 54.873 11.1152C55.5892 11.2259 56.1979 11.597 56.6992 12.2285C57.2005 12.86 57.4512 13.5827 57.4512 14.3965C57.4512 15.4577 57.1094 16.3236 56.4258 16.9941C55.7422 17.6647 54.7917 18 53.5742 18H46.8262ZM49.1699 15.9395H53.0078C53.6458 15.9395 54.1439 15.7767 54.502 15.4512C54.8665 15.1191 55.0488 14.6634 55.0488 14.084C55.0488 13.5566 54.8698 13.1172 54.5117 12.7656C54.1536 12.4141 53.6523 12.2383 53.0078 12.2383H49.1699V15.9395ZM49.1699 10.1777H52.9102C53.4961 10.1777 53.9551 10.0182 54.2871 9.69922C54.6257 9.38021 54.7949 8.9668 54.7949 8.45898C54.7949 7.94466 54.6257 7.52799 54.2871 7.20898C53.9551 6.88346 53.4961 6.7207 52.9102 6.7207H49.1699V10.1777ZM59.7363 18V4.66016H61.8359V18H59.7363ZM63.9648 13.1562C63.9648 12.4661 64.082 11.8151 64.3164 11.2031C64.5508 10.5846 64.8763 10.0475 65.293 9.5918C65.7161 9.12956 66.2402 8.76497 66.8652 8.49805C67.4902 8.23112 68.1771 8.09766 68.9258 8.09766C69.9284 8.09766 70.8105 8.32878 71.5723 8.79102C72.3405 9.25326 72.9199 9.86523 73.3105 10.627C73.7077 11.3822 73.9062 12.2253 73.9062 13.1562C73.9062 14.0938 73.7077 14.9466 73.3105 15.7148C72.9199 16.4766 72.3405 17.0885 71.5723 17.5508C70.8105 18.013 69.9284 18.2441 68.9258 18.2441C68.1771 18.2441 67.4902 18.1107 66.8652 17.8438C66.2402 17.5703 65.7161 17.2057 65.293 16.75C64.8763 16.2878 64.5508 15.7474 64.3164 15.1289C64.082 14.5104 63.9648 13.8529 63.9648 13.1562ZM66.1426 13.1562C66.1426 14.0547 66.3932 14.8164 66.8945 15.4414C67.3958 16.0664 68.0729 16.3789 68.9258 16.3789C69.7917 16.3789 70.472 16.0697 70.9668 15.4512C71.4681 14.8262 71.7188 14.0612 71.7188 13.1562C71.7188 12.2643 71.4681 11.5091 70.9668 10.8906C70.472 10.2721 69.7917 9.96289 68.9258 9.96289C68.0729 9.96289 67.3958 10.2721 66.8945 10.8906C66.3932 11.5091 66.1426 12.2643 66.1426 13.1562ZM75.4297 13.1562C75.4297 11.6914 75.8952 10.4837 76.8262 9.5332C77.7637 8.57617 78.9648 8.09766 80.4297 8.09766C82.0443 8.09766 83.278 8.67057 84.1309 9.81641L82.7441 11.0957C82.2103 10.3405 81.4714 9.96289 80.5273 9.96289C79.6549 9.96289 78.9486 10.2591 78.4082 10.8516C77.8743 11.444 77.6074 12.2122 77.6074 13.1562C77.6074 14.1068 77.8743 14.8815 78.4082 15.4805C78.9486 16.0794 79.6549 16.3789 80.5273 16.3789C81.4518 16.3789 82.1908 15.998 82.7441 15.2363L84.1309 16.5156C83.2715 17.668 82.0378 18.2441 80.4297 18.2441C78.9648 18.2441 77.7637 17.7656 76.8262 16.8086C75.8952 15.8516 75.4297 14.6341 75.4297 13.1562ZM85.9668 18V4.66016H88.0664V13L92.334 8.3418H94.9316L90.9082 12.7168L95.0098 18H92.373L89.4141 14.0156L88.0664 15.4023V18H85.9668ZM95.6543 16.7402L96.6211 15.2168C96.9857 15.5879 97.4707 15.9102 98.0762 16.1836C98.6882 16.4505 99.2936 16.584 99.8926 16.584C100.505 16.584 100.973 16.4635 101.299 16.2227C101.631 15.9818 101.797 15.666 101.797 15.2754C101.797 15.0215 101.689 14.8099 101.475 14.6406C101.26 14.4714 100.98 14.3411 100.635 14.25C100.296 14.1523 99.9186 14.0612 99.502 13.9766C99.0853 13.8919 98.6686 13.7845 98.252 13.6543C97.8353 13.5241 97.4544 13.3613 97.1094 13.166C96.7708 12.9707 96.4941 12.694 96.2793 12.3359C96.0645 11.9714 95.957 11.5384 95.957 11.0371C95.957 10.2103 96.2956 9.51367 96.9727 8.94727C97.6497 8.38086 98.5775 8.09766 99.7559 8.09766C101.234 8.09766 102.487 8.55339 103.516 9.46484L102.637 10.9395C102.337 10.5944 101.93 10.3145 101.416 10.0996C100.908 9.88477 100.361 9.77734 99.7754 9.77734C99.2285 9.77734 98.7923 9.88802 98.4668 10.1094C98.1413 10.3307 97.9785 10.6139 97.9785 10.959C97.9785 11.1608 98.0599 11.3333 98.2227 11.4766C98.3919 11.6198 98.6133 11.7305 98.8867 11.8086C99.1602 11.8867 99.4727 11.9714 99.8242 12.0625C100.176 12.1471 100.534 12.2285 100.898 12.3066C101.263 12.3783 101.621 12.4922 101.973 12.6484C102.324 12.8047 102.637 12.987 102.91 13.1953C103.184 13.3971 103.402 13.6738 103.564 14.0254C103.734 14.377 103.818 14.7806 103.818 15.2363C103.818 16.1152 103.464 16.8379 102.754 17.4043C102.044 17.9642 101.058 18.2441 99.7949 18.2441C98.9681 18.2441 98.1934 18.1139 97.4707 17.8535C96.7546 17.5931 96.1491 17.222 95.6543 16.7402Z",
+			transform: "translate(60 15)", fill: "#000" })
+	);
+};
+
+exports.default = BlocksLogo;
+
+/***/ }),
+/* 17 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _classnames = __webpack_require__(1);
+
+var _classnames2 = _interopRequireDefault(_classnames);
+
+var _BlocksContext = __webpack_require__(0);
+
+var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var __ = wp.i18n.__;
+
+
+var VIEWS = [{ slug: 'dashboard', label: __('Dashboard') }, { slug: 'settings', label: __('Settings') }, { slug: 'themes', label: __('Our themes') }];
+
+var Switcher = function Switcher() {
+	return React.createElement(
+		'ul',
+		null,
+		React.createElement(
+			_BlocksContext2.default.Consumer,
+			null,
+			function (context) {
+				return VIEWS.map(function (view, index) {
+					return React.createElement(
+						'li',
+						{ key: index },
+						React.createElement(
+							'a',
+							{
+								href: '#' + view.slug,
+								className: (0, _classnames2.default)({
+									'is-active': context.state.view === view.slug
+								}),
+								onClick: function onClick(e) {
+									e.preventDefault();
+									var link = new URL(e.target.href);
+									link = link.hash.slice(1);
+									context.setView(link);
+								}
+							},
+							view.label
+						)
+					);
+				});
+			}
+		)
+	);
+};
+
+exports.default = Switcher;
+
+/***/ }),
+/* 18 */
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+/* 19 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _settings = __webpack_require__(20);
+
+var _settings2 = _interopRequireDefault(_settings);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _wp$element = wp.element,
+    createElement = _wp$element.createElement,
+    Component = _wp$element.Component;
+var __ = wp.i18n.__;
+
+var RenderBlockSettings = function (_Component) {
+	_inherits(RenderBlockSettings, _Component);
+
+	function RenderBlockSettings() {
+		_classCallCheck(this, RenderBlockSettings);
+
+		var _this = _possibleConstructorReturn(this, (RenderBlockSettings.__proto__ || Object.getPrototypeOf(RenderBlockSettings)).apply(this, arguments));
+
+		_this.state = {
+			values: []
+		};
+
+		_this.settings = _settings2.default[_this.props.name];
+
+		_this.handleChange = _this.handleChange.bind(_this);
+		_this.handleSubmit = _this.handleSubmit.bind(_this);
+		return _this;
+	}
+
+	_createClass(RenderBlockSettings, [{
+		key: 'handleChange',
+		value: function handleChange(event) {
+			var _event$target = event.target,
+			    id = _event$target.id,
+			    value = _event$target.value;
+
+
+			var newValue = this.state.values;
+			newValue[id] = value;
+
+			this.setState({ values: newValue });
+		}
+	}, {
+		key: 'handleSubmit',
+		value: function handleSubmit(event) {
+			event.preventDefault();
+
+			// TODO: Do something with the values here.
+			var values = this.state.values;
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
+			return React.createElement(
+				'div',
+				{
+					className: 'block-settings',
+					hidden: !this.props.initialOpen
+				},
+				React.createElement(
+					'h3',
+					null,
+					__('Settings')
+				),
+				React.createElement(
+					'form',
+					{
+						onSubmit: function onSubmit(event) {
+							return _this2.handleSubmit(event);
+						}
+					},
+					React.createElement(
+						'table',
+						{ className: 'form-table' },
+						React.createElement(
+							'tbody',
+							null,
+							Object.keys(this.settings).map(function (section) {
+								var setting = _this2.settings[section];
+								return React.createElement(
+									'tr',
+									{ key: section },
+									React.createElement(
+										'th',
+										{ scope: 'row' },
+										createElement('label', {
+											htmlFor: section
+										}, setting.label)
+									),
+									React.createElement(
+										'td',
+										null,
+										createElement('input', {
+											type: setting.type,
+											className: 'regular-text',
+											id: section,
+											onChange: _this2.handleChange
+										}),
+										createElement('p', {
+											className: 'description'
+										}, setting.description)
+									)
+								);
+							})
+						)
+					),
+					React.createElement(
+						'button',
+						{ className: 'button button-primary', type: 'submit' },
+						__('Save settings')
+					)
+				)
+			);
+		}
+	}]);
+
+	return RenderBlockSettings;
+}(Component);
+
+exports.default = RenderBlockSettings;
+
+/***/ }),
+/* 20 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Settings = {
+	// Important: Array key should match registered block's namespace.
+	'sgb/website-card': {
+		'api-key': {
+			label: 'LinkPreview API key',
+			type: 'text',
+			description: 'You need to provide an API key'
+		},
+		'opengrah-api-key': {
+			label: 'OpenGraph API key',
+			type: 'text',
+			description: 'You need to provide an OpenGraph API key'
+		}
+	}
+};
+
+exports.default = Settings;
 
 /***/ })
 /******/ ]);

@@ -43,6 +43,7 @@ registerBlockType( 'sgb/website-card', {
 	},
 
 	customCategory: 'stag-blocks',
+	hasSettings: true,
 
 	edit: function( props ) {
 		const { attributes, setAttributes, className } = props;

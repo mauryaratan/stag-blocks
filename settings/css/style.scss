@@ -175,6 +175,18 @@ body.settings_page_stag-blocks.folded {
 		margin-bottom: 20px;
 		display: flex;
 		align-items: center;
+		flex-wrap: wrap;
+
+		.block-settings {
+			width: 100%;
+			margin-top: 20px;
+			padding-top: 20px;
+			border-top: 1px solid rgba(0,0,0,.1);
+
+			h3 {
+				margin-top: 0;
+			}
+		}
 
 		p {
 			margin: 0;

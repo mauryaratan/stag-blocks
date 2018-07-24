@@ -1,4 +1,5 @@
 import BlocksContext from './BlocksContext';
+import RenderBlockSettings from './BlockSettings';
 import RenderIcon from './RenderIcon';
 
 const { __ } = wp.i18n;
@@ -30,6 +31,13 @@ const BlockList = () => {
 											context.toggleBlock( block.name, status );
 										} }
 									/>
+
+									{ block.hasSettings && (
+										<RenderBlockSettings
+											initialOpen={ ( block.name in context.state.activeBlocks ) ? context.state.activeBlocks[ block.name ] : true }
+											{ ...block }
+										/>
+									) }
 								</div>
 							) ) }
 						</Fragment>
