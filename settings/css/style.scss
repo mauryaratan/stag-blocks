@@ -7,6 +7,12 @@ body.settings_page_stag-blocks {
 	}
 }
 
+body.settings_page_stag-blocks.folded {
+	#wpcontent {
+		margin-left: 16px;
+	}
+}
+
 @media only screen and (max-width: 782px) {
 	body.settings_page_stag-blocks {
 		#wpcontent {
