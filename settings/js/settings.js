@@ -6,11 +6,6 @@ const Settings = {
 			type: 'text',
 			description: 'You need to provide an API key',
 		},
-		'opengrah-api-key': {
-			label: 'OpenGraph API key',
-			type: 'text',
-			description: 'You need to provide an OpenGraph API key',
-		},
 	},
 };
 
