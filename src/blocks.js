@@ -16,4 +16,5 @@ import './blocks/hero';
 import './blocks/posts-grid';
 import './blocks/stats';
 import './blocks/testimonial';
+import './blocks/website-card';
 import './blocksList';

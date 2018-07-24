@@ -1,0 +1,39 @@
+.wp-block-sgb-website-card {
+	margin-top: 2em;
+	margin-bottom: 2em;
+
+	position: relative;
+	box-shadow: 0 1px 4px rgba(0,0,0,.04), inset 0 0 0 1px rgba(0,0,0,.09);
+	overflow: hidden;
+
+	figure {
+		margin: 1px;
+	}
+
+	&__url {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		left: 0;
+		z-index: 10;
+	}
+
+	&__content {
+		padding: 20px;
+	}
+
+	&__title {
+		font-weight: bold;
+		font-size: 1.2em;
+	}
+
+	&__description {
+		font-size: 1em;
+	}
+
+	&__link {
+		opacity: .54;
+	}
+}
+

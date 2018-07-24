@@ -229,3 +229,7 @@
     padding: 5px;
     -webkit-box-sizing: content-box;
             box-sizing: content-box; }
+.wp-block-sgb-website-card__placeholder .components-base-control {
+  width: 100%;
+  -ms-flex-positive: 1;
+      flex-grow: 1; }

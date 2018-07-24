@@ -284,3 +284,28 @@
     -o-object-fit: cover;
        object-fit: cover;
     vertical-align: bottom; }
+.wp-block-sgb-website-card {
+  margin-top: 2em;
+  margin-bottom: 2em;
+  position: relative;
+  -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.09);
+          box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.09);
+  overflow: hidden; }
+  .wp-block-sgb-website-card figure {
+    margin: 1px; }
+  .wp-block-sgb-website-card__url {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 10; }
+  .wp-block-sgb-website-card__content {
+    padding: 20px; }
+  .wp-block-sgb-website-card__title {
+    font-weight: bold;
+    font-size: 1.2em; }
+  .wp-block-sgb-website-card__description {
+    font-size: 1em; }
+  .wp-block-sgb-website-card__link {
+    opacity: .54; }
