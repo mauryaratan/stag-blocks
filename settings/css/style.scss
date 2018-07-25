@@ -133,10 +133,51 @@ body.settings_page_stag-blocks.folded {
 
 	.block-categories {
 		display: flex;
+		align-items: center;
 		background: #fff;
 		border: 1px solid rgba(#000, .1);
 		font-size: 14px;
 		font-weight: 500;
+		position: relative;
+
+		.block-search {
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			opacity: 1;
+			transition: opacity 300ms;
+
+			&:not(.is-visible) {
+				opacity: 0;
+				z-index: -1;
+			}
+
+			input {
+				position: absolute;
+				width: 100%;
+				height: 100%;
+				margin: 0;
+				border: none;
+				font-size: 1.5em;
+			}
+		}
+
+		.block-search-button {
+			position: absolute;
+			top: 50%;
+			transform: translateY(-50%);
+			right: 0px;
+			z-index: 1000;
+			&:hover {
+				border: none;
+				box-shadow: none !important;
+			}
+			&:focus {
+				border: none;
+				box-shadow: none !important;
+				outline: 0 !important;
+			}
+		}
 
 		li {
 			margin: 0;

@@ -12,6 +12,7 @@ class App extends React.Component {
 		blocks: [],
 		activeBlocks: {},
 		view: 'dashboard',
+		searchVisible: false,
 	}
 
 	syncSettings() {
@@ -78,6 +79,11 @@ class App extends React.Component {
 						setCategory: ( category ) => {
 							this.setState( {
 								category,
+							} );
+						},
+						searchVisibility: () => {
+							this.setState( {
+								searchVisible: ! this.state.searchVisible,
 							} );
 						},
 						setView: ( view ) => {

@@ -2,6 +2,13 @@ import classnames from 'classnames';
 import BlocksContext from './BlocksContext';
 
 const { __ } = wp.i18n;
+
+const {
+	Dashicon,
+	IconButton,
+	TextControl,
+} = wp.components;
+
 let categories = wp.blocks.getCategories();
 categories = [
 	{
@@ -36,6 +43,22 @@ const Categories = () => {
 							</li>
 						) ) )
 					}
+					<IconButton
+						label={ __( 'Search' ) }
+						onClick={ () => context.searchVisibility() }
+						icon={ context.state.searchVisible ? 'no' : 'search' }
+						className="block-search-button"
+						style={ {
+							marginLeft: 'auto',
+						} }
+					/>
+					<TextControl
+						className={ classnames( 'block-search', {
+							'is-visible': !! context.state.searchVisible,
+						} ) }
+						onChange={ ( value ) => console.log( value ) }
+						placeholder={ __( 'Search a block...' ) }
+					/>
 				</ul>
 			) }
 		</BlocksContext.Consumer>

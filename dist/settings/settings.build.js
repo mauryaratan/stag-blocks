@@ -142,7 +142,7 @@ var __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(3);
-module.exports = __webpack_require__(18);
+module.exports = __webpack_require__(23);
 
 
 /***/ }),
@@ -181,11 +181,11 @@ var _Content = __webpack_require__(5);
 
 var _Content2 = _interopRequireDefault(_Content);
 
-var _Footer = __webpack_require__(13);
+var _Footer = __webpack_require__(18);
 
 var _Footer2 = _interopRequireDefault(_Footer);
 
-var _Header = __webpack_require__(15);
+var _Header = __webpack_require__(20);
 
 var _Header2 = _interopRequireDefault(_Header);
 
@@ -216,7 +216,8 @@ var App = function (_React$Component) {
 			isLoading: true,
 			blocks: [],
 			activeBlocks: {},
-			view: 'dashboard'
+			view: 'dashboard',
+			searchVisible: false
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -300,6 +301,11 @@ var App = function (_React$Component) {
 									category: category
 								});
 							},
+							searchVisibility: function searchVisibility() {
+								_this4.setState({
+									searchVisible: !_this4.state.searchVisible
+								});
+							},
 							setView: function setView(view) {
 								_this4.setState({
 									view: view
@@ -350,11 +356,11 @@ var _BlocksContext = __webpack_require__(0);
 
 var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
 
-var _Categories = __webpack_require__(11);
+var _Categories = __webpack_require__(16);
 
 var _Categories2 = _interopRequireDefault(_Categories);
 
-var _Themes = __webpack_require__(12);
+var _Themes = __webpack_require__(17);
 
 var _Themes2 = _interopRequireDefault(_Themes);
 
@@ -425,11 +431,11 @@ var _BlocksContext = __webpack_require__(0);
 
 var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
 
-var _BlockSettings = __webpack_require__(19);
+var _BlockSettings = __webpack_require__(7);
 
 var _BlockSettings2 = _interopRequireDefault(_BlockSettings);
 
-var _RenderIcon = __webpack_require__(7);
+var _RenderIcon = __webpack_require__(12);
 
 var _RenderIcon2 = _interopRequireDefault(_RenderIcon);
 
@@ -500,7 +506,399 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _lodash = __webpack_require__(8);
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _querystring = __webpack_require__(8);
+
+var _settings = __webpack_require__(11);
+
+var _settings2 = _interopRequireDefault(_settings);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var _wp$element = wp.element,
+    createElement = _wp$element.createElement,
+    Component = _wp$element.Component;
+var __ = wp.i18n.__;
+var Button = wp.components.Button;
+
+var RenderBlockSettings = function (_Component) {
+	_inherits(RenderBlockSettings, _Component);
+
+	function RenderBlockSettings() {
+		_classCallCheck(this, RenderBlockSettings);
+
+		var _this = _possibleConstructorReturn(this, (RenderBlockSettings.__proto__ || Object.getPrototypeOf(RenderBlockSettings)).apply(this, arguments));
+
+		_this.state = {
+			values: [],
+			saving: false
+		};
+
+		_this.settings = _settings2.default[_this.props.name];
+
+		_this.defaults = (0, _querystring.parse)(_stagBlocks.blockSettings);
+
+		_this.handleChange = _this.handleChange.bind(_this);
+		_this.handleSubmit = _this.handleSubmit.bind(_this);
+		return _this;
+	}
+
+	_createClass(RenderBlockSettings, [{
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.setState({
+				values: this.defaults
+			});
+		}
+	}, {
+		key: 'handleChange',
+		value: function handleChange(event) {
+			var _event$target = event.target,
+			    id = _event$target.id,
+			    value = _event$target.value;
+
+
+			var newValue = this.state.values;
+			newValue[id] = value;
+
+			this.setState({ values: newValue });
+		}
+	}, {
+		key: 'handleSubmit',
+		value: function handleSubmit(event) {
+			var _this2 = this;
+
+			event.preventDefault();
+
+			this.setState({ saving: true });
+
+			var values = this.state.values;
+
+			wp.apiFetch({
+				path: '/stag_blocks/v1/block_settings',
+				method: 'POST',
+				body: (0, _querystring.stringify)(values)
+			}).then(function () {
+				_this2.setState({ saving: false });
+			});
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this3 = this;
+
+			return React.createElement(
+				'div',
+				{
+					className: 'block-settings',
+					hidden: !this.props.initialOpen
+				},
+				React.createElement(
+					'h3',
+					null,
+					__('Settings')
+				),
+				React.createElement(
+					'form',
+					{
+						onSubmit: function onSubmit(event) {
+							return _this3.handleSubmit(event);
+						}
+					},
+					React.createElement(
+						'table',
+						{ className: 'form-table' },
+						React.createElement(
+							'tbody',
+							null,
+							Object.keys(this.settings).map(function (section) {
+								var setting = _this3.settings[section];
+								return React.createElement(
+									'tr',
+									{ key: section },
+									React.createElement(
+										'th',
+										{ scope: 'row' },
+										createElement('label', {
+											htmlFor: section
+										}, setting.label)
+									),
+									React.createElement(
+										'td',
+										null,
+										createElement('input', {
+											type: setting.type,
+											className: 'regular-text',
+											id: section,
+											value: _this3.state.values[section] || _this3.defaults[section],
+											onChange: _this3.handleChange
+										}),
+										createElement('p', {
+											className: 'description'
+										}, setting.description)
+									)
+								);
+							})
+						)
+					),
+					React.createElement(
+						Button,
+						{
+							type: 'submit',
+							isPrimary: true,
+							isLarge: true,
+							isBusy: this.state.saving,
+							disabled: this.state.saving,
+							className: 'shared-block-edit-panel__button'
+						},
+						this.state.saving ? __('Saving...') : __('Save')
+					)
+				)
+			);
+		}
+	}]);
+
+	return RenderBlockSettings;
+}(Component);
+
+exports.default = RenderBlockSettings;
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.decode = exports.parse = __webpack_require__(9);
+exports.encode = exports.stringify = __webpack_require__(10);
+
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+// If obj.hasOwnProperty has been overridden, then calling
+// obj.hasOwnProperty(prop) will break.
+// See: https://github.com/joyent/node/issues/1707
+function hasOwnProperty(obj, prop) {
+  return Object.prototype.hasOwnProperty.call(obj, prop);
+}
+
+module.exports = function(qs, sep, eq, options) {
+  sep = sep || '&';
+  eq = eq || '=';
+  var obj = {};
+
+  if (typeof qs !== 'string' || qs.length === 0) {
+    return obj;
+  }
+
+  var regexp = /\+/g;
+  qs = qs.split(sep);
+
+  var maxKeys = 1000;
+  if (options && typeof options.maxKeys === 'number') {
+    maxKeys = options.maxKeys;
+  }
+
+  var len = qs.length;
+  // maxKeys <= 0 means that we should not limit keys count
+  if (maxKeys > 0 && len > maxKeys) {
+    len = maxKeys;
+  }
+
+  for (var i = 0; i < len; ++i) {
+    var x = qs[i].replace(regexp, '%20'),
+        idx = x.indexOf(eq),
+        kstr, vstr, k, v;
+
+    if (idx >= 0) {
+      kstr = x.substr(0, idx);
+      vstr = x.substr(idx + 1);
+    } else {
+      kstr = x;
+      vstr = '';
+    }
+
+    k = decodeURIComponent(kstr);
+    v = decodeURIComponent(vstr);
+
+    if (!hasOwnProperty(obj, k)) {
+      obj[k] = v;
+    } else if (isArray(obj[k])) {
+      obj[k].push(v);
+    } else {
+      obj[k] = [obj[k], v];
+    }
+  }
+
+  return obj;
+};
+
+var isArray = Array.isArray || function (xs) {
+  return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+// Copyright Joyent, Inc. and other Node contributors.
+//
+// Permission is hereby granted, free of charge, to any person obtaining a
+// copy of this software and associated documentation files (the
+// "Software"), to deal in the Software without restriction, including
+// without limitation the rights to use, copy, modify, merge, publish,
+// distribute, sublicense, and/or sell copies of the Software, and to permit
+// persons to whom the Software is furnished to do so, subject to the
+// following conditions:
+//
+// The above copyright notice and this permission notice shall be included
+// in all copies or substantial portions of the Software.
+//
+// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
+// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
+// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
+// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
+// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
+// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+// USE OR OTHER DEALINGS IN THE SOFTWARE.
+
+
+
+var stringifyPrimitive = function(v) {
+  switch (typeof v) {
+    case 'string':
+      return v;
+
+    case 'boolean':
+      return v ? 'true' : 'false';
+
+    case 'number':
+      return isFinite(v) ? v : '';
+
+    default:
+      return '';
+  }
+};
+
+module.exports = function(obj, sep, eq, name) {
+  sep = sep || '&';
+  eq = eq || '=';
+  if (obj === null) {
+    obj = undefined;
+  }
+
+  if (typeof obj === 'object') {
+    return map(objectKeys(obj), function(k) {
+      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
+      if (isArray(obj[k])) {
+        return map(obj[k], function(v) {
+          return ks + encodeURIComponent(stringifyPrimitive(v));
+        }).join(sep);
+      } else {
+        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
+      }
+    }).join(sep);
+
+  }
+
+  if (!name) return '';
+  return encodeURIComponent(stringifyPrimitive(name)) + eq +
+         encodeURIComponent(stringifyPrimitive(obj));
+};
+
+var isArray = Array.isArray || function (xs) {
+  return Object.prototype.toString.call(xs) === '[object Array]';
+};
+
+function map (xs, f) {
+  if (xs.map) return xs.map(f);
+  var res = [];
+  for (var i = 0; i < xs.length; i++) {
+    res.push(f(xs[i], i));
+  }
+  return res;
+}
+
+var objectKeys = Object.keys || function (obj) {
+  var res = [];
+  for (var key in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
+  }
+  return res;
+};
+
+
+/***/ }),
+/* 11 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Settings = {
+	// Important: Array key should match registered block's namespace.
+	'sgb/website-card': {
+		'api-key': {
+			label: 'LinkPreview API key',
+			type: 'text',
+			description: 'You need to provide an API key'
+		}
+	}
+};
+
+exports.default = Settings;
+
+/***/ }),
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _lodash = __webpack_require__(13);
 
 var _lodash2 = _interopRequireDefault(_lodash);
 
@@ -535,7 +933,7 @@ var RenderIcon = function RenderIcon(props) {
 exports.default = RenderIcon;
 
 /***/ }),
-/* 8 */
+/* 13 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, module) {var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -17645,10 +18043,10 @@ exports.default = RenderIcon;
   }
 }.call(this));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(9), __webpack_require__(10)(module)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(14), __webpack_require__(15)(module)))
 
 /***/ }),
-/* 9 */
+/* 14 */
 /***/ (function(module, exports) {
 
 var g;
@@ -17675,7 +18073,7 @@ module.exports = g;
 
 
 /***/ }),
-/* 10 */
+/* 15 */
 /***/ (function(module, exports) {
 
 module.exports = function(module) {
@@ -17703,7 +18101,7 @@ module.exports = function(module) {
 
 
 /***/ }),
-/* 11 */
+/* 16 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17726,6 +18124,11 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var __ = wp.i18n.__;
+var _wp$components = wp.components,
+    Dashicon = _wp$components.Dashicon,
+    IconButton = _wp$components.IconButton,
+    TextControl = _wp$components.TextControl;
+
 
 var categories = wp.blocks.getCategories();
 categories = [{
@@ -17762,6 +18165,26 @@ var Categories = function Categories() {
 							category.title
 						)
 					);
+				}),
+				React.createElement(IconButton, {
+					label: __('Search'),
+					onClick: function onClick() {
+						return context.searchVisibility();
+					},
+					icon: context.state.searchVisible ? 'no' : 'search',
+					className: 'block-search-button',
+					style: {
+						marginLeft: 'auto'
+					}
+				}),
+				React.createElement(TextControl, {
+					className: (0, _classnames2.default)('block-search', {
+						'is-visible': !!context.state.searchVisible
+					}),
+					onChange: function onChange(value) {
+						return console.log(value);
+					},
+					placeholder: __('Search a block...')
 				})
 			);
 		}
@@ -17771,7 +18194,7 @@ var Categories = function Categories() {
 exports.default = Categories;
 
 /***/ }),
-/* 12 */
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17873,7 +18296,7 @@ var Themes = function (_Component) {
 exports.default = Themes;
 
 /***/ }),
-/* 13 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -17883,7 +18306,7 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _logoCodestag = __webpack_require__(14);
+var _logoCodestag = __webpack_require__(19);
 
 var _logoCodestag2 = _interopRequireDefault(_logoCodestag);
 
@@ -17979,7 +18402,7 @@ var Footer = function Footer() {
 exports.default = Footer;
 
 /***/ }),
-/* 14 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18004,7 +18427,7 @@ var Logo = function Logo() {
 exports.default = Logo;
 
 /***/ }),
-/* 15 */
+/* 20 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18014,11 +18437,11 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-var _logoStagBlocks = __webpack_require__(16);
+var _logoStagBlocks = __webpack_require__(21);
 
 var _logoStagBlocks2 = _interopRequireDefault(_logoStagBlocks);
 
-var _Switcher = __webpack_require__(17);
+var _Switcher = __webpack_require__(22);
 
 var _Switcher2 = _interopRequireDefault(_Switcher);
 
@@ -18046,7 +18469,7 @@ var Header = function Header() {
 exports.default = Header;
 
 /***/ }),
-/* 16 */
+/* 21 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18091,7 +18514,7 @@ var BlocksLogo = function BlocksLogo() {
 exports.default = BlocksLogo;
 
 /***/ }),
-/* 17 */
+/* 22 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
@@ -18154,403 +18577,10 @@ var Switcher = function Switcher() {
 exports.default = Switcher;
 
 /***/ }),
-/* 18 */
+/* 23 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
-
-/***/ }),
-/* 19 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _querystring = __webpack_require__(22);
-
-var _settings = __webpack_require__(20);
-
-var _settings2 = _interopRequireDefault(_settings);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var _wp$element = wp.element,
-    createElement = _wp$element.createElement,
-    Component = _wp$element.Component;
-var __ = wp.i18n.__;
-var Button = wp.components.Button;
-
-var RenderBlockSettings = function (_Component) {
-	_inherits(RenderBlockSettings, _Component);
-
-	function RenderBlockSettings() {
-		_classCallCheck(this, RenderBlockSettings);
-
-		var _this = _possibleConstructorReturn(this, (RenderBlockSettings.__proto__ || Object.getPrototypeOf(RenderBlockSettings)).apply(this, arguments));
-
-		_this.state = {
-			values: [],
-			saving: false
-		};
-
-		_this.settings = _settings2.default[_this.props.name];
-
-		_this.defaults = (0, _querystring.parse)(_stagBlocks.blockSettings);
-
-		_this.handleChange = _this.handleChange.bind(_this);
-		_this.handleSubmit = _this.handleSubmit.bind(_this);
-		return _this;
-	}
-
-	_createClass(RenderBlockSettings, [{
-		key: 'componentDidMount',
-		value: function componentDidMount() {
-			this.setState({
-				values: this.defaults
-			});
-		}
-	}, {
-		key: 'handleChange',
-		value: function handleChange(event) {
-			var _event$target = event.target,
-			    id = _event$target.id,
-			    value = _event$target.value;
-
-
-			var newValue = this.state.values;
-			newValue[id] = value;
-
-			this.setState({ values: newValue });
-		}
-	}, {
-		key: 'handleSubmit',
-		value: function handleSubmit(event) {
-			var _this2 = this;
-
-			event.preventDefault();
-
-			this.setState({ saving: true });
-
-			var values = this.state.values;
-
-			wp.apiFetch({
-				path: '/stag_blocks/v1/block_settings',
-				method: 'POST',
-				body: (0, _querystring.stringify)(values)
-			}).then(function () {
-				_this2.setState({ saving: false });
-			});
-		}
-	}, {
-		key: 'render',
-		value: function render() {
-			var _this3 = this;
-
-			return React.createElement(
-				'div',
-				{
-					className: 'block-settings',
-					hidden: !this.props.initialOpen
-				},
-				React.createElement(
-					'h3',
-					null,
-					__('Settings')
-				),
-				React.createElement(
-					'form',
-					{
-						onSubmit: function onSubmit(event) {
-							return _this3.handleSubmit(event);
-						}
-					},
-					React.createElement(
-						'table',
-						{ className: 'form-table' },
-						React.createElement(
-							'tbody',
-							null,
-							Object.keys(this.settings).map(function (section) {
-								var setting = _this3.settings[section];
-								return React.createElement(
-									'tr',
-									{ key: section },
-									React.createElement(
-										'th',
-										{ scope: 'row' },
-										createElement('label', {
-											htmlFor: section
-										}, setting.label)
-									),
-									React.createElement(
-										'td',
-										null,
-										createElement('input', {
-											type: setting.type,
-											className: 'regular-text',
-											id: section,
-											value: _this3.state.values[section] || _this3.defaults[section],
-											onChange: _this3.handleChange
-										}),
-										createElement('p', {
-											className: 'description'
-										}, setting.description)
-									)
-								);
-							})
-						)
-					),
-					React.createElement(
-						Button,
-						{
-							type: 'submit',
-							isPrimary: true,
-							isLarge: true,
-							isBusy: this.state.saving,
-							disabled: this.state.saving,
-							className: 'shared-block-edit-panel__button'
-						},
-						this.state.saving ? __('Saving...') : __('Save')
-					)
-				)
-			);
-		}
-	}]);
-
-	return RenderBlockSettings;
-}(Component);
-
-exports.default = RenderBlockSettings;
-
-/***/ }),
-/* 20 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var Settings = {
-	// Important: Array key should match registered block's namespace.
-	'sgb/website-card': {
-		'api-key': {
-			label: 'LinkPreview API key',
-			type: 'text',
-			description: 'You need to provide an API key'
-		}
-	}
-};
-
-exports.default = Settings;
-
-/***/ }),
-/* 21 */,
-/* 22 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-exports.decode = exports.parse = __webpack_require__(23);
-exports.encode = exports.stringify = __webpack_require__(24);
-
-
-/***/ }),
-/* 23 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-// If obj.hasOwnProperty has been overridden, then calling
-// obj.hasOwnProperty(prop) will break.
-// See: https://github.com/joyent/node/issues/1707
-function hasOwnProperty(obj, prop) {
-  return Object.prototype.hasOwnProperty.call(obj, prop);
-}
-
-module.exports = function(qs, sep, eq, options) {
-  sep = sep || '&';
-  eq = eq || '=';
-  var obj = {};
-
-  if (typeof qs !== 'string' || qs.length === 0) {
-    return obj;
-  }
-
-  var regexp = /\+/g;
-  qs = qs.split(sep);
-
-  var maxKeys = 1000;
-  if (options && typeof options.maxKeys === 'number') {
-    maxKeys = options.maxKeys;
-  }
-
-  var len = qs.length;
-  // maxKeys <= 0 means that we should not limit keys count
-  if (maxKeys > 0 && len > maxKeys) {
-    len = maxKeys;
-  }
-
-  for (var i = 0; i < len; ++i) {
-    var x = qs[i].replace(regexp, '%20'),
-        idx = x.indexOf(eq),
-        kstr, vstr, k, v;
-
-    if (idx >= 0) {
-      kstr = x.substr(0, idx);
-      vstr = x.substr(idx + 1);
-    } else {
-      kstr = x;
-      vstr = '';
-    }
-
-    k = decodeURIComponent(kstr);
-    v = decodeURIComponent(vstr);
-
-    if (!hasOwnProperty(obj, k)) {
-      obj[k] = v;
-    } else if (isArray(obj[k])) {
-      obj[k].push(v);
-    } else {
-      obj[k] = [obj[k], v];
-    }
-  }
-
-  return obj;
-};
-
-var isArray = Array.isArray || function (xs) {
-  return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
-
-/***/ }),
-/* 24 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-// Copyright Joyent, Inc. and other Node contributors.
-//
-// Permission is hereby granted, free of charge, to any person obtaining a
-// copy of this software and associated documentation files (the
-// "Software"), to deal in the Software without restriction, including
-// without limitation the rights to use, copy, modify, merge, publish,
-// distribute, sublicense, and/or sell copies of the Software, and to permit
-// persons to whom the Software is furnished to do so, subject to the
-// following conditions:
-//
-// The above copyright notice and this permission notice shall be included
-// in all copies or substantial portions of the Software.
-//
-// THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS
-// OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF
-// MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN
-// NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM,
-// DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR
-// OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
-// USE OR OTHER DEALINGS IN THE SOFTWARE.
-
-
-
-var stringifyPrimitive = function(v) {
-  switch (typeof v) {
-    case 'string':
-      return v;
-
-    case 'boolean':
-      return v ? 'true' : 'false';
-
-    case 'number':
-      return isFinite(v) ? v : '';
-
-    default:
-      return '';
-  }
-};
-
-module.exports = function(obj, sep, eq, name) {
-  sep = sep || '&';
-  eq = eq || '=';
-  if (obj === null) {
-    obj = undefined;
-  }
-
-  if (typeof obj === 'object') {
-    return map(objectKeys(obj), function(k) {
-      var ks = encodeURIComponent(stringifyPrimitive(k)) + eq;
-      if (isArray(obj[k])) {
-        return map(obj[k], function(v) {
-          return ks + encodeURIComponent(stringifyPrimitive(v));
-        }).join(sep);
-      } else {
-        return ks + encodeURIComponent(stringifyPrimitive(obj[k]));
-      }
-    }).join(sep);
-
-  }
-
-  if (!name) return '';
-  return encodeURIComponent(stringifyPrimitive(name)) + eq +
-         encodeURIComponent(stringifyPrimitive(obj));
-};
-
-var isArray = Array.isArray || function (xs) {
-  return Object.prototype.toString.call(xs) === '[object Array]';
-};
-
-function map (xs, f) {
-  if (xs.map) return xs.map(f);
-  var res = [];
-  for (var i = 0; i < xs.length; i++) {
-    res.push(f(xs[i], i));
-  }
-  return res;
-}
-
-var objectKeys = Object.keys || function (obj) {
-  var res = [];
-  for (var key in obj) {
-    if (Object.prototype.hasOwnProperty.call(obj, key)) res.push(key);
-  }
-  return res;
-};
-
 
 /***/ })
 /******/ ]);
