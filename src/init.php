@@ -56,8 +56,10 @@ function stag_blocks_editor_assets() {
 
 	wp_localize_script(
 		'sgb-js', '_stagBlocks', array(
-			'root'  => esc_url_raw( rest_url() ),
-			'nonce' => wp_create_nonce( 'wp_rest' ),
+			'root'          => esc_url_raw( rest_url() ),
+			'nonce'         => wp_create_nonce( 'wp_rest' ),
+			'blockSettings' => get_option( 'sgb-block-settings' ),
+			'settingsURL'   => admin_url( 'options-general.php?page=stag-blocks#settings' ),
 		)
 	);
 

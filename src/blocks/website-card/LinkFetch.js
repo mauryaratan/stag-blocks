@@ -1,5 +1,7 @@
 /* global fetch */
-const { __ } = wp.i18n;
+import { parse } from 'querystring';
+
+const { __, sprintf } = wp.i18n;
 
 const { Component } = wp.element;
 
@@ -20,7 +22,9 @@ export default class LinkFetch extends Component {
 	}
 
 	async handleChange( url ) {
-		if ( url.length < 10 ) {
+		const blockSettings = parse( _stagBlocks.blockSettings );
+
+		if ( url.length < 10 || ! blockSettings ) {
 			return false;
 		}
 
@@ -28,12 +32,15 @@ export default class LinkFetch extends Component {
 
 		await timeout( 300 );
 
-		const key = ''; // TODO: Add setting to fill in key dynamically.
+		const key = blockSettings[ 'api-key' ];
 		if ( ! key ) {
 			this.setState( {
 				result: {
 					error: 'no-key',
-					description: 'Please add an API key',
+					description: sprintf(
+						__( 'Please set an API key to use this block under <a href="%s">Stag Blocks</a> > Settings > Website Card.' ),
+						_stagBlocks.settingsURL
+					),
 				},
 				loading: false,
 			} );
@@ -69,7 +76,7 @@ export default class LinkFetch extends Component {
 				) }
 
 				{ ( this.state.result.error ) && (
-					<p>Error Code: { this.state.result.error }, { this.state.result.description }</p>
+					<p dangerouslySetInnerHTML={ { __html: this.state.result.description } }></p>
 				) }
 
 			</Placeholder>

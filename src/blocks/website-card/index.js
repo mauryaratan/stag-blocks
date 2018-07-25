@@ -46,7 +46,7 @@ registerBlockType( 'sgb/website-card', {
 	hasSettings: true,
 
 	edit: function( props ) {
-		const { attributes, setAttributes, className } = props;
+		const { attributes, setAttributes } = props;
 
 		const handleChange = ( result ) => {
 			setAttributes( {
