@@ -291,8 +291,29 @@
   -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.09);
           box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04), inset 0 0 0 1px rgba(0, 0, 0, 0.09);
   overflow: hidden; }
+  @media screen and (min-width: 768px) {
+    .wp-block-sgb-website-card {
+      display: -ms-flexbox;
+      display: flex; }
+      .wp-block-sgb-website-card figure {
+        width: 35%;
+        -ms-flex-order: 2;
+            order: 2;
+        margin-left: 1em; }
+      .wp-block-sgb-website-card img {
+        width: 100%;
+        height: 100%;
+        -o-object-fit: cover;
+           object-fit: cover; }
+      .wp-block-sgb-website-card__content {
+        -ms-flex: 1;
+            flex: 1; } }
   .wp-block-sgb-website-card figure {
-    margin: 1px; }
+    margin: 0px;
+    text-align: center; }
+    .wp-block-sgb-website-card figure img {
+      display: inline-block;
+      vertical-align: bottom; }
   .wp-block-sgb-website-card__url {
     position: absolute;
     top: 0;

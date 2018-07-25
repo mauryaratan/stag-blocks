@@ -4,3 +4,8 @@
 		flex-grow: 1;
 	}
 }
+@media screen and (min-width: 768px) {
+	.wp-block-sgb-website-card img {
+		height: 100% !important;
+	}
+}
