@@ -1,6 +1,8 @@
 const { __ } = wp.i18n;
 
 const LinkPreview = ( { attributes, className } ) => {
+	const link = new URL( attributes.url );
+
 	return (
 		<div className={ className }>
 			{ attributes.image && (
@@ -14,7 +16,7 @@ const LinkPreview = ( { attributes, className } ) => {
 			<div className={ `${ className }__content` }>
 				<p className={ `${ className }__title` }>{ attributes.title }</p>
 				<p className={ `${ className }__description` }>{ attributes.description }</p>
-				<p className={ `${ className }__link` }>{ attributes.url }</p>
+				<p className={ `${ className }__link` }>{ link.hostname }</p>
 			</div>
 		</div>
 	);
