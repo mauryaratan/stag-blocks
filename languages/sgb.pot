@@ -1,0 +1,481 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Stag Blocks\n"
+"POT-Creation-Date: 2018-07-26 18:16+0530\n"
+"PO-Revision-Date: 2018-07-26 18:12+0530\n"
+"Last-Translator: Ram Ratan Maurya <ram@codestag.com>\n"
+"Language-Team: Ram Ratan Maurya <ram@codestag.com>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.1\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-Flags-xgettext: --add-comments=translators:\n"
+"X-Poedit-WPHeader: stag-blocks.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: languages/js-strings.php:5
+msgid "Toggle block"
+msgstr ""
+
+#: languages/js-strings.php:8
+msgid "Saving..."
+msgstr ""
+
+#: languages/js-strings.php:11
+msgid "Save"
+msgstr ""
+
+#: languages/js-strings.php:15
+msgid "Settings"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+#: languages/js-strings.php:18 settings/class-stag-blocks-settings.php:19
+msgid "Stag Blocks"
+msgstr ""
+
+#: languages/js-strings.php:21
+msgid "Search"
+msgstr ""
+
+#: languages/js-strings.php:24
+msgid "Search a block..."
+msgstr ""
+
+#: languages/js-strings.php:27
+msgid "Made with ❤️ by"
+msgstr ""
+
+#: languages/js-strings.php:30
+msgid "Dashboard"
+msgstr ""
+
+#: languages/js-strings.php:33
+msgid "Our themes"
+msgstr ""
+
+#: languages/js-strings.php:36
+msgid "Accordion Settings"
+msgstr ""
+
+#: languages/js-strings.php:39
+msgid "Open"
+msgstr ""
+
+#: languages/js-strings.php:42
+msgid "Showing accordion expanded by default."
+msgstr ""
+
+#: languages/js-strings.php:45
+msgid "Show accordion collapsed by default."
+msgstr ""
+
+#: languages/js-strings.php:48
+msgid "Box Shadow"
+msgstr ""
+
+#: languages/js-strings.php:51
+msgid "Applies a subtle box shadow effect."
+msgstr ""
+
+#: languages/js-strings.php:54
+msgid "Title Color"
+msgstr ""
+
+#: languages/js-strings.php:57
+msgid "Title Background Color"
+msgstr ""
+
+#: languages/js-strings.php:64
+msgid "Text Color"
+msgstr ""
+
+#: languages/js-strings.php:71
+msgid "Background Color"
+msgstr ""
+
+#: languages/js-strings.php:74
+msgid "Accordion content..."
+msgstr ""
+
+#: languages/js-strings.php:77
+msgid "Accordion"
+msgstr ""
+
+#: languages/js-strings.php:80
+msgid "A nice description for accordion block."
+msgstr ""
+
+#: languages/js-strings.php:83
+msgid "accordion"
+msgstr ""
+
+#: languages/js-strings.php:92
+msgid "stag"
+msgstr ""
+
+#: languages/js-strings.php:95
+msgid "Accordion Title"
+msgstr ""
+
+#: languages/js-strings.php:98
+msgid "Alert Settings"
+msgstr ""
+
+#: languages/js-strings.php:101
+msgid "Font size"
+msgstr ""
+
+#: languages/js-strings.php:104
+msgid "Show Icon"
+msgstr ""
+
+#: languages/js-strings.php:107
+msgid "Alert Style"
+msgstr ""
+
+#: languages/js-strings.php:110
+msgid "Warning"
+msgstr ""
+
+#: languages/js-strings.php:113
+msgid "Success"
+msgstr ""
+
+#: languages/js-strings.php:116
+msgid "Note"
+msgstr ""
+
+#: languages/js-strings.php:119
+msgid "Information"
+msgstr ""
+
+#: languages/js-strings.php:122
+msgid "Add title..."
+msgstr ""
+
+#: languages/js-strings.php:125
+msgid "Enter Alert description text..."
+msgstr ""
+
+#: languages/js-strings.php:128
+msgid "Alert"
+msgstr ""
+
+#: languages/js-strings.php:131
+msgid "A nice description for alert block."
+msgstr ""
+
+#: languages/js-strings.php:134
+msgid "alert"
+msgstr ""
+
+#: languages/js-strings.php:137
+msgid "notice"
+msgstr ""
+
+#: languages/js-strings.php:140
+msgid "Icon Settings"
+msgstr ""
+
+#: languages/js-strings.php:143
+msgid "Content position"
+msgstr ""
+
+#: languages/js-strings.php:146
+msgid "Background Opacity"
+msgstr ""
+
+#: languages/js-strings.php:149
+msgid "Button Color"
+msgstr ""
+
+#: languages/js-strings.php:152
+msgid "Button Background Color"
+msgstr ""
+
+#: languages/js-strings.php:155
+msgid "Apply"
+msgstr ""
+
+#: languages/js-strings.php:158
+msgid "Edit background"
+msgstr ""
+
+#: languages/js-strings.php:161
+msgid "Write title"
+msgstr ""
+
+#: languages/js-strings.php:164
+msgid "Write content..."
+msgstr ""
+
+#: languages/js-strings.php:167
+msgid "Add text…"
+msgstr ""
+
+#: languages/js-strings.php:170
+msgid "Hero"
+msgstr ""
+
+#: languages/js-strings.php:173
+msgid "A nice description for hero block."
+msgstr ""
+
+#: languages/js-strings.php:176
+msgid "hero"
+msgstr ""
+
+#: languages/js-strings.php:179
+msgid "Display post date"
+msgstr ""
+
+#: languages/js-strings.php:182
+msgid "Display post excerpt"
+msgstr ""
+
+#: languages/js-strings.php:185
+msgid "Display Read More Link"
+msgstr ""
+
+#: languages/js-strings.php:188
+msgid "Read More text"
+msgstr ""
+
+#: languages/js-strings.php:192
+msgid "Columns"
+msgstr ""
+
+#: languages/js-strings.php:195
+msgid "Loading Posts..."
+msgstr ""
+
+#: languages/js-strings.php:198
+msgid "No posts found."
+msgstr ""
+
+#: languages/js-strings.php:201
+msgid "List View"
+msgstr ""
+
+#: languages/js-strings.php:204
+msgid "Grid View"
+msgstr ""
+
+#: languages/js-strings.php:207
+msgid "Side View"
+msgstr ""
+
+#: languages/js-strings.php:210 src/blocks/posts-grid/index.php:96
+msgid "(Untitled)"
+msgstr ""
+
+#: languages/js-strings.php:213
+msgid "Continue Reading →"
+msgstr ""
+
+#: languages/js-strings.php:216
+msgid "Posts Grid Settings"
+msgstr ""
+
+#: languages/js-strings.php:219
+msgid "A nice description for posts-grid block."
+msgstr ""
+
+#: languages/js-strings.php:222
+msgid "posts-grid"
+msgstr ""
+
+#: languages/js-strings.php:225
+msgid "Posts Grid"
+msgstr ""
+
+#: languages/js-strings.php:228
+msgid "Counter Color"
+msgstr ""
+
+#: languages/js-strings.php:231
+msgid "Enter stats text..."
+msgstr ""
+
+#: languages/js-strings.php:234
+msgid "Add new stat"
+msgstr ""
+
+#: languages/js-strings.php:237
+msgid "Stats"
+msgstr ""
+
+#: languages/js-strings.php:240
+msgid "Display useful custom stats for anything."
+msgstr ""
+
+#: languages/js-strings.php:243
+msgid "stats"
+msgstr ""
+
+#: languages/js-strings.php:246
+msgid "numbers"
+msgstr ""
+
+#: languages/js-strings.php:249
+msgid "Remove counter"
+msgstr ""
+
+#: languages/js-strings.php:252
+msgid "Testimonial Settings"
+msgstr ""
+
+#: languages/js-strings.php:255
+msgid "Show name"
+msgstr ""
+
+#: languages/js-strings.php:258
+msgid "Show company"
+msgstr ""
+
+#: languages/js-strings.php:261
+msgid "Display testimonial author name"
+msgstr ""
+
+#: languages/js-strings.php:264
+msgid "Write testimonial..."
+msgstr ""
+
+#: languages/js-strings.php:267
+msgid "Testimonial"
+msgstr ""
+
+#: languages/js-strings.php:270
+msgid "A nice description for testimonial block."
+msgstr ""
+
+#: languages/js-strings.php:273
+msgid "testimonial"
+msgstr ""
+
+#: languages/js-strings.php:276
+msgid "Default"
+msgstr ""
+
+#: languages/js-strings.php:279
+msgid "Flipped"
+msgstr ""
+
+#: languages/js-strings.php:282
+#, php-format
+msgid ""
+"Please set an API key to use this block under <a href=\"%s\">Stag Blocks</a> "
+"> Settings > Website Card."
+msgstr ""
+
+#: languages/js-strings.php:286
+msgid "Website Card"
+msgstr ""
+
+#: languages/js-strings.php:289
+msgid "Paste URL or type"
+msgstr ""
+
+#: languages/js-strings.php:292
+msgid "Link to"
+msgstr ""
+
+#: languages/js-strings.php:295
+msgid "Website Card Settings"
+msgstr ""
+
+#: languages/js-strings.php:298
+msgid "A nice description for website-card block."
+msgstr ""
+
+#: languages/js-strings.php:301
+msgid "website-card"
+msgstr ""
+
+#: languages/js-strings.php:304
+msgid "preview"
+msgstr ""
+
+#: languages/js-strings.php:307
+msgid "Top Left"
+msgstr ""
+
+#: languages/js-strings.php:310
+msgid "Top"
+msgstr ""
+
+#: languages/js-strings.php:313
+msgid "Top Right"
+msgstr ""
+
+#: languages/js-strings.php:316
+msgid "Left"
+msgstr ""
+
+#: languages/js-strings.php:319
+msgid "Center"
+msgstr ""
+
+#: languages/js-strings.php:322
+msgid "Right"
+msgstr ""
+
+#: languages/js-strings.php:325
+msgid "Bottom Left"
+msgstr ""
+
+#: languages/js-strings.php:328
+msgid "Bottom"
+msgstr ""
+
+#: languages/js-strings.php:331
+msgid "Bottom Right"
+msgstr ""
+
+#: languages/js-strings.php:334
+msgid "Icon Size"
+msgstr ""
+
+#: languages/js-strings.php:337
+msgid "Select Icon"
+msgstr ""
+
+#: languages/js-strings.php:340
+msgid "Type icon name..."
+msgstr ""
+
+#: settings/class-stag-blocks-api.php:65
+msgid ""
+"No blocks found, please initiate the Gutenberg editor by visiting the post "
+"edit screen."
+msgstr ""
+
+#: settings/class-stag-blocks-api.php:79 settings/class-stag-blocks-api.php:93
+msgid ""
+"Incorrect content type. Provided data must have \"application/json\" type."
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/mauryaratan/stag-blocks/"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid "Handy WordPress editor blocks."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Codestag"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "https://codestag.com/"
+msgstr ""

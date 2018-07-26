@@ -114,3 +114,8 @@ add_action( 'wp_enqueue_scripts', 'sgb_frontend_assets' );
 foreach ( glob( dirname( dirname( __FILE__ ) ) . '/src/blocks/*/index.php' ) as $block_logic ) {
 	require_once $block_logic;
 }
+
+function sgb_load_textdomain() {
+	load_plugin_textdomain( 'sgb', false, plugin_dir_path( __DIR__ ) . '/languages' );
+}
+add_action( 'plugins_loaded', 'sgb_load_textdomain' );

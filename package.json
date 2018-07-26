@@ -17,11 +17,11 @@
     "querystringify": "^2.0.0"
   },
   "devDependencies": {
-    "@wordpress/babel-plugin-makepot": "^1.0.0",
+    "@wordpress/babel-plugin-makepot": "^1.0.1",
     "@wordpress/babel-preset-default": "^1.1.0",
     "@wordpress/browserslist-config": "^2.1.0",
-    "autoprefixer": "^7.1.6",
     "@wordpress/i18n": "^1.0.0",
+    "autoprefixer": "^7.1.6",
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "clean-webpack-plugin": "^0.1.19",
