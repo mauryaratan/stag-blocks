@@ -216,8 +216,8 @@ var App = function (_React$Component) {
 			isLoading: true,
 			blocks: [],
 			activeBlocks: {},
-			view: 'dashboard',
-			searchVisible: false
+			searchList: {},
+			view: 'dashboard'
 		}, _temp), _possibleConstructorReturn(_this, _ret);
 	}
 
@@ -279,6 +279,9 @@ var App = function (_React$Component) {
 		value: function getFilteredBlocks() {
 			var _this3 = this;
 
+			if (this.state.searchList && this.state.searchList.length) {
+				return this.state.searchList;
+			}
 			return this.state.blocks.filter(function (block) {
 				return block.customCategory ? block.customCategory === _this3.state.category : block.category === _this3.state.category;
 			});
@@ -301,11 +304,6 @@ var App = function (_React$Component) {
 									category: category
 								});
 							},
-							searchVisibility: function searchVisibility() {
-								_this4.setState({
-									searchVisible: !_this4.state.searchVisible
-								});
-							},
 							setView: function setView(view) {
 								_this4.setState({
 									view: view
@@ -321,6 +319,28 @@ var App = function (_React$Component) {
 								});
 
 								_this4.syncSettings();
+							},
+							handleSearch: function handleSearch(value) {
+								var blocks = _this4.state.blocks;
+								var filtered = blocks.filter(function (block) {
+									if (block.keywords && block.keywords.length) {
+										var keywordMatch = function keywordMatch(keyword) {
+											return keyword === value;
+										};
+										return block.name.includes(value) || block.keywords.some(keywordMatch);
+									}
+
+									return block.name.includes(value);
+								});
+
+								_this4.setState({
+									searchList: filtered
+								});
+							},
+							resetSearch: function resetSearch() {
+								_this4.setState({
+									searchList: []
+								});
 							}
 						}
 					},
@@ -18111,6 +18131,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
 var _classnames = __webpack_require__(1);
 
 var _classnames2 = _interopRequireDefault(_classnames);
@@ -18121,13 +18143,17 @@ var _BlocksContext2 = _interopRequireDefault(_BlocksContext);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
 function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
 
 var __ = wp.i18n.__;
-var _wp$components = wp.components,
-    Dashicon = _wp$components.Dashicon,
-    IconButton = _wp$components.IconButton,
-    TextControl = _wp$components.TextControl;
+var Component = wp.element.Component;
+var IconButton = wp.components.IconButton;
 
 
 var categories = wp.blocks.getCategories();
@@ -18136,60 +18162,98 @@ categories = [{
 	title: __('Stag Blocks')
 }].concat(_toConsumableArray(categories));
 
-var Categories = function Categories() {
-	return React.createElement(
-		_BlocksContext2.default.Consumer,
-		null,
-		function (context) {
+var Categories = function (_Component) {
+	_inherits(Categories, _Component);
+
+	function Categories() {
+		_classCallCheck(this, Categories);
+
+		var _this = _possibleConstructorReturn(this, (Categories.__proto__ || Object.getPrototypeOf(Categories)).apply(this, arguments));
+
+		_this.state = {
+			searchVisible: false
+		};
+
+		_this.focus = _this.focus.bind(_this);
+		return _this;
+	}
+
+	_createClass(Categories, [{
+		key: 'focus',
+		value: function focus() {
+			this.textInput.focus();
+		}
+	}, {
+		key: 'render',
+		value: function render() {
+			var _this2 = this;
+
 			return React.createElement(
-				'ul',
-				{ className: 'block-categories' },
-				!!categories && categories.map(function (category) {
+				_BlocksContext2.default.Consumer,
+				null,
+				function (context) {
 					return React.createElement(
-						'li',
-						{ key: category.slug },
-						React.createElement(
-							'a',
-							{
-								href: '#' + category.slug,
-								onClick: function onClick(e) {
-									e.preventDefault();
-									var link = new URL(e.target.href);
-									link = link.hash.slice(1);
-									context.setCategory(link);
-								},
-								className: (0, _classnames2.default)({
-									'is-active': context.state.category === category.slug
-								})
+						'ul',
+						{ className: 'block-categories' },
+						!!categories && categories.map(function (category) {
+							return React.createElement(
+								'li',
+								{ key: category.slug },
+								React.createElement(
+									'a',
+									{
+										href: '#' + category.slug,
+										onClick: function onClick(e) {
+											e.preventDefault();
+											var link = new URL(e.target.href);
+											link = link.hash.slice(1);
+											context.setCategory(link);
+										},
+										className: (0, _classnames2.default)({
+											'is-active': context.state.category === category.slug
+										})
+									},
+									category.title
+								)
+							);
+						}),
+						React.createElement(IconButton, {
+							label: __('Search'),
+							onClick: function onClick() {
+								_this2.setState({ searchVisible: !_this2.state.searchVisible });
+								_this2.focus();
+								if (_this2.state.searchVisible) {
+									_this2.textInput.value = '';
+									context.resetSearch();
+								}
 							},
-							category.title
-						)
+							icon: _this2.state.searchVisible ? 'no' : 'search',
+							className: 'block-search-button',
+							style: {
+								marginLeft: 'auto'
+							}
+						}),
+						React.createElement('input', {
+							type: 'text',
+							className: (0, _classnames2.default)('components-text-control__input block-search', {
+								'is-visible': !!_this2.state.searchVisible
+							}),
+							onChange: function onChange(event) {
+								return context.handleSearch(event.target.value);
+							},
+							placeholder: __('Search a block...'),
+							ref: function ref(_ref) {
+								return _this2.textInput = _ref;
+							}
+						})
 					);
-				}),
-				React.createElement(IconButton, {
-					label: __('Search'),
-					onClick: function onClick() {
-						return context.searchVisibility();
-					},
-					icon: context.state.searchVisible ? 'no' : 'search',
-					className: 'block-search-button',
-					style: {
-						marginLeft: 'auto'
-					}
-				}),
-				React.createElement(TextControl, {
-					className: (0, _classnames2.default)('block-search', {
-						'is-visible': !!context.state.searchVisible
-					}),
-					onChange: function onChange(value) {
-						return console.log(value);
-					},
-					placeholder: __('Search a block...')
-				})
+				}
 			);
 		}
-	);
-};
+	}]);
+
+	return Categories;
+}(Component);
 
 exports.default = Categories;
 

@@ -11,6 +11,7 @@ class App extends React.Component {
 		isLoading: true,
 		blocks: [],
 		activeBlocks: {},
+		searchList: {},
 		view: 'dashboard',
 	}
 
@@ -64,6 +65,9 @@ class App extends React.Component {
 	}
 
 	getFilteredBlocks() {
+		if ( this.state.searchList && this.state.searchList.length ) {
+			return this.state.searchList;
+		}
 		return this.state.blocks.filter( block => {
 			return ( block.customCategory ? block.customCategory === this.state.category : block.category === this.state.category );
 		} );
@@ -95,6 +99,26 @@ class App extends React.Component {
 							} );
 
 							this.syncSettings();
+						},
+						handleSearch: ( value ) => {
+							const blocks = this.state.blocks;
+							const filtered = blocks.filter( ( block ) => {
+								if ( block.keywords && block.keywords.length ) {
+									const keywordMatch = ( keyword ) => ( keyword === value );
+									return block.name.includes( value ) || block.keywords.some( keywordMatch );
+								}
+
+								return block.name.includes( value );
+							} );
+
+							this.setState( {
+								searchList: filtered,
+							} );
+						},
+						resetSearch: () => {
+							this.setState( {
+								searchList: [],
+							} );
 						},
 					} }
 				>

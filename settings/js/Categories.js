@@ -6,9 +6,7 @@ const { __ } = wp.i18n;
 const { Component } = wp.element;
 
 const {
-	Dashicon,
 	IconButton,
-	TextControl,
 } = wp.components;
 
 let categories = wp.blocks.getCategories();
@@ -65,6 +63,10 @@ export default class Categories extends Component {
 							onClick={ () => {
 								this.setState( { searchVisible: ! this.state.searchVisible } );
 								this.focus();
+								if ( this.state.searchVisible ) {
+									this.textInput.value = '';
+									context.resetSearch();
+								}
 							} }
 							icon={ this.state.searchVisible ? 'no' : 'search' }
 							className="block-search-button"
@@ -77,7 +79,7 @@ export default class Categories extends Component {
 							className={ classnames( 'components-text-control__input block-search', {
 								'is-visible': !! this.state.searchVisible,
 							} ) }
-							onChange={ ( value ) => console.log( value ) }
+							onChange={ ( event ) => context.handleSearch( event.target.value ) }
 							placeholder={ __( 'Search a block...' ) }
 							ref={ ( ref ) => ( this.textInput = ref ) }
 						/>
