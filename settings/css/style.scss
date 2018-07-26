@@ -144,21 +144,15 @@ body.settings_page_stag-blocks.folded {
 			position: absolute;
 			width: 100%;
 			height: 100%;
+			margin: 0;
+			border: none;
+			font-size: 1.5em;
 			opacity: 1;
 			transition: opacity 300ms;
 
 			&:not(.is-visible) {
 				opacity: 0;
 				z-index: -1;
-			}
-
-			input {
-				position: absolute;
-				width: 100%;
-				height: 100%;
-				margin: 0;
-				border: none;
-				font-size: 1.5em;
 			}
 		}
 

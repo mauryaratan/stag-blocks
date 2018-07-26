@@ -21,8 +21,18 @@ categories = [
 ];
 
 export default class Categories extends Component {
-	state = {
-		searchVisible: false,
+	constructor() {
+		super( ...arguments );
+
+		this.state = {
+			searchVisible: false,
+		};
+
+		this.focus = this.focus.bind( this );
+	}
+
+	focus() {
+		this.textInput.focus();
 	}
 
 	render() {
@@ -52,19 +62,24 @@ export default class Categories extends Component {
 						}
 						<IconButton
 							label={ __( 'Search' ) }
-							onClick={ () => this.setState( { searchVisible: ! this.state.searchVisible } ) }
+							onClick={ () => {
+								this.setState( { searchVisible: ! this.state.searchVisible } );
+								this.focus();
+							} }
 							icon={ this.state.searchVisible ? 'no' : 'search' }
 							className="block-search-button"
 							style={ {
 								marginLeft: 'auto',
 							} }
 						/>
-						<TextControl
-							className={ classnames( 'block-search', {
+						<input
+							type="text"
+							className={ classnames( 'components-text-control__input block-search', {
 								'is-visible': !! this.state.searchVisible,
 							} ) }
 							onChange={ ( value ) => console.log( value ) }
 							placeholder={ __( 'Search a block...' ) }
+							ref={ ( ref ) => ( this.textInput = ref ) }
 						/>
 					</ul>
 				) }
