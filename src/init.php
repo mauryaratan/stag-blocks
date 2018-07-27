@@ -29,7 +29,7 @@ function stag_blocks_assets() {
 		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
 	);
 
-	wp_enqueue_style( 'font-awesome-5', plugin_dir_url( __FILE__ ) . 'assets/css/all.css', array(), '5.1.0' );
+	wp_enqueue_style( 'font-awesome-5', plugin_dir_url( __FILE__ ) . 'assets/css/all.min.css', array(), '5.2.0' );
 } // End function stag_blocks_assets().
 
 // Hook: Frontend assets.
@@ -75,7 +75,7 @@ function stag_blocks_editor_assets() {
 		'sgb-fontawesome-json',
 		plugins_url( 'dist/fa-icons-raw.js', dirname( __FILE__ ) ),
 		array(),
-		'5.1.0'
+		'5.2.0'
 	);
 } // End function stag_blocks_editor_assets().
 
