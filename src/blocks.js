@@ -14,6 +14,7 @@ import './blocks/alert';
 import './blocks/code';
 import './blocks/hero';
 import './blocks/posts-grid';
+import './blocks/pricing-table';
 import './blocks/stats';
 import './blocks/testimonial';
 import './blocks/website-card';

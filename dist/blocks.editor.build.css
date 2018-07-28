@@ -178,6 +178,46 @@
       .wp-block-sgb-posts-grid.is-grid.columns-4 {
         grid-template-columns: repeat(4, 1fr);
         grid-gap: 20px; } }
+.wp-block-sgb-pricing-table {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 30px;
+  text-align: center; }
+  .wp-block-sgb-pricing-table.columns-1 {
+    grid-template-columns: 1fr; }
+  .wp-block-sgb-pricing-table.columns-3 {
+    grid-template-columns: 1fr 1fr 1fr; }
+  .wp-block-sgb-pricing-table.columns-4 {
+    grid-template-columns: 1fr 1fr 1fr 1fr; }
+  .wp-block-sgb-pricing-table__title {
+    font-size: 1.5em;
+    margin: 0; }
+  .wp-block-sgb-pricing-table__description {
+    margin: 0;
+    font-size: 0.9em !important;
+    opacity: .6; }
+  .wp-block-sgb-pricing-table__features p {
+    margin: 0;
+    font-size: 0.8em !important; }
+  .wp-block-sgb-pricing-table .inline-container {
+    display: inline-block;
+    vertical-align: middle; }
+    .wp-block-sgb-pricing-table .inline-container select,
+    .wp-block-sgb-pricing-table .inline-container > div {
+      margin: 0; }
+  .wp-block-sgb-pricing-table__price__term_selector {
+    margin: 0; }
+  .wp-block-sgb-pricing-table__add svg {
+    display: inline-block;
+    vertical-align: middle;
+    margin-top: 5px; }
+  .wp-block-sgb-pricing-table__table {
+    position: relative; }
+  .wp-block-sgb-pricing-table__remove {
+    position: absolute;
+    top: 0;
+    right: 0;
+    z-index: 100; }
 .wp-block-sgb-stats__count {
   margin: 0; }
   .wp-block-sgb-stats__count input[type="text"] {

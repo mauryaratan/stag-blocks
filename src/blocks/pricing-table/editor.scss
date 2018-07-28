@@ -1,0 +1,67 @@
+.wp-block-sgb-pricing-table {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	grid-gap: 30px;
+	text-align: center;
+
+	&.columns-1 {
+		grid-template-columns: 1fr;
+	}
+	&.columns-3 {
+		grid-template-columns: 1fr 1fr 1fr;
+	}
+	&.columns-4 {
+		grid-template-columns: 1fr 1fr 1fr 1fr;
+	}
+
+	&__title {
+		font-size: 1.5em;
+		margin: 0;
+	}
+
+	&__description {
+		margin: 0;
+		font-size: 0.9em !important;
+		opacity: .6;
+	}
+
+	&__features {
+		p {
+			margin: 0;
+			font-size: 0.8em !important;
+		}
+	}
+
+
+	.inline-container {
+		display: inline-block;
+		vertical-align: middle;
+
+		select,
+		> div {
+			margin: 0;
+		}
+	}
+
+	&__price__term_selector {
+		margin: 0;
+	}
+
+	&__add {
+		svg {
+			display: inline-block;
+			vertical-align: middle;
+			margin-top: 5px;
+		}
+	}
+
+	&__table {
+		position: relative;
+	}
+	&__remove {
+		position: absolute;
+		top: 0;
+		right: 0;
+		z-index: 100;
+	}
+}

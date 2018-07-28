@@ -5,7 +5,7 @@ import LinkPreview from './LinkPreview';
 import './style.scss';
 
 const { Fragment } = wp.element;
-const { __ } = wp.i18n;
+const { __, sprintf } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
 registerBlockType( 'sgb/website-card', {
@@ -43,7 +43,12 @@ registerBlockType( 'sgb/website-card', {
 	},
 
 	customCategory: 'stag-blocks',
-	hasSettings: true,
+	hasSettings: {
+		description: sprintf(
+			'LinkPreview API is required in order to use this block. If you do not already have one, please make one at <a href="%s" target="_blank" rel="noopener noreferrer">LinkPreview</a>.',
+			'https://linkpreview.net'
+		),
+	},
 
 	edit: function( props ) {
 		const { attributes, setAttributes } = props;
