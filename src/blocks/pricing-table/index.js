@@ -33,6 +33,14 @@ registerBlockType( 'sgb/pricing-table', {
 			type: 'string',
 			default: '#3575FF',
 		},
+		textColor: {
+			type: 'string',
+			default: '#1d1d1f',
+		},
+		backgroundColor: {
+			type: 'string',
+			default: '#f5f6f8',
+		},
 		tables: {
 			type: 'array',
 			default: [

@@ -47,6 +47,10 @@ const EnhancedComponent = withFocusOutside(
 								<div
 									key={ i }
 									className={ classnames( `${ className }__table` ) }
+									style={ {
+										backgroundColor: attributes.backgroundColor,
+										color: attributes.textColor,
+									} }
 								>
 									<IconButton
 										isLarge
@@ -144,6 +148,7 @@ const EnhancedComponent = withFocusOutside(
 											tables[ i ].features = value;
 											setAttributes( { tables } );
 										} }
+										inlineToolbar
 									/>
 
 									<div className={ `${ className }__footer` }>

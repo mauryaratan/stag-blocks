@@ -56,12 +56,20 @@
 
 	&__table {
 		position: relative;
+		padding: 20px;
+	}
+
+	&__featured {
+		position: absolute;
+		top: 0;
+		left: 0;
+		z-index: 10;
 	}
 	&__remove {
 		position: absolute;
 		top: 0;
 		right: 0;
-		z-index: 100;
+		z-index: 10;
 	}
 
 	&__header {
@@ -70,5 +78,17 @@
 
 	&__features {
 		margin-top: 2.5rem;
+	}
+
+	&__footer {
+		margin-top: 2rem;
+
+		.editor-rich-text {
+			display: inline-block;
+		}
+
+		.wp-block-button__link {
+			left: 0;
+		}
 	}
 }
