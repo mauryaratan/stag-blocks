@@ -29,6 +29,10 @@ registerBlockType( 'sgb/pricing-table', {
 			type: 'number',
 			default: 2,
 		},
+		accent: {
+			type: 'string',
+			default: '#3575FF',
+		},
 		tables: {
 			type: 'array',
 			default: [

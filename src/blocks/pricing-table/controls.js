@@ -2,7 +2,10 @@ const { __ } = wp.i18n;
 
 const { Fragment } = wp.element;
 
-const { InspectorControls } = wp.editor;
+const {
+	InspectorControls,
+	PanelColor,
+} = wp.editor;
 
 const {
 	PanelBody,
@@ -24,6 +27,12 @@ const Controls = ( props ) => {
 						onChange={ ( columns ) => setAttributes( { columns } ) }
 					/>
 				</PanelBody>
+
+				<PanelColor
+					colorValue={ attributes.accent }
+					title={ __( 'Accent Color' ) }
+					onChange={ ( color ) => setAttributes( { accent: color } ) }
+				/>
 			</InspectorControls>
 		</Fragment>
 	);
