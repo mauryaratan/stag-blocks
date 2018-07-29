@@ -40,9 +40,8 @@ export default class Edit extends Component {
 
 										setAttributes( { tables: tables.filter( ( el, index ) => ! ( index === i ) ) } );
 									} }
-								>
-									<Dashicon icon="no-alt" />
-								</IconButton>
+									icon="no-alt"
+								/>
 								<IconButton
 									isLarge
 									tooltip={ __( 'Mark as featured' ) }
@@ -53,9 +52,8 @@ export default class Edit extends Component {
 										tables[ i ].featured = true;
 										setAttributes( { tables } );
 									} }
-								>
-									<Dashicon icon={ table.featured ? 'star-filled' : 'star-empty' } />
-								</IconButton>
+									icon={ table.featured ? 'star-filled' : 'star-empty' }
+								/>
 
 								<div className={ `${ className }__header` }>
 									<RichText
