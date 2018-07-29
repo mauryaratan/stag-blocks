@@ -37,38 +37,52 @@ const Edit = ( props ) => {
 							>
 								<Dashicon icon="no-alt" />
 							</IconButton>
-							<RichText
-								tagName="h3"
-								placeholder={ __( 'Write title...' ) }
-								className={ `${ className }__title` }
-								value={ table.title }
-								onChange={ ( value ) => {
+							<IconButton
+								isLarge
+								tooltip={ __( 'Mark as featured' ) }
+								className={ `${ className }__featured` }
+								onClick={ () => {
 									const tables = [ ...attributes.tables ];
-									tables[ i ].title = value;
+									tables.map( ( t ) => t.featured = false );
+									tables[ i ].featured = true;
 									setAttributes( { tables } );
 								} }
-							/>
+							>
+								<Dashicon icon={ table.featured ? 'star-filled' : 'star-empty' } />
+							</IconButton>
 
-							<RichText
-								tagName="p"
-								placeholder={ __( 'Write description...' ) }
-								className={ `${ className }__description` }
-								value={ table.description }
-								onChange={ ( value ) => {
-									const tables = [ ...attributes.tables ];
-									tables[ i ].description = value;
-									setAttributes( { tables } );
-								} }
-								keepPlaceholderOnFocus
-							/>
+							<div className={ `${ className }__header` }>
+								<RichText
+									tagName="h3"
+									placeholder={ __( 'Write title...' ) }
+									className={ `${ className }__title` }
+									value={ table.title }
+									onChange={ ( value ) => {
+										const tables = [ ...attributes.tables ];
+										tables[ i ].title = value;
+										setAttributes( { tables } );
+									} }
+								/>
+
+								<RichText
+									tagName="p"
+									placeholder={ __( 'Write description...' ) }
+									className={ `${ className }__description` }
+									value={ table.description }
+									onChange={ ( value ) => {
+										const tables = [ ...attributes.tables ];
+										tables[ i ].description = value;
+										setAttributes( { tables } );
+									} }
+									keepPlaceholderOnFocus
+								/>
+							</div>
 
 							<div className={ `${ className }__price` }>
-								<span className={ `${ className }__price__currency` }>$</span>
-
 								<div className="inline-container">
 									<RichText
 										tagName="span"
-										placeholder="10"
+										placeholder="$10"
 										className={ `${ className }__price__amount` }
 										value={ table.price }
 										onChange={ ( value ) => {
@@ -87,9 +101,13 @@ const Edit = ( props ) => {
 											{ value: 'month', label: __( 'Month' ) },
 											{ value: 'year', label: __( 'Year' ) },
 										] }
-										onChange={ ( value ) => console.log( value ) }
+										value={ table.price_term }
+										onChange={ ( value ) => {
+											const tables = [ ...attributes.tables ];
+											tables[ i ].price_term = value;
+											setAttributes( { tables } );
+										} }
 									/>
-									{ /* <span className={ `${ className }__price__term` }>{ table.price_term }</span> */ }
 								</div>
 
 							</div>
