@@ -3,6 +3,7 @@ const { __ } = wp.i18n;
 const { Fragment } = wp.element;
 
 const {
+	IconButton,
 	Button,
 	Dashicon,
 	SelectControl,
@@ -17,14 +18,14 @@ const Edit = ( props ) => {
 
 	return (
 		<Fragment>
-			<div className={ className }>
+			<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
 				{
 					( attributes.tables.length ) ? ( attributes.tables.map( ( table, i ) => (
 						<div
 							key={ i }
-							className={ classnames( `${ className }__table`, `columns-${ attributes.columns }` ) }
+							className={ classnames( `${ className }__table` ) }
 						>
-							<Button
+							<IconButton
 								isLarge
 								tooltip={ __( 'Remove table' ) }
 								className={ `${ className }__remove` }
@@ -35,7 +36,7 @@ const Edit = ( props ) => {
 								} }
 							>
 								<Dashicon icon="no-alt" />
-							</Button>
+							</IconButton>
 							<RichText
 								tagName="h3"
 								placeholder={ __( 'Write title...' ) }
