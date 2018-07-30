@@ -1,7 +1,6 @@
 import classnames from 'classnames';
 import Controls from './controls';
 import './editor.scss';
-import icon from './icon';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -27,7 +26,7 @@ registerBlockType( 'sgb/testimonial', {
 	title: __( 'Testimonial' ),
 	category: 'common',
 	description: __( 'A nice description for testimonial block.' ),
-	icon,
+	icon: <i className="dashicon far fa-comment" />,
 	keywords: [
 		__( 'testimonial' ),
 		__( 'stag' ),

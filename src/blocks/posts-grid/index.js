@@ -9,7 +9,7 @@ registerBlockType( 'sgb/posts-grid', {
 	title: __( 'Posts Grid' ),
 	category: 'common',
 	description: __( 'A nice description for posts-grid block.' ),
-	icon: 'info',
+	icon: <i className="dashicon fas fa-th-large" />,
 	keywords: [
 		__( 'posts-grid' ),
 		__( 'stag' ),

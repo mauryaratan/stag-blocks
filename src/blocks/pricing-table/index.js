@@ -13,10 +13,10 @@ const {
 } = wp.editor;
 
 registerBlockType( 'sgb/pricing-table', {
-	title: __( 'Pricing table' ),
+	title: __( 'Pricing Table' ),
 	category: 'common',
 	description: __( 'A nice description for pricing-table block.' ),
-	icon: 'money',
+	icon: <i className="dashicon fas fa-money-check-alt" />,
 	keywords: [
 		__( 'pricing-table' ),
 		__( 'stag' ),
