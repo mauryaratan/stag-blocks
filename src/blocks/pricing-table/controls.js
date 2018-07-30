@@ -10,6 +10,7 @@ const {
 const {
 	PanelBody,
 	RangeControl,
+	TextControl,
 } = wp.components;
 
 const MAX_POSTS_COLUMNS = 4;
@@ -22,6 +23,12 @@ const Controls = ( props ) => {
 		<Fragment>
 			<InspectorControls>
 				<PanelBody title={ __( 'Pricing Table settings' ) }>
+					<TextControl
+						label={ __( 'Featured Text' ) }
+						help={ __( 'Appears as badge over the featured plan.' ) }
+						value={ attributes.featured_text }
+						onChange={ ( value ) => setAttributes( { featured_text: value } ) }
+					/>
 					<RangeControl
 						label={ __( 'Columns' ) }
 						min={ 1 }

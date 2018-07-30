@@ -22,6 +22,9 @@ registerBlockType( 'sgb/pricing-table', {
 		__( 'stag' ),
 	],
 	customCategory: 'stag-blocks',
+	supports: {
+		align: [ 'wide', 'full' ],
+	},
 
 	attributes: {
 		title: {
@@ -33,6 +36,10 @@ registerBlockType( 'sgb/pricing-table', {
 		columns: {
 			type: 'number',
 			default: 2,
+		},
+		featured_text: {
+			type: 'string',
+			default: 'Recommended',
 		},
 		accent: {
 			type: 'string',
@@ -52,8 +59,8 @@ registerBlockType( 'sgb/pricing-table', {
 				{
 					title: 'Startup',
 					description: 'This is where it all begins',
-					price: '$20',
-					price_term: 'month',
+					price: '$9.99',
+					price_term: 'per month',
 					features: [],
 					featured: false,
 					buttonText: 'Choose this plan',
@@ -63,7 +70,7 @@ registerBlockType( 'sgb/pricing-table', {
 					title: 'Enterprise',
 					description: 'You know you have made it when...',
 					price: '$100',
-					price_term: 'month',
+					price_term: 'per year',
 					features: [],
 					featured: true,
 					buttonText: 'Choose this plan',
@@ -107,9 +114,8 @@ registerBlockType( 'sgb/pricing-table', {
 							</div>
 
 							<div className={ `${ className }__price` }>
-								<RichText.Content tagName="span" className={ `${ className }__price__amount` } value={ table.price } />
-								{ ' / ' }
-								<span className={ `${ className }__price__term_selector` }>{ table.price_term }</span>
+								<RichText.Content tagName="div" className={ `${ className }__price__amount` } value={ table.price } />
+								<RichText.Content tagName="div" className={ `${ className }__price__term` } value={ table.price_term } />
 							</div>
 
 							<RichText.Content tagName="div" className={ `${ className }__features` } value={ table.features } />

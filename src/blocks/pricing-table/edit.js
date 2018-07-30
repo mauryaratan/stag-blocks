@@ -9,9 +9,7 @@ const {
 
 const {
 	IconButton,
-	Button,
 	Dashicon,
-	SelectControl,
 	withFocusOutside,
 } = wp.components;
 
@@ -26,7 +24,8 @@ const EnhancedComponent = withFocusOutside(
 			super( ...arguments );
 
 			this.state = {
-				focusedIndex: false,
+				focusedIndex: null,
+				selectedTable: null,
 			};
 		}
 
@@ -37,7 +36,7 @@ const EnhancedComponent = withFocusOutside(
 		stopKeyPropagation = ( event ) => event.stopPropagation();
 
 		render() {
-			const { attributes, setAttributes, className } = this.props;
+			const { attributes, setAttributes, className, isSelected } = this.props;
 
 			return (
 				<Fragment>
@@ -46,43 +45,52 @@ const EnhancedComponent = withFocusOutside(
 							( attributes.tables.length ) ? ( attributes.tables.map( ( table, i ) => (
 								<div
 									key={ i }
-									className={ classnames( `${ className }__table` ) }
+									className={ classnames( `${ className }__table`, {
+										'is-selected': ( isSelected && this.state.selectedTable === i ),
+									} ) }
+									onClick={ () => this.setState( { selectedTable: i } ) }
+									tabIndex="-1"
+									role="textbox"
+									onKeyDown={ () => false }
 									style={ {
 										backgroundColor: attributes.backgroundColor,
 										color: attributes.textColor,
 									} }
 								>
-									<IconButton
-										isLarge
-										tooltip={ __( 'Remove table' ) }
-										className={ `${ className }__remove` }
-										onClick={ () => {
-											const tables = [ ...attributes.tables ];
+									{ ( isSelected && this.state.selectedTable === i ) &&
+										<div className="core-blocks-gallery-item__inline-menu">
+											<IconButton
+												icon="no-alt"
+												onClick={ () => {
+													const tables = [ ...attributes.tables ];
 
-											setAttributes( { tables: tables.filter( ( el, index ) => ! ( index === i ) ) } );
-										} }
-										icon="no-alt"
-									/>
+													setAttributes( { tables: tables.filter( ( el, index ) => ! ( index === i ) ) } );
+												} }
+												className="blocks-gallery-item__remove"
+												label={ __( 'Remove Table' ) }
+											/>
 
-									<IconButton
-										isLarge
-										tooltip={ __( 'Mark as featured' ) }
-										className={ `${ className }__featured` }
-										onClick={ () => {
-											const tables = [ ...attributes.tables ];
+											<IconButton
+												label={ __( 'Mark as featured' ) }
+												// className={ `${ className }__featured` }
+												className="blocks-gallery-item__remove item-left"
+												onClick={ () => {
+													const tables = [ ...attributes.tables ];
 
-											// Cache orginal featured state.
-											const originalState = tables[ i ].featured;
+													// Cache orginal featured state.
+													const originalState = tables[ i ].featured;
 
-											tables.map( ( t ) => t.featured = false );
+													tables.map( ( t ) => t.featured = false );
 
-											// Restore orginal state if already defined, else true.
-											tables[ i ].featured = ( originalState ? ! originalState : true );
+													// Restore orginal state if already defined, else true.
+													tables[ i ].featured = ( originalState ? ! originalState : true );
 
-											setAttributes( { tables } );
-										} }
-										icon={ table.featured ? 'star-filled' : 'star-empty' }
-									/>
+													setAttributes( { tables } );
+												} }
+												icon={ table.featured ? <i className="fas fa-bookmark" /> : <i className="far fa-bookmark" /> }
+											/>
+										</div>
+									}
 
 									<div className={ `${ className }__header` }>
 										<RichText
@@ -112,37 +120,30 @@ const EnhancedComponent = withFocusOutside(
 									</div>
 
 									<div className={ `${ className }__price` }>
-										<div className="inline-container">
-											<RichText
-												tagName="span"
-												placeholder="$10"
-												className={ `${ className }__price__amount` }
-												value={ table.price }
-												onChange={ ( value ) => {
-													const tables = [ ...attributes.tables ];
-													tables[ i ].price = value;
-													setAttributes( { tables } );
-												} }
-												keepPlaceholderOnFocus
-											/>
-										</div>
-										{ ' / ' }
-										<div className="inline-container">
-											<SelectControl
-												className={ `${ className }__price__term_selector` }
-												options={ [
-													{ value: 'month', label: __( 'Month' ) },
-													{ value: 'year', label: __( 'Year' ) },
-												] }
-												value={ table.price_term }
-												onChange={ ( value ) => {
-													const tables = [ ...attributes.tables ];
-													tables[ i ].price_term = value;
-													setAttributes( { tables } );
-												} }
-											/>
-										</div>
-
+										<RichText
+											tagName="div"
+											placeholder="$10"
+											className={ `${ className }__price__amount` }
+											value={ table.price }
+											onChange={ ( value ) => {
+												const tables = [ ...attributes.tables ];
+												tables[ i ].price = value;
+												setAttributes( { tables } );
+											} }
+											keepPlaceholderOnFocus
+										/>
+										<RichText
+											tagName="div"
+											placeholder="per month"
+											className={ `${ className }__price__term` }
+											value={ table.price_term }
+											onChange={ ( value ) => {
+												const tables = [ ...attributes.tables ];
+												tables[ i ].price_term = value;
+												setAttributes( { tables } );
+											} }
+											keepPlaceholderOnFocus
+										/>
 									</div>
 
 									<RichText
@@ -181,6 +182,7 @@ const EnhancedComponent = withFocusOutside(
 												keepPlaceholderOnFocus
 											/>
 										</span>
+
 										{ ( this.state.focusedIndex === i ) && (
 											<form
 												className="core-blocks-button__inline-link"
@@ -203,32 +205,32 @@ const EnhancedComponent = withFocusOutside(
 						}
 					</div>
 
-					<div style={ {
-						textAlign: 'center',
-						marginTop: '1em',
-					} }>
-						<Button
-							icon="plus"
-							isLarge
-							className={ `${ className }__add` }
-							onClick={ () => {
-								const tables = [ ...attributes.tables ];
+					{ isSelected &&
+						<div className="blocks-gallery-item">
+							<IconButton
+								icon="insert"
+								isDefault
+								isLarge
+								className="core-blocks-gallery-add-item-button"
+								onClick={ () => {
+									const tables = [ ...attributes.tables ];
 
-								tables.push( {
-									title: '',
-									description: '',
-									price: '100',
-									price_term: 'month',
-									features: [],
-								} );
+									tables.push( {
+										title: '',
+										description: '',
+										price: '$100',
+										price_term: 'per month',
+										features: [],
+										buttonText: 'Choose this plan',
+									} );
 
-								setAttributes( { tables } );
-							} }
-						>
-							<Dashicon icon="plus" />
-							{ __( 'Add new' ) }
-						</Button>
-					</div>
+									setAttributes( { tables } );
+								} }
+							>
+								{ __( 'Add new table' ) }
+							</IconButton>
+						</div>
+					}
 				</Fragment>
 			);
 		}
