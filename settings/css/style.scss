@@ -237,6 +237,15 @@ body.settings_page_stag-blocks.folded {
 			svg {
 				fill: inherit;
 			}
+
+			i {
+				display: inline-block;
+				width: 20px;
+				height: 20px;
+				font-size: 16px;
+				color: #555d66;
+				vertical-align: sub;
+			}
 		}
 
 		.stag-blocks__block__description {

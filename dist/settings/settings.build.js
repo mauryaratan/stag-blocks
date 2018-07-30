@@ -935,10 +935,10 @@ var RenderIcon = function RenderIcon(props) {
 		'string' === typeof props.icon ? React.createElement(Dashicon, { className: 'stag-blocks__block__icon', icon: props.icon }) : React.createElement(
 			'div',
 			{ className: 'stag-blocks__block__icon' },
-			'svg' === props.icon.type && React.createElement(
+			('svg' === props.icon.type || 'i' === props.icon.type) && React.createElement(
 				Fragment,
 				null,
-				React.createElement(props.icon.type, _lodash2.default.omit(props.icon.props, 'children'), props.icon.props.children.map(function (element, index) {
+				React.createElement(props.icon.type, _lodash2.default.omit(props.icon.props, 'children'), props.icon.props.children && props.icon.props.children.map(function (element, index) {
 					return React.createElement(
 						Fragment,
 						{ key: index },

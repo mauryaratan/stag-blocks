@@ -24,11 +24,18 @@ class Stag_Blocks_Settings {
 			return;
 		}
 
+		wp_register_style(
+			'font-awesome-5',
+			plugins_url( 'src/assets/css/all.min.css', dirname( __FILE__ ) ),
+			array(),
+			'5.2.0'
+		);
+
 		// Styles.
 		wp_enqueue_style(
 			'stag-blocks-settings',
 			plugins_url( 'dist/settings/settings.style.css', dirname( __FILE__ ) ),
-			array( 'wp-components' ),
+			array( 'wp-components', 'font-awesome-5' ),
 			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings/settings.style.css' )
 		);
 
