@@ -63,14 +63,22 @@ const EnhancedComponent = withFocusOutside(
 										} }
 										icon="no-alt"
 									/>
+
 									<IconButton
 										isLarge
 										tooltip={ __( 'Mark as featured' ) }
 										className={ `${ className }__featured` }
 										onClick={ () => {
 											const tables = [ ...attributes.tables ];
+
+											// Cache orginal featured state.
+											const originalState = tables[ i ].featured;
+
 											tables.map( ( t ) => t.featured = false );
-											tables[ i ].featured = true;
+
+											// Restore orginal state if already defined, else true.
+											tables[ i ].featured = ( originalState ? ! originalState : true );
+
 											setAttributes( { tables } );
 										} }
 										icon={ table.featured ? 'star-filled' : 'star-empty' }
