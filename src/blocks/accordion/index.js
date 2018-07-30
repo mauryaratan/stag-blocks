@@ -15,7 +15,7 @@ const { RichText } = wp.editor;
 registerBlockType( 'sgb/accordion', {
 	title: __( 'Accordion' ),
 	category: 'common',
-	description: __( 'A nice description for accordion block.' ),
+	description: __( 'Display a togglable field that can be expanded and collapsed.' ),
 	icon,
 	keywords: [
 		__( 'accordion' ),

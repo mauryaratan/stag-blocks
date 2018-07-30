@@ -11,7 +11,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'sgb/website-card', {
 	title: __( 'Website Card' ),
 	category: 'embed',
-	description: __( 'A nice description for website-card block.' ),
+	description: __( 'Turn a URL into a pretty card style preview.' ),
 	icon: 'admin-links',
 	keywords: [
 		__( 'website-card' ),

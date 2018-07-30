@@ -9,7 +9,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'sgb/stats', {
 	title: __( 'Stats' ),
 	category: 'common',
-	description: __( 'Display useful custom stats for anything.' ),
+	description: __( 'Display useful custom stats for just about anything.' ),
 	icon: 'chart-area',
 	keywords: [
 		__( 'stats' ),

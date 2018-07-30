@@ -5,13 +5,11 @@ import './style.scss';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
-const { Fragment } = wp.element;
-const { RichText } = wp.editor;
 
 registerBlockType( 'sgb/hero', {
 	title: __( 'Hero' ),
 	category: 'common',
-	description: __( 'A nice description for hero block.' ),
+	description: __( 'Add a full width media block to accompany a call to action.' ),
 	icon: 'cover-image',
 	keywords: [
 		__( 'hero' ),

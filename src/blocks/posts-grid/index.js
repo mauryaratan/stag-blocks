@@ -8,7 +8,7 @@ const { registerBlockType } = wp.blocks;
 registerBlockType( 'sgb/posts-grid', {
 	title: __( 'Posts Grid' ),
 	category: 'common',
-	description: __( 'A nice description for posts-grid block.' ),
+	description: __( 'Display a grid or list of customizable posts.' ),
 	icon: <i className="dashicon fas fa-th-large" />,
 	keywords: [
 		__( 'posts-grid' ),

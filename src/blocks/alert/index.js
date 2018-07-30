@@ -19,7 +19,7 @@ const { RichText } = wp.editor;
 registerBlockType( 'sgb/alert', {
 	title: __( 'Alert' ),
 	category: 'common',
-	description: __( 'A nice description for alert block.' ),
+	description: __( 'Display a notice with customizable icon, title, and description.' ),
 	icon,
 	keywords: [
 		__( 'alert' ),

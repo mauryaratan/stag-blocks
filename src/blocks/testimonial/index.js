@@ -25,7 +25,7 @@ const {
 registerBlockType( 'sgb/testimonial', {
 	title: __( 'Testimonial' ),
 	category: 'common',
-	description: __( 'A nice description for testimonial block.' ),
+	description: __( 'Add a user testimonial with name, company, text, and picture.' ),
 	icon: <i className="dashicon far fa-comment" />,
 	keywords: [
 		__( 'testimonial' ),
