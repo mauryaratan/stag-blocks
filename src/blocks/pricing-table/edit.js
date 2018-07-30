@@ -57,6 +57,9 @@ const EnhancedComponent = withFocusOutside(
 										color: attributes.textColor,
 									} }
 								>
+									{ ( attributes.featured_text ) && ( table.featured ) &&
+										<span className={ `${ className }__featured_text` }>{ attributes.featured_text }</span>
+									}
 									{ ( isSelected && this.state.selectedTable === i ) &&
 										<div className="core-blocks-gallery-item__inline-menu">
 											<IconButton
@@ -72,7 +75,6 @@ const EnhancedComponent = withFocusOutside(
 
 											<IconButton
 												label={ __( 'Mark as featured' ) }
-												// className={ `${ className }__featured` }
 												className="blocks-gallery-item__remove item-left"
 												onClick={ () => {
 													const tables = [ ...attributes.tables ];
@@ -166,7 +168,7 @@ const EnhancedComponent = withFocusOutside(
 											onClick={ () => this.setState( { focusedIndex: i } ) }
 											onKeyPress={ this.stopKeyPropagation }
 											tabIndex={ i }
-											className="wp-block-button"
+											className="wp-block-button is-style-squared"
 										>
 											<RichText
 												tagName="span"

@@ -108,6 +108,9 @@ registerBlockType( 'sgb/pricing-table', {
 								color: attributes.textColor,
 							} }
 						>
+							{ ( attributes.featured_text ) && ( table.featured ) &&
+								<span className={ `${ className }__featured_text` }>{ attributes.featured_text }</span>
+							}
 							<div className={ `${ className }__header` }>
 								<RichText.Content tagName="h3" className={ `${ className }__title` } value={ table.title } />
 								<RichText.Content tagName="p" className={ `${ className }__description` } value={ table.description } />
@@ -121,7 +124,7 @@ registerBlockType( 'sgb/pricing-table', {
 							<RichText.Content tagName="div" className={ `${ className }__features` } value={ table.features } />
 
 							<div className={ `${ className }__footer` }>
-								<div className="wp-block-button">
+								<div className="wp-block-button is-style-squared">
 									<RichText.Content
 										tagName="a"
 										className="wp-block-button__link"

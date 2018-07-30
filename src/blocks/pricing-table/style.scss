@@ -78,4 +78,23 @@
 	.wp-block-button {
 		margin-bottom: 0;
 	}
+
+	&__featured_text {
+		position: absolute;
+		top: -17px;
+		left: 30px;
+		display: inline-block;
+		color: #fff;
+		font-size: 0.8em;
+		background-color: $black;
+		padding: 10px 20px;
+		line-height: 1;
+	}
+
+	.wp-block-button__link {
+		font-size: 0.9em;
+		padding: 12px 20px;
+		line-height: 1;
+		border-radius: 3px !important;
+	}
 }
