@@ -34,4 +34,9 @@
 		right: 0;
 		top: 0;
 	}
+
+	.is-selected {
+		outline: 4px solid #0085ba;
+		outline-offset: -4px;
+	}
 }
