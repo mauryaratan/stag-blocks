@@ -32,6 +32,9 @@ class Themes extends Component {
 							<a className="theme__link" href={ theme.link } target="_blank" rel="noopener noreferrer">
 								<span className="screen-reader-text">{ theme.title }</span>
 							</a>
+							{ theme.is_new &&
+								<span className="theme__badge">{ __( 'New' ) }</span>
+							}
 							<figure>
 								<img src={ theme.featured } alt={ theme.title } />
 							</figure>

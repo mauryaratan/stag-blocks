@@ -18347,6 +18347,11 @@ var Themes = function (_Component) {
 								theme.title
 							)
 						),
+						theme.is_new && React.createElement(
+							'span',
+							{ className: 'theme__badge' },
+							__('New')
+						),
 						React.createElement(
 							'figure',
 							null,
