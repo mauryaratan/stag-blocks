@@ -894,13 +894,22 @@ var objectKeys = Object.keys || function (obj) {
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+var _wp$i18n = wp.i18n,
+    __ = _wp$i18n.__,
+    sprintf = _wp$i18n.sprintf;
+
+
+var description = sprintf(
+/* translators: %s: Link to LinkPreview website. */
+'You need to provide an API key in order to use this block, to get one please register on %s and insert the API key here.', '<a href="https://www.linkpreview.net/" target="_blank" rel="noopener noreferrer">LinkPreview</a>');
+
 var Settings = {
 	// Important: Array key should match registered block's namespace.
 	'sgb/website-card': {
 		'api-key': {
-			label: 'LinkPreview API key',
+			label: __('LinkPreview API key'),
 			type: 'text',
-			description: 'You need to provide an API key'
+			description: React.createElement('span', { dangerouslySetInnerHTML: { __html: description } })
 		}
 	}
 };
