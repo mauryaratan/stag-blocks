@@ -18279,6 +18279,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 /* global fetch */
 var Component = wp.element.Component;
 var Spinner = wp.components.Spinner;
+var __ = wp.i18n.__;
 
 var Themes = function (_Component) {
 	_inherits(Themes, _Component);
@@ -18300,7 +18301,7 @@ var Themes = function (_Component) {
 	}
 
 	_createClass(Themes, [{
-		key: "componentDidMount",
+		key: 'componentDidMount',
 		value: function componentDidMount() {
 			var _this2 = this;
 
@@ -18313,39 +18314,58 @@ var Themes = function (_Component) {
 			});
 		}
 	}, {
-		key: "render",
+		key: 'render',
 		value: function render() {
 			var themes = this.state.themes;
 			return themes.length ? React.createElement(
-				"section",
-				{ className: "codestag-themes" },
+				'section',
+				{ className: 'codestag-themes' },
+				React.createElement(
+					'header',
+					null,
+					React.createElement(
+						'h2',
+						null,
+						__('Our beautifully fine-tuned themes at your service')
+					),
+					React.createElement(
+						'p',
+						null,
+						__('Browse through the collections to see which one suits your idea the most, get started!')
+					)
+				),
 				themes.map(function (theme, index) {
 					return React.createElement(
-						"div",
-						{ className: "theme", key: index },
+						'div',
+						{ className: 'theme', key: index },
 						React.createElement(
-							"figure",
-							null,
+							'a',
+							{ className: 'theme__link', href: theme.link, target: '_blank', rel: 'noopener noreferrer' },
 							React.createElement(
-								"a",
-								{ href: theme.link, target: "_blank", rel: "noopener noreferrer" },
-								React.createElement("img", { src: theme.featured, alt: theme.title })
+								'span',
+								{ className: 'screen-reader-text' },
+								theme.title
 							)
 						),
 						React.createElement(
-							"h4",
+							'figure',
+							null,
+							React.createElement('img', { src: theme.featured, alt: theme.title })
+						),
+						React.createElement(
+							'h4',
 							null,
 							theme.title
 						),
 						React.createElement(
-							"p",
+							'p',
 							null,
 							theme.subtitle
 						),
 						React.createElement(
-							"a",
-							{ href: theme.link, target: "_blank", rel: "noopener noreferrer" },
-							"Purchase ",
+							'a',
+							{ href: theme.link, target: '_blank', rel: 'noopener noreferrer' },
+							'View ',
 							theme.title
 						)
 					);
