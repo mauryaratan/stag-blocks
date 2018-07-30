@@ -6,7 +6,6 @@
 	padding: 20px;
 	margin-top: 1em;
 	margin-bottom: 1em;
-	background: #F7F9FA;
 
 	@include media($breakpoint__md) {
 		grid-template-columns: 1fr 1fr;
@@ -20,6 +19,10 @@
 		&.columns-4 {
 			grid-template-columns: 1fr 1fr 1fr 1fr;
 		}
+	}
+
+	&__counter {
+		background: #F7F9FA;
 	}
 
 	&__count {

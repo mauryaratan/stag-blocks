@@ -53,18 +53,16 @@ registerBlockType( 'sgb/stats', {
 			<Fragment>
 				<Controls { ...props } />
 
-				<div
-					className={ classnames( className, `columns-${ attributes.columns }` ) }
-					style={ {
-						backgroundColor: attributes.backgroundColor,
-						color: attributes.color,
-					} }
-				>
+				<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
 					{
 						( attributes.content.length ) ? ( attributes.content.map( ( v, i ) => (
 							<div
 								key={ i }
 								className={ `${ className }__counter` }
+								style={ {
+									backgroundColor: attributes.backgroundColor,
+									color: attributes.color,
+								} }
 							>
 								<Button
 									isLarge
@@ -142,16 +140,17 @@ registerBlockType( 'sgb/stats', {
 		const className = 'wp-block-sgb-stats';
 
 		return (
-			<div
-				className={ classnames( className, `columns-${ attributes.columns }` ) }
-				style={ {
-					backgroundColor: attributes.backgroundColor,
-					color: attributes.color,
-				} }
-			>
+			<div className={ classnames( className, `columns-${ attributes.columns }` ) } >
 				{
 					( attributes.content.length ) ? ( attributes.content.map( ( v, i ) => (
-						<div className={ `${ className }__counter` } key={ i }>
+						<div
+							className={ `${ className }__counter` }
+							key={ i }
+							style={ {
+								backgroundColor: attributes.backgroundColor,
+								color: attributes.color,
+							} }
+						>
 							<div className={ `${ className }__count` } style={ { color: attributes.counterColor } }>
 								{ attributes.content[ i ].count }
 							</div>
