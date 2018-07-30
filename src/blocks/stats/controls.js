@@ -22,7 +22,7 @@ const Controls = ( props ) => {
 						label={ __( 'Columns' ) }
 						min={ 1 }
 						initialPosition={ attributes.columns }
-						max={ 4 }
+						max={ Math.min( 4, ( attributes.content ? attributes.content.length : 2 ) ) }
 						value={ attributes.columns }
 						onChange={ ( columns ) => setAttributes( { columns } ) }
 					/>

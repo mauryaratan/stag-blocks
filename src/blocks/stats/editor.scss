@@ -5,11 +5,11 @@
 			border: 0 !important;
 			box-shadow: none !important;
 			outline: 0 !important;
-			text-align: center;
+			text-align: inherit;
 			appearance: textfield;
 			font-size: inherit;
-			padding: 40px 0px 10px;
 			background-color: transparent;
+			padding: 0;
 
 			&::-webkit-inner-spin-button,
 			&::-webkit-outer-spin-button {
@@ -38,5 +38,12 @@
 	.is-selected {
 		outline: 4px solid #0085ba;
 		outline-offset: -4px;
+	}
+
+	+ .blocks-gallery-item {
+		text-align: right;
+		button {
+			display: inline-flex;
+		}
 	}
 }

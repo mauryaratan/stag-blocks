@@ -7,9 +7,7 @@ const { Fragment } = wp.element;
 const { RichText } = wp.editor;
 
 const {
-	Button,
 	TextControl,
-	Dashicon,
 	IconButton,
 } = wp.components;
 
@@ -29,7 +27,7 @@ export default class Edit extends Component {
 
 				<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
 					{
-						( attributes.content.length ) ? ( attributes.content.map( ( v, i ) => (
+						( attributes.content.length ) ? ( attributes.content.map( ( counter, i ) => (
 							<div
 								key={ i }
 								className={ classnames( `${ className }__counter`, {
@@ -53,7 +51,7 @@ export default class Edit extends Component {
 												setAttributes( { content: content.filter( ( el, index ) => ! ( index === i ) ) } );
 											} }
 											className="blocks-gallery-item__remove"
-											label={ __( 'Remove Table' ) }
+											label={ __( 'Remove Stat' ) }
 										/>
 									</div>
 								}
@@ -62,7 +60,7 @@ export default class Edit extends Component {
 									type="text"
 									placeholder="1000"
 									className={ `${ className }__count` }
-									value={ attributes.content[ i ].count }
+									value={ counter.count }
 									onChange={ ( value ) => {
 										const content = [ ...attributes.content ];
 										content[ i ].count = value;
@@ -77,7 +75,7 @@ export default class Edit extends Component {
 									tagName="p"
 									placeholder={ __( 'Enter stats text...' ) }
 									className={ `${ className }__text` }
-									value={ attributes.content[ i ].text }
+									value={ counter.text }
 									onChange={ ( value ) => {
 										const content = [ ...attributes.content ];
 										content[ i ].text = value;
@@ -95,7 +93,6 @@ export default class Edit extends Component {
 							icon="insert"
 							isDefault
 							isLarge
-							className="core-blocks-gallery-add-item-button"
 							onClick={ () => {
 								const content = [ ...attributes.content ];
 

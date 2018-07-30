@@ -17,6 +17,10 @@ registerBlockType( 'sgb/stats', {
 		__( 'stag' ),
 	],
 
+	supports: {
+		align: [ 'wide', 'full' ],
+	},
+
 	customCategory: 'stag-blocks',
 
 	attributes: {
@@ -48,7 +52,7 @@ registerBlockType( 'sgb/stats', {
 		return (
 			<div className={ classnames( className, `columns-${ attributes.columns }` ) } >
 				{
-					( attributes.content.length ) ? ( attributes.content.map( ( v, i ) => (
+					( attributes.content.length ) ? ( attributes.content.map( ( counter, i ) => (
 						<div
 							className={ `${ className }__counter` }
 							key={ i }
@@ -58,9 +62,9 @@ registerBlockType( 'sgb/stats', {
 							} }
 						>
 							<div className={ `${ className }__count` } style={ { color: attributes.counterColor } }>
-								{ attributes.content[ i ].count }
+								{ counter.count }
 							</div>
-							<div className={ `${ className }__text` }>{ attributes.content[ i ].text }</div>
+							<div className={ `${ className }__text` }>{ counter.text }</div>
 						</div>
 					) ) ) : null
 				}

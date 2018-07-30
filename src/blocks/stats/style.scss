@@ -1,11 +1,14 @@
 .wp-block-sgb-stats {
 	display: grid;
 	grid-gap: 20px;
-	text-align: center;
 	align-items: center;
-	padding: 20px;
 	margin-top: 1em;
 	margin-bottom: 1em;
+
+	&.alignfull {
+		padding-left: 20px;
+		padding-right: 20px;
+	}
 
 	@include media($breakpoint__md) {
 		grid-template-columns: 1fr 1fr;
@@ -22,7 +25,8 @@
 	}
 
 	&__counter {
-		background: #F7F9FA;
+		background: #F6F6F6;
+		padding: 50px 25px;
 	}
 
 	&__count {
