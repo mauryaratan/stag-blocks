@@ -29,7 +29,6 @@ registerBlockType( 'sgb/alert', {
 
 	customCategory: 'stag-blocks',
 
-	// TODO: Supply default values for colors.
 	attributes: {
 		title: {
 			type: 'string',
@@ -37,13 +36,13 @@ registerBlockType( 'sgb/alert', {
 		content: {
 			type: 'array',
 		},
-		backgroundColor: {
+		accentColor: {
 			type: 'string',
-			default: '#646fdf',
+			default: '#F5B041',
 		},
 		textColor: {
 			type: 'string',
-			default: '#ffffff',
+			default: '#4F4F4F',
 		},
 		fontSize: {
 			type: 'number',
@@ -77,44 +76,54 @@ registerBlockType( 'sgb/alert', {
 					className={ classnames( 'sgb-alert', className ) }
 					role="alert"
 					style={ {
-						backgroundColor: attributes.backgroundColor,
 						color: attributes.textColor,
 						textAlign: attributes.textAlign,
 						fontSize: attributes.fontSize,
+						border: `2px solid ${ attributes.accentColor }`,
 					} }
 				>
+					<div
+						className={ `${ className }__background` }
+						style={ {
+							backgroundColor: attributes.accentColor,
+						} }
+					/>
 					{ ( !! attributes.showIcon ) && (
-						<FontAwesome
-							key="font-awesome"
-							title={ __( 'Icon Settings' ) }
-							icon={ attributes.icon }
-							iconSize={ attributes.iconSize }
-							onSelect={ ( value ) => setAttributes( { icon: value } ) }
-							{ ...props }
-						/>
+						<span style={ { color: attributes.accentColor } }>
+							<FontAwesome
+								key="font-awesome"
+								title={ __( 'Icon Settings' ) }
+								icon={ attributes.icon }
+								iconSize={ attributes.iconSize }
+								onSelect={ ( value ) => setAttributes( { icon: value } ) }
+								{ ...props }
+							/>
+						</span>
 					) }
-					<RichText
-						tagName="p"
-						value={ attributes.title }
-						className={ `${ className }__title` }
-						onChange={ ( nextContent ) => {
-							setAttributes( {
-								title: nextContent,
-							} );
-						} }
-						placeholder={ __( 'Add title...' ) }
-					/>
-					<RichText
-						tagName="p"
-						value={ attributes.content }
-						className={ `${ className }__content` }
-						onChange={ ( nextContent ) => {
-							setAttributes( {
-								content: nextContent,
-							} );
-						} }
-						placeholder={ __( 'Enter Alert description text...' ) }
-					/>
+
+					<div className={ `${ className }__container` }>
+						<RichText
+							tagName="p"
+							value={ attributes.title }
+							className={ `${ className }__title` }
+							onChange={ ( nextContent ) => {
+								setAttributes( {
+									title: nextContent,
+								} );
+							} }
+							placeholder={ __( 'Add title...' ) }
+						/>
+						<RichText
+							tagName="p"
+							value={ attributes.content }
+							className={ `${ className }__content` }
+							onChange={ ( nextContent ) => {
+								setAttributes( {
+									content: nextContent,
+								} );
+							} }
+							placeholder={ __( 'Enter Alert description text...' ) }
+						/></div>
 				</div>
 			</Fragment>
 		);
@@ -128,7 +137,7 @@ registerBlockType( 'sgb/alert', {
 			<div
 				className={ classnames( 'sgb-alert' ) }
 				style={ {
-					backgroundColor: attributes.backgroundColor,
+					backgroundColor: attributes.accentColor,
 					color: attributes.textColor,
 					textAlign: attributes.textAlign,
 					fontSize: attributes.fontSize,

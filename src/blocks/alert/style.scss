@@ -1,3 +1,18 @@
+.wp-block-sgb-alert {
+	position: relative;
+	&__background {
+		position: absolute;
+		top: 0;
+		right: 9px;
+		bottom: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		opacity: .25;
+		pointer-events: none;
+	}
+}
+
 .sgb-alert {
 	padding: 20px;
 	background: whitesmoke;

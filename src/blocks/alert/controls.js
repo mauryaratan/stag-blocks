@@ -28,7 +28,7 @@ const Controls = ( props ) => {
 						beforeIcon="editor-textcolor"
 						afterIcon="editor-textcolor"
 						min={ 12 }
-						max={ 100 }
+						max={ 50 }
 						allowReset
 						initialPosition={ attributes.fontSize }
 						value={ attributes.fontSize }
@@ -43,10 +43,10 @@ const Controls = ( props ) => {
 				</PanelBody>
 
 				<PanelColor
-					colorValue={ attributes.backgroundColor }
+					colorValue={ attributes.accentColor }
 					initialOpen={ false }
-					title={ __( 'Background Color' ) }
-					onChange={ ( color ) => setAttributes( { backgroundColor: color } ) }
+					title={ __( 'Accent Color' ) }
+					onChange={ ( color ) => setAttributes( { accentColor: color } ) }
 				/>
 				<PanelColor
 					colorValue={ attributes.textColor }
@@ -65,22 +65,22 @@ const Controls = ( props ) => {
 							{
 								title: __( 'Warning' ),
 								icon: <i className="fas fa-exclamation dashicon"></i>,
-								onClick: () => setAttributes( { backgroundColor: '#EC6565' } ),
+								onClick: () => setAttributes( { accentColor: '#EC7063' } ),
 							},
 							{
 								title: __( 'Success' ),
 								icon: <i className="fas fa-check dashicon"></i>,
-								onClick: () => setAttributes( { backgroundColor: '#44D867' } ),
+								onClick: () => setAttributes( { accentColor: '#58D68D' } ),
 							},
 							{
 								title: __( 'Note' ),
 								icon: <i className="fas fa-question dashicon"></i>,
-								onClick: () => setAttributes( { backgroundColor: '#F6D73D' } ),
+								onClick: () => setAttributes( { accentColor: '#F5B041' } ),
 							},
 							{
 								title: __( 'Information' ),
 								icon: <i className="fas fa-info dashicon"></i>,
-								onClick: () => setAttributes( { backgroundColor: '#6876F3' } ),
+								onClick: () => setAttributes( { accentColor: '#5DADE2' } ),
 							},
 						] }
 					/>
