@@ -20,6 +20,10 @@
 }
 
 .wp-block-sgb-accordion {
+	.editor-rich-text__tinymce[data-is-placeholder-visible=true]:after {
+		right: -20px;
+	}
+
 	&__title {
 		padding: 20px;
 		font-size: 18px;
@@ -27,6 +31,10 @@
 		line-height: 1 !important;
 		position: relative;
 		margin: -20px -20px 0px -20px;
+
+		+ .wp-block-sgb-accordion__title:after {
+			display: none;
+		}
 
 		&:after {
 			content: '\f068';
