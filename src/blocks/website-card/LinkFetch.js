@@ -8,12 +8,9 @@ const { Component } = wp.element;
 const {
 	Placeholder,
 	Spinner,
-	TextControl,
+	Button,
+	Dashicon,
 } = wp.components;
-
-const timeout = ( ms ) => {
-	return new Promise( resolve => setTimeout( resolve, ms ) );
-};
 
 export default class LinkFetch extends Component {
 	state = {
@@ -29,8 +26,6 @@ export default class LinkFetch extends Component {
 		}
 
 		this.setState( { loading: true } );
-
-		await timeout( 300 );
 
 		const key = blockSettings[ 'api-key' ];
 		if ( ! key ) {
@@ -58,6 +53,8 @@ export default class LinkFetch extends Component {
 		}
 	}
 
+	stopKeyPropagation = ( event ) => ( event.stopPropagation() )
+
 	render() {
 		return (
 			<Placeholder
@@ -65,24 +62,33 @@ export default class LinkFetch extends Component {
 				label={ __( 'Website Card' ) }
 				className="wp-block-sgb-website-card__placeholder"
 			>
-				<TextControl
-					type="url"
-					value={ this.props.attributes.url }
-					onChange={ ( value ) => {
-						this.props.setAttributes( { url: value } );
-						this.handleChange( value );
-					} }
-					placeholder={ __( 'Paste URL or type' ) }
-				/>
+				<form onSubmit={ this.stopKeyPropagation }>
+					<input
+						type="url"
+						value={ this.props.attributes.url || '' }
+						className="components-placeholder__input"
+						aria-label={ __( 'Paste URL or type' ) }
+						placeholder={ __( 'Paste URL or type' ) }
+						onChange={ ( event ) => this.props.setAttributes( { url: event.target.value } ) } />
+					<Button
+						isLarge
+						type="submit"
+						onClick={ ( event ) => {
+							event.preventDefault();
+							this.handleChange( this.props.attributes.url );
+						} }
+					>
+						<Dashicon icon="arrow-right-alt" />
+					</Button>
 
-				{ ( this.state.loading ) && (
-					<Spinner />
-				) }
+					{ ( this.state.loading ) && (
+						<Spinner />
+					) }
 
-				{ ( this.state.result.error ) && (
-					<p dangerouslySetInnerHTML={ { __html: this.state.result.description } }></p>
-				) }
-
+					{ ( this.state.result.error ) && (
+						<p dangerouslySetInnerHTML={ { __html: this.state.result.description } }></p>
+					) }
+				</form>
 			</Placeholder>
 		);
 	}

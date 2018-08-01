@@ -13,6 +13,8 @@ registerBlockType( 'sgb/website-card', {
 	category: 'embed',
 	description: __( 'Turn a URL into a pretty card style preview.' ),
 	icon: 'admin-links',
+	customCategory: 'stag-blocks',
+	hasSettings: true,
 	keywords: [
 		__( 'website-card' ),
 		__( 'preview' ),
@@ -40,14 +42,6 @@ registerBlockType( 'sgb/website-card', {
 			selector: 'a',
 			attribute: 'href',
 		},
-	},
-
-	customCategory: 'stag-blocks',
-	hasSettings: {
-		description: sprintf(
-			'LinkPreview API is required in order to use this block. If you do not already have one, please make one at <a href="%s" target="_blank" rel="noopener noreferrer">LinkPreview</a>.',
-			'https://linkpreview.net'
-		),
 	},
 
 	edit: function( props ) {
