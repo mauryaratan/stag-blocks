@@ -1,3 +1,8 @@
+.wp-block-sgb-website-card {
+	&__url {
+		pointer-events: none;
+	}
+}
 .wp-block-sgb-website-card__placeholder {
 	.components-base-control {
 		width: 100%;
