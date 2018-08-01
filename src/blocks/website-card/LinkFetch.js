@@ -67,7 +67,11 @@ export default class LinkFetch extends Component {
 			>
 				<TextControl
 					type="url"
-					onChange={ ( value ) => this.handleChange( value ) }
+					value={ this.props.attributes.url }
+					onChange={ ( value ) => {
+						this.props.setAttributes( { url: value } );
+						this.handleChange( value );
+					} }
 					placeholder={ __( 'Paste URL or type' ) }
 				/>
 

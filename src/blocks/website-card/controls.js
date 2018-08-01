@@ -1,23 +1,26 @@
 const { __ } = wp.i18n;
-const { Fragment } = wp.element;
 
 const {
-	Placeholder,
-	Spinner,
-	PanelBody,
-} = wp.components;
-
-const {
-	InspectorControls,
-	PanelColor,
+	BlockControls,
 } = wp.editor;
 
-const Controls = ( props ) => {
+const {
+	Toolbar,
+	IconButton,
+} = wp.components;
+
+const Controls = ( { setAttributes } ) => {
 	return (
-		<InspectorControls>
-			<PanelBody title={ __( 'Website Card Settings' ) }>
-			</PanelBody>
-		</InspectorControls>
+		<BlockControls>
+			<Toolbar>
+				<IconButton
+					className="components-toolbar__control"
+					label={ __( 'Edit URL' ) }
+					icon="edit"
+					onClick={ () => setAttributes( { title: undefined } ) }
+				/>
+			</Toolbar>
+		</BlockControls>
 	);
 };
 
