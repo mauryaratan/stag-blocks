@@ -8,7 +8,7 @@ const {
 
 const {
 	InspectorControls,
-	PanelColor,
+	PanelColorSettings,
 } = wp.editor;
 
 const Controls = ( props ) => {
@@ -32,32 +32,31 @@ const Controls = ( props ) => {
 					/>
 				</PanelBody>
 
-				<PanelColor
-					colorValue={ attributes.titleColor }
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
-					title={ __( 'Title Color' ) }
-					onChange={ ( color ) => setAttributes( { titleColor: color } ) }
-				/>
-
-				<PanelColor
-					colorValue={ attributes.titleBackgroundColor }
-					initialOpen={ false }
-					title={ __( 'Title Background Color' ) }
-					onChange={ ( color ) => setAttributes( { titleBackgroundColor: color } ) }
-				/>
-
-				<PanelColor
-					colorValue={ attributes.textColor }
-					initialOpen={ false }
-					title={ __( 'Text Color' ) }
-					onChange={ ( color ) => setAttributes( { textColor: color } ) }
-				/>
-
-				<PanelColor
-					colorValue={ attributes.backgroundColor }
-					initialOpen={ false }
-					title={ __( 'Background Color' ) }
-					onChange={ ( color ) => setAttributes( { backgroundColor: color } ) }
+					colorSettings={ [
+						{
+							value: attributes.titleColor,
+							onChange: ( titleColor ) => ( setAttributes( { titleColor } ) ),
+							label: __( 'Title Color' ),
+						},
+						{
+							value: attributes.titleBackgroundColor,
+							onChange: ( titleBackgroundColor ) => ( setAttributes( { titleBackgroundColor } ) ),
+							label: __( 'Title Background Color' ),
+						},
+						{
+							value: attributes.textColor,
+							onChange: ( textColor ) => ( setAttributes( { textColor } ) ),
+							label: __( 'Text Color' ),
+						},
+						{
+							value: attributes.backgroundColor,
+							onChange: ( backgroundColor ) => ( setAttributes( { backgroundColor } ) ),
+							label: __( 'Background Color' ),
+						},
+					] }
 				/>
 			</InspectorControls>
 		</Fragment>

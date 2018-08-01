@@ -13,7 +13,7 @@ const {
 	AlignmentToolbar,
 	BlockControls,
 	InspectorControls,
-	PanelColor,
+	PanelColorSettings,
 } = wp.editor;
 
 const Controls = ( props ) => {
@@ -42,17 +42,21 @@ const Controls = ( props ) => {
 					/>
 				</PanelBody>
 
-				<PanelColor
-					colorValue={ attributes.accentColor }
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
-					title={ __( 'Accent Color' ) }
-					onChange={ ( color ) => setAttributes( { accentColor: color } ) }
-				/>
-				<PanelColor
-					colorValue={ attributes.textColor }
-					initialOpen={ false }
-					title={ __( 'Text Color' ) }
-					onChange={ ( color ) => setAttributes( { textColor: color } ) }
+					colorSettings={ [
+						{
+							value: attributes.accentColor,
+							onChange: ( accentColor ) => ( setAttributes( { accentColor } ) ),
+							label: __( 'Accent Color' ),
+						},
+						{
+							value: attributes.textColor,
+							onChange: ( textColor ) => ( setAttributes( { textColor } ) ),
+							label: __( 'Text Color' ),
+						},
+					] }
 				/>
 			</InspectorControls>
 

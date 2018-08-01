@@ -8,7 +8,7 @@ const {
 
 const {
 	InspectorControls,
-	PanelColor,
+	PanelColorSettings,
 } = wp.editor;
 
 const Controls = ( props ) => {
@@ -28,23 +28,26 @@ const Controls = ( props ) => {
 					/>
 				</PanelBody>
 
-				<PanelColor
-					title={ __( 'Text Color' ) }
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
-					colorValue={ attributes.color }
-					onChange={ ( color ) => setAttributes( { color } ) }
-				/>
-				<PanelColor
-					title={ __( 'Counter Color' ) }
-					initialOpen={ false }
-					colorValue={ attributes.counterColor }
-					onChange={ ( counterColor ) => setAttributes( { counterColor } ) }
-				/>
-				<PanelColor
-					title={ __( 'Background Color' ) }
-					initialOpen={ false }
-					colorValue={ attributes.backgroundColor }
-					onChange={ ( backgroundColor ) => setAttributes( { backgroundColor } ) }
+					colorSettings={ [
+						{
+							value: attributes.color,
+							onChange: ( color ) => ( setAttributes( { color } ) ),
+							label: __( 'Text Color' ),
+						},
+						{
+							value: attributes.counterColor,
+							onChange: ( counterColor ) => ( setAttributes( { counterColor } ) ),
+							label: __( 'Counter Color' ),
+						},
+						{
+							value: attributes.backgroundColor,
+							onChange: ( backgroundColor ) => ( setAttributes( { backgroundColor } ) ),
+							label: __( 'Background Color' ),
+						},
+					] }
 				/>
 			</InspectorControls>
 		</Fragment>

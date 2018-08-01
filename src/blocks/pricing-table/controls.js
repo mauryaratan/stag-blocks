@@ -4,7 +4,7 @@ const { Fragment } = wp.element;
 
 const {
 	InspectorControls,
-	PanelColor,
+	PanelColorSettings,
 } = wp.editor;
 
 const {
@@ -38,23 +38,26 @@ const Controls = ( props ) => {
 					/>
 				</PanelBody>
 
-				<PanelColor
-					colorValue={ attributes.accent }
-					title={ __( 'Accent Color' ) }
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
 					initialOpen={ false }
-					onChange={ ( color ) => setAttributes( { accent: color } ) }
-				/>
-				<PanelColor
-					colorValue={ attributes.textColor }
-					title={ __( 'Text Color' ) }
-					initialOpen={ false }
-					onChange={ ( color ) => setAttributes( { textColor: color } ) }
-				/>
-				<PanelColor
-					colorValue={ attributes.backgroundColor }
-					title={ __( 'Background Color' ) }
-					initialOpen={ false }
-					onChange={ ( color ) => setAttributes( { backgroundColor: color } ) }
+					colorSettings={ [
+						{
+							value: attributes.accent,
+							onChange: ( accent ) => ( setAttributes( { accent } ) ),
+							label: __( 'Accent Color' ),
+						},
+						{
+							value: attributes.textColor,
+							onChange: ( textColor ) => ( setAttributes( { textColor } ) ),
+							label: __( 'Text Color' ),
+						},
+						{
+							value: attributes.backgroundColor,
+							onChange: ( backgroundColor ) => ( setAttributes( { backgroundColor } ) ),
+							label: __( 'Background Color' ),
+						},
+					] }
 				/>
 			</InspectorControls>
 		</Fragment>
