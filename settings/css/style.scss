@@ -1,3 +1,7 @@
+:root {
+	--sgb-accent: #3575FF;
+}
+
 body.settings_page_stag-blocks {
 	background: #F3F6F8;
 	color:#000000;
@@ -113,7 +117,7 @@ body.settings_page_stag-blocks.folded {
 				margin-left: 15px;
 			}
 			a {
-				color: #3575FF;
+				color: var(--sgb-accent);
 				text-decoration: none;
 				transition: color 200ms;
 				&:hover {
@@ -269,6 +273,12 @@ body.settings_page_stag-blocks.folded {
 			margin-left: 10px;
 		}
 	}
+
+	.components-button.is-primary,
+	.components-form-toggle.is-checked .components-form-toggle__track,
+	.components-button.is-primary:focus:not(:disabled):not([aria-disabled=true]), .components-button.is-primary:hover {
+		background-color: var(--sgb-accent);
+	}
 }
 
 .codestag-themes {
@@ -345,7 +355,7 @@ body.settings_page_stag-blocks.folded {
 	}
 
 	a {
-		color: #3575FF;
+		color: var(--sgb-accent);
 		text-decoration: none;
 		font-size: 16px;
 		transition: color 200ms;
