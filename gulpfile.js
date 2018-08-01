@@ -41,6 +41,7 @@ const copy = require( 'gulp-copy' );
 const cache = require( 'gulp-cache' );
 const replace = require( 'gulp-replace-task' );
 const run = require( 'gulp-run-command' ).default;
+const sort = require( 'gulp-sort' );
 
 gulp.task( 'clearCache', ( done ) => {
 	cache.clearAll();
@@ -49,6 +50,7 @@ gulp.task( 'clearCache', ( done ) => {
 
 gulp.task( 'blocksBuild', run( 'npm run build' ) );
 gulp.task( 'settingsBuild', run( 'npm run localBuild' ) );
+gulp.task( 'translateJS', run( 'npx pot-to-php ./languages/sgb.pot ./languages/js-strings.php sgb' ) );
 
 gulp.task( 'clean', () => {
 	return del( cleanFiles );
@@ -100,3 +102,24 @@ gulp.task( 'build', gulp.series( 'build-process', 'build-notice', ( done ) => {
 } ) );
 
 // TODO: Add task for localization.
+gulp.task( 'translate', gulp.series( 'clean', 'translateJS', () => {
+	return gulp.src( [
+		'./**/*.php',
+		'./**/*.js',
+		'!src/assets/**',
+		'!node_modules/**',
+	] )
+		.pipe( sort() )
+		.pipe( wppot( {
+			domain: pkg.textDomain,
+			package: pkg.title,
+			bugReport: 'https://codestag.com/contact/',
+			lastTranslator: 'Codestag',
+			team: 'Codestag',
+		} ) )
+		.pipe( gulp.dest( './languages/sgb.pot' ) )
+		.pipe( notify( {
+			message: 'Task translate complete!',
+			onLast: true,
+		} ) );
+} ) );

@@ -1,342 +1,334 @@
 <?php
 /* THIS IS A GENERATED FILE. DO NOT EDIT DIRECTLY. */
 $generated_i18n_strings = array(
-	// Reference: settings/js/BlockList.js:28
+	/* translators: Copyright (C) 2018 Stag Blocks
+	This file is distributed under the same license as the Stag Blocks package. */
+	// Reference: languages/js-strings.php:8
 	__( 'Toggle block', 'sgb' ),
 
-	// Reference: settings/js/BlockSettings.js:110
+	// Reference: languages/js-strings.php:11
 	__( 'Saving...', 'sgb' ),
 
-	// Reference: settings/js/BlockSettings.js:110
+	// Reference: languages/js-strings.php:14
 	__( 'Save', 'sgb' ),
 
-	// Reference: settings/js/BlockSettings.js:67
-	// Reference: settings/js/Switcher.js:8
+	// Reference: languages/js-strings.php:17
 	__( 'Settings', 'sgb' ),
 
-	// Reference: settings/js/Categories.js:16
+	// Reference: languages/js-strings.php:20 settings/class-stag-blocks-settings.php:19
 	__( 'Stag Blocks', 'sgb' ),
 
-	// Reference: settings/js/Categories.js:62
+	// Reference: languages/js-strings.php:23
 	__( 'Search', 'sgb' ),
 
-	// Reference: settings/js/Categories.js:83
+	// Reference: languages/js-strings.php:26
 	__( 'Search a block...', 'sgb' ),
 
-	// Reference: settings/js/Footer.js:8
+	// Reference: languages/js-strings.php:29
 	__( 'Made with ❤️ by', 'sgb' ),
 
-	// Reference: settings/js/Switcher.js:7
+	// Reference: languages/js-strings.php:32
 	__( 'Dashboard', 'sgb' ),
 
-	// Reference: settings/js/Switcher.js:9
+	// Reference: languages/js-strings.php:35
 	__( 'Our themes', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:20
+	// Reference: languages/js-strings.php:38
 	__( 'Accordion Settings', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:22
+	// Reference: languages/js-strings.php:41
 	__( 'Open', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:24
+	// Reference: languages/js-strings.php:44
 	__( 'Showing accordion expanded by default.', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:24
+	// Reference: languages/js-strings.php:47
 	__( 'Show accordion collapsed by default.', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:28
+	// Reference: languages/js-strings.php:50
 	__( 'Box Shadow', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:30
+	// Reference: languages/js-strings.php:53
 	__( 'Applies a subtle box shadow effect.', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:38
+	// Reference: languages/js-strings.php:56
 	__( 'Title Color', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:45
+	// Reference: languages/js-strings.php:59
 	__( 'Title Background Color', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:52
-	// Reference: src/blocks/alert/controls.js:54
-	// Reference: src/blocks/hero/controls.js:41
-	// Reference: src/blocks/stats/controls.js:32
-	// Reference: src/blocks/testimonial/controls.js:38
+	// Reference: languages/js-strings.php:62
 	__( 'Text Color', 'sgb' ),
 
-	// Reference: src/blocks/accordion/controls.js:59
-	// Reference: src/blocks/alert/controls.js:48
-	// Reference: src/blocks/hero/controls.js:47
-	// Reference: src/blocks/stats/controls.js:44
-	// Reference: src/blocks/testimonial/controls.js:45
+	// Reference: languages/js-strings.php:65
 	__( 'Background Color', 'sgb' ),
 
-	// Reference: src/blocks/accordion/index.js:100
+	// Reference: languages/js-strings.php:68
 	__( 'Accordion content...', 'sgb' ),
 
-	// Reference: src/blocks/accordion/index.js:16
+	// Reference: languages/js-strings.php:71
 	__( 'Accordion', 'sgb' ),
 
-	// Reference: src/blocks/accordion/index.js:18
+	// Reference: languages/js-strings.php:74
 	__( 'A nice description for accordion block.', 'sgb' ),
 
-	// Reference: src/blocks/accordion/index.js:21
+	// Reference: languages/js-strings.php:77
 	__( 'accordion', 'sgb' ),
 
-	// Reference: src/blocks/accordion/index.js:22
-	// Reference: src/blocks/alert/index.js:27
-	// Reference: src/blocks/hero/index.js:18
-	// Reference: src/blocks/posts-grid/index.js:15
-	// Reference: src/blocks/stats/index.js:24
-	// Reference: src/blocks/testimonial/index.js:33
-	// Reference: src/blocks/website-card/index.js:19
+	// Reference: languages/js-strings.php:80
 	__( 'stag', 'sgb' ),
 
-	// Reference: src/blocks/accordion/index.js:87
+	// Reference: languages/js-strings.php:83
 	__( 'Accordion Title', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:25
+	// Reference: languages/js-strings.php:86
 	__( 'Alert Settings', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:27
+	// Reference: languages/js-strings.php:89
 	__( 'Font size', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:39
+	// Reference: languages/js-strings.php:92
 	__( 'Show Icon', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:62
+	// Reference: languages/js-strings.php:95
 	__( 'Alert Style', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:66
+	// Reference: languages/js-strings.php:98
 	__( 'Warning', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:71
+	// Reference: languages/js-strings.php:101
 	__( 'Success', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:76
+	// Reference: languages/js-strings.php:104
 	__( 'Note', 'sgb' ),
 
-	// Reference: src/blocks/alert/controls.js:81
+	// Reference: languages/js-strings.php:107
 	__( 'Information', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:105
+	// Reference: languages/js-strings.php:110
 	__( 'Add title...', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:116
+	// Reference: languages/js-strings.php:113
 	__( 'Enter Alert description text...', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:20
+	// Reference: languages/js-strings.php:116
 	__( 'Alert', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:22
+	// Reference: languages/js-strings.php:119
 	__( 'A nice description for alert block.', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:25
+	// Reference: languages/js-strings.php:122
 	__( 'alert', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:26
+	// Reference: languages/js-strings.php:125
 	__( 'notice', 'sgb' ),
 
-	// Reference: src/blocks/alert/index.js:89
+	// Reference: languages/js-strings.php:128
 	__( 'Icon Settings', 'sgb' ),
 
-	// Reference: src/blocks/hero/controls.js:24
+	// Reference: languages/js-strings.php:131
 	__( 'Content position', 'sgb' ),
 
-	// Reference: src/blocks/hero/controls.js:30.
+	// Reference: languages/js-strings.php:134
 	__( 'Background Opacity', 'sgb' ),
 
-	// Reference: src/blocks/hero/controls.js:53
+	// Reference: languages/js-strings.php:137
 	__( 'Button Color', 'sgb' ),
 
-	// Reference: src/blocks/hero/controls.js:59
+	// Reference: languages/js-strings.php:140
 	__( 'Button Background Color', 'sgb' ),
 
-	// Reference: src/blocks/hero/edit.js:108
+	// Reference: languages/js-strings.php:143
 	__( 'Apply', 'sgb' ),
 
-	// Reference: src/blocks/hero/edit.js:44
+	// Reference: languages/js-strings.php:146
 	__( 'Edit background', 'sgb' ),
 
-	// Reference: src/blocks/hero/edit.js:72
+	// Reference: languages/js-strings.php:149
 	__( 'Write title', 'sgb' ),
 
-	// Reference: src/blocks/hero/edit.js:79
+	// Reference: languages/js-strings.php:152
 	__( 'Write content...', 'sgb' ),
 
-	// Reference: src/blocks/hero/edit.js:86
+	// Reference: languages/js-strings.php:155
 	__( 'Add text…', 'sgb' ),
 
-	// Reference: src/blocks/hero/index.js:12
+	// Reference: languages/js-strings.php:158
 	__( 'Hero', 'sgb' ),
 
-	// Reference: src/blocks/hero/index.js:14
+	// Reference: languages/js-strings.php:161
 	__( 'A nice description for hero block.', 'sgb' ),
 
-	// Reference: src/blocks/hero/index.js:17
+	// Reference: languages/js-strings.php:164
 	__( 'hero', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:110
+	// Reference: languages/js-strings.php:167
 	__( 'Display post date', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:115
+	// Reference: languages/js-strings.php:170
 	__( 'Display post excerpt', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:120
+	// Reference: languages/js-strings.php:173
 	__( 'Display Read More Link', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:126
+	// Reference: languages/js-strings.php:176
 	__( 'Read More text', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:133
-	// Reference: src/blocks/stats/controls.js:22
+	// Reference: languages/js-strings.php:179
 	__( 'Columns', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:150
+	// Reference: languages/js-strings.php:182
 	__( 'Loading Posts...', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:154
+	// Reference: languages/js-strings.php:185
 	__( 'No posts found.', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:169
+	// Reference: languages/js-strings.php:188
 	__( 'List View', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:175
+	// Reference: languages/js-strings.php:191
 	__( 'Grid View', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:181
+	// Reference: languages/js-strings.php:194
 	__( 'Side View', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:219
+	// Reference: languages/js-strings.php:197 src/blocks/posts-grid/index.php:96
 	__( '(Untitled)', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:244
+	// Reference: languages/js-strings.php:200
 	__( 'Continue Reading →', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/edit.js:98
+	// Reference: languages/js-strings.php:203
 	__( 'Posts Grid Settings', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/index.js:11
+	// Reference: languages/js-strings.php:206
 	__( 'A nice description for posts-grid block.', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/index.js:14
+	// Reference: languages/js-strings.php:209
 	__( 'posts-grid', 'sgb' ),
 
-	// Reference: src/blocks/posts-grid/index.js:9
+	// Reference: languages/js-strings.php:212
 	__( 'Posts Grid', 'sgb' ),
 
-	// Reference: src/blocks/stats/controls.js:38
+	// Reference: languages/js-strings.php:215
 	__( 'Counter Color', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:100
+	// Reference: languages/js-strings.php:218
 	__( 'Enter stats text...', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:132
+	// Reference: languages/js-strings.php:221
 	__( 'Add new stat', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:17
+	// Reference: languages/js-strings.php:224
 	__( 'Stats', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:19
+	// Reference: languages/js-strings.php:227
 	__( 'Display useful custom stats for anything.', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:22
+	// Reference: languages/js-strings.php:230
 	__( 'stats', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:23
+	// Reference: languages/js-strings.php:233
 	__( 'numbers', 'sgb' ),
 
-	// Reference: src/blocks/stats/index.js:72
+	// Reference: languages/js-strings.php:236
 	__( 'Remove counter', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/controls.js:20
+	// Reference: languages/js-strings.php:239
 	__( 'Testimonial Settings', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/controls.js:22
+	// Reference: languages/js-strings.php:242
 	__( 'Show name', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/controls.js:28
+	// Reference: languages/js-strings.php:245
 	__( 'Show company', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/controls.js:30
+	// Reference: languages/js-strings.php:248
 	__( 'Display testimonial author name', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/index.js:109
+	// Reference: languages/js-strings.php:251
 	__( 'Write testimonial...', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/index.js:27
+	// Reference: languages/js-strings.php:254
 	__( 'Testimonial', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/index.js:29
+	// Reference: languages/js-strings.php:257
 	__( 'A nice description for testimonial block.', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/index.js:32
+	// Reference: languages/js-strings.php:260
 	__( 'testimonial', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/index.js:83
+	// Reference: languages/js-strings.php:263
 	__( 'Default', 'sgb' ),
 
-	// Reference: src/blocks/testimonial/index.js:84
+	// Reference: languages/js-strings.php:266
 	__( 'Flipped', 'sgb' ),
 
-	// Reference: src/blocks/website-card/LinkFetch.js:41
+	// Reference: languages/js-strings.php:269
 	__( 'Please set an API key to use this block under <a href="%s">Stag Blocks</a> > Settings > Website Card.', 'sgb' ),
 
-	// Reference: src/blocks/website-card/LinkFetch.js:65
-	// Reference: src/blocks/website-card/index.js:12
+	// Reference: languages/js-strings.php:272
 	__( 'Website Card', 'sgb' ),
 
-	// Reference: src/blocks/website-card/LinkFetch.js:71
+	// Reference: languages/js-strings.php:275
 	__( 'Paste URL or type', 'sgb' ),
 
-	// Reference: src/blocks/website-card/LinkPreview.js:14
+	// Reference: languages/js-strings.php:278
 	__( 'Link to', 'sgb' ),
 
-	// Reference: src/blocks/website-card/controls.js:18
+	// Reference: languages/js-strings.php:281
 	__( 'Website Card Settings', 'sgb' ),
 
-	// Reference: src/blocks/website-card/index.js:14
+	// Reference: languages/js-strings.php:284
 	__( 'A nice description for website-card block.', 'sgb' ),
 
-	// Reference: src/blocks/website-card/index.js:17
+	// Reference: languages/js-strings.php:287
 	__( 'website-card', 'sgb' ),
 
-	// Reference: src/blocks/website-card/index.js:18
+	// Reference: languages/js-strings.php:290
 	__( 'preview', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:13
+	// Reference: languages/js-strings.php:293
 	__( 'Top Left', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:14
+	// Reference: languages/js-strings.php:296
 	__( 'Top', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:15
+	// Reference: languages/js-strings.php:299
 	__( 'Top Right', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:16
+	// Reference: languages/js-strings.php:302
 	__( 'Left', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:17
+	// Reference: languages/js-strings.php:305
 	__( 'Center', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:18
+	// Reference: languages/js-strings.php:308
 	__( 'Right', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:19
+	// Reference: languages/js-strings.php:311
 	__( 'Bottom Left', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:20
+	// Reference: languages/js-strings.php:314
 	__( 'Bottom', 'sgb' ),
 
-	// Reference: src/components/background-position/index.js:21
+	// Reference: languages/js-strings.php:317
 	__( 'Bottom Right', 'sgb' ),
 
-	// Reference: src/components/font-awesome/font-awesome.js:48
+	// Reference: languages/js-strings.php:320
 	__( 'Icon Size', 'sgb' ),
 
-	// Reference: src/components/font-awesome/font-awesome.js:58
+	// Reference: languages/js-strings.php:323
 	__( 'Select Icon', 'sgb' ),
 
-	// Reference: src/components/font-awesome/font-awesome.js:61
-	__( 'Type icon name...', 'sgb' )
+	// Reference: languages/js-strings.php:326
+	__( 'Type icon name...', 'sgb' ),
+
+	// Reference: languages/js-strings.php:329 settings/class-stag-blocks-api.php:65
+	__( 'No blocks found, please initiate the Gutenberg editor by visiting the post edit screen.', 'sgb' ),
+
+	// Reference: languages/js-strings.php:332 settings/class-stag-blocks-api.php:79
+	// Reference: settings/class-stag-blocks-api.php:93
+	__( 'Incorrect content type. Provided data must have "application/json" type.', 'sgb' )
 );
 /* THIS IS THE END OF THE GENERATED FILE */

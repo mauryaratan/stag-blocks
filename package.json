@@ -1,6 +1,7 @@
 {
   "name": "stag-blocks",
   "title": "Stag Blocks",
+  "textDomain": "sgb",
   "version": "1.0.0",
   "private": true,
   "scripts": {

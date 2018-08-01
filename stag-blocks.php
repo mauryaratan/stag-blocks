@@ -34,3 +34,4 @@ function sgb_plugin_version() {
 require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
 require_once plugin_dir_path( __FILE__ ) . '/settings/class-stag-blocks-api.php';
 require_once plugin_dir_path( __FILE__ ) . '/settings/class-stag-blocks-settings.php';
+require_once plugin_dir_path( __FILE__ ) . '/languages/js-strings.php';
