@@ -180,10 +180,11 @@ registerBlockType( 'sgb/testimonial', {
 						) }
 					</div>
 				</div>
-				<div className={ `${ containerClass }__image` }>
-					<img src={ attributes.imageURL } alt="avatar" />
-				</div>
-
+				{ attributes.imageURL &&
+					<div className={ `${ containerClass }__image` }>
+						<img src={ attributes.imageURL } alt="avatar" />
+					</div>
+				}
 			</div>
 		);
 	},
