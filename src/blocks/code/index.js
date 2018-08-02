@@ -1,11 +1,12 @@
+import classnames from 'classnames';
+import './editor.scss';
+import './style.scss';
+
 const { __ } = wp.i18n;
 const { addFilter } = wp.hooks;
 const { PlainText, InspectorControls } = wp.editor;
-const { SelectControl, PanelBody } = wp.components;
+const { SelectControl, PanelBody, ToggleControl } = wp.components;
 const { Fragment } = wp.element;
-
-import './editor.scss';
-import './style.scss';
 
 const LANGS = {
 	bash: 'Bash (shell)',
@@ -42,17 +43,26 @@ const addSyntaxToCodeBlock = ( settings ) => {
 				source: 'attribute',
 				attribute: 'lang',
 			},
+			lineNumbers: {
+				type: 'boolean',
+				default: false,
+			},
 		},
 		edit( { attributes, setAttributes, className } ) {
 			return (
 				<Fragment>
 					<InspectorControls>
 						<PanelBody>
+							<ToggleControl
+								label={ __( 'Show Line Numbers' ) }
+								checked={ !! attributes.lineNumbers }
+								onChange={ () => setAttributes( { lineNumbers: ! attributes.lineNumbers } ) }
+							/>
 							<SelectControl
 								label="Language"
 								value={ attributes.language }
 								options={
-									[ { label: __( 'Select code language' ), value: '' } ].concat(
+									[ { label: __( 'Select Code Language' ), value: '' } ].concat(
 										Object.keys( LANGS ).map( ( lang ) => (
 											{ label: LANGS[ lang ], value: lang }
 										) ) )
@@ -74,7 +84,10 @@ const addSyntaxToCodeBlock = ( settings ) => {
 			);
 		},
 		save( { attributes } ) {
-			const customClass = ( attributes.language ) ? `language-${ attributes.language }` : '';
+			const customClass = classnames( {
+				'line-numbers': attributes.lineNumbers,
+				[ `language-${ attributes.language }` ]: attributes.language,
+			} );
 
 			return (
 				<pre><code lang={ attributes.language } className={ customClass }>{ attributes.content }</code></pre>

@@ -95,7 +95,7 @@ function sgb_frontend_assets() {
 		preg_match( '~<code.*?lang=["\']+(.*?)["\']+~', $content, $match );
 
 		if ( ! empty( $match ) ) {
-			wp_enqueue_style( 'prism', plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism-ghcolors.css', array(), '20180724' );
+			wp_enqueue_style( 'prism', plugin_dir_url( __FILE__ ) . 'assets/vendor/prismjs/prism-duotone-light.css', array(), '20180724' );
 
 			wp_enqueue_script(
 				'prism',
