@@ -55,28 +55,7 @@ registerBlockType( 'sgb/pricing-table', {
 		},
 		tables: {
 			type: 'array',
-			default: [
-				{
-					title: 'Startup',
-					description: 'This is where it all begins',
-					price: '$9.99',
-					price_term: 'per month',
-					features: [],
-					featured: false,
-					buttonText: 'Choose this plan',
-					buttonURL: 'https://google.com',
-				},
-				{
-					title: 'Enterprise',
-					description: 'You know you have made it when...',
-					price: '$100',
-					price_term: 'per year',
-					features: [],
-					featured: true,
-					buttonText: 'Choose this plan',
-					buttonURL: 'https://google.com',
-				},
-			],
+			default: [],
 		},
 	},
 

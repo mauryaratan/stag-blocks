@@ -220,8 +220,8 @@ const EnhancedComponent = withFocusOutside(
 									tables.push( {
 										title: '',
 										description: '',
-										price: '$100',
-										price_term: 'per month',
+										price: '',
+										price_term: '',
 										features: [],
 										buttonText: 'Choose this plan',
 									} );

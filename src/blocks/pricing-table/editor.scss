@@ -1,4 +1,7 @@
 .wp-block-sgb-pricing-table {
+	&:empty {
+		display: none;
+	}
 
 	.inline-container {
 		display: inline-block;
@@ -62,5 +65,9 @@
 		height: 30px;
 		display: inline-block;
 		flex: 0 0 auto;
+	}
+
+	.editor-rich-text__tinymce.mce-content-body {
+		line-height: 1.2;
 	}
 }
