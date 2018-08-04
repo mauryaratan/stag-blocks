@@ -40,7 +40,10 @@ const EnhancedComponent = withFocusOutside(
 
 			return (
 				<Fragment>
-					<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
+					<div className={ classnames( className, `columns-${ attributes.columns }`, {
+						'has-shadow': attributes.boxShadow,
+						'has-full-width-button': attributes.fullWidthButtons,
+					} ) }>
 						{
 							( attributes.tables.length ) ? ( attributes.tables.map( ( table, i ) => (
 								<div
@@ -105,6 +108,9 @@ const EnhancedComponent = withFocusOutside(
 												tables[ i ].title = value;
 												setAttributes( { tables } );
 											} }
+											style={ {
+												color: ! table.featured ? attributes.accent : null,
+											} }
 										/>
 
 										<RichText
@@ -133,6 +139,9 @@ const EnhancedComponent = withFocusOutside(
 												setAttributes( { tables } );
 											} }
 											keepPlaceholderOnFocus
+											style={ {
+												color: ! table.featured ? attributes.accent : null,
+											} }
 										/>
 										<RichText
 											tagName="div"
@@ -182,6 +191,9 @@ const EnhancedComponent = withFocusOutside(
 												formattingControls={ [ 'bold', 'italic', 'strikethrough' ] }
 												className={ classnames( 'wp-block-button__link' ) }
 												keepPlaceholderOnFocus
+												style={ {
+													backgroundColor: ! table.featured ? attributes.accent : null,
+												} }
 											/>
 										</span>
 

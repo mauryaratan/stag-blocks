@@ -11,6 +11,7 @@ const {
 	PanelBody,
 	RangeControl,
 	TextControl,
+	ToggleControl,
 } = wp.components;
 
 const MAX_POSTS_COLUMNS = 4;
@@ -35,6 +36,19 @@ const Controls = ( props ) => {
 						max={ ! hasTables ? MAX_POSTS_COLUMNS : Math.min( MAX_POSTS_COLUMNS, attributes.tables.length ) }
 						value={ attributes.columns }
 						onChange={ ( columns ) => setAttributes( { columns } ) }
+					/>
+
+					<ToggleControl
+						label={ __( 'Full Width Button' ) }
+						checked={ !! attributes.fullWidthButtons }
+						help={ __( 'Makes the button full width.' ) }
+						onChange={ () => setAttributes( { fullWidthButtons: ! attributes.fullWidthButtons } ) }
+					/>
+					<ToggleControl
+						label={ __( 'Box Shadow' ) }
+						checked={ !! attributes.boxShadow }
+						help={ __( 'Applies a subtle box shadow effect.' ) }
+						onChange={ () => setAttributes( { boxShadow: ! attributes.boxShadow } ) }
 					/>
 				</PanelBody>
 

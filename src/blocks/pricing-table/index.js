@@ -51,11 +51,18 @@ registerBlockType( 'sgb/pricing-table', {
 		},
 		backgroundColor: {
 			type: 'string',
-			default: '#f5f6f8',
 		},
 		tables: {
 			type: 'array',
 			default: [],
+		},
+		fullWidthButtons: {
+			type: 'boolean',
+			default: false,
+		},
+		boxShadow: {
+			type: 'boolean',
+			default: true,
 		},
 	},
 
@@ -74,7 +81,10 @@ registerBlockType( 'sgb/pricing-table', {
 		const className = 'wp-block-sgb-pricing-table';
 
 		return (
-			<div className={ classnames( className, `columns-${ attributes.columns }` ) }>
+			<div className={ classnames( className, `columns-${ attributes.columns }`, {
+				'has-shadow': attributes.boxShadow,
+				'has-full-width-button': attributes.fullWidthButtons,
+			} ) }>
 				{
 					( attributes.tables.length ) ? ( attributes.tables.map( ( table, i ) => (
 						<div
@@ -91,12 +101,26 @@ registerBlockType( 'sgb/pricing-table', {
 								<span className={ `${ className }__featured_text` }>{ attributes.featured_text }</span>
 							}
 							<div className={ `${ className }__header` }>
-								<RichText.Content tagName="h3" className={ `${ className }__title` } value={ table.title } />
+								<RichText.Content
+									tagName="h3"
+									className={ `${ className }__title` }
+									value={ table.title }
+									style={ {
+										color: ! table.featured ? attributes.accent : null,
+									} }
+								/>
 								<RichText.Content tagName="p" className={ `${ className }__description` } value={ table.description } />
 							</div>
 
 							<div className={ `${ className }__price` }>
-								<RichText.Content tagName="div" className={ `${ className }__price__amount` } value={ table.price } />
+								<RichText.Content
+									tagName="div"
+									className={ `${ className }__price__amount` }
+									value={ table.price }
+									style={ {
+										color: ! table.featured ? attributes.accent : null,
+									} }
+								/>
 								<RichText.Content tagName="div" className={ `${ className }__price__term` } value={ table.price_term } />
 							</div>
 
@@ -110,6 +134,9 @@ registerBlockType( 'sgb/pricing-table', {
 										href={ table.buttonURL }
 										title={ table.buttonText }
 										value={ table.buttonText }
+										style={ {
+											backgroundColor: ! table.featured ? attributes.accent : null,
+										} }
 									/>
 								</div>
 							</div>
