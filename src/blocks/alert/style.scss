@@ -1,5 +1,12 @@
 .wp-block-sgb-alert {
 	position: relative;
+	border-radius: 2px;
+	padding: 20px;
+	background: whitesmoke;
+	margin-top: 1em;
+	overflow: hidden;
+	margin-bottom: 1em;
+
 	&__background {
 		position: absolute;
 		top: 0;
@@ -11,14 +18,23 @@
 		opacity: .25;
 		pointer-events: none;
 	}
-}
 
-.sgb-alert {
-	padding: 20px;
-	background: whitesmoke;
+	p.wp-block-sgb-alert__title {
+		font-weight: bold;
+		font-size: 1.5em;
+		margin-bottom: .5em;
+	}
+
+	&.is-style-bordered {
+		border: 2px solid var(--alert-accent);
+	}
+
+	&__content {
+		margin-bottom: 0;
+	}
 
 	p {
 		color: inherit;
-		font-size: inherit;
+		font-size: 1em;
 	}
 }

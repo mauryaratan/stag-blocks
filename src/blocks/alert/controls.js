@@ -34,12 +34,6 @@ const Controls = ( props ) => {
 						value={ attributes.fontSize }
 						onChange={ ( size ) => setAttributes( { fontSize: size } ) }
 					/>
-
-					<ToggleControl
-						label={ __( 'Show Icon' ) }
-						checked={ !! attributes.showIcon }
-						onChange={ ( value ) => setAttributes( { showIcon: value } ) }
-					/>
 				</PanelBody>
 
 				<PanelColorSettings
@@ -50,11 +44,6 @@ const Controls = ( props ) => {
 							value: attributes.accentColor,
 							onChange: ( accentColor ) => ( setAttributes( { accentColor } ) ),
 							label: __( 'Accent Color' ),
-						},
-						{
-							value: attributes.textColor,
-							onChange: ( textColor ) => ( setAttributes( { textColor } ) ),
-							label: __( 'Text Color' ),
 						},
 					] }
 				/>

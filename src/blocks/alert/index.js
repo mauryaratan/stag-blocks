@@ -2,7 +2,6 @@
  * Internal dependencies.
  */
 import classnames from 'classnames';
-import FontAwesome from './../../components/font-awesome/font-awesome';
 import Controls from './controls';
 import './editor.scss';
 import icon from './icon';
@@ -38,26 +37,10 @@ registerBlockType( 'sgb/alert', {
 		},
 		accentColor: {
 			type: 'string',
-			default: '#F5B041',
-		},
-		textColor: {
-			type: 'string',
-			default: '#4F4F4F',
+			default: '#EC7063',
 		},
 		fontSize: {
 			type: 'number',
-		},
-		showIcon: {
-			type: 'boolean',
-			default: true,
-		},
-		icon: {
-			type: 'string',
-			default: 'fab fa-wordpress',
-		},
-		iconSize: {
-			type: 'number',
-			default: 20,
 		},
 	},
 
@@ -65,8 +48,16 @@ registerBlockType( 'sgb/alert', {
 		align: true,
 	},
 
+	styles: [
+		{ name: 'default', label: __( 'Default' ) },
+		{ name: 'bordered', label: __( 'Bordered' ) },
+	],
+
 	edit: function( props ) {
-		const { attributes, setAttributes, className } = props;
+		const { attributes, setAttributes } = props;
+		const className = 'wp-block-sgb-alert';
+
+		const border = props.className.includes( 'is-style-bordered' ) ? `2px solid ${ attributes.accentColor }` : null;
 
 		return (
 			<Fragment>
@@ -76,10 +67,10 @@ registerBlockType( 'sgb/alert', {
 					className={ classnames( 'sgb-alert', className ) }
 					role="alert"
 					style={ {
-						color: attributes.textColor,
+						color: attributes.accentColor,
 						textAlign: attributes.textAlign,
 						fontSize: attributes.fontSize,
-						border: `2px solid ${ attributes.accentColor }`,
+						border,
 					} }
 				>
 					<div
@@ -88,18 +79,6 @@ registerBlockType( 'sgb/alert', {
 							backgroundColor: attributes.accentColor,
 						} }
 					/>
-					{ ( !! attributes.showIcon ) && (
-						<span style={ { color: attributes.accentColor } }>
-							<FontAwesome
-								key="font-awesome"
-								title={ __( 'Icon Settings' ) }
-								icon={ attributes.icon }
-								iconSize={ attributes.iconSize }
-								onSelect={ ( value ) => setAttributes( { icon: value } ) }
-								{ ...props }
-							/>
-						</span>
-					) }
 
 					<div className={ `${ className }__container` }>
 						<RichText
@@ -131,21 +110,24 @@ registerBlockType( 'sgb/alert', {
 
 	save: function( props ) {
 		const { attributes } = props;
-		const className = 'sgb-alert';
+		const className = 'wp-block-sgb-alert';
 
 		return (
 			<div
-				className={ classnames( 'sgb-alert' ) }
+				className={ className }
 				style={ {
-					backgroundColor: attributes.accentColor,
-					color: attributes.textColor,
+					color: attributes.accentColor,
 					textAlign: attributes.textAlign,
 					fontSize: attributes.fontSize,
+					'--alert-accent': attributes.accentColor,
 				} }
 			>
-				{ ( !! attributes.showIcon ) && (
-					<i className={ attributes.icon } style={ { fontSize: attributes.iconSize } }></i>
-				) }
+				<div
+					className={ `${ className }__background` }
+					style={ {
+						backgroundColor: attributes.accentColor,
+					} }
+				/>
 				<p className={ `${ className }__title` }>{ attributes.title }</p>
 				<p className={ `${ className }__content` }>{ attributes.content }</p>
 			</div>

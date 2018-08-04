@@ -1,9 +1,12 @@
-.edit-post-visual-editor {
-	.sgb-alert {
-		p {
-			color: inherit;
-			font-size: inherit !important;
-		}
+.wp-block-sgb-alert .wp-block-sgb-alert__title {
+	font-size: 1.2em !important;
+	margin-bottom: .5em;
+}
+
+.wp-block-sgb-alert {
+	p {
+		color: inherit;
+		font-size: 1em !important;
 	}
 }
 
