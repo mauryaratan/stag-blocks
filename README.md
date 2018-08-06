@@ -2,10 +2,10 @@
 
 Stag Blocks provide a set of useful Gutenberg blocks to help you build your WordPress pages in style.
 
-### Blocks
+## Blocks
 Check our live website for Block usage examples and demo: [StagBlocks](https://stagblocks.com).
 
-### Development
+## Development
 1. Clone the repository `git@github.com:mauryaratan/stag-blocks.git`.
 2. Navigate to the project files in command line.
 3. Run `npm install` to install plugin dependencies.
@@ -14,8 +14,10 @@ Check our live website for Block usage examples and demo: [StagBlocks](https://s
    1. You can run `npm run localBuild` to start dev process for Stag Blocks' settings page, since it's also build on React.js
 	 2. Settings production build files can be created with `npm run localDev`.
 
-### Bugs
+## Bugs
 If you find a 🐞 or an issue, [create an issue](https://github.com/mauryaratan/stag-blocks/issues/new).
+
+---
 
 ###### Credits
 * Made with [Create Guten Block](https://github.com/ahmadawais/create-guten-block).
