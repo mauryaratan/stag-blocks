@@ -3,7 +3,6 @@ const { Fragment } = wp.element;
 
 const {
 	PanelBody,
-	ToggleControl,
 	Toolbar,
 	DropdownMenu,
 	RangeControl,

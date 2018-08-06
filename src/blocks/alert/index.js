@@ -11,7 +11,7 @@ import './style.scss';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 const { Fragment } = wp.element;
 const { RichText } = wp.editor;
 
@@ -106,6 +106,32 @@ registerBlockType( 'sgb/alert', {
 				</div>
 			</Fragment>
 		);
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => {
+					return createBlock( 'sgb/alert', {
+						content,
+						accentColor: '#5DADE2',
+					} );
+				},
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => {
+					return createBlock( 'core/paragraph', {
+						content,
+					} );
+				},
+			},
+		],
 	},
 
 	save: function( props ) {
