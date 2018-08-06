@@ -10,6 +10,12 @@
 		margin: 0;
 	}
 
+	&.is-list {
+		li + li {
+			margin-top: 2em;
+		}
+	}
+
 	figure {
 		margin: 0 0 1em 0;
 		padding: 0;
@@ -56,7 +62,7 @@
 	&.is-grid {
 		@include media($breakpoint__md) {
 			display: grid !important;
-			grid-gap: 80px;
+			grid-gap: 50px;
 			grid-template-columns: repeat(2, 1fr);
 
 			&.columns-3 {
