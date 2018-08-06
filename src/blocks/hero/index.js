@@ -21,7 +21,7 @@ registerBlockType( 'sgb/hero', {
 	attributes: {
 		alignment: {
 			type: 'string',
-			default: 'top-left',
+			default: 'center center',
 		},
 		imgID: {
 			type: 'number',
