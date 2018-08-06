@@ -13,7 +13,7 @@ const Footer = () => {
 			<ul>
 				<li><a href="https://codestag.com/">Visit Codestag.com</a></li>
 				<li><a href="https://codestag.com/themes/">Themes</a></li>
-				<li><a href="https://docs.codestag.com/">Documentation</a></li> { /* TODO: Update documentation link. */ }
+				<li><a href="https://stagblocks.com/">Documentation</a></li> { /* TODO: Update documentation link. */ }
 			</ul>
 			<ul>
 				<li><a href="https://facebook.com/Codestag/">Facebook</a></li>
