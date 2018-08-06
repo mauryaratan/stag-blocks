@@ -18,6 +18,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 }
 
 /**
+ * Run compatibility check on StagBlocks during activation.
+ *
+ * @return void
+ */
+function sgb_compatibility_check() {
+	if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+		deactivate_plugins( plugin_basename( __FILE__ ) );
+		wp_die(
+			sprintf(
+				/* translators: %1$s: Link to Gutenberg %2$s: Link to Plugins admin page. */
+				esc_html__( 'Stag Blocks requires %1$s plugin to be installed and activated. %2$s', 'sgb' ),
+				'<a href="https://wordpress.org/plugins/gutenberg/" target="_blank">Gutenberg</a>',
+				'<br><br><a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">&larr; Go Back</a>'
+			)
+		);
+	}
+}
+
+register_activation_hook( __FILE__, 'sgb_compatibility_check' );
+
+/**
  * Get plugin version info.
  *
  * @return String Returns current plugin version.
