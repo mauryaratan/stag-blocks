@@ -68,7 +68,7 @@ export default class Categories extends Component {
 									context.resetSearch();
 								}
 							} }
-							icon={ this.state.searchVisible ? 'no' : 'search' }
+							icon={ this.state.searchVisible ? 'no' : <i className="fas fa-search" /> }
 							className="block-search-button"
 							style={ {
 								marginLeft: 'auto',
