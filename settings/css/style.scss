@@ -66,6 +66,7 @@ body.settings_page_stag-blocks.folded {
 			border-radius: 3px;
 			height: 32px;
 			height: fit-content;
+			box-shadow: 1px 1px 2px rgba(221, 223, 224, 0.7);
 
 			a {
 				color: #333;
@@ -130,7 +131,7 @@ body.settings_page_stag-blocks.folded {
 	&__content {
 		margin: auto;
 		margin-top: 50px;
-		max-width: 950px;
+		max-width: 1040px;
 		padding: 0 20px;
 		min-height: 44vh;
 	}
@@ -278,6 +279,89 @@ body.settings_page_stag-blocks.folded {
 	.components-button.is-primary:focus:not(:disabled):not([aria-disabled=true]), .components-button.is-primary:hover {
 		background-color: var(--sgb-accent);
 	}
+
+	.blocks-list {
+		color: #333;
+
+		.header {
+			max-width: 530px;
+			margin: 20px auto 40px;
+			text-align: center;
+			h3 {
+				max-width: 400px;
+				margin: 0 auto 20px;
+				font-size: 25px;
+				line-height: 1.5;
+			}
+		}
+		ul {
+			display: grid;
+			grid-gap: 35px;
+			grid-template-columns: 1fr 1fr 1fr;
+		}
+		li {
+			padding: 35px;
+			border-radius: 6px;
+			background-color: #fff;
+			box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+
+			display: flex;
+			flex-direction: column;
+		}
+		h3 {
+			margin-top: 0;
+			font-size: 22px;
+			line-height: 1.5;
+		}
+		p {
+			font-size: 16px;
+			&:last-of-type {
+				margin-bottom: 0;
+				margin-top: auto;
+			}
+		}
+		a {
+			text-decoration: none;
+			color: var(--sgb-accent);
+		}
+
+		.dashicon {
+			font-size: 40px;
+			width: 40px;
+			height: 40px;
+			margin-bottom: 20px;
+			fill: #000 !important;
+			color: #000;
+		}
+	}
+
+	.feature-list {
+		margin-bottom: 100px;
+	}
+
+	.feature-list__feature {
+		display: flex;
+		background-color: #fff;
+		border-radius: 6px;
+		box-shadow: 0px 2px 6px rgba(0, 0, 0, 0.1);
+		margin-bottom: 40px;
+
+		figure {
+			margin: 0;
+			max-width: 45%;
+		}
+		img {
+			vertical-align: bottom;
+			max-width: 100%;
+			width: 100%;
+			height: 100%;
+			object-fit: cover;
+		}
+	}
+
+	.feature-list__content {
+		padding: 35px;
+	}
 }
 
 .codestag-themes {
@@ -386,5 +470,21 @@ body.settings_page_stag-blocks.folded {
 @media (max-width: 768px) {
 	.codestag-themes {
 		grid-template-columns: 1fr;
+	}
+
+	.stag-blocks .blocks-list ul {
+		grid-template-columns: 1fr;
+	}
+
+	.stag-blocks .feature-list__feature {
+		display: block;
+	}
+
+	.stag-blocks .feature-list__feature figure {
+		max-width: 100%;
+	}
+
+	.stag-blocks .feature-list__feature img {
+		max-height: 250px;
 	}
 }

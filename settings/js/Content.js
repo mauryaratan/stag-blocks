@@ -1,6 +1,7 @@
 import BlockList from './BlockList';
 import BlocksContext from './BlocksContext';
 import Categories from './Categories';
+import Dashboard from './dashboard/dashboard';
 import Themes from './Themes';
 
 const { Fragment } = wp.element;
@@ -25,7 +26,7 @@ const renderView = ( view ) => {
 
 	return (
 		<Fragment>
-			<p>Dashboard View</p>
+			<Dashboard />
 		</Fragment>
 	);
 };

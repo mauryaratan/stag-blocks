@@ -78,6 +78,12 @@ const config = {
 				test: /style\.s?css$/,
 				use: cssExtractTextPlugin.extract( extractConfig ),
 			},
+			{
+				test: /\.(png|jpeg)$/,
+				use: [
+					{ loader: 'url-loader' },
+				],
+			},
 		],
 	},
 	plugins: [
