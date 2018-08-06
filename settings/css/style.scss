@@ -46,7 +46,8 @@ body.settings_page_stag-blocks.folded {
 		}
 
 		code {
-			color: #4F4F4F;
+			color: #808b96;
+			background-color: #f9f9f9;
 			padding: 5px 7px;
 		}
 
@@ -153,13 +154,20 @@ body.settings_page_stag-blocks.folded {
 			height: 100%;
 			margin: 0;
 			border: none;
-			font-size: 1.5em;
+			font-size: 1.2em;
 			opacity: 1;
 			transition: opacity 300ms;
+			padding: 20px;
+			font-weight: normal;
 
 			&:not(.is-visible) {
 				opacity: 0;
 				z-index: -1;
+			}
+
+			&:focus {
+				box-shadow: none;
+				outline: 0;
 			}
 		}
 
@@ -194,6 +202,7 @@ body.settings_page_stag-blocks.folded {
 			&.is-active {
 				border-color: #000;
 				color: #000;
+				font-weight: bold;
 			}
 
 			&:focus {
@@ -212,6 +221,7 @@ body.settings_page_stag-blocks.folded {
 
 	&__block {
 		background: #fff;
+		color: #303439;
 		padding: 20px;
 		border: 1px solid rgba(#000, .1);
 		margin-bottom: 20px;
@@ -237,10 +247,9 @@ body.settings_page_stag-blocks.folded {
 
 		&__icon {
 			margin-right: 10px;
-			fill: #555d66 !important;
 
 			svg {
-				fill: inherit;
+				fill: #303439;
 			}
 
 			i {
@@ -248,7 +257,7 @@ body.settings_page_stag-blocks.folded {
 				width: 20px;
 				height: 20px;
 				font-size: 16px;
-				color: #555d66;
+				color: #303439;
 				vertical-align: sub;
 			}
 		}
@@ -279,6 +288,7 @@ body.settings_page_stag-blocks.folded {
 	.components-form-toggle.is-checked .components-form-toggle__track,
 	.components-button.is-primary:focus:not(:disabled):not([aria-disabled=true]), .components-button.is-primary:hover {
 		background-color: var(--sgb-accent);
+		text-shadow: none;
 	}
 
 	.blocks-list {
