@@ -8,7 +8,7 @@ import './style.scss';
  * WordPress dependencies.
  */
 const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { registerBlockType, createBlock } = wp.blocks;
 const { Fragment } = wp.element;
 const { RichText } = wp.editor;
 
@@ -61,6 +61,51 @@ registerBlockType( 'sgb/accordion', {
 
 	supports: {
 		align: [ 'wide' ],
+	},
+
+	transforms: {
+		from: [
+			{
+				type: 'block',
+				blocks: [ 'sgb/alert' ],
+				transform: ( { title, content } ) => (
+					createBlock( 'sgb/accordion', {
+						title,
+						content,
+					} )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => {
+					return createBlock( 'sgb/accordion', {
+						content,
+					} );
+				},
+			},
+		],
+		to: [
+			{
+				type: 'block',
+				blocks: [ 'sgb/alert' ],
+				transform: ( { title, content } ) => (
+					createBlock( 'sgb/alert', {
+						title,
+						content,
+					} )
+				),
+			},
+			{
+				type: 'block',
+				blocks: [ 'core/paragraph' ],
+				transform: ( { content } ) => (
+					createBlock( 'core/paragraph', {
+						content,
+					} )
+				),
+			},
+		],
 	},
 
 	edit: function( props ) {
