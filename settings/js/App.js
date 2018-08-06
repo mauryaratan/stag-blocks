@@ -10,6 +10,7 @@ class App extends React.Component {
 		category: 'stag-blocks',
 		isLoading: true,
 		blocks: [],
+		stagBlocks: [],
 		activeBlocks: {},
 		searchList: {},
 		view: 'dashboard',
@@ -43,9 +44,13 @@ class App extends React.Component {
 		fetch( `${ _stagBlocks.root }stag_blocks/v1/blocks` )
 			.then( ( response ) => response.json() )
 			.then( ( responseJSON ) => {
+				// Fetch list of StagBlocks.
+				const stagBlocks = responseJSON.blocks.filter( ( block ) => block.name.startsWith( 'sgb/' ) );
+
 				this.setState( {
 					blocks: responseJSON.blocks,
 					isLoading: false,
+					stagBlocks,
 				} );
 			} );
 
