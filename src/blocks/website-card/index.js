@@ -42,6 +42,9 @@ registerBlockType( 'sgb/website-card', {
 			selector: 'a',
 			attribute: 'href',
 		},
+		new_tab: {
+			type: 'boolean',
+		},
 	},
 
 	edit: function( props ) {

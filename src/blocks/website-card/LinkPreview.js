@@ -10,7 +10,12 @@ const LinkPreview = ( { attributes, className } ) => {
 					<img src={ attributes.image } alt={ attributes.title } />
 				</figure>
 			) }
-			<a href={ attributes.url } className={ `${ className }__url` }>
+			<a
+				href={ attributes.url }
+				className={ `${ className }__url` }
+				target={ attributes.new_tab ? '_blank' : false }
+				rel={ attributes.new_tab ? 'noopener noreferrer' : false }
+			>
 				<span className="screen-reader-text">{ __( 'Link to' ) } { attributes.title }</span>
 			</a>
 			<div className={ `${ className }__content` }>
