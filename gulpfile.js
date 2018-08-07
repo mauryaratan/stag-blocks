@@ -18,6 +18,7 @@ const buildFiles = [
 	'!yarn.lock',
 	'!package.lock',
 	'!./src/blocks/**/*.js',
+	'!./settings/**/*.js',
 	'!./**/*.scss',
 	'!./src/*.js',
 	'!./src/components/**/*.js',
