@@ -154,8 +154,8 @@ registerBlockType( 'sgb/alert', {
 						backgroundColor: attributes.accentColor,
 					} }
 				/>
-				<p className={ `${ className }__title` }>{ attributes.title }</p>
-				<p className={ `${ className }__content` }>{ attributes.content }</p>
+				<RichText.Content tagName="p" value={ attributes.title } className={ `${ className }__title` } />
+				<RichText.Content tagName="p" value={ attributes.content } className={ `${ className }__content` } />
 			</div>
 		);
 	},
