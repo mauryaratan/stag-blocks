@@ -8,7 +8,7 @@ const {
 	BlockControls,
 	RichText,
 	MediaUpload,
-	UrlInput,
+	URLInput,
 } = wp.editor;
 
 const {
@@ -101,7 +101,7 @@ const edit = ( props ) => {
 								className="core-blocks-button__inline-link"
 								onSubmit={ ( event ) => event.preventDefault() }>
 								<Dashicon icon="admin-links" />
-								<UrlInput
+								<URLInput
 									value={ attributes.buttonLink }
 									onChange={ ( value ) => setAttributes( { buttonLink: value } ) }
 								/>
