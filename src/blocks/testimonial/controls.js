@@ -27,7 +27,7 @@ const Controls = ( props ) => {
 					<ToggleControl
 						label={ __( 'Show company' ) }
 						checked={ !! attributes.showCompany }
-						help={ __( 'Display testimonial author name' ) }
+						help={ __( 'Display testimonial author company name' ) }
 						onChange={ ( showCompany ) => setAttributes( { showCompany } ) }
 					/>
 				</PanelBody>
