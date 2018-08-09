@@ -6,6 +6,8 @@ import './style.scss';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
+const { RichText } = wp.editor;
+
 registerBlockType( 'sgb/hero', {
 	title: __( 'Hero' ),
 	category: 'common',
@@ -27,7 +29,9 @@ registerBlockType( 'sgb/hero', {
 			type: 'number',
 		},
 		title: {
-			type: 'string',
+			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-hero__title',
 		},
 		content: {
 			type: 'array',
@@ -46,10 +50,15 @@ registerBlockType( 'sgb/hero', {
 			type: 'string',
 		},
 		buttonText: {
-			type: 'string',
+			type: 'array',
+			source: 'children',
+			selector: '.wp-block-button__link',
 		},
 		buttonLink: {
 			type: 'string',
+			source: 'attribute',
+			selector: '.wp-block-button__link',
+			attribute: 'href',
 		},
 		buttonColor: {
 			type: 'string',
@@ -87,10 +96,8 @@ registerBlockType( 'sgb/hero', {
 
 				<div className={ `${ className }__container` }>
 					<div className={ classnames( `${ className }__content`, attributes.alignment ) }>
-						<h3 className={ `${ className }__title` }>{ attributes.title }</h3>
-						<div className={ `${ className }__text` }>
-							{ attributes.content }
-						</div>
+						<RichText.Content tagName="h3" value={ attributes.title } className={ `${ className }__title` } />
+						<RichText.Content tagName="div" value={ attributes.content } className={ `${ className }__text` } />
 
 						{ !! attributes.buttonLink && (
 							<a
