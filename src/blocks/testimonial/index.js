@@ -51,10 +51,14 @@ registerBlockType( 'sgb/testimonial', {
 			selector: '.wp-block-sgb-testimonial__content',
 		},
 		name: {
-			type: 'string',
+			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-testimonial__name',
 		},
 		company: {
-			type: 'string',
+			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-testimonial__company',
 		},
 		backgroundColor: {
 			type: 'string',
