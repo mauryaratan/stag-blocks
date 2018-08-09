@@ -30,10 +30,14 @@ registerBlockType( 'sgb/alert', {
 
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-alert__title',
 		},
 		content: {
 			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-alert__content',
 		},
 		accentColor: {
 			type: 'string',
