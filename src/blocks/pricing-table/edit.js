@@ -138,6 +138,7 @@ const EnhancedComponent = withFocusOutside(
 												tables[ i ].price = value;
 												setAttributes( { tables } );
 											} }
+											inlineToolbar
 											keepPlaceholderOnFocus
 											style={ {
 												color: ! table.featured ? attributes.accent : null,
@@ -154,6 +155,7 @@ const EnhancedComponent = withFocusOutside(
 												setAttributes( { tables } );
 											} }
 											keepPlaceholderOnFocus
+											inlineToolbar
 										/>
 									</div>
 
@@ -194,6 +196,7 @@ const EnhancedComponent = withFocusOutside(
 												style={ {
 													backgroundColor: ! table.featured ? attributes.accent : null,
 												} }
+												inlineToolbar
 											/>
 										</span>
 
