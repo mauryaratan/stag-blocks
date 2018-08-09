@@ -27,12 +27,6 @@ registerBlockType( 'sgb/pricing-table', {
 	},
 
 	attributes: {
-		title: {
-			type: 'string',
-		},
-		description: {
-			type: 'string',
-		},
 		columns: {
 			type: 'number',
 			default: 2,
