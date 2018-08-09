@@ -19,7 +19,7 @@ const Controls = ( props ) => {
 			<InspectorControls>
 				<PanelBody title={ __( 'Accordion Settings' ) }>
 					<ToggleControl
-						label={ __( 'Open' ) }
+						label={ __( 'Show Expanded' ) }
 						checked={ !! attributes.initialOpen }
 						help={ ( checked ) => checked ? __( 'Showing accordion expanded by default.' ) : __( 'Show accordion collapsed by default.' ) }
 						onChange={ () => setAttributes( { initialOpen: ! attributes.initialOpen } ) }
