@@ -4,28 +4,16 @@ const { Fragment } = wp.element;
 
 const {
 	BlockControls,
-	InspectorControls,
 } = wp.editor;
 
 const {
 	Toolbar,
-	PanelBody,
-	ToggleControl,
 	IconButton,
 } = wp.components;
 
-const Controls = ( { attributes, setAttributes } ) => {
+const Controls = ( { setAttributes } ) => {
 	return (
 		<Fragment>
-			<InspectorControls>
-				<PanelBody title={ __( 'Website Card Settings' ) }>
-					<ToggleControl
-						label={ __( 'Open link in new tab' ) }
-						checked={ !! attributes.new_tab }
-						onChange={ () => setAttributes( { new_tab: ! attributes.new_tab } ) }
-					/>
-				</PanelBody>
-			</InspectorControls>
 			<BlockControls>
 				<Toolbar>
 					<IconButton
