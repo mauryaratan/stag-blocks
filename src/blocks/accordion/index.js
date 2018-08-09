@@ -26,7 +26,9 @@ registerBlockType( 'sgb/accordion', {
 
 	attributes: {
 		title: {
-			type: 'string',
+			type: 'array',
+			source: 'children',
+			selector: 'summary',
 		},
 		content: {
 			type: 'array',
@@ -162,12 +164,12 @@ registerBlockType( 'sgb/accordion', {
 					color: attributes.textColor,
 				} }
 			>
-				<summary style={ { backgroundColor: attributes.titleBackgroundColor, color: attributes.titleColor } }>
-					{ attributes.title }
-				</summary>
-				<div className="wp-block-sgb-accordion__content">
-					{ attributes.content }
-				</div>
+				<RichText.Content
+					tagName="summary"
+					style={ { backgroundColor: attributes.titleBackgroundColor, color: attributes.titleColor } }
+					value={ attributes.title }
+				/>
+				<RichText.Content tagName="div" value={ attributes.content } className="wp-block-sgb-accordion__content" />
 			</details>
 		);
 	},
