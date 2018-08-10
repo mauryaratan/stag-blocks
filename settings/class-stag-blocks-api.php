@@ -62,7 +62,7 @@ class Stag_Blocks_API {
 		$options = get_option( self::OPTION );
 
 		if ( empty( $options ) ) {
-			return new WP_Error( 'no_blocks_found', __( 'No blocks found, please initiate the Gutenberg editor by visiting the post edit screen.', 'sgb' ), array( 'status' => 404 ) );
+			wp_send_json_error();
 		}
 
 		$data = array(
