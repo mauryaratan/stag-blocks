@@ -62,6 +62,11 @@ const Controls = ( props ) => {
 							label: __( 'Accent Color' ),
 						},
 						{
+							value: attributes.featuredAccent,
+							onChange: ( featuredAccent ) => ( setAttributes( { featuredAccent } ) ),
+							label: __( 'Featured Plan Accent Color' ),
+						},
+						{
 							value: attributes.textColor,
 							onChange: ( textColor ) => ( setAttributes( { textColor } ) ),
 							label: __( 'Text Color' ),

@@ -109,7 +109,7 @@ const EnhancedComponent = withFocusOutside(
 												setAttributes( { tables } );
 											} }
 											style={ {
-												color: ! table.featured ? attributes.accent : null,
+												color: ! table.featured ? attributes.accent : attributes.featuredAccent,
 											} }
 										/>
 
@@ -141,7 +141,7 @@ const EnhancedComponent = withFocusOutside(
 											inlineToolbar
 											keepPlaceholderOnFocus
 											style={ {
-												color: ! table.featured ? attributes.accent : null,
+												color: ! table.featured ? attributes.accent : attributes.featuredAccent,
 											} }
 										/>
 										<RichText
@@ -194,7 +194,7 @@ const EnhancedComponent = withFocusOutside(
 												className={ classnames( 'wp-block-button__link' ) }
 												keepPlaceholderOnFocus
 												style={ {
-													backgroundColor: ! table.featured ? attributes.accent : null,
+													backgroundColor: ! table.featured ? attributes.accent : attributes.featuredAccent,
 												} }
 												inlineToolbar
 											/>

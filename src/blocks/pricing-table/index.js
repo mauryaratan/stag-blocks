@@ -39,6 +39,10 @@ registerBlockType( 'sgb/pricing-table', {
 			type: 'string',
 			default: '#3575FF',
 		},
+		featuredAccent: {
+			type: 'string',
+			default: '#333333',
+		},
 		textColor: {
 			type: 'string',
 			default: '#1d1d1f',
@@ -100,7 +104,7 @@ registerBlockType( 'sgb/pricing-table', {
 									className={ `${ className }__title` }
 									value={ table.title }
 									style={ {
-										color: ! table.featured ? attributes.accent : null,
+										color: ! table.featured ? attributes.accent : attributes.featuredAccent,
 									} }
 								/>
 								<RichText.Content tagName="p" className={ `${ className }__description` } value={ table.description } />
@@ -112,7 +116,7 @@ registerBlockType( 'sgb/pricing-table', {
 									className={ `${ className }__price__amount` }
 									value={ table.price }
 									style={ {
-										color: ! table.featured ? attributes.accent : null,
+										color: ! table.featured ? attributes.accent : attributes.featuredAccent,
 									} }
 								/>
 								<RichText.Content tagName="div" className={ `${ className }__price__term` } value={ table.price_term } />
@@ -129,7 +133,7 @@ registerBlockType( 'sgb/pricing-table', {
 										title={ table.buttonText }
 										value={ table.buttonText }
 										style={ {
-											backgroundColor: ! table.featured ? attributes.accent : null,
+											backgroundColor: ! table.featured ? attributes.accent : attributes.featuredAccent,
 										} }
 									/>
 								</div>
