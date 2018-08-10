@@ -77,10 +77,12 @@ registerBlockType( 'sgb/pricing-table', {
 	save: function( props ) {
 		const { attributes } = props;
 		const className = 'wp-block-sgb-pricing-table';
+		const hasFeatured = attributes.tables.some( ( table ) => table.featured );
 
 		return (
 			<div className={ classnames( className, `columns-${ attributes.columns }`, {
 				'has-shadow': attributes.boxShadow,
+				'has-featured': hasFeatured,
 				'has-full-width-button': attributes.fullWidthButtons,
 			} ) }>
 				{

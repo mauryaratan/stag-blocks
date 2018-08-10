@@ -38,10 +38,13 @@ const EnhancedComponent = withFocusOutside(
 		render() {
 			const { attributes, setAttributes, className, isSelected } = this.props;
 
+			const hasFeatured = attributes.tables.some( ( table ) => table.featured );
+
 			return (
 				<Fragment>
 					<div className={ classnames( className, `columns-${ attributes.columns }`, {
 						'has-shadow': attributes.boxShadow,
+						'has-featured': hasFeatured,
 						'has-full-width-button': attributes.fullWidthButtons,
 					} ) }>
 						{
@@ -50,6 +53,7 @@ const EnhancedComponent = withFocusOutside(
 									key={ i }
 									className={ classnames( `${ className }__table`, {
 										'is-selected': ( isSelected && this.state.selectedTable === i ),
+										'is-featured': table.featured,
 									} ) }
 									onClick={ () => this.setState( { selectedTable: i } ) }
 									tabIndex="-1"
