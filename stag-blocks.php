@@ -23,6 +23,8 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @return void
  */
 function sgb_compatibility_check() {
+	include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
 	if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		wp_die(
@@ -35,6 +37,8 @@ function sgb_compatibility_check() {
 		);
 	}
 }
+
+add_action( 'init', 'sgb_compatibility_check' );
 
 register_activation_hook( __FILE__, 'sgb_compatibility_check' );
 
