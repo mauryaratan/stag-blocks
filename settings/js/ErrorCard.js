@@ -4,7 +4,7 @@ const ErrorCard = () => (
 	<div className="error-card">
 		<i className="fas fa-exclamation-triangle"></i>
 		<div>
-			<p>{ __( 'No blocks found. Please edit a post/page with Gutenberg to initiate settings.' ) }</p>
+			<p>{ __( 'No blocks found. Please edit a post/page with Gutenberg to initialize settings.' ) }</p>
 			<details>
 				<summary>{ __( 'More info' ) }</summary>
 				<p>{ __( 'To initiate settings here it is essential to create or edit a post with Gutenberg first. This additional step is required the list of blocks is dynamically generated through post edit screen currently.' ) }</p>
