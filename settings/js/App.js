@@ -52,6 +52,11 @@ class App extends React.Component {
 					isLoading: false,
 					stagBlocks,
 				} );
+			} )
+			.catch( () => {
+				this.setState( {
+					isLoading: false,
+				} );
 			} );
 
 		// Fetch user settings.

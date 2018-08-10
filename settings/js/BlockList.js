@@ -1,5 +1,6 @@
 import BlocksContext from './BlocksContext';
 import RenderBlockSettings from './BlockSettings';
+import ErrorCard from './ErrorCard';
 import RenderIcon from './RenderIcon';
 
 const { __ } = wp.i18n;
@@ -15,7 +16,7 @@ const BlockList = () => {
 						<div className="spinner is-active" />
 					) : (
 						<Fragment>
-							{ context.filteredBlocks.map( ( block ) => (
+							{ context.state.blocks.length ? context.filteredBlocks.map( ( block ) => (
 								<div
 									key={ block.name }
 									className="stag-blocks__block"
@@ -39,7 +40,9 @@ const BlockList = () => {
 										/>
 									) }
 								</div>
-							) ) }
+							) ) : (
+								<ErrorCard />
+							) }
 						</Fragment>
 					)
 				) }

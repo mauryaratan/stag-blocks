@@ -1,10 +1,10 @@
 import BlocksContext from '../BlocksContext';
+import ErrorCard from '../ErrorCard';
 import RenderIcon from '../RenderIcon';
 import featured from './featured.png';
 import stagblocks from './stagblocks.png';
 
 const { Fragment } = wp.element;
-const { Spinner } = wp.components;
 const { __ } = wp.i18n;
 
 const slugify = ( text ) => {
@@ -73,7 +73,7 @@ const Dashboard = () => (
 								</li>
 							) )
 						) : (
-							<Spinner />
+							<ErrorCard />
 						)
 					) }
 				</BlocksContext.Consumer>
