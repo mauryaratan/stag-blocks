@@ -7,28 +7,32 @@ import Themes from './Themes';
 const { Fragment } = wp.element;
 
 const renderView = ( view ) => {
-	if ( 'themes' === view ) {
-		return (
-			<Fragment>
-				<Themes />
-			</Fragment>
-		);
-	}
+	switch ( view ) {
+		case 'themes': {
+			return (
+				<Fragment>
+					<Themes />
+				</Fragment>
+			);
+		}
 
-	if ( 'settings' === view ) {
-		return (
-			<Fragment>
-				<Categories />
-				<BlockList />
-			</Fragment>
-		);
-	}
+		case 'settings': {
+			return (
+				<Fragment>
+					<Categories />
+					<BlockList />
+				</Fragment>
+			);
+		}
 
-	return (
-		<Fragment>
-			<Dashboard />
-		</Fragment>
-	);
+		default: {
+			return (
+				<Fragment>
+					<Dashboard />
+				</Fragment>
+			);
+		}
+	}
 };
 
 const Content = () => {
