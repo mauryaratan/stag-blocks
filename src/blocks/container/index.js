@@ -10,7 +10,7 @@ registerBlockType( 'sgb/container', {
 	title: __( 'Container' ),
 	category: 'layout',
 	description: __( 'Add a container block which can be used to fit multiple blocks inside it.' ),
-	icon: 'info',
+	icon: <i className="dashicons far fa-object-group" />,
 	keywords: [
 		__( 'container' ),
 		__( 'stag' ),
