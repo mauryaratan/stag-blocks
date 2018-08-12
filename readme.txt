@@ -16,6 +16,7 @@ Stag Blocks extends Gutenberg editor for WordPress, by adding a number of handy 
 = Blocks =
 * **Accordion** — Display a togglable field that can be expanded and collapsed.
 * **Alert** — Display a notice with customizable icon, title, and description.
+* **Container** — Add a container block which can be used to fit multiple blocks inside it.
 * **Hero** — Add a full width media block to accompany a call to action.
 * **Posts Grid** — Display a grid or list of customizable posts.
 * **Pricing Table** — Add a pricing table block to showcase different plans and offers.

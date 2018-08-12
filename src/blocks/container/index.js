@@ -16,6 +16,8 @@ registerBlockType( 'sgb/container', {
 		__( 'stag' ),
 	],
 
+	customCategory: 'stag-blocks',
+
 	supports: {
 		align: [ 'wide', 'full' ],
 	},
