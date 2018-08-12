@@ -5,6 +5,8 @@
  * @package SGB
  */
 
+if ( ! function_exists( 'register_block_type' ) ) return;
+
 /**
  * Registers the `sgb/posts-grid` block on server.
  */

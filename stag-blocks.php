@@ -17,6 +17,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
+sgb_compatibility_check();
+
 /**
  * Run compatibility check on StagBlocks during activation.
  *
@@ -27,18 +29,23 @@ function sgb_compatibility_check() {
 
 	if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
-		wp_die(
-			sprintf(
-				/* translators: %1$s: Link to Gutenberg %2$s: Link to Plugins admin page. */
-				esc_html__( 'Stag Blocks requires %1$s plugin to be installed and activated. %2$s', 'sgb' ),
-				'<a href="https://wordpress.org/plugins/gutenberg/" target="_blank">Gutenberg</a>',
-				'<br><br><a href="' . esc_url( admin_url( 'plugins.php' ) ) . '">&larr; Go Back</a>'
-			)
-		);
+		add_action( 'admin_notices', 'sgb_activation_notice' );
+		return;
 	}
 }
 
 add_action( 'init', 'sgb_compatibility_check' );
+
+/**
+ * Display a error notice if Gutenberg is not active.
+ *
+ * @return void
+ */
+function sgb_activation_notice() {
+	echo '<div class="error"><p>';
+	echo esc_html__( 'Stag Blocks requires Gutenberg plugin to be installed and activated.', 'sgb' );
+	echo '</p></div>';
+}
 
 register_activation_hook( __FILE__, 'sgb_compatibility_check' );
 
