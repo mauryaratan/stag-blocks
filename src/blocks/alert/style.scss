@@ -33,6 +33,10 @@
 		margin-bottom: 0;
 	}
 
+	&__title + &__content {
+		margin-top: 0;
+	}
+
 	p {
 		color: inherit;
 		font-size: 1em;
