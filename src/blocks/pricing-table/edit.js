@@ -165,8 +165,8 @@ const EnhancedComponent = withFocusOutside(
 
 									<RichText
 										className={ `${ className }__features` }
-										tagName="div"
-										multiline="p"
+										tagName="ul"
+										multiline="li"
 										placeholder={ __( 'Enter plan features...' ) }
 										value={ table.features }
 										onChange={ ( value ) => {

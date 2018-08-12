@@ -1,3 +1,16 @@
+[class*="wp-block-sgb-"] {
+	p {
+		margin: 0;
+		+ p {
+			margin-top: 1em;
+		}
+	}
+
+	h1,h2,h3,h4,h5,h6 {
+		margin: 0;
+	}
+}
+
 .wp-block-sgb-accordion {
 	padding: 20px;
 	margin-bottom: 1.5em;

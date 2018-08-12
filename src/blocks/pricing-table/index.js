@@ -124,7 +124,7 @@ registerBlockType( 'sgb/pricing-table', {
 								<RichText.Content tagName="div" className={ `${ className }__price__term` } value={ table.price_term } />
 							</div>
 
-							<RichText.Content tagName="div" className={ `${ className }__features` } value={ table.features } />
+							<RichText.Content tagName="ul" className={ `${ className }__features` } value={ table.features } />
 
 							<div className={ `${ className }__footer` }>
 								<div className="wp-block-button is-style-squared">

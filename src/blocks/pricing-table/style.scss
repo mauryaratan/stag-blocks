@@ -31,8 +31,12 @@
 		font-size: 0.9em !important;
 	}
 
-	&__features {
-		p {
+	ul.wp-block-sgb-pricing-table__features {
+		list-style: none;
+		padding: 0;
+		margin: 2em 0;
+
+		li {
 			margin: 0;
 		}
 	}
@@ -77,6 +81,7 @@
 
 	&__price__term {
 		font-style: italic;
+		opacity: .6;
 	}
 
 	&__footer {
