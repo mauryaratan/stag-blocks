@@ -41,31 +41,17 @@ class PostsGridEdit extends Component {
 	constructor() {
 		super( ...arguments );
 
-		this.toggleDisplayPostDate = this.toggleDisplayPostDate.bind( this );
-		this.toggleDisplayPostExcerpt = this.toggleDisplayPostExcerpt.bind( this );
-		this.toggleDisplayReadMore = this.toggleDisplayReadMore.bind( this );
 		this.handleReadMoreText = this.handleReadMoreText.bind( this );
+		this.toggleState = this.toggleState.bind( this );
 	}
 
-	toggleDisplayPostDate() {
-		const { displayPostDate } = this.props.attributes;
+	toggleState( key ) {
 		const { setAttributes } = this.props;
+		const value = this.props.attributes[ key ];
 
-		setAttributes( { displayPostDate: ! displayPostDate } );
-	}
-
-	toggleDisplayPostExcerpt() {
-		const { displayPostExcerpt } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayPostExcerpt: ! displayPostExcerpt } );
-	}
-
-	toggleDisplayReadMore() {
-		const { displayReadMore } = this.props.attributes;
-		const { setAttributes } = this.props;
-
-		setAttributes( { displayReadMore: ! displayReadMore } );
+		setAttributes( {
+			[ key ]: ! value,
+		} );
 	}
 
 	handleReadMoreText( value ) {
@@ -80,6 +66,7 @@ class PostsGridEdit extends Component {
 			displayPostDate,
 			displayPostExcerpt,
 			displayReadMore,
+			displayFeaturedImage,
 			readMoreText,
 			align,
 			postLayout,
@@ -109,17 +96,22 @@ class PostsGridEdit extends Component {
 					<ToggleControl
 						label={ __( 'Display post date' ) }
 						checked={ displayPostDate }
-						onChange={ this.toggleDisplayPostDate }
+						onChange={ () => this.toggleState( 'displayPostDate' ) }
 					/>
 					<ToggleControl
 						label={ __( 'Display post excerpt' ) }
 						checked={ displayPostExcerpt }
-						onChange={ this.toggleDisplayPostExcerpt }
+						onChange={ () => this.toggleState( 'displayPostExcerpt' ) }
+					/>
+					<ToggleControl
+						label={ __( 'Display Featured Image' ) }
+						checked={ displayFeaturedImage }
+						onChange={ () => this.toggleState( 'displayFeaturedImage' ) }
 					/>
 					<ToggleControl
 						label={ __( 'Display Read More Link' ) }
 						checked={ displayReadMore }
-						onChange={ this.toggleDisplayReadMore }
+						onChange={ () => this.toggleState( 'displayReadMore' ) }
 					/>
 					{ displayReadMore &&
 						<TextControl
@@ -208,7 +200,7 @@ class PostsGridEdit extends Component {
 				>
 					{ displayPosts.map( ( post, i ) => (
 						<li key={ i }>
-							{ ( post[ 'sgb/featured_image_src' ] ) && (
+							{ ( post[ 'sgb/featured_image_src' ] ) && ( attributes.displayFeaturedImage ) && (
 								<figure className={ `${ this.props.className }__thumbnail` }>
 									<img src={ post[ 'sgb/featured_image_src' ] } alt={ decodeEntities( post.title.rendered.trim() ) } />
 								</figure>

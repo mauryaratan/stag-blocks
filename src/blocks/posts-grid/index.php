@@ -35,6 +35,10 @@ function register_block_sgb_posts_grid() {
 				'type'    => 'boolean',
 				'default' => false,
 			),
+			'displayFeaturedImage' => array(
+				'type'    => 'boolean',
+				'default' => true,
+			),
 			'readMoreText' => array(
 				'type'    => 'string',
 				'default' => false,
@@ -93,13 +97,14 @@ function render_block_sgb_posts_grid( $attributes ) {
 
 		// Get the post thumbnail .
 		$post_thumb_id = get_post_thumbnail_id( $post_id );
+		$show_featured = $attributes['displayFeaturedImage'];
 
 		if ( ! $title ) {
 			$title = __( '(Untitled)', 'sgb' );
 		}
 
 		// Display the post thumbnail.
-		if ( $post_thumb_id ) {
+		if ( $post_thumb_id && $show_featured ) {
 			$list_items_markup .= sprintf(
 				'<figure class="wp-block-sgb-posts-grid__thumbnail"><a href="%1$s" rel="bookmark">%2$s</a></figure>',
 				esc_url( get_permalink( $post_id ) ),
