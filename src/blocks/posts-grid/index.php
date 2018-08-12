@@ -39,6 +39,10 @@ function register_block_sgb_posts_grid() {
 				'type'    => 'boolean',
 				'default' => true,
 			),
+			'displayPostAuthor' => array(
+				'type'    => 'boolean',
+				'default' => true,
+			),
 			'readMoreText' => array(
 				'type'    => 'string',
 				'default' => false,
@@ -176,6 +180,10 @@ function render_block_sgb_posts_grid( $attributes ) {
 	}
 
 	$class = "wp-block-sgb-posts-grid align{$attributes['align']} is-{$attributes['postLayout']} columns-{$attributes['columns']}";
+
+	if ( ! $attributes['displayPostAuthor'] ) {
+		$class .= ' hide-author';
+	}
 
 	$block_content = sprintf(
 		'<ul class="%1$s">%2$s</ul>',

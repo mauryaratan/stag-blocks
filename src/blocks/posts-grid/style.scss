@@ -16,6 +16,12 @@
 		}
 	}
 
+	&.hide-author {
+		.wp-block-sgb-posts-grid__author {
+			display: none;
+		}
+	}
+
 	figure {
 		margin: 0 0 1em 0;
 		padding: 0;

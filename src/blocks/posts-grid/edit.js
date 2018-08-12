@@ -67,6 +67,7 @@ class PostsGridEdit extends Component {
 			displayPostExcerpt,
 			displayReadMore,
 			displayFeaturedImage,
+			displayPostAuthor,
 			readMoreText,
 			align,
 			postLayout,
@@ -94,14 +95,19 @@ class PostsGridEdit extends Component {
 						onNumberOfItemsChange={ ( value ) => setAttributes( { postsToShow: value } ) }
 					/>
 					<ToggleControl
-						label={ __( 'Display post date' ) }
+						label={ __( 'Display Post Date' ) }
 						checked={ displayPostDate }
 						onChange={ () => this.toggleState( 'displayPostDate' ) }
 					/>
 					<ToggleControl
-						label={ __( 'Display post excerpt' ) }
+						label={ __( 'Display Post Excerpt' ) }
 						checked={ displayPostExcerpt }
 						onChange={ () => this.toggleState( 'displayPostExcerpt' ) }
+					/>
+					<ToggleControl
+						label={ __( 'Display Post Author' ) }
+						checked={ displayPostAuthor }
+						onChange={ () => this.toggleState( 'displayPostAuthor' ) }
 					/>
 					<ToggleControl
 						label={ __( 'Display Featured Image' ) }
@@ -217,14 +223,16 @@ class PostsGridEdit extends Component {
 										{ moment( post.date_gmt ).local().format( 'MMMM DD, Y' ) }
 									</time>
 									}
-									<a
-										href={ post[ 'sgb/author_data' ].author_link }
-										className={ `${ this.props.className }__author` }
-										target="_blank" rel="noopener noreferrer"
-									>
-										<img src={ post[ 'sgb/author_data' ].avatar } alt={ post[ 'sgb/author_data' ].display_name } />
-										<span>{ post[ 'sgb/author_data' ].display_name }</span>
-									</a>
+									{ displayPostAuthor &&
+										<a
+											href={ post[ 'sgb/author_data' ].author_link }
+											className={ `${ this.props.className }__author` }
+											target="_blank" rel="noopener noreferrer"
+										>
+											<img src={ post[ 'sgb/author_data' ].avatar } alt={ post[ 'sgb/author_data' ].display_name } />
+											<span>{ post[ 'sgb/author_data' ].display_name }</span>
+										</a>
+									}
 								</div>
 
 								{ displayPostExcerpt && post.excerpt.rendered &&
