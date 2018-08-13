@@ -101,18 +101,18 @@ class Stag_Blocks_Settings {
 			filemtime( plugin_dir_path( __DIR__ ) . 'settings/css/settings.css' )
 		);
 
-		$gb = admin_url( 'admin.php?page=gutenberg&sgb_notice=true' );
+		$gb = admin_url( 'post-new.php?gutenberg-demo&sgb_notice=true' );
 
 		echo '<div id="stag-blocks-welcome" class="stag-blocks-welcome">
 		<h2>Welcome to Stag Blocks</h2>
 		<div class="container">
 			<div class="content-wrapper">
 				<div class="content">
-					<p class="intro">Thank you for installing Stag Blocks. Now just one more important step to initialize Stag Blocks Settings page.</p>
-					<p>Don’t worry it’s not that hard, you just need to visit Gutenberg post edit screen and create a new post, sounds easy right!<br>Well then shall we?</p>
+					<p class="intro">Thank you for installing Stag Blocks. Now just one more important step to initialize Stag Blocks settings page.</p>
+					<p>Don’t worry it’s really easy, you just need to visit Gutenberg post edit screen and we’ll do the rest, sounds easy right?</p>
 				</div>
 
-				<a href="' . esc_url( $gb ) . '" class="sgb-button">Next Step <span>&rarr;</span></a>
+				<a href="' . esc_url( $gb ) . '" class="sgb-button">Let’s begin <span>&rarr;</span></a>
 			</div>
 
 			<div class="video-wrapper">
