@@ -118,9 +118,8 @@ class Stag_Blocks_Settings {
 			<div class="video-wrapper">
 				<video
 					controls
-					muted
 					preload
-					src="https://f.codest.ag/9wKO8n+"
+					src="https://f.codest.ag/nMGKLl+"
 					poster="' . esc_url( plugins_url( 'settings/images/poster.png', dirname( __FILE__ ) ) ) . '"
 				></video>
 			</div>
