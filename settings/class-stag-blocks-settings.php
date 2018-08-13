@@ -101,7 +101,7 @@ class Stag_Blocks_Settings {
 			filemtime( plugin_dir_path( __DIR__ ) . 'settings/css/settings.css' )
 		);
 
-		$gb = admin_url( 'admin.php?page=gutenberg' );
+		$gb = admin_url( 'admin.php?page=gutenberg&sgb_notice=true' );
 
 		echo '<div id="stag-blocks-welcome" class="stag-blocks-welcome">
 		<h2>Welcome to Stag Blocks</h2>

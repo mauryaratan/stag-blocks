@@ -1,6 +1,7 @@
 /* global localStorage */
 
 const { apiFetch } = wp;
+const { dispatch } = wp.data;
 
 const getCircularReplacer = () => {
 	const seen = new WeakSet;
@@ -54,10 +55,31 @@ window.onload = () => {
 
 			localStorage.setItem( 'stagBlocksSyncTime', now );
 
+			// Show notice if it exists.
+			SGBNotice();
+
 			console.info( 'Blocks data synced.' ); // eslint-disable-line
 			console.groupEnd(); // eslint-disable-line
 		}() );
 	} else {
 		console.log( 'Block data up to date with Stag Blocks' ); // eslint-disable-line
+	}
+};
+
+const SGBNotice = () => {
+	const params = window.location.search;
+	const searchParams = new URLSearchParams( params );
+	const hasNotice = searchParams.get( 'sgb_notice' );
+
+	if ( hasNotice ) {
+		const settingsURL = _stagBlocks.settingsURL.replace( '#settings', '' );
+
+		const NoticeContent = (
+			<p>Stag Blocks data synced. You may now visit and configure <a href={ settingsURL }>settings</a> page.</p>
+		);
+
+		dispatch( 'core/editor' ).createInfoNotice( NoticeContent, {
+			spokenMessage: 'Stag Blocks data synced.',
+		} );
 	}
 };
