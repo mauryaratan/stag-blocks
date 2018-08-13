@@ -13,6 +13,10 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
 Stag Blocks extends Gutenberg editor for WordPress, by adding a number of handy blocks for your website.
 
+= A better way to build with WordPress =
+With the introduction of [Gutenberg](https://wordpress.org/gutenberg/), it's never been easier to create content with WordPress.
+We created *Stag Blocks* to assist you in building your content with Gutenberg in WordPress. Stag Blocks offers many chunk of content blocks that helps you put together a page real quick. Here's a quick overview on what it offers:
+
 = Blocks =
 * [Accordion](https://stagblocks.com/block/accordion-block) — Display a togglable field that can be expanded and collapsed.
 * [Alert](https://stagblocks.com/block/alert-block) — Display a notice with customizable icon, title, and description.
@@ -23,6 +27,13 @@ Stag Blocks extends Gutenberg editor for WordPress, by adding a number of handy 
 * [Stats](https://stagblocks.com/block/stats-block) — Display useful custom stats for just about anything.
 * [Testimonial](https://stagblocks.com/block/testimonial-block) — Add a user testimonial with name, company, text, and picture.
 * [Website Card](https://stagblocks.com/block/website-card-block)** — Turn a URL into a pretty card style preview.
+
+We're also cooking an absolutely free WordPress theme, 100% compatible with Gutenberg. Visit [StagBlocks.com](https://stagblocks.com) for more info on and download.
+
+= Follow Along =
+* [Visit Codestag site](https://codestag.com/)
+* [Follow on Twitter](https://twitter.com/Codestag)
+* [Check our themes](https://codestag.com/themes/)
 
 == Frequently Asked Questions ==
 
