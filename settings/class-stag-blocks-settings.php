@@ -25,6 +25,7 @@ class Stag_Blocks_Settings {
 	 */
 	public function add_menu() {
 		add_submenu_page( 'options-general.php', __( 'Stag Blocks', 'sgb' ), __( 'Stag Blocks', 'sgb' ), 'manage_options', 'stag-blocks', array( $this, 'settings' ) );
+		add_submenu_page( null, __( 'Stag Blocks', 'sgb' ), __( 'Stag Blocks', 'sgb' ), 'manage_options', 'stag-blocks-welcome', array( $this, 'welcome_screen' ) );
 	}
 
 	/**
@@ -85,6 +86,47 @@ class Stag_Blocks_Settings {
 	 */
 	public function settings() {
 		echo '<div id="stag-blocks-settings" class="stag-blocks-settings"></div>';
+	}
+
+	/**
+	 * Add Welcome screen.
+	 *
+	 * @return void
+	 */
+	public function welcome_screen() {
+		wp_enqueue_style(
+			'stag-blocks-welcome',
+			plugins_url( 'settings/css/settings.css', dirname( __FILE__ ) ),
+			array(),
+			filemtime( plugin_dir_path( __DIR__ ) . 'settings/css/settings.css' )
+		);
+
+		$gb = admin_url( 'admin.php?page=gutenberg' );
+
+		echo '<div id="stag-blocks-welcome" class="stag-blocks-welcome">
+		<h2>Welcome to Stag Blocks</h2>
+		<div class="container">
+			<div class="content-wrapper">
+				<div class="content">
+					<p class="intro">Thank you for installing Stag Blocks. Now just one more important step to initialize Stag Blocks Settings page.</p>
+					<p>Don’t worry it’s not that hard, you just need to visit Gutenberg post edit screen and create a new post, sounds easy right!<br>Well then shall we?</p>
+				</div>
+
+				<a href="' . esc_url( $gb ) . '" class="sgb-button">Next Step <span>&rarr;</span></a>
+				<span class="more">Or skip this step & <a href="#">continue</a></span>
+			</div>
+
+			<div class="video-wrapper">
+				<video
+					controls
+					muted
+					preload
+					src="https://f.codest.ag/9wKO8n+"
+					poster="' . esc_url( plugins_url( 'settings/images/poster.png', dirname( __FILE__ ) ) ) . '"
+				></video>
+			</div>
+		</div>
+		</div>';
 	}
 }
 

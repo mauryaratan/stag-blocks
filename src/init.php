@@ -115,6 +115,11 @@ foreach ( glob( dirname( dirname( __FILE__ ) ) . '/src/blocks/*/index.php' ) as 
 	require_once $block_logic;
 }
 
+/**
+ * Plugin localization.
+ *
+ * @return void
+ */
 function sgb_load_textdomain() {
 	load_plugin_textdomain( 'sgb', false, plugin_dir_path( __DIR__ ) . '/languages' );
 }
