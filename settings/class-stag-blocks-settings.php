@@ -113,7 +113,6 @@ class Stag_Blocks_Settings {
 				</div>
 
 				<a href="' . esc_url( $gb ) . '" class="sgb-button">Next Step <span>&rarr;</span></a>
-				<span class="more">Or skip this step & <a href="#">continue</a></span>
 			</div>
 
 			<div class="video-wrapper">

@@ -61,6 +61,27 @@ function sgb_plugin_version() {
 }
 
 /**
+ * Add a check for our plugin before redirecting
+ */
+function sgb_activation() {
+	add_option( 'sgb_do_activation_redirect', true );
+}
+register_activation_hook( __FILE__, 'sgb_activation' );
+
+/**
+ * Redirect to the Atomic Blocks Getting Started page on single plugin activation
+ */
+function sgb_redirect() {
+	if ( get_option( 'sgb_do_activation_redirect', false ) ) {
+		delete_option( 'sgb_do_activation_redirect' );
+		if ( ! isset( $_GET['activate-multi'] ) ) {
+			wp_safe_redirect( 'admin.php?page=stag-blocks-welcome' );
+		}
+	}
+}
+add_action( 'admin_init', 'sgb_redirect' );
+
+/**
  * Block Initializer.
  */
 require_once plugin_dir_path( __FILE__ ) . 'src/init.php';
