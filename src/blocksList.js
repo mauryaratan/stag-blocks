@@ -20,6 +20,14 @@ window.onload = () => {
 	const blocks = wp.blocks.getBlockTypes();
 	const formattedBlocks = JSON.stringify( blocks, getCircularReplacer() );
 
+	const params = window.location.search;
+	const searchParams = new URLSearchParams( params );
+	const deleteList = searchParams.get( 'refresh_blocks' );
+
+	if ( deleteList ) {
+		localStorage.removeItem( 'stagBlocksSyncTime' );
+	}
+
 	const hours = 24; // Reset when storage is more than 24hours
 	const now = new Date().getTime();
 	const stagBlocksSyncTime = localStorage.getItem( 'stagBlocksSyncTime' );
