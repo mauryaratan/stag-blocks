@@ -76,6 +76,7 @@ function sgb_redirect() {
 		delete_option( 'sgb_do_activation_redirect' );
 		if ( ! isset( $_GET['activate-multi'] ) ) {
 			wp_safe_redirect( 'admin.php?page=stag-blocks-welcome' );
+			exit;
 		}
 	}
 }
