@@ -72,10 +72,16 @@ register_activation_hook( __FILE__, 'sgb_activation' );
  * Redirect to the Atomic Blocks Getting Started page on single plugin activation
  */
 function sgb_redirect() {
+	$blocks_list = get_option( 'stag-blocks-list' );
+
 	if ( get_option( 'sgb_do_activation_redirect', false ) ) {
 		delete_option( 'sgb_do_activation_redirect' );
 		if ( ! isset( $_GET['activate-multi'] ) ) {
-			wp_safe_redirect( 'admin.php?page=stag-blocks-welcome' );
+			if ( $blocks_list ) {
+				wp_safe_redirect( 'options-general.php?page=stag-blocks' );
+			} else {
+				wp_safe_redirect( 'admin.php?page=stag-blocks-welcome' );
+			}
 			exit;
 		}
 	}
