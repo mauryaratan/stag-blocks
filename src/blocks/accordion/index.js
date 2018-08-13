@@ -111,7 +111,7 @@ registerBlockType( 'sgb/accordion', {
 		],
 	},
 
-	edit: function( props ) {
+	edit( props ) {
 		const { attributes, setAttributes } = props;
 
 		return (
@@ -153,7 +153,7 @@ registerBlockType( 'sgb/accordion', {
 		);
 	},
 
-	save: function( { attributes } ) {
+	save( { attributes } ) {
 		return (
 			<details
 				open={ attributes.initialOpen }

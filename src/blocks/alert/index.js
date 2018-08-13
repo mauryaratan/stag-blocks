@@ -57,7 +57,7 @@ registerBlockType( 'sgb/alert', {
 		{ name: 'bordered', label: __( 'Bordered' ) },
 	],
 
-	edit: function( props ) {
+	edit( props ) {
 		const { attributes, setAttributes } = props;
 		const className = 'wp-block-sgb-alert';
 
@@ -138,7 +138,7 @@ registerBlockType( 'sgb/alert', {
 		],
 	},
 
-	save: function( props ) {
+	save( props ) {
 		const { attributes } = props;
 		const className = 'wp-block-sgb-alert';
 

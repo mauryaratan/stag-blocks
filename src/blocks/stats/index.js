@@ -45,7 +45,7 @@ registerBlockType( 'sgb/stats', {
 
 	edit,
 
-	save: function( props ) {
+	save( props ) {
 		const { attributes } = props;
 		const className = 'wp-block-sgb-stats';
 

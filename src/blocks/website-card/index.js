@@ -47,7 +47,7 @@ registerBlockType( 'sgb/website-card', {
 		},
 	},
 
-	edit: function( props ) {
+	edit( props ) {
 		const { attributes, setAttributes } = props;
 
 		const handleChange = ( result ) => {
@@ -72,7 +72,7 @@ registerBlockType( 'sgb/website-card', {
 		);
 	},
 
-	save: function( props ) {
+	save( props ) {
 		return (
 			<LinkPreview { ...props } />
 		);

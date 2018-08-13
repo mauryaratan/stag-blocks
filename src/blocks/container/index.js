@@ -66,7 +66,7 @@ registerBlockType( 'sgb/container', {
 		},
 	},
 
-	edit: function( props ) {
+	edit( props ) {
 		const { attributes, className } = props;
 
 		return (
@@ -103,7 +103,7 @@ registerBlockType( 'sgb/container', {
 		);
 	},
 
-	save: function( { attributes } ) {
+	save( { attributes } ) {
 		const className = 'wp-block-sgb-container';
 
 		return (

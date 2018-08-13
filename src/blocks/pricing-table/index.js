@@ -65,7 +65,7 @@ registerBlockType( 'sgb/pricing-table', {
 		},
 	},
 
-	edit: function( props ) {
+	edit( props ) {
 		return (
 			<Fragment>
 				<Controls { ...props } />
@@ -75,7 +75,7 @@ registerBlockType( 'sgb/pricing-table', {
 		);
 	},
 
-	save: function( props ) {
+	save( props ) {
 		const { attributes } = props;
 		const className = 'wp-block-sgb-pricing-table';
 		const hasFeatured = attributes.tables.some( ( table ) => table.featured );

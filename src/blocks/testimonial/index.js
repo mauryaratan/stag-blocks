@@ -88,7 +88,7 @@ registerBlockType( 'sgb/testimonial', {
 		{ name: 'flip', label: __( 'Flipped' ) },
 	],
 
-	edit: function( props ) {
+	edit( props ) {
 		const { attributes, setAttributes, className } = props;
 		const containerClass = 'wp-block-sgb-testimonial';
 
@@ -161,7 +161,7 @@ registerBlockType( 'sgb/testimonial', {
 		);
 	},
 
-	save: function( props ) {
+	save( props ) {
 		const { attributes } = props;
 		const containerClass = 'wp-block-sgb-testimonial';
 
