@@ -14,15 +14,15 @@ License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Stag Blocks extends Gutenberg editor for WordPress, by adding a number of handy blocks for your website.
 
 = Blocks =
-* **Accordion** — Display a togglable field that can be expanded and collapsed.
-* **Alert** — Display a notice with customizable icon, title, and description.
-* **Container** — Add a container block which can be used to fit multiple blocks inside it.
-* **Hero** — Add a full width media block to accompany a call to action.
-* **Posts Grid** — Display a grid or list of customizable posts.
-* **Pricing Table** — Add a pricing table block to showcase different plans and offers.
-* **Stats** — Display useful custom stats for just about anything.
-* **Testimonial** — Add a user testimonial with name, company, text, and picture.
-* **Website Card** — Turn a URL into a pretty card style preview.
+* [Accordion](https://stagblocks.com/block/accordion-block) — Display a togglable field that can be expanded and collapsed.
+* [Alert](https://stagblocks.com/block/alert-block) — Display a notice with customizable icon, title, and description.
+* [Container](https://stagblocks.com/block/container-block) — Add a container block which can be used to fit multiple blocks inside it.
+* [Hero](https://stagblocks.com/block/hero-block) — Add a full width media block to accompany a call to action.
+* [Posts Grid](https://stagblocks.com/block/posts-grid-block)** — Display a grid or list of customizable posts.
+* [Pricing Table](https://stagblocks.com/block/pricing-table-block)** — Add a pricing table block to showcase different plans and offers.
+* [Stats](https://stagblocks.com/block/stats-block) — Display useful custom stats for just about anything.
+* [Testimonial](https://stagblocks.com/block/testimonial-block) — Add a user testimonial with name, company, text, and picture.
+* [Website Card](https://stagblocks.com/block/website-card-block)** — Turn a URL into a pretty card style preview.
 
 == Frequently Asked Questions ==
 
