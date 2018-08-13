@@ -19,6 +19,7 @@ registerBlockType( 'sgb/accordion', {
 	icon,
 	keywords: [
 		__( 'accordion' ),
+		__( 'list' ),
 		__( 'stag' ),
 	],
 

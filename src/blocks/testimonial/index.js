@@ -29,6 +29,7 @@ registerBlockType( 'sgb/testimonial', {
 	icon: <i className="dashicon far fa-comment" />,
 	keywords: [
 		__( 'testimonial' ),
+		__( 'quote' ),
 		__( 'stag' ),
 	],
 

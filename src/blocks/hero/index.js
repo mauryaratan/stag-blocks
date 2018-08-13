@@ -15,6 +15,7 @@ registerBlockType( 'sgb/hero', {
 	icon: 'cover-image',
 	keywords: [
 		__( 'hero' ),
+		__( 'cta' ),
 		__( 'stag' ),
 	],
 

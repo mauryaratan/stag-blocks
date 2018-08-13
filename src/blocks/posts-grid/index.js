@@ -11,7 +11,8 @@ registerBlockType( 'sgb/posts-grid', {
 	description: __( 'Display a grid or list of customizable posts.' ),
 	icon: <i className="dashicon fas fa-th-large" />,
 	keywords: [
-		__( 'posts-grid' ),
+		__( 'post' ),
+		__( 'grid' ),
 		__( 'stag' ),
 	],
 	customCategory: 'stag-blocks',

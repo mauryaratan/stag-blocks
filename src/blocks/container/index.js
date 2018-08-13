@@ -13,6 +13,7 @@ registerBlockType( 'sgb/container', {
 	icon: <i className="dashicons far fa-object-group" />,
 	keywords: [
 		__( 'container' ),
+		__( 'section' ),
 		__( 'stag' ),
 	],
 

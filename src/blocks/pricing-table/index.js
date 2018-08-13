@@ -18,7 +18,8 @@ registerBlockType( 'sgb/pricing-table', {
 	description: __( 'Add a pricing table block to showcase different plans and offers.' ),
 	icon: <i className="dashicon fas fa-money-check-alt" />,
 	keywords: [
-		__( 'pricing-table' ),
+		__( 'pricing table' ),
+		__( 'comparison' ),
 		__( 'stag' ),
 	],
 	customCategory: 'stag-blocks',

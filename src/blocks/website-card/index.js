@@ -16,8 +16,8 @@ registerBlockType( 'sgb/website-card', {
 	customCategory: 'stag-blocks',
 	hasSettings: true,
 	keywords: [
-		__( 'website-card' ),
-		__( 'preview' ),
+		__( 'website card' ),
+		__( 'url' ),
 		__( 'stag' ),
 	],
 

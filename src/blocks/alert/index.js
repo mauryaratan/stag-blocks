@@ -21,8 +21,8 @@ registerBlockType( 'sgb/alert', {
 	description: __( 'Display a notice with customizable icon, title, and description.' ),
 	icon,
 	keywords: [
-		__( 'alert' ),
 		__( 'notice' ),
+		__( 'alert' ),
 		__( 'stag' ),
 	],
 
