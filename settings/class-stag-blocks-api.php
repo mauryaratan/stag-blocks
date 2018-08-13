@@ -1,14 +1,30 @@
 <?php
+/**
+ * Stag Blocks API endpoints.
+ *
+ * @package SGB
+ */
 
+/**
+ * Stag Blocks API class.
+ */
 class Stag_Blocks_API {
 	const OPTION         = 'stag-blocks-list';
 	const SETTINGS       = 'stag-blocks-settings';
 	const BLOCK_SETTINGS = 'sgb-block-settings';
 
+	/**
+	 * Plugin constructor.
+	 */
 	public function __construct() {
 		add_action( 'rest_api_init', array( $this, 'register_endpoint' ) );
 	}
 
+	/**
+	 * Register all plugin endpoints.
+	 *
+	 * @return void
+	 */
 	public function register_endpoint() {
 		register_rest_route(
 			'stag_blocks/v1', '/blocks', array(
@@ -58,6 +74,12 @@ class Stag_Blocks_API {
 		);
 	}
 
+	/**
+	 * Returns a list of all available blocks in JSON.
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 * @return WP_REST_Response
+	 */
 	public function get_blocks( WP_REST_Request $request ) {
 		$options = get_option( self::OPTION );
 
@@ -72,6 +94,12 @@ class Stag_Blocks_API {
 		return new WP_REST_Response( $data, 200 );
 	}
 
+	/**
+	 * Set the list of blocks when on post edit screen for later use.
+	 *
+	 * @param WP_REST_Request $request Request object.
+	 * @return void|404
+	 */
 	public function set_blocks( WP_REST_Request $request ) {
 		$content_type = $request->get_content_type();
 
@@ -86,6 +114,12 @@ class Stag_Blocks_API {
 		wp_send_json_success();
 	}
 
+	/**
+	 * Process plugin settings.
+	 *
+	 * @param object $request Request object.
+	 * @return void|400
+	 */
 	public function process_settings( $request ) {
 		$content_type = $request->get_content_type();
 
@@ -101,6 +135,12 @@ class Stag_Blocks_API {
 		));
 	}
 
+	/**
+	 * Callback for geting plugin settings.
+	 *
+	 * @param object $request Request object.
+	 * @return WP_REST_Response
+	 */
 	public function get_settings( $request ) {
 		$settings = get_option( self::SETTINGS );
 
@@ -111,6 +151,12 @@ class Stag_Blocks_API {
 		return rest_ensure_response( $settings );
 	}
 
+	/**
+	 * Callback for getting block settings.
+	 *
+	 * @param object $request Request object.
+	 * @return void
+	 */
 	public function get_block_settings( $request ) {
 		$settings = $request->get_body();
 

@@ -10,15 +10,29 @@
  * Stag Blocks settings class.
  */
 class Stag_Blocks_Settings {
+	/**
+	 * Plugin contrusctor function.
+	 */
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'add_menu' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
 	}
 
+	/**
+	 * Add Stag Blocks menu under Settings.
+	 *
+	 * @return void
+	 */
 	public function add_menu() {
 		add_submenu_page( 'options-general.php', __( 'Stag Blocks', 'sgb' ), __( 'Stag Blocks', 'sgb' ), 'manage_options', 'stag-blocks', array( $this, 'settings' ) );
 	}
 
+	/**
+	 * Add plugin admin scripts and styles.
+	 *
+	 * @param string $hook Current page ID.
+	 * @return void
+	 */
 	public function enqueue_scripts( $hook ) {
 		if ( 'settings_page_stag-blocks' !== $hook ) {
 			return;
@@ -64,6 +78,11 @@ class Stag_Blocks_Settings {
 		);
 	}
 
+	/**
+	 * Add settings screen.
+	 *
+	 * @return void
+	 */
 	public function settings() {
 		echo '<div id="stag-blocks-settings" class="stag-blocks-settings"></div>';
 	}
