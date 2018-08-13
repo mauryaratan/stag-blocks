@@ -1,3 +1,7 @@
+body.admin_page_stag-blocks-welcome {
+	background-color: #f3f6f8;
+}
+
 .stag-blocks-welcome {
 	font-size: 16px;
 }
@@ -9,11 +13,13 @@
 
 .stag-blocks-welcome p.intro {
 	font-size: 19px;
+	color: #333;
 }
 
 .stag-blocks-welcome p {
 	font-size: inherit;
 	margin-top: 0;
+	color: #4f4f4f;
 }
 
 .stag-blocks-welcome p:last-of-type {
@@ -24,7 +30,7 @@
 	max-width: 390px;
 	background: #fff;
 	padding: 30px;
-	box-shadow: 0 1px 1px rgba(0,0,0,0.04);
+	box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.1);
 }
 
 .stag-blocks-welcome .content-wrapper {
