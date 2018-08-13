@@ -48,6 +48,10 @@ registerBlockType( 'sgb/container', {
 			type: 'number',
 			default: 0,
 		},
+		borderRadius: {
+			type: 'number',
+			default: 0,
+		},
 		containerWidth: {
 			type: 'number',
 		},
@@ -83,6 +87,7 @@ registerBlockType( 'sgb/container', {
 						paddingLeft: `${ attributes.paddingLeft }%`,
 						paddingRight: `${ attributes.paddingRight }%`,
 						backgroundColor: attributes.backgroundColor,
+						borderRadius: `${ attributes.borderRadius }px`,
 					} }
 				>
 					{ attributes.backgroundImage &&
@@ -117,6 +122,7 @@ registerBlockType( 'sgb/container', {
 					paddingLeft: `${ attributes.paddingLeft }%`,
 					paddingRight: `${ attributes.paddingRight }%`,
 					backgroundColor: attributes.backgroundColor,
+					borderRadius: `${ attributes.borderRadius }px`,
 				} }
 			>
 				{ attributes.backgroundImage &&

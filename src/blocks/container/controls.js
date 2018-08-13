@@ -89,6 +89,14 @@ const Controls = ( props ) => {
 						initialPosition={ attributes.containerWidth || 500 }
 						onChange={ ( value ) => setAttributes( { containerWidth: value } ) }
 					/>
+					<RangeControl
+						label={ __( 'Border Radius (px)' ) }
+						value={ attributes.borderRadius }
+						min={ 0 }
+						max={ 50 }
+						initialPosition={ attributes.borderRadius || 0 }
+						onChange={ ( value ) => setAttributes( { borderRadius: value } ) }
+					/>
 				</PanelBody>
 
 				<PanelBody title={ __( 'Background Options' ) }>
