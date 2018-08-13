@@ -2,7 +2,7 @@
 /**
  * Plugin Name: Stag Blocks
  * Plugin URI: https://github.com/mauryaratan/stag-blocks/
- * Description: Handy WordPress editor blocks.
+ * Description: Stag Blocks extends Gutenberg editor for WordPress, by adding a number of handy blocks for your website.
  * Author: Codestag
  * Author URI: https://codestag.com/
  * Version: 1.0.0
