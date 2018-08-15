@@ -16,6 +16,7 @@ import './blocks/container';
 import './blocks/hero';
 import './blocks/posts-grid';
 import './blocks/pricing-table';
+import './blocks/progress-bar';
 import './blocks/stats';
 import './blocks/testimonial';
 import './blocks/website-card';
