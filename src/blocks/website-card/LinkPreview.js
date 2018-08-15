@@ -13,8 +13,6 @@ const LinkPreview = ( { attributes, className } ) => {
 			<a
 				href={ attributes.url }
 				className={ `${ className }__url` }
-				target={ attributes.new_tab ? '_blank' : false }
-				rel={ attributes.new_tab ? 'noopener noreferrer' : false }
 			>
 				<span className="screen-reader-text">{ __( 'Link to' ) } { attributes.title }</span>
 			</a>
