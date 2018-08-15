@@ -41,7 +41,7 @@ export default class LinkFetch extends Component {
 			} );
 			return false;
 		}
-		const result = await( await fetch( `http://api.linkpreview.net/?key=${ key }&q=${ url }` ) ).json();
+		const result = await( await fetch( `https://api.linkpreview.net/?key=${ key }&q=${ url }` ) ).json();
 
 		this.setState( {
 			result,
