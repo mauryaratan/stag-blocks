@@ -62,7 +62,6 @@ class Stag_Blocks_Settings {
 				'wp-components',
 				'react',
 				'react-dom',
-				'wp-utils',
 				'lodash',
 			),
 			filemtime( plugin_dir_path( __DIR__ ) . 'dist/settings/settings.build.js' ),
