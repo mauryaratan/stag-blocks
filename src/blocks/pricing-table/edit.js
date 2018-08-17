@@ -232,7 +232,7 @@ const EnhancedComponent = withFocusOutside(
 								icon="insert"
 								isDefault
 								isLarge
-								className="core-blocks-gallery-add-item-button"
+								className="block-library-gallery-add-item-button"
 								onClick={ () => {
 									const tables = [ ...attributes.tables ];
 
