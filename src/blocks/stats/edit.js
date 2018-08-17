@@ -43,7 +43,7 @@ export default class Edit extends Component {
 								tabIndex="-1"
 							>
 								{ ( isSelected && this.state.selectedStat === i ) &&
-									<div className="core-blocks-gallery-item__inline-menu">
+									<div className="block-library-gallery-item__inline-menu">
 										<IconButton
 											icon="no-alt"
 											onClick={ () => {

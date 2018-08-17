@@ -68,7 +68,7 @@ const EnhancedComponent = withFocusOutside(
 										<span className={ `${ className }__featured_text` }>{ attributes.featured_text }</span>
 									}
 									{ ( isSelected && this.state.selectedTable === i ) &&
-										<div className="core-blocks-gallery-item__inline-menu">
+										<div className="block-library-gallery-item__inline-menu">
 											<IconButton
 												icon="no-alt"
 												onClick={ () => {
@@ -206,7 +206,7 @@ const EnhancedComponent = withFocusOutside(
 
 										{ ( this.state.focusedIndex === i ) && (
 											<form
-												className="core-blocks-button__inline-link"
+												className="block-library-button__inline-link"
 												onSubmit={ ( event ) => event.preventDefault() }>
 												<Dashicon icon="admin-links" />
 												<URLInput
