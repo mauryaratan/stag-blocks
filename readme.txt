@@ -44,6 +44,18 @@ We're also cooking an absolutely free WordPress theme, 100% compatible with Gute
 = Can I use my own themes? =
 Absolutely! Stag Blocks gets out of the way and is designed to work with any theme’s styles.
 
+== Screenshots ==
+1. Stag Blocks settings page.
+2. Accordion block - Display a togglable field that can be expanded and collapsed.
+3. Alert Block - Display a notice with customizable icon, title, and description.
+4. Container Block - Add a container block which can be used to fit multiple blocks inside it.
+5. Hero — Add a full width media block to accompany a call to action.
+6. Posts Grid Block — Display a grid or list of customizable posts.
+7. Pricing Table Block — Add a pricing table block to showcase different plans and offers.
+8. Stats — Display useful custom stats for just about anything.
+9. Testimonial — Add a user testimonial with name, company, text, and picture.
+10. Website Card Block — Turn a URL into a pretty card style preview.
+
 == Changelog ==
 = 1.0.0 =
 * Initial release.
