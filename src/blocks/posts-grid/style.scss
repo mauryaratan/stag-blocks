@@ -1,6 +1,7 @@
 .wp-block-sgb-posts-grid {
 	list-style: none;
 	padding: 0 !important;
+	word-break: break-word;
 
 	@include media(max-width 1000px) {
 		margin: 0 !important;
