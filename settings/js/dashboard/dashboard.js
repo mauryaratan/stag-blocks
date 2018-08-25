@@ -42,7 +42,7 @@ const Dashboard = () => (
 					<div className="feature-list__content">
 						<h3>{ __( 'Making Gutenberg Block Editor a more premium experience with Stag Blocks' ) }</h3>
 						<p>{ __( 'Watch this quick intro video tutorial to get started on building pages with blocks. ' ) }</p>
-						<p><a href="https://stagblocks.com/" target="_blank" rel="noopener noreferrer">{ __( 'Read Docuementation & Articles' ) }</a></p>
+						<p><a href="https://stagblocks.com/" target="_blank" rel="noopener noreferrer">{ __( 'Read Documentation & Articles' ) }</a></p>
 					</div>
 				</div>
 			</div>
