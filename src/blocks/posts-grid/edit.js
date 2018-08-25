@@ -2,10 +2,8 @@
  * External dependencies
  */
 import classnames from 'classnames';
-import get from 'lodash/get';
 import isUndefined from 'lodash/isUndefined';
 import pickBy from 'lodash/pickBy';
-import { stringify } from 'querystringify';
 import side from './icons';
 
 /**
@@ -28,6 +26,8 @@ const {
 const { __ } = wp.i18n;
 
 const { decodeEntities } = wp.htmlEntities;
+
+const { withSelect } = wp.data;
 
 const {
 	InspectorControls,
@@ -61,7 +61,7 @@ class PostsGridEdit extends Component {
 	}
 
 	render() {
-		const { attributes, categoriesList, setAttributes } = this.props;
+		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
 		const {
 			displayPostDate,
 			displayPostExcerpt,
@@ -78,7 +78,6 @@ class PostsGridEdit extends Component {
 			postsToShow,
 		} = attributes;
 
-		const latestPosts = this.props.latestPosts.data;
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
 		const inspectorControls = (
@@ -87,7 +86,7 @@ class PostsGridEdit extends Component {
 					<QueryControls
 						{ ...{ order, orderBy } }
 						numberOfItems={ postsToShow }
-						categoriesList={ get( categoriesList, [ 'data' ], {} ) }
+						categoriesList={ categoriesList }
 						selectedCategoryId={ categories }
 						onOrderChange={ ( value ) => setAttributes( { order: value } ) }
 						onOrderByChange={ ( value ) => setAttributes( { orderBy: value } ) }
@@ -255,15 +254,17 @@ class PostsGridEdit extends Component {
 	}
 }
 
-export default withAPIData( ( props ) => {
+export default withSelect( ( select, props ) => {
 	const { postsToShow, order, orderBy, categories } = props.attributes;
+	const { getEntityRecords } = select( 'core' );
 
-	const latestPostsQuery = stringify( pickBy( {
+	const latestPostsQuery = pickBy( {
 		categories,
 		order,
 		orderby: orderBy,
 		per_page: postsToShow,
 		_fields: [
+			'id',
 			'date_gmt',
 			'link',
 			'title',
@@ -273,15 +274,15 @@ export default withAPIData( ( props ) => {
 			'sgb/featured_image_src',
 			'sgb/author_data',
 		],
-	}, ( value ) => ! isUndefined( value ) ) );
+	}, ( value ) => ! isUndefined( value ) );
 
-	const categoriesListQuery = stringify( {
+	const categoriesListQuery = {
 		per_page: 100,
 		_fields: [ 'id', 'name', 'parent' ],
-	} );
+	};
 
 	return {
-		latestPosts: `/wp/v2/posts?${ latestPostsQuery }`,
-		categoriesList: `/wp/v2/categories?${ categoriesListQuery }`,
+		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
+		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( PostsGridEdit );
