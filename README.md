@@ -1,4 +1,8 @@
-<img src="https://f.codest.ag/Nbvb50+" alt="Stag Blocks" />
+# Stag Blocks
+
+[![WordPress plugin](https://img.shields.io/wordpress/plugin/dt/stag-blocks.svg?style=flat)](https://wordpress.org/plugins/stag-blocks/) [![WordPress plugin](https://img.shields.io/wordpress/plugin/v/stag-blocks.svg?style=flat)](https://wordpress.org/plugins/stag-blocks/) [![WordPress](https://img.shields.io/wordpress/v/stag-blocks.svg?style=flat)]() 
+
+<img src="https://ps.w.org/stag-blocks/assets/banner-1544x500.png?rev=1926726" alt="Stag Blocks" />
 
 Stag Blocks provide a set of useful Gutenberg blocks to help you build your WordPress pages in style.
 
