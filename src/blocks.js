@@ -11,6 +11,7 @@
 
 import './blocks/accordion';
 import './blocks/alert';
+import './blocks/author';
 import './blocks/code';
 import './blocks/container';
 import './blocks/hero';
