@@ -5,16 +5,13 @@
 		margin: 0;
 	}
 
-	&__title {
-		line-height: 1;
-	}
-
 	&__salutation {
 		opacity: .7;
 	}
 
 	&__position {
 		opacity: .8;
+		font-weight: 500;
 	}
 
 	a {
@@ -28,7 +25,6 @@
 
 		a {
 			color: currentColor;
-			pointer-events: none;
 		}
 
 		.fab {

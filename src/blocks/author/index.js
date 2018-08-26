@@ -21,6 +21,10 @@ registerBlockType( 'sgb/author', {
 		__( 'stag' ),
 	],
 
+	supports: {
+		align: [ 'wide' ],
+	},
+
 	attributes: {
 		salutation: {
 			type: 'array',
