@@ -60,6 +60,7 @@ function stag_blocks_editor_assets() {
 			'nonce'         => wp_create_nonce( 'wp_rest' ),
 			'blockSettings' => get_option( 'sgb-block-settings' ),
 			'settingsURL'   => admin_url( 'options-general.php?page=stag-blocks#settings' ),
+			'countdownSrc'  => plugins_url( 'src/assets/js/jquery.countdown.min.js', dirname( __FILE__ ) ),
 		)
 	);
 
@@ -75,7 +76,8 @@ function stag_blocks_editor_assets() {
 		'sgb-fontawesome-json',
 		plugins_url( 'dist/fa-icons-raw.js', dirname( __FILE__ ) ),
 		array(),
-		'5.2.0'
+		'5.2.0',
+		true
 	);
 } // End function stag_blocks_editor_assets().
 
@@ -88,6 +90,14 @@ add_action( 'enqueue_block_editor_assets', 'stag_blocks_editor_assets' );
  * @return void
  */
 function sgb_frontend_assets() {
+	wp_register_script(
+		'jquery-countdown',
+		plugins_url( 'src/assets/js/jquery.countdown.min.js', dirname( __FILE__ ) ),
+		array( 'jquery' ),
+		'2.2.0',
+		true
+	);
+
 	if ( is_singular() ) {
 		$post_id = get_the_ID();
 		$content = get_post_field( 'post_content', $post_id, 'display' );
