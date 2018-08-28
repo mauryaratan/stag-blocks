@@ -1,5 +1,4 @@
 import Controls from './controls';
-
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Spinner } = wp.components;
@@ -34,13 +33,14 @@ export default class Edit extends Component {
 	}
 
 	startCountdown() {
-		if ( 'function' === typeof $( '#testtest' ).countdown ) {
-			$( '#getting-started' )
-				.countdown( Date.parse( this.props.attributes.date ), function( event ) {
-					$( this ).text(
-						event.strftime( '%Dd %Hh %Mm %Ss' )
-					);
-				} );
+		const element = document.getElementById( this.props.attributes.id );
+
+		if ( 'function' === typeof $( '#testtest' ).countdown && $( element ).length ) {
+			$( element ).countdown( Date.parse( this.props.attributes.date ), function( event ) {
+				$( this ).text(
+					event.strftime( '%Dd %Hh %Mm %Ss' )
+				);
+			} );
 		}
 	}
 
@@ -53,7 +53,7 @@ export default class Edit extends Component {
 					<p>LOLOLOL</p>
 					{ this.state.loading ?
 						<Spinner /> :
-						<div id="getting-started"></div>
+						<div id={ this.props.attributes.id }></div>
 					}
 				</div>
 			</Fragment>

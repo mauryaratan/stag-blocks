@@ -16,7 +16,8 @@
     "cgb-scripts": "1.9.8",
     "classnames": "^2.2.6",
     "moment": "^2.22.2",
-    "querystringify": "^2.0.0"
+    "querystringify": "^2.0.0",
+    "uuid": "^3.3.2"
   },
   "devDependencies": {
     "@wordpress/babel-plugin-makepot": "^1.0.1",
