@@ -29,6 +29,11 @@ export default class Edit extends Component {
 					clearInterval( interval );
 				}
 			}, 100 );
+		} else {
+			this.setState( { loading: false } );
+			setTimeout( () => {
+				this.startCountdown();
+			}, 100 );
 		}
 	}
 
@@ -50,6 +55,7 @@ export default class Edit extends Component {
 				<Controls { ...this.props } />
 
 				<div>
+
 					<p>LOLOLOL</p>
 					{ this.state.loading ?
 						<Spinner /> :
