@@ -1,7 +1,6 @@
 import BlocksContext from './BlocksContext';
 import RenderBlockSettings from './BlockSettings';
 import ErrorCard from './ErrorCard';
-import RenderIcon from './RenderIcon';
 
 const { __ } = wp.i18n;
 const { Fragment } = wp.element;
@@ -21,7 +20,6 @@ const BlockList = () => {
 									key={ block.name }
 									className="stag-blocks__block"
 								>
-									<RenderIcon icon={ block.icon.src } />
 									<p>{ block.title }</p>
 									<p className="stag-blocks__block__description">{ block.description }</p>
 
