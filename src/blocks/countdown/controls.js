@@ -14,13 +14,17 @@ const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
 
 	const startCountdown = ( date ) => {
-		if ( 'function' === typeof $( '#testtest' ).countdown ) {
-			$( `#${ attributes.id }` ).countdown( Date.parse( date ), function( event ) {
+		setTimeout( () => {
+			const element = document.getElementById( 'block-' + props.clientId );
+			$( element ).find( '.countdown' ).data( 'countdown', date );
+			const countdownDate = $( element ).find( '.countdown' ).data( 'countdown' );
+
+			$( element ).find( '.countdown' ).countdown( Date.parse( date ), function( event ) {
 				$( this ).text(
 					event.strftime( '%Dd %Hh %Mm %Ss' )
 				);
 			} );
-		}
+		}, 200 );
 	};
 
 	return (

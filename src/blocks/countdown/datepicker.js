@@ -23,7 +23,10 @@ const CountdownDatePicker = withState( {
 			onChange={ ( newDate ) => {
 				setState( { date: newDate } );
 				setAttributes( { date: newDate } );
-				startCountdown( newDate );
+
+				setTimeout( () => {
+					startCountdown( newDate );
+				}, 100 );
 			} }
 			locale={ settings.l10n.locale }
 			is12Hour={ is12HourTime }

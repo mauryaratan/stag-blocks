@@ -38,10 +38,11 @@ export default class Edit extends Component {
 	}
 
 	startCountdown() {
-		const element = document.getElementById( this.props.attributes.id );
+		const element = document.getElementById( 'block-' + this.props.clientId );
+		const countdownDate = $( element ).find( '.countdown' ).data( 'countdown' );
 
 		if ( 'function' === typeof $( '#testtest' ).countdown && $( element ).length ) {
-			$( element ).countdown( Date.parse( this.props.attributes.date ), function( event ) {
+			$( element ).find( '.countdown' ).countdown( countdownDate, function( event ) {
 				$( this ).text(
 					event.strftime( '%Dd %Hh %Mm %Ss' )
 				);
@@ -59,7 +60,7 @@ export default class Edit extends Component {
 					<p>LOLOLOL</p>
 					{ this.state.loading ?
 						<Spinner /> :
-						<div id={ this.props.attributes.id }></div>
+						<div className="countdown" data-countdown={ Date.parse( this.props.attributes.date ) }></div>
 					}
 				</div>
 			</Fragment>

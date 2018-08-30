@@ -33,10 +33,6 @@ registerBlockType( 'sgb/countdown', {
 		},
 	},
 
-	supports: {
-		multiple: false,
-	},
-
 	edit,
 
 	save( { attributes } ) {
