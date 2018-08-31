@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import edit from './edit';
 import './editor.scss';
+import icon from './icon';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -10,7 +11,7 @@ registerBlockType( 'sgb/stats', {
 	title: __( 'Stats' ),
 	category: 'common',
 	description: __( 'Display useful custom stats for just about anything.' ),
-	icon: 'chart-area',
+	icon,
 	keywords: [
 		__( 'stats' ),
 		__( 'numbers' ),
