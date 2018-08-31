@@ -1,6 +1,7 @@
 import classnames from 'classnames';
 import edit from './edit';
 import './editor.scss';
+import icon from './icon';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -12,7 +13,7 @@ registerBlockType( 'sgb/hero', {
 	title: __( 'Hero' ),
 	category: 'common',
 	description: __( 'Add a full width media block to accompany a call to action.' ),
-	icon: 'cover-image',
+	icon,
 	keywords: [
 		__( 'hero' ),
 		__( 'cta' ),
