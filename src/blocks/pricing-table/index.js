@@ -2,6 +2,7 @@ import classnames from 'classnames';
 import Controls from './controls';
 import Edit from './edit';
 import './editor.scss';
+import icon from './icon';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -16,7 +17,7 @@ registerBlockType( 'sgb/pricing-table', {
 	title: __( 'Pricing Table' ),
 	category: 'common',
 	description: __( 'Add a pricing table block to showcase different plans and offers.' ),
-	icon: <i className="dashicon fas fa-money-check-alt" />,
+	icon,
 	keywords: [
 		__( 'pricing table' ),
 		__( 'comparison' ),
