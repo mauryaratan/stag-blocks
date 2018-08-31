@@ -6,8 +6,8 @@ Tags: Gutenberg, editor, blocks, codestag, testimonial, website, alert, accordio
 Donate link: https://codest.ag/st-donate
 Requires at least: 4.9.6
 Requires PHP: 5.6
-Tested up to: 4.9.8
-Stable Tag: 1.0.0
+Tested up to: 5.0-alpha-43601
+Stable Tag: 1.1.0
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -24,6 +24,7 @@ We created *Stag Blocks* to assist you in building your content with Gutenberg i
 * [Hero](https://stagblocks.com/block/hero-block) — Add a full width media block to accompany a call to action.
 * [Posts Grid](https://stagblocks.com/block/posts-grid-block) — Display a grid or list of customizable posts.
 * [Pricing Table](https://stagblocks.com/block/pricing-table-block) — Add a pricing table block to showcase different plans and offers.
+* [Profile](https://stagblocks.com/block/profile-block) — Displays a nice author profile info box with social links.
 * [Stats](https://stagblocks.com/block/stats-block) — Display useful custom stats for just about anything.
 * [Testimonial](https://stagblocks.com/block/testimonial-block) — Add a user testimonial with name, company, text, and picture.
 * [Website Card](https://stagblocks.com/block/website-card-block) — Turn a URL into a pretty card style preview.
@@ -57,5 +58,12 @@ Absolutely! Stag Blocks gets out of the way and is designed to work with any the
 10. Website Card Block — Turn a URL into a pretty card style preview.
 
 == Changelog ==
+= 1.1.0 =
+* 🎉 NEW: Profile block - Displays a nice author profile info box with social links.
+* 👌 Update all block icons
+* Fix typo on Setting page text. Props @dannycooper
+* Remove deprecated withAPIData in favor of withSelect in Posts Grid Block
+* Ensure titles don't break in Posts Grid block
+
 = 1.0.0 =
 * Initial release.
