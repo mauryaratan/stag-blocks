@@ -58,6 +58,9 @@ Absolutely! Stag Blocks gets out of the way and is designed to work with any the
 10. Website Card Block — Turn a URL into a pretty card style preview.
 
 == Changelog ==
+= 1.1.1 =
+* Fix dist folder missing since v1.1.0
+
 = 1.1.0 =
 * 🎉 NEW: Profile block - Displays a nice author profile info box with social links.
 * 👌 Update all block icons

@@ -5,7 +5,7 @@
  * Description: Stag Blocks extends Gutenberg editor for WordPress, by adding a number of handy blocks for your website.
  * Author: Codestag
  * Author URI: https://codestag.com/
- * Version: 1.1.0
+ * Version: 1.1.1
  * License: GPL2+
  * License URI: http://www.gnu.org/licenses/gpl-2.0.txt
  *
