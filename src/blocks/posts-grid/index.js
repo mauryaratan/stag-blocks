@@ -1,5 +1,6 @@
 import edit from './edit';
 import './editor.scss';
+import icon from './icon';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -9,7 +10,7 @@ registerBlockType( 'sgb/posts-grid', {
 	title: __( 'Posts Grid' ),
 	category: 'common',
 	description: __( 'Display a grid or list of customizable posts.' ),
-	icon: <i className="dashicon fas fa-th-large" />,
+	icon,
 	keywords: [
 		__( 'post' ),
 		__( 'grid' ),
