@@ -1,4 +1,5 @@
 import Controls from './controls';
+import icon from './icon';
 import './style.scss';
 
 const { __ } = wp.i18n;
@@ -10,7 +11,7 @@ registerBlockType( 'sgb/container', {
 	title: __( 'Container' ),
 	category: 'layout',
 	description: __( 'Add a container block which can be used to fit multiple blocks inside it.' ),
-	icon: <i className="dashicons far fa-object-group" />,
+	icon,
 	keywords: [
 		__( 'container' ),
 		__( 'section' ),
