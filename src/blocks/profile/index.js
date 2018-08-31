@@ -9,15 +9,15 @@ const { Fragment } = wp.element;
 const { RichText, MediaUpload } = wp.editor;
 const { Button, Dashicon } = wp.components;
 
-registerBlockType( 'sgb/author', {
-	title: __( 'Author' ),
+registerBlockType( 'sgb/profile', {
+	title: __( 'Profile' ),
 	category: 'layout',
-	description: __( 'Displays a nice author info box with social links.' ),
+	description: __( 'Displays a nice author profile info box with social links.' ),
 	icon: icon,
 	customCategory: 'stag-blocks',
 	keywords: [
-		__( 'author' ),
-		__( 'bio' ),
+		__( 'profile' ),
+		__( 'author bio' ),
 		__( 'stag' ),
 	],
 
@@ -173,7 +173,7 @@ registerBlockType( 'sgb/author', {
 	},
 
 	save( { attributes } ) {
-		const className = 'wp-block-sgb-author';
+		const className = 'wp-block-sgb-profile';
 
 		return (
 			<div className={ className } style={ {
