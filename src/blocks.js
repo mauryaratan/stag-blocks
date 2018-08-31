@@ -14,7 +14,6 @@ import './blocks/alert';
 import './blocks/author';
 import './blocks/code';
 import './blocks/container';
-import './blocks/countdown';
 import './blocks/hero';
 import './blocks/posts-grid';
 import './blocks/pricing-table';
