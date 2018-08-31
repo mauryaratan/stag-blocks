@@ -1,5 +1,6 @@
 import Controls from './controls';
 import './editor.scss';
+import icon from './icon';
 import LinkFetch from './LinkFetch';
 import LinkPreview from './LinkPreview';
 import './style.scss';
@@ -12,7 +13,7 @@ registerBlockType( 'sgb/website-card', {
 	title: __( 'Website Card' ),
 	category: 'embed',
 	description: __( 'Turn a URL into a pretty card style preview.' ),
-	icon: 'admin-links',
+	icon,
 	customCategory: 'stag-blocks',
 	hasSettings: true,
 	keywords: [
