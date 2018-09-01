@@ -5,7 +5,7 @@ const { getSettings } = wp.date;
 const CountdownDatePicker = withState( {
 	date: new Date(),
 } )( ( props ) => {
-	const { date, setState, setAttributes, startCountdown } = props;
+	const { date, setState, attributes, setAttributes, startCountdown } = props;
 	const settings = getSettings();
 
 	// To know if the current timezone is a 12 hour time with look for "a" in the time format.
@@ -19,7 +19,7 @@ const CountdownDatePicker = withState( {
 
 	return (
 		<DateTimePicker
-			currentDate={ date }
+			currentDate={ attributes.date || date }
 			onChange={ ( newDate ) => {
 				setState( { date: newDate } );
 				setAttributes( { date: newDate } );

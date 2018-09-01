@@ -31,6 +31,7 @@ const Controls = ( props ) => {
 		<InspectorControls>
 			<PanelBody>
 				<CountdownDatePicker
+					attributes={ attributes }
 					setAttributes={ setAttributes }
 					startCountdown={ startCountdown }
 				/>
