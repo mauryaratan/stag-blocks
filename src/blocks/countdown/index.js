@@ -1,5 +1,6 @@
 import uuid from 'uuid/v4';
 import edit from './edit';
+import icon from './icon';
 
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
@@ -14,7 +15,7 @@ registerBlockType( 'sgb/countdown', {
 	title: __( 'Countdown' ),
 	category: 'common',
 	description: __( 'A nice description for countdown block.' ),
-	icon: 'info',
+	icon,
 	customCategory: 'stag-blocks',
 	keywords: [
 		__( 'countdown' ),
