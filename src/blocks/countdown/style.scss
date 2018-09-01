@@ -1,0 +1,34 @@
+.wp-block-sgb-countdown {
+	display: flex;
+	padding: 35px;
+	border: 1px solid currentColor;
+
+	> div {
+		flex: 1;
+	}
+
+	.countdown {
+		margin-left: 20px;
+		border: 1px solid currentColor;
+		display: flex;
+		align-self: center;
+		background: #fff;
+		span {
+			font-size: 20px;
+		}
+		em {
+			font-style: normal;
+		}
+
+		span {
+			flex: 1;
+			display: inline-flex;
+			justify-content: center;
+			align-items: baseline;
+			padding: 25px 0;
+			+ span {
+				border-left: 1px solid currentColor;
+			}
+		}
+	}
+}

@@ -8,6 +8,7 @@ const {
 
 const {
 	InspectorControls,
+	PanelColorSettings,
 } = wp.editor;
 
 const Controls = ( props ) => {
@@ -17,12 +18,9 @@ const Controls = ( props ) => {
 		setTimeout( () => {
 			const element = document.getElementById( 'block-' + props.clientId );
 			$( element ).find( '.countdown' ).data( 'countdown', date );
-			const countdownDate = $( element ).find( '.countdown' ).data( 'countdown' );
 
 			$( element ).find( '.countdown' ).countdown( Date.parse( date ), function( event ) {
-				$( this ).text(
-					event.strftime( '%Dd %Hh %Mm %Ss' )
-				);
+				$( this ).html( event.strftime( attributes.dateFormat ) );
 			} );
 		}, 200 );
 	};
@@ -36,6 +34,33 @@ const Controls = ( props ) => {
 					startCountdown={ startCountdown }
 				/>
 			</PanelBody>
+
+			<PanelColorSettings
+				title={ __( 'Color Settings' ) }
+				initialOpen={ false }
+				colorSettings={ [
+					{
+						value: attributes.textColor,
+						onChange: ( textColor ) => ( setAttributes( { textColor } ) ),
+						label: __( 'Text Color' ),
+					},
+					{
+						value: attributes.backgroundColor,
+						onChange: ( backgroundColor ) => ( setAttributes( { backgroundColor } ) ),
+						label: __( 'Background Color' ),
+					},
+					{
+						value: attributes.borderColor,
+						onChange: ( borderColor ) => ( setAttributes( { borderColor } ) ),
+						label: __( 'Border Color' ),
+					},
+					{
+						value: attributes.countdownColor,
+						onChange: ( countdownColor ) => ( setAttributes( { countdownColor } ) ),
+						label: __( 'Countdown Color' ),
+					},
+				] }
+			/>
 		</InspectorControls>
 	);
 };

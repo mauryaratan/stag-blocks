@@ -2,6 +2,9 @@ import Controls from './controls';
 const { __ } = wp.i18n;
 const { Fragment, Component } = wp.element;
 const { Spinner } = wp.components;
+const {
+	RichText,
+} = wp.editor;
 
 export default class Edit extends Component {
 	constructor() {
@@ -14,6 +17,8 @@ export default class Edit extends Component {
 		const countdownScript = document.createElement( 'script' );
 		countdownScript.setAttribute( 'src', _stagBlocks.countdownSrc );
 		document.body.appendChild( countdownScript );
+
+		this.startCountdown = this.startCountdown.bind( this );
 	}
 
 	componentDidMount() {
@@ -40,27 +45,54 @@ export default class Edit extends Component {
 	startCountdown() {
 		const element = document.getElementById( 'block-' + this.props.clientId );
 		const countdownDate = $( element ).find( '.countdown' ).data( 'countdown' );
+		const format = this.props.attributes.dateFormat;
 
 		if ( 'function' === typeof $( '#testtest' ).countdown && $( element ).length ) {
 			$( element ).find( '.countdown' ).countdown( countdownDate, function( event ) {
-				$( this ).text(
-					event.strftime( '%Dd %Hh %Mm %Ss' )
-				);
+				$( this ).html( event.strftime( format ) );
 			} );
 		}
 	}
 
 	render() {
+		const { attributes, setAttributes, className } = this.props;
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
 
-				<div>
-
-					<p>LOLOLOL</p>
+				<div
+					className={ className }
+					style={ {
+						backgroundColor: attributes.backgroundColor,
+						color: attributes.textColor,
+						borderColor: attributes.borderColor,
+					} }
+				>
+					<div className="countdown-content">
+						<RichText
+							tagName="h3"
+							className={ `${ className }__title` }
+							value={ attributes.title }
+							onChange={ ( title ) => setAttributes( { title } ) }
+							placeholder={ __( 'Countdown title' ) }
+						/>
+						<RichText
+							tagName="p"
+							className={ `${ className }__content` }
+							value={ attributes.content }
+							onChange={ ( content ) => setAttributes( { content } ) }
+							placeholder={ __( 'Write content...' ) }
+						/>
+					</div>
 					{ this.state.loading ?
 						<Spinner /> :
-						<div className="countdown" data-countdown={ Date.parse( this.props.attributes.date ) }></div>
+						<div
+							className="countdown"
+							style={ {
+								color: attributes.countdownColor,
+							} }
+							data-countdown={ Date.parse( this.props.attributes.date ) }
+						></div>
 					}
 				</div>
 			</Fragment>
