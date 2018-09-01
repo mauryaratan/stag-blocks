@@ -1,6 +1,5 @@
 import BlocksContext from '../BlocksContext';
 import ErrorCard from '../ErrorCard';
-import RenderIcon from '../RenderIcon';
 import featured from './featured.png';
 import stagblocks from './stagblocks.png';
 
@@ -58,7 +57,6 @@ const Dashboard = () => (
 						( Array.isArray( context.state.stagBlocks ) && context.state.stagBlocks.length ) ? (
 							context.state.stagBlocks.map( ( block, idx ) => (
 								<li key={ idx }>
-									<RenderIcon icon={ block.icon.src } />
 									<h3>{ block.title }</h3>
 									<p>{ block.description }</p>
 									<p>
