@@ -25,6 +25,12 @@ registerBlockType( 'sgb/countdown', {
 		multiple: false,
 	},
 
+	styles: [
+		{ name: 'default', label: __( 'Default' ) },
+		{ name: 'flipped', label: __( 'Flipped' ) },
+		{ name: 'countdown-only', label: __( 'Countdown Only' ) },
+	],
+
 	attributes: {
 		title: {
 			type: 'array',

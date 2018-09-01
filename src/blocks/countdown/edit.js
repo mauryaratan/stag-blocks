@@ -56,6 +56,8 @@ export default class Edit extends Component {
 
 	render() {
 		const { attributes, setAttributes, className } = this.props;
+		const childClass = 'wp-block-sgb-countdown';
+
 		return (
 			<Fragment>
 				<Controls { ...this.props } />
@@ -71,14 +73,14 @@ export default class Edit extends Component {
 					<div className="countdown-content">
 						<RichText
 							tagName="h3"
-							className={ `${ className }__title` }
+							className={ `${ childClass }__title` }
 							value={ attributes.title }
 							onChange={ ( title ) => setAttributes( { title } ) }
 							placeholder={ __( 'Countdown title' ) }
 						/>
 						<RichText
 							tagName="p"
-							className={ `${ className }__content` }
+							className={ `${ childClass }__content` }
 							value={ attributes.content }
 							onChange={ ( content ) => setAttributes( { content } ) }
 							placeholder={ __( 'Write content...' ) }

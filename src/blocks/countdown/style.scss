@@ -3,6 +3,35 @@
 	padding: 35px;
 	border: 1px solid currentColor;
 
+	&.is-style-flipped {
+		.countdown-content {
+			order: 2;
+		}
+		.countdown {
+			margin-left: 0;
+			margin-right: 20px;
+		}
+	}
+
+	&.is-style-countdown-only {
+		padding: 0;
+		border: none;
+		background: transparent;
+
+		.countdown {
+			margin: 0;
+
+			span {
+				padding: 50px 0;
+				font-size: 40px;
+			}
+		}
+
+		.countdown-content {
+			display: none;
+		}
+	}
+
 	> div {
 		flex: 1;
 	}
@@ -18,6 +47,7 @@
 		}
 		em {
 			font-style: normal;
+			font-size: 1.5em;
 		}
 
 		span {
