@@ -6,7 +6,13 @@ import './style.scss';
 const { __ } = wp.i18n;
 const { registerBlockType } = wp.blocks;
 
-const currentDate = moment.now();
+const {
+	RichText,
+} = wp.editor;
+
+// Use of specific date 'YYYYMMDD' instead of now() ensures that
+// the default value doesn't breaks on reload if date is unchanged.
+const currentDate = moment().format( 'YYYYMMDD' );
 const oneMonthAhead = moment( currentDate ).add( 1, 'M' );
 
 registerBlockType( 'sgb/countdown', {
@@ -23,6 +29,7 @@ registerBlockType( 'sgb/countdown', {
 
 	supports: {
 		multiple: false,
+		html: false,
 	},
 
 	styles: [
@@ -44,7 +51,7 @@ registerBlockType( 'sgb/countdown', {
 		},
 		dateFormat: {
 			type: 'string',
-			default: '<span><em>%D</em>d</span> <span><em>%H</em>h</span> <span><em>%M</em>m</span> <span><em>%S</em>s</span>',
+			default: '<span><em>%D</em>d</span><span><em>%H</em>h</span><span><em>%M</em>m</span><span><em>%S</em>s</span>',
 		},
 		textColor: {
 			type: 'string',
@@ -64,9 +71,42 @@ registerBlockType( 'sgb/countdown', {
 
 	edit,
 
-	save( { attributes } ) {
+	save( props ) {
+		const { attributes } = props;
+		const className = 'wp-block-sgb-countdown';
+
 		return (
-			<p>You suck</p>
+			<div
+				style={ {
+					backgroundColor: attributes.backgroundColor,
+					color: attributes.textColor,
+					borderColor: attributes.borderColor,
+				} }
+			>
+				<div className="countdown-content">
+					<RichText.Content
+						tagName="h3"
+						className={ `${ className }__title` }
+						value={ attributes.title }
+					/>
+					<RichText.Content
+						tagName="p"
+						className={ `${ className }__content` }
+						value={ attributes.content }
+					/>
+				</div>
+
+				{ attributes.date &&
+					<div
+						className="countdown"
+						style={ {
+							color: attributes.countdownColor,
+						} }
+						data-countdown={ Date.parse( attributes.date ) }
+					/> }
+
+				<span className="date-format" hidden>{ attributes.dateFormat }</span>
+			</div>
 		);
 	},
 } );

@@ -2,6 +2,8 @@
 	display: flex;
 	padding: 35px;
 	border: 1px solid currentColor;
+	margin-top: 2em;
+	margin-bottom: 2em;
 
 	&.is-style-flipped {
 		.countdown-content {
