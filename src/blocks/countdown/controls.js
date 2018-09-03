@@ -4,6 +4,7 @@ const { __ } = wp.i18n;
 
 const {
 	PanelBody,
+	SelectControl,
 } = wp.components;
 
 const {
@@ -14,13 +15,16 @@ const {
 const Controls = ( props ) => {
 	const { attributes, setAttributes } = props;
 
-	const startCountdown = ( date ) => {
-		setTimeout( () => {
-			const element = document.getElementById( 'block-' + props.clientId );
-			$( element ).find( '.countdown' ).data( 'countdown', date );
+	const startCountdown = ( date = attributes.date, format = attributes.dateFormat ) => {
+		const element = document.getElementById( 'block-' + props.clientId );
+		const selector = $( element ).find( '.countdown' );
 
-			$( element ).find( '.countdown' ).countdown( Date.parse( date ), function( event ) {
-				$( this ).html( event.strftime( attributes.dateFormat ) );
+		setTimeout( () => {
+			selector.data( 'countdown', date );
+			selector.countdown( 'remove' );
+
+			selector.countdown( Date.parse( date ), function( event ) {
+				$( this ).html( event.strftime( format ) );
 			} );
 		}, 200 );
 	};
@@ -28,6 +32,19 @@ const Controls = ( props ) => {
 	return (
 		<InspectorControls>
 			<PanelBody>
+				<SelectControl
+					label={ __( 'Date Format' ) }
+					value={ attributes.dateFormat }
+					onChange={ ( format ) => {
+						setAttributes( { dateFormat: format } );
+						startCountdown( attributes.date, format );
+					} }
+					options={ [
+						{ label: __( '24d 11h 36m 10s' ), value: '<span><em>%D</em>d</span><span><em>%H</em>h</span><span><em>%M</em>m</span><span><em>%S</em>s</span>' },
+						{ label: __( '24 days 11:36:10' ), value: '<span>%D days %H:%M:%S</span>' },
+						{ label: __( '24 days' ), value: '<span>%D days</span>' },
+					] }
+				/>
 				<CountdownDatePicker
 					attributes={ attributes }
 					setAttributes={ setAttributes }
