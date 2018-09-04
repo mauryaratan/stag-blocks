@@ -11,6 +11,13 @@
 		place-content: center;
 		padding: 10px;
 		border: 1px solid #e2e4e7;
+		cursor: pointer;
+		outline: 0;
+		&.is-active,
+		&:focus {
+			color: #0085ba;
+			border-color: currentColor;
+		}
 	}
 
 	.no-icons {
