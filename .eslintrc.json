@@ -28,6 +28,7 @@
 		"ReactDOM": true,
 		"moment": true,
 		"_stagBlocks": true,
+		"GT_Icons": true,
 		"$": true,
 		"document": true
 	},
