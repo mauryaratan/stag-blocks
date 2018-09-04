@@ -10,11 +10,8 @@ const Icon = withState( {
 	isSelected: false,
 } )( ( props ) => (
 	<Fragment>
-		{ console.log( props ) }
 		<IconModal />
-		<i
-			className="fas"
-		/>
+		<i className="fas" />
 	</Fragment>
 ) );
 

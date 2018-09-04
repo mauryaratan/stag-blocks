@@ -1,7 +1,71 @@
+$border-color: #e2e4e7;
+
+.icon-selector-container {
+	overflow: hidden;
+
+	.overlay {
+		position: absolute;
+		width: 280px;
+		height: 100%;
+		height: calc(100% - 55px);
+		background: #fff;
+		border-top: 1px solid $border-color;
+		border-left: 1px solid $border-color;
+		top: 55px;
+		right: 0;
+		overflow: scroll;
+	}
+
+	.overlay-heading {
+		padding: 5px 10px;
+		border-bottom: 1px solid $border-color;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+
+		h3 {
+			padding: 0;
+			margin: 0;
+			color: #555d66;
+			font-size: 13px;
+		}
+	}
+
+	.icon-preview {
+		text-align: center;
+		border-bottom: 1px solid $border-color;
+		padding: 20px;
+		min-height: 70px;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+
+		i {
+			font-size: 16px;
+			&.has-background {
+				padding: 10px;
+			}
+		}
+		i.has-style-circle {
+			border-radius: 50%;
+			padding: 15px;
+		}
+	}
+}
+
+.is-selected > .components-base-control {
+	max-width: calc(100% - 280px);
+}
+
 .icon-selector {
     display: grid;
     grid-template-columns: repeat(12, 1fr);
-	border: 1px solid #e2e4e7;
+    grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+	border: 1px solid $border-color;
+
+	.is-selected & {
+		max-width: calc(100% - 280px);
+	}
 
 	i {
 		font-size: 25px;
@@ -10,7 +74,7 @@
 		align-items: center;
 		place-content: center;
 		padding: 10px;
-		border: 1px solid #e2e4e7;
+		border: 1px solid $border-color;
 		cursor: pointer;
 		outline: 0;
 		&.is-active,
@@ -24,4 +88,8 @@
 		text-align: center;
 		grid-column: 1 / -1;
 	}
+}
+
+.components-popover:not(.is-mobile).is-bottom {
+	z-index: 9999999;
 }
