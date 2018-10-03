@@ -141,6 +141,58 @@ pre[class*="language-"].line-numbers > code {
             user-select: none;
     z-index: 1;
     pointer-events: none; }
+.wp-block-sgb-countdown {
+  display: -ms-flexbox;
+  display: flex;
+  padding: 35px;
+  border: 1px solid currentColor;
+  margin-top: 2em;
+  margin-bottom: 2em; }
+  .wp-block-sgb-countdown.is-style-flipped .countdown-content {
+    -ms-flex-order: 2;
+        order: 2; }
+  .wp-block-sgb-countdown.is-style-flipped .countdown {
+    margin-left: 0;
+    margin-right: 20px; }
+  .wp-block-sgb-countdown.is-style-countdown-only {
+    padding: 0;
+    border: none;
+    background: transparent; }
+    .wp-block-sgb-countdown.is-style-countdown-only .countdown {
+      margin: 0; }
+      .wp-block-sgb-countdown.is-style-countdown-only .countdown span {
+        padding: 50px 0;
+        font-size: 40px; }
+    .wp-block-sgb-countdown.is-style-countdown-only .countdown-content {
+      display: none; }
+  .wp-block-sgb-countdown > div {
+    -ms-flex: 1;
+        flex: 1; }
+  .wp-block-sgb-countdown .countdown {
+    margin-left: 20px;
+    border: 1px solid currentColor;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-item-align: center;
+        align-self: center;
+    background: #fff; }
+    .wp-block-sgb-countdown .countdown span {
+      font-size: 20px; }
+    .wp-block-sgb-countdown .countdown em {
+      font-style: normal;
+      font-size: 1.5em; }
+    .wp-block-sgb-countdown .countdown span {
+      -ms-flex: 1;
+          flex: 1;
+      display: -ms-inline-flexbox;
+      display: inline-flex;
+      -ms-flex-pack: center;
+          justify-content: center;
+      -ms-flex-align: baseline;
+          align-items: baseline;
+      padding: 25px 0; }
+      .wp-block-sgb-countdown .countdown span + span {
+        border-left: 1px solid currentColor; }
 .wp-block-sgb-hero {
   background: #F7F9FA;
   min-height: 450px;

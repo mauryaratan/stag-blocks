@@ -46,6 +46,84 @@ i.dashicon {
   padding: 20px 0; }
   .wp-block-sgb-accordion__content p {
     color: inherit; }
+.icon-selector-container {
+  overflow: hidden; }
+  .icon-selector-container .overlay {
+    position: absolute;
+    width: 280px;
+    height: 100%;
+    height: calc(100% - 55px);
+    background: #fff;
+    border-top: 1px solid #e2e4e7;
+    border-left: 1px solid #e2e4e7;
+    top: 55px;
+    right: 0;
+    overflow: scroll; }
+  .icon-selector-container .overlay-heading {
+    padding: 5px 10px;
+    border-bottom: 1px solid #e2e4e7;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: justify;
+        justify-content: space-between;
+    -ms-flex-align: center;
+        align-items: center; }
+    .icon-selector-container .overlay-heading h3 {
+      padding: 0;
+      margin: 0;
+      color: #555d66;
+      font-size: 13px; }
+  .icon-selector-container .icon-preview {
+    text-align: center;
+    border-bottom: 1px solid #e2e4e7;
+    padding: 20px;
+    min-height: 70px;
+    display: -ms-flexbox;
+    display: flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center; }
+    .icon-selector-container .icon-preview i {
+      font-size: 16px; }
+      .icon-selector-container .icon-preview i.has-background {
+        padding: 10px; }
+    .icon-selector-container .icon-preview i.has-style-circle {
+      border-radius: 50%;
+      padding: 15px; }
+
+.is-selected > .components-base-control {
+  max-width: calc(100% - 280px); }
+
+.icon-selector {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  grid-template-columns: repeat(auto-fill, minmax(60px, 1fr));
+  border: 1px solid #e2e4e7; }
+  .is-selected .icon-selector {
+    max-width: calc(100% - 280px); }
+  .icon-selector i {
+    font-size: 25px;
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    -ms-flex-pack: center;
+        justify-content: center;
+    -ms-flex-align: center;
+        align-items: center;
+    place-content: center;
+    padding: 10px;
+    border: 1px solid #e2e4e7;
+    cursor: pointer;
+    outline: 0; }
+    .icon-selector i.is-active, .icon-selector i:focus {
+      color: #0085ba;
+      border-color: currentColor; }
+  .icon-selector .no-icons {
+    text-align: center;
+    grid-column: 1 / -1; }
+
+.components-popover:not(.is-mobile).is-bottom {
+  z-index: 9999999; }
 .wp-block-sgb-alert .wp-block-sgb-alert__title {
   font-size: 1.1em;
   margin-bottom: .5em; }

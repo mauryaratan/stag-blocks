@@ -16,7 +16,10 @@ const Icon = withState( {
 ) );
 
 Icon.Content = ( props ) => (
-	<i>Poop</i>
+	<Fragment>
+		{ console.log( props ) }
+		<i>Poop</i>
+	</Fragment>
 );
 
 export default Icon;

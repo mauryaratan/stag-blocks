@@ -2,6 +2,7 @@
  * Internal dependencies.
  */
 import classnames from 'classnames';
+import Icon from '../../components/fa';
 import Controls from './controls';
 import './editor.scss';
 import icon from './icon';
@@ -66,6 +67,9 @@ registerBlockType( 'sgb/alert', {
 		return (
 			<Fragment>
 				<Controls { ...props } />
+
+				<Icon title="something" />
+				<Icon.Content />
 
 				<div
 					className={ classnames( 'sgb-alert', className ) }
