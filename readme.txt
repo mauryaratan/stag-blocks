@@ -7,7 +7,7 @@ Donate link: https://codest.ag/st-donate
 Requires at least: 4.9.6
 Requires PHP: 5.6
 Tested up to: 5.0-RC
-Stable Tag: 1.1.3
+Stable Tag: 1.1.4
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,9 @@ Absolutely! Stag Blocks gets out of the way and is designed to work with any the
 10. Website Card Block — Turn a URL into a pretty card style preview.
 
 == Changelog ==
+= 1.1.4 =
+* Compatibility with WordPress 5.0 RC
+
 = 1.1.3 =
 * Fix WP Blocks dependencies
 
