@@ -25,9 +25,7 @@ sgb_compatibility_check();
  * @return void
  */
 function sgb_compatibility_check() {
-	include_once ABSPATH . 'wp-admin/includes/plugin.php';
-
-	if ( ! is_plugin_active( 'gutenberg/gutenberg.php' ) ) {
+	if ( ! function_exists( 'register_block_type' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'sgb_activation_notice' );
 		return;
@@ -43,7 +41,7 @@ add_action( 'init', 'sgb_compatibility_check' );
  */
 function sgb_activation_notice() {
 	echo '<div class="error"><p>';
-	echo esc_html__( 'Stag Blocks requires Gutenberg plugin to be installed and activated.', 'sgb' );
+	echo esc_html__( 'Stag Blocks requires WordPress 5.0+ or Gutenberg plugin to be installed and activated.', 'sgb' );
 	echo '</p></div>';
 }
 
