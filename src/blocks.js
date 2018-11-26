@@ -13,7 +13,6 @@ import './blocks/accordion';
 import './blocks/alert';
 import './blocks/code';
 import './blocks/container';
-import './blocks/countdown';
 import './blocks/hero';
 import './blocks/posts-grid';
 import './blocks/pricing-table';
@@ -22,4 +21,3 @@ import './blocks/stats';
 import './blocks/testimonial';
 import './blocks/website-card';
 import './blocksList';
-
