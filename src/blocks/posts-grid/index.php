@@ -87,7 +87,7 @@ function render_block_sgb_posts_grid( $attributes ) {
 		'post_status' => 'publish',
 		'order'       => $attributes['order'],
 		'orderby'     => $attributes['orderBy'],
-		'category'    => $attributes['categories'],
+		'category'    => isset( $attributes['categories'] ) ? $attributes['categories'] : false,
 	), 'OBJECT' );
 
 	$list_items_markup = '';
