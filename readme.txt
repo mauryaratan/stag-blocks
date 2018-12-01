@@ -6,8 +6,8 @@ Tags: Gutenberg, editor, blocks, codestag, testimonial, website, alert, accordio
 Donate link: https://codest.ag/st-donate
 Requires at least: 4.9.6
 Requires PHP: 5.6
-Tested up to: 5.0-RC
-Stable Tag: 1.1.4
+Tested up to: 5.0-RC2
+Stable Tag: 1.1.5
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,13 @@ Absolutely! Stag Blocks gets out of the way and is designed to work with any the
 10. Website Card Block — Turn a URL into a pretty card style preview.
 
 == Changelog ==
+= 1.1.5 =
+* Compatibility with WordPress 5.0 RC2
+* Fix fatal error where deactivate_plugins function didn’t exist
+* Fixed an issue with Post grid block category throwing an error
+* Remove post_excerpt filter from post grid block
+* Fix editor stylesheet dependency
+
 = 1.1.4 =
 * Compatibility with WordPress 5.0 RC
 
