@@ -25,6 +25,8 @@ sgb_compatibility_check();
  * @return void
  */
 function sgb_compatibility_check() {
+	include_once ABSPATH . 'wp-admin/includes/plugin.php';
+
 	if ( ! function_exists( 'register_block_type' ) ) {
 		deactivate_plugins( plugin_basename( __FILE__ ) );
 		add_action( 'admin_notices', 'sgb_activation_notice' );
