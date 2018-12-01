@@ -23,10 +23,10 @@ if ( ! defined( 'ABSPATH' ) ) {
 function stag_blocks_assets() {
 	// Styles.
 	wp_enqueue_style(
-		'sgb-css', // Handle.
-		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ), // Block style CSS.
-		array( 'wp-blocks' ) // Dependency to include the CSS after it.
-		// filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
+		'sgb-css',
+		plugins_url( 'dist/blocks.style.build.css', dirname( __FILE__ ) ),
+		array( 'wp-edit-blocks' ),
+		filemtime( plugin_dir_path( __DIR__ ) . 'dist/blocks.style.build.css' ) // Version: filemtime — Gets file modification time.
 	);
 
 	wp_enqueue_style( 'font-awesome-5', plugin_dir_url( __FILE__ ) . 'assets/css/all.min.css', array(), '5.2.0' );
