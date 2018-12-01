@@ -90,6 +90,8 @@ function render_block_sgb_posts_grid( $attributes ) {
 		'category'    => isset( $attributes['categories'] ) ? $attributes['categories'] : false,
 	), 'OBJECT' );
 
+
+
 	$list_items_markup = '';
 
 	foreach ( $recent_posts as $post ) {
@@ -149,10 +151,10 @@ function render_block_sgb_posts_grid( $attributes ) {
 		);
 
 		if ( isset( $attributes['displayPostExcerpt'] ) && $attributes['displayPostExcerpt'] ) {
-			$excerpt = apply_filters( 'the_excerpt', get_post_field( 'post_excerpt', $post_id ) );
+			$excerpt = get_post_field( 'post_excerpt', $post_id );
 
 			if ( empty( $excerpt ) ) {
-				$excerpt = apply_filters( 'the_excerpt', wp_trim_words( $post->post_content, 55 ) );
+				$excerpt = wp_trim_words( $post->post_content, 55 );
 			}
 
 			if ( ! $excerpt ) {
