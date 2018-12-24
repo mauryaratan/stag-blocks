@@ -37,6 +37,8 @@ registerBlockType( 'sgb/hero', {
 		},
 		content: {
 			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-hero__text',
 		},
 		imgURL: {
 			type: 'string',

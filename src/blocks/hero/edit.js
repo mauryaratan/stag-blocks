@@ -74,7 +74,7 @@ const edit = ( props ) => {
 							onChange={ ( value ) => setAttributes( { title: value } ) }
 						/>
 						<RichText
-							tagName="p"
+							tagName="div"
 							className={ `${ className }__text` }
 							placeholder={ __( 'Write content...' ) }
 							value={ attributes.content }
