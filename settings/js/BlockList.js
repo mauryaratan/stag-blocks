@@ -21,7 +21,7 @@ const BlockList = () => {
 									className="stag-blocks__block"
 								>
 									<p>{ block.title }</p>
-									<p className="stag-blocks__block__description">{ block.description }</p>
+									<p className="stag-blocks__block__description">{ typeof( block.description ) === 'string' && block.description }</p>
 
 									<ToggleControl
 										label={ __( 'Toggle block' ) }
