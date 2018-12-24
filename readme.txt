@@ -4,10 +4,10 @@ Author URI: https://codestag.com/
 Contributors: mauryaratan, codestag
 Tags: Gutenberg, editor, blocks, codestag, testimonial, website, alert, accordion, builder, hero, posts-grid, pricing-table, stats
 Donate link: https://codest.ag/st-donate
-Requires at least: 4.9.6
+Requires at least: 5.0
 Requires PHP: 5.6
-Tested up to: 5.0-RC2
-Stable Tag: 1.1.5
+Tested up to: 5.0.2
+Stable Tag: 1.1.6
 License: GPLv2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 
@@ -58,6 +58,11 @@ Absolutely! Stag Blocks gets out of the way and is designed to work with any the
 10. Website Card Block — Turn a URL into a pretty card style preview.
 
 == Changelog ==
+= 1.1.6 =
+* Fixed an issue with Hero block not saving content
+* Fixed an issue where block search would break due to incorrect datatype
+* Hide toggle field label on settings page
+
 = 1.1.5 =
 * Compatibility with WordPress 5.0 RC2
 * Fix fatal error where deactivate_plugins function didn’t exist

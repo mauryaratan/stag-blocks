@@ -2,7 +2,7 @@
   "name": "stag-blocks",
   "title": "Stag Blocks",
   "textDomain": "sgb",
-  "version": "1.1.5",
+  "version": "1.1.6",
   "private": true,
   "scripts": {
     "start": "cgb-scripts start",
