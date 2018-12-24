@@ -31,6 +31,10 @@ body.settings_page_stag-blocks.folded {
 		box-sizing: border-box;
 	}
 
+	.components-toggle-control .components-base-control__field .components-toggle-control__label {
+		display: none;
+	}
+
 	&__header {
 		background: #fff;
 		padding: 15px 45px;
