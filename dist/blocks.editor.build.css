@@ -188,6 +188,9 @@ i.dashicon {
   -ms-flex: 0 0 auto;
       flex: 0 0 auto; }
 
+.wp-block-sgb-pricing-table .clone-btn {
+  left: 30px; }
+
 .wp-block-sgb-pricing-table .editor-rich-text__tinymce.mce-content-body {
   line-height: 1.2; }
 

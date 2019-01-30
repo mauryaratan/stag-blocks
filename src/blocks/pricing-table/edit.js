@@ -98,6 +98,27 @@ const EnhancedComponent = withFocusOutside(
 												} }
 												icon={ table.featured ? <i className="fas fa-bookmark" /> : <i className="far fa-bookmark" /> }
 											/>
+											<IconButton
+												label={ __( 'Duplicate this table' ) }
+												className="blocks-gallery-item__remove item-left clone-btn"
+												onClick={ () => {
+													const tables = [ ...attributes.tables ];
+
+													const tableToClone = tables[ i ];
+													tables.push( {
+														title: tableToClone.title,
+														description: tableToClone.description,
+														price: tableToClone.price,
+														price_term: tableToClone.price_term,
+														features: tableToClone.features,
+														buttonText: tableToClone.buttonText,
+														buttonURL: tableToClone.buttonURL,
+													} );
+
+													setAttributes( { tables } );
+												} }
+												icon="insert"
+											/>
 										</div>
 									}
 
