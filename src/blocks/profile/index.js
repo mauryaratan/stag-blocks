@@ -28,15 +28,23 @@ registerBlockType( 'sgb/profile', {
 	attributes: {
 		salutation: {
 			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-profile__salutation',
 		},
 		title: {
 			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-profile__title',
 		},
 		position: {
 			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-profile__position',
 		},
 		content: {
 			type: 'array',
+			source: 'children',
+			selector: '.wp-block-sgb-profile__content',
 		},
 		imgID: {
 			type: 'number',
