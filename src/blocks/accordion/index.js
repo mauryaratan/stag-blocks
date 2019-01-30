@@ -10,7 +10,7 @@ import './style.scss';
 const { __ } = wp.i18n;
 const { registerBlockType, createBlock } = wp.blocks;
 const { Fragment } = wp.element;
-const { RichText } = wp.editor;
+const { RichText, InnerBlocks } = wp.editor;
 
 registerBlockType( 'sgb/accordion', {
 	title: __( 'Accordion' ),
@@ -31,11 +31,6 @@ registerBlockType( 'sgb/accordion', {
 			source: 'children',
 			selector: 'summary',
 		},
-		content: {
-			type: 'array',
-			source: 'children',
-			selector: '.wp-block-sgb-accordion__content',
-		},
 		initialOpen: {
 			type: 'boolean',
 			default: false,
@@ -47,10 +42,6 @@ registerBlockType( 'sgb/accordion', {
 		backgroundColor: {
 			type: 'string',
 			default: '#ffffff',
-		},
-		textColor: {
-			type: 'string',
-			default: '#000000',
 		},
 		titleColor: {
 			type: 'string',
@@ -66,70 +57,24 @@ registerBlockType( 'sgb/accordion', {
 		align: [ 'wide' ],
 	},
 
-	transforms: {
-		from: [
-			{
-				type: 'block',
-				blocks: [ 'sgb/alert' ],
-				transform: ( { title, content } ) => (
-					createBlock( 'sgb/accordion', {
-						title,
-						content,
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/paragraph' ],
-				transform: ( { content } ) => {
-					return createBlock( 'sgb/accordion', {
-						content,
-					} );
-				},
-			},
-		],
-		to: [
-			{
-				type: 'block',
-				blocks: [ 'sgb/alert' ],
-				transform: ( { title, content } ) => (
-					createBlock( 'sgb/alert', {
-						title,
-						content,
-					} )
-				),
-			},
-			{
-				type: 'block',
-				blocks: [ 'core/paragraph' ],
-				transform: ( { content } ) => (
-					createBlock( 'core/paragraph', {
-						content,
-					} )
-				),
-			},
-		],
-	},
-
 	edit( props ) {
-		const { attributes, setAttributes } = props;
+		const { attributes, setAttributes, className } = props;
 
 		return (
 			<Fragment>
 				<Controls { ...props } />
 
 				<div
-					className={ classnames( props.className, {
+					className={ classnames( className, {
 						'has-shadow': attributes.boxShadow,
 					} ) }
 					style={ {
 						backgroundColor: attributes.backgroundColor,
-						color: attributes.textColor,
 					} }
 				>
 					<RichText
 						tagName="p"
-						className={ classnames( 'wp-block-sgb-accordion__title' ) }
+						className={ `${ className }__title` }
 						value={ attributes.title }
 						onChange={ ( content ) => setAttributes( { title: content } ) }
 						placeholder={ __( 'Accordion Title' ) }
@@ -139,15 +84,9 @@ registerBlockType( 'sgb/accordion', {
 						} }
 						keepPlaceholderOnFocus
 					/>
-					<RichText
-						tagName="div"
-						multiline="p"
-						className={ classnames( 'wp-block-sgb-accordion__content' ) }
-						value={ attributes.content }
-						onChange={ ( content ) => setAttributes( { content } ) }
-						placeholder={ __( 'Accordion content...' ) }
-						keepPlaceholderOnFocus
-					/>
+					<div className={ `${ className }__content` }>
+						<InnerBlocks />
+					</div>
 				</div>
 			</Fragment>
 		);
@@ -162,7 +101,6 @@ registerBlockType( 'sgb/accordion', {
 				} ) }
 				style={ {
 					backgroundColor: attributes.backgroundColor,
-					color: attributes.textColor,
 				} }
 			>
 				<RichText.Content
@@ -170,7 +108,9 @@ registerBlockType( 'sgb/accordion', {
 					style={ { backgroundColor: attributes.titleBackgroundColor, color: attributes.titleColor } }
 					value={ attributes.title }
 				/>
-				<RichText.Content tagName="div" value={ attributes.content } className="wp-block-sgb-accordion__content" />
+				<div className="wp-block-sgb-accordion__content">
+					<InnerBlocks.Content />
+				</div>
 			</details>
 		);
 	},

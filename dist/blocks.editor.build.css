@@ -43,9 +43,7 @@ i.dashicon {
     bottom: 0; }
 
 .wp-block-sgb-accordion__content {
-  padding: 20px 0; }
-  .wp-block-sgb-accordion__content p {
-    color: inherit; }
+  padding: 0 0 10px; }
 .wp-block-sgb-alert .wp-block-sgb-alert__title {
   font-size: 1.1em;
   margin-bottom: .5em; }
