@@ -334,9 +334,12 @@ pre[class*="language-"].line-numbers > code {
     margin: 2em 0; }
     .wp-block-sgb-pricing-table ul.wp-block-sgb-pricing-table__features li {
       margin: 0; }
-  .wp-block-sgb-pricing-table.has-shadow .wp-block-sgb-pricing-table__table {
-    -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
-            box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25); }
+  .wp-block-sgb-pricing-table.has-shadow {
+    -webkit-box-shadow: none;
+            box-shadow: none; }
+    .wp-block-sgb-pricing-table.has-shadow .wp-block-sgb-pricing-table__table {
+      -webkit-box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25);
+              box-shadow: 0px 1px 6px rgba(0, 0, 0, 0.25); }
   .wp-block-sgb-pricing-table.has-full-width-button .wp-block-button__link {
     width: 100%; }
   .wp-block-sgb-pricing-table__table {
