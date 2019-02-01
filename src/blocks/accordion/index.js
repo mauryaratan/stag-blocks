@@ -217,6 +217,7 @@ registerBlockType( 'sgb/accordion', {
 					} ) }
 					style={ {
 						backgroundColor: attributes.backgroundColor,
+						color: attributes.textColor,
 					} }
 				>
 					<RichText
@@ -234,7 +235,6 @@ registerBlockType( 'sgb/accordion', {
 					<div className={ `${ className }__content` }>
 						{ ! RichText.isEmpty( attributes.content ) && (
 							<RichText
-								tagName="p"
 								value={ attributes.content }
 								onChange={ content =>
 									setAttributes( { content: content } )
@@ -257,6 +257,7 @@ registerBlockType( 'sgb/accordion', {
 				} ) }
 				style={ {
 					backgroundColor: attributes.backgroundColor,
+					color: attributes.textColor,
 				} }
 			>
 				<RichText.Content
@@ -270,7 +271,6 @@ registerBlockType( 'sgb/accordion', {
 				<div className="wp-block-sgb-accordion__content">
 					{ ! RichText.isEmpty( attributes.content ) && (
 						<RichText.Content
-							tagName="p"
 							value={ attributes.content }
 						/>
 					) }
