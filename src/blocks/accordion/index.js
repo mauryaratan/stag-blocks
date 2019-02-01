@@ -198,6 +198,12 @@ registerBlockType( 'sgb/accordion', {
 		},
 	],
 
+	merge( attributes, attributesToMerge ) {
+		return {
+			content: attributes.content + attributesToMerge.content,
+		};
+	},
+
 	edit( props ) {
 		const { attributes, setAttributes, className } = props;
 
@@ -226,6 +232,15 @@ registerBlockType( 'sgb/accordion', {
 						keepPlaceholderOnFocus
 					/>
 					<div className={ `${ className }__content` }>
+						{ ! RichText.isEmpty( attributes.content ) && (
+							<RichText
+								tagName="p"
+								value={ attributes.content }
+								onChange={ content =>
+									setAttributes( { content: content } )
+								}
+							/>
+						) }
 						<InnerBlocks />
 					</div>
 				</div>
@@ -253,6 +268,12 @@ registerBlockType( 'sgb/accordion', {
 					value={ attributes.title }
 				/>
 				<div className="wp-block-sgb-accordion__content">
+					{ ! RichText.isEmpty( attributes.content ) && (
+						<RichText.Content
+							tagName="p"
+							value={ attributes.content }
+						/>
+					) }
 					<InnerBlocks.Content />
 				</div>
 			</details>
