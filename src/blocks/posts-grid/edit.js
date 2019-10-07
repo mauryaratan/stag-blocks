@@ -9,7 +9,9 @@ import side from './icons';
 /**
  * WordPress dependencies
  */
+const { apiFetch } = wp;
 const { Component, Fragment } = wp.element;
+const { addQueryArgs } = wp.url;
 
 const {
 	PanelBody,
@@ -20,7 +22,6 @@ const {
 	Spinner,
 	ToggleControl,
 	Toolbar,
-	withAPIData,
 } = wp.components;
 
 const { __ } = wp.i18n;
@@ -43,6 +44,30 @@ class PostsGridEdit extends Component {
 
 		this.handleReadMoreText = this.handleReadMoreText.bind( this );
 		this.toggleState = this.toggleState.bind( this );
+		this.state = { categoriesList: [] };
+	}
+
+	componentDidMount() {
+		this.stillMounted = true;
+		this.fetchRequest = apiFetch( {
+			path: addQueryArgs( '/wp/v2/categories', { per_page: -1 })
+		} ).then(
+			( categoriesList ) => {
+				if ( this.stillMounted ) {
+					this.setState( { categoriesList } );
+				}
+			}
+		).catch(
+			() => {
+				if ( this.stillMounted ) {
+					this.setState( { categoriesList: [] } );
+				}
+			}
+		);
+	}
+
+	componentWillUnmount() {
+		this.stillMounted = false;
 	}
 
 	toggleState( key ) {
@@ -61,7 +86,7 @@ class PostsGridEdit extends Component {
 	}
 
 	render() {
-		const { attributes, categoriesList, setAttributes, latestPosts } = this.props;
+		const { attributes, setAttributes, latestPosts } = this.props;
 		const {
 			displayPostDate,
 			displayPostExcerpt,
@@ -77,6 +102,8 @@ class PostsGridEdit extends Component {
 			categories,
 			postsToShow,
 		} = attributes;
+
+		const { categoriesList } = this.state;
 
 		const hasPosts = Array.isArray( latestPosts ) && latestPosts.length;
 
