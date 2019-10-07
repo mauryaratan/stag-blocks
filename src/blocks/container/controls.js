@@ -3,7 +3,7 @@ const { Fragment } = wp.element;
 
 const {
 	InspectorControls,
-	PanelColor,
+	PanelColorSettings,
 	BlockControls,
 	MediaUpload,
 } = wp.editor;
@@ -108,13 +108,19 @@ const Controls = ( props ) => {
 						initialPosition={ attributes.backgroundOpacity || 0 }
 						onChange={ ( value ) => setAttributes( { backgroundOpacity: value } ) }
 					/>
-					<PanelColor
-						title={ __( 'Background Color' ) }
-						value={ attributes.backgroundColor }
-						onChange={ ( value ) => setAttributes( { backgroundColor: value } ) }
-						initialOpen={ false }
-					/>
 				</PanelBody>
+
+				<PanelColorSettings
+					title={ __( 'Color Settings' ) }
+					initialOpen={ false }
+					colorSettings={ [
+						{
+							value: attributes.backgroundColor ,
+							onChange: ( value ) => setAttributes( { backgroundColor: value } ),
+							label: __( 'Background Color' ),
+						},
+					] }
+				/>
 			</InspectorControls>
 
 			<BlockControls>
