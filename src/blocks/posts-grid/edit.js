@@ -303,13 +303,7 @@ export default withSelect( ( select, props ) => {
 		],
 	}, ( value ) => ! isUndefined( value ) );
 
-	const categoriesListQuery = {
-		per_page: 100,
-		_fields: [ 'id', 'name', 'parent' ],
-	};
-
 	return {
 		latestPosts: getEntityRecords( 'postType', 'post', latestPostsQuery ),
-		categoriesList: getEntityRecords( 'taxonomy', 'category', categoriesListQuery ),
 	};
 } )( PostsGridEdit );
